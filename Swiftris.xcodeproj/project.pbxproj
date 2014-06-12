@@ -12,6 +12,8 @@
 		2EF46EDB1949CA4D000D3206 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EF46EDA1949CA4D000D3206 /* Images.xcassets */; };
 		2EF46EDE1949CA4D000D3206 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EF46EDC1949CA4D000D3206 /* MainMenu.xib */; };
 		2EF46EEA1949CA4D000D3206 /* SwiftrisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46EE91949CA4D000D3206 /* SwiftrisTests.swift */; };
+		2EF46EF61949CB49000D3206 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46EF51949CB49000D3206 /* GameViewController.swift */; };
+		2EF46EF81949CBB2000D3206 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46EF71949CBB2000D3206 /* GameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,8 @@
 		2EF46EE31949CA4D000D3206 /* SwiftrisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftrisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EF46EE81949CA4D000D3206 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2EF46EE91949CA4D000D3206 /* SwiftrisTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftrisTests.swift; sourceTree = "<group>"; };
+		2EF46EF51949CB49000D3206 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		2EF46EF71949CBB2000D3206 /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,8 @@
 			isa = PBXGroup;
 			children = (
 				2EF46ED81949CA4D000D3206 /* AppDelegate.swift */,
+				2EF46EF51949CB49000D3206 /* GameViewController.swift */,
+				2EF46EF71949CBB2000D3206 /* GameView.swift */,
 				2EF46EDA1949CA4D000D3206 /* Images.xcassets */,
 				2EF46EDC1949CA4D000D3206 /* MainMenu.xib */,
 				2EF46ED41949CA4D000D3206 /* Supporting Files */,
@@ -154,7 +160,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0600;
-				ORGANIZATIONNAME = "NHN Entertainment";
+				ORGANIZATIONNAME = bearkode;
 				TargetAttributes = {
 					2EF46ED01949CA4D000D3206 = {
 						CreatedOnToolsVersion = 6.0;
@@ -209,6 +215,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EF46ED91949CA4D000D3206 /* AppDelegate.swift in Sources */,
+				2EF46EF61949CB49000D3206 /* GameViewController.swift in Sources */,
+				2EF46EF81949CBB2000D3206 /* GameView.swift in Sources */,
 				2EF46ED71949CA4D000D3206 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
