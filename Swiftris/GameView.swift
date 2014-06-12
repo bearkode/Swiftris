@@ -10,17 +10,24 @@
 import AppKit
 
 
-class GameView: NSView
-{
+class GameView: NSView {
+    
+    
+    var gridBoardView: GridBoardView?
+    
+    
     override var acceptsFirstResponder: Bool {
         get {
             return true
         }
     }
     
+    
     init(frame: NSRect) {
         super.init(frame: frame)
         /*  Initialization code here.  */
+        
+        gridBoardView = GridBoardView(frame: NSRect(x: 0, y: 0, width: 100, height: 100))
     }
 
     
@@ -38,4 +45,6 @@ class GameView: NSView
     override func keyDown(theEvent: NSEvent!) {
         println("keycode = \(theEvent.keyCode)")
     }
+    
+
 }

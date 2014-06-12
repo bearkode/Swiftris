@@ -14,6 +14,10 @@
 		2EF46EEA1949CA4D000D3206 /* SwiftrisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46EE91949CA4D000D3206 /* SwiftrisTests.swift */; };
 		2EF46EF61949CB49000D3206 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46EF51949CB49000D3206 /* GameViewController.swift */; };
 		2EF46EF81949CBB2000D3206 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46EF71949CBB2000D3206 /* GameView.swift */; };
+		2EF46EFA1949D228000D3206 /* GridBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46EF91949D228000D3206 /* GridBoardView.swift */; };
+		2EF46EFE1949D4E2000D3206 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46EFC1949D4E2000D3206 /* MainViewController.swift */; };
+		2EF46EFF1949D4E2000D3206 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EF46EFD1949D4E2000D3206 /* MainViewController.xib */; };
+		2EF46F011949DB5D000D3206 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46F001949DB5D000D3206 /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +42,10 @@
 		2EF46EE91949CA4D000D3206 /* SwiftrisTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftrisTests.swift; sourceTree = "<group>"; };
 		2EF46EF51949CB49000D3206 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		2EF46EF71949CBB2000D3206 /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		2EF46EF91949D228000D3206 /* GridBoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridBoardView.swift; sourceTree = "<group>"; };
+		2EF46EFC1949D4E2000D3206 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		2EF46EFD1949D4E2000D3206 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		2EF46F001949DB5D000D3206 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,11 +87,13 @@
 		2EF46ED31949CA4D000D3206 /* Swiftris */ = {
 			isa = PBXGroup;
 			children = (
+				2EF46EFB1949D22F000D3206 /* Views */,
 				2EF46ED81949CA4D000D3206 /* AppDelegate.swift */,
 				2EF46EF51949CB49000D3206 /* GameViewController.swift */,
-				2EF46EF71949CBB2000D3206 /* GameView.swift */,
 				2EF46EDA1949CA4D000D3206 /* Images.xcassets */,
 				2EF46EDC1949CA4D000D3206 /* MainMenu.xib */,
+				2EF46EFC1949D4E2000D3206 /* MainViewController.swift */,
+				2EF46EFD1949D4E2000D3206 /* MainViewController.xib */,
 				2EF46ED41949CA4D000D3206 /* Supporting Files */,
 			);
 			path = Swiftris;
@@ -113,6 +123,16 @@
 				2EF46EE81949CA4D000D3206 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2EF46EFB1949D22F000D3206 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2EF46EF71949CBB2000D3206 /* GameView.swift */,
+				2EF46EF91949D228000D3206 /* GridBoardView.swift */,
+				2EF46F001949DB5D000D3206 /* MainView.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EF46EDB1949CA4D000D3206 /* Images.xcassets in Resources */,
+				2EF46EFF1949D4E2000D3206 /* MainViewController.xib in Resources */,
 				2EF46EDE1949CA4D000D3206 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,8 +235,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EF46EFA1949D228000D3206 /* GridBoardView.swift in Sources */,
+				2EF46F011949DB5D000D3206 /* MainView.swift in Sources */,
 				2EF46ED91949CA4D000D3206 /* AppDelegate.swift in Sources */,
 				2EF46EF61949CB49000D3206 /* GameViewController.swift in Sources */,
+				2EF46EFE1949D4E2000D3206 /* MainViewController.swift in Sources */,
 				2EF46EF81949CBB2000D3206 /* GameView.swift in Sources */,
 				2EF46ED71949CA4D000D3206 /* main.swift in Sources */,
 			);

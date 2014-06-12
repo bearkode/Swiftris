@@ -10,11 +10,12 @@
 import Cocoa
 
 
-class AppDelegate: NSObject, NSApplicationDelegate
-{
+class AppDelegate: NSObject, NSApplicationDelegate {
+    
+    
     @IBOutlet var window: NSWindow
     
-    var gameViewController: GameViewController?
+    var mainViewController: MainViewController?
     
     
     init() {
@@ -23,13 +24,11 @@ class AppDelegate: NSObject, NSApplicationDelegate
     
     
     func applicationDidFinishLaunching(aNotification: NSNotification?) {
-        gameViewController = GameViewController(nibName: nil, bundle: nil)
-
-        if let gameView = gameViewController?.view {
-            let contentView = window.contentView as NSView
-            
-            contentView.addSubview(gameView)
-            gameView.frame = contentView.bounds
+        mainViewController = MainViewController(nibName: "MainViewController", bundle: NSBundle.mainBundle())
+        
+        if let mainView = mainViewController?.view {
+            window.contentView.addSubview(mainView)
+            mainView.frame = window.contentView.bounds
         }
     }
 
@@ -37,5 +36,7 @@ class AppDelegate: NSObject, NSApplicationDelegate
     func applicationWillTerminate(aNotification: NSNotification?) {
 
     }
+    
+    
 }
 

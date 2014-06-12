@@ -1,5 +1,5 @@
 /*
- *  GameViewController.swift
+ *  MainViewController.swift
  *  Swiftris
  *
  *  Created by bearkode on 2014. 6. 12..
@@ -7,27 +7,37 @@
  *
  */
 
-import AppKit
+import Cocoa
 
 
-class GameViewController: NSViewController {
-    
-    
+class MainViewController: NSViewController {
+
+
     init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         /*  Initialization code here.  */
+        println("MainViewController init(nibName, bundle)")
     }
-
+    
+    
+    init(coder: NSCoder!) {
+        super.init(coder: coder)
+        println("MainViewController init(coder)")
+    }
+    
     
     override func loadView() {
-        self.view = GameView(frame: NSRect(x: 0, y: 0, width: 0, height: 0))    //  NSRectZero같은거 없나?
+        super.loadView()
+        
+        println("MainViewController loadView")
         self.view.autoresizingMask = (NSAutoresizingMaskOptions.ViewWidthSizable | NSAutoresizingMaskOptions.ViewHeightSizable)
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("GameViewController viewDidLoad")
+        
+        println("MainViewController viewDidLoad")   //  TODO : 이거 왜 안불리지?
     }
     
     
