@@ -15,10 +15,10 @@ class BlockType1: Block {
     init() {
         super.init()
         
-        self.grid[0, 1] = 1
-        self.grid[0, 2] = 1
+        self.grid[1, 0] = 1
+        self.grid[2, 0] = 1
         self.grid[1, 1] = 1
-        self.grid[1, 2] = 1
+        self.grid[2, 1] = 1
     }
 
 }

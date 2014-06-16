@@ -42,6 +42,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         var block4 = BlockType4()
         block4.debugPrint()
+        println("");
+
+        var block5 = BlockType5()
+        block5.debugPrint()
+        println("");
+
+        var block6 = BlockType6()
+        block6.debugPrint()
+        println("");
+        
+        var block7 = BlockType7()
+        block7.debugPrint()
+        println("");
     }
 
     func applicationWillTerminate(aNotification: NSNotification?) {

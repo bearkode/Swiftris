@@ -1,5 +1,5 @@
 /*
- *  BlockType4.swift
+ *  BlockType7.swift
  *  Swiftris
  *
  *  Created by bearkode on 2014. 6. 16..
@@ -10,15 +10,15 @@
 import Foundation
 
 
-class BlockType4: Block {
-
+class BlockType7: Block {
+    
     init() {
         super.init()
         
-        self.grid[1, 0] = 4
-        self.grid[2, 0] = 4
-        self.grid[1, 1] = 4
-        self.grid[1, 2] = 4
+        self.grid[0, 0] = 7
+        self.grid[0, 1] = 7
+        self.grid[1, 1] = 7
+        self.grid[1, 2] = 7
     }
-
+    
 }

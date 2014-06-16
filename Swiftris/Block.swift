@@ -14,7 +14,7 @@ class Block : Printable {
 
     var point = Point()
     var color = Color(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.0)
-    var grid = Grid(rows: 4, columns: 4)
+    var grid = Grid(width: 4, height: 4)
 
     var description: String {
         get {
@@ -27,17 +27,18 @@ class Block : Printable {
     }
     
     func draw() {
-        grid.enumerateGrids { (row: Int, column: Int, value: Int) in
-            println("row = \(row) column = \(column) : value = \(value)");
+        grid.enumerateGrids { (x: Int, y: Int, value: Int) in
+            println("x = \(x) y = \(y) : value = \(value)");
         }
     }
     
     func debugPrint() {
-        var oldRow = 0
+        var oldY = 0
         
-        grid.enumerateGrids() { (row, column, value) in
-            if oldRow != row {
-                oldRow = row
+        grid.enumerateGrids() { (x, y, value) in
+            
+            if oldY != y {
+                oldY = y
                 print("\n")
             }
             

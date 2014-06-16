@@ -41,49 +41,50 @@ struct Color {
 
 
 struct Grid {
-    let rows: Int
-    let columns: Int
+    let width: Int
+    let height: Int
     let size: Int
     var grid: Int[]
     
-    init(rows: Int, columns: Int) {
-        self.rows = rows
-        self.columns = columns
-        self.size = rows * columns
+    init(width: Int, height: Int) {
+        self.width = width
+        self.height = height
+        self.size = width * height
         
         grid = Array(count: size, repeatedValue: 0)
     }
     
-    func validateFor(row: Int, column: Int) -> Bool {
-        return row >= 0 && row < rows && column >= 0 && column < columns
+    func validateFor(x: Int, y: Int) -> Bool {
+        return x >= 0 && x < width && y >= 0 && y < height
     }
     
-    func getRowAndColumnWithIndex(index: Int) -> (row: Int, column: Int) {
-        let row = index / columns
-        let column = index % columns
+    func getPositionWithIndex(index: Int) -> (x: Int, y: Int) {
+        let x = index % width
+        let y = index / width
         
-        return (row, column)
+        return (x, y)
     }
     
-    func enumerateGrids(closure: (row: Int, column: Int, value: Int) -> ()) {
+    func enumerateGrids(closure: (x: Int, y: Int, value: Int) -> ()) {
         for index in 0..size {
-            let (row, column) = getRowAndColumnWithIndex(index)
-            let value = grid[(row * columns) + column]
-            closure(row: row, column: column, value: value)
+            let (x, y) = getPositionWithIndex(index)
+//            println("x = \(x), y = \(y)")
+            let value = grid[(y * width) + x]
+            closure(x: x, y: y, value: value)
         }
     }
     
-    subscript(row: Int, column: Int) -> Int {
+    subscript(x: Int, y: Int) -> Int {
         get {
-            assert(validateFor(row, column: column), "Index out of range")
+            assert(validateFor(x, y: y), "Index out of range")
             
-            return grid[(row * columns) + column]
+            return grid[(y * width) + x]
         }
         
         set {
-            assert(validateFor(row, column: column), "Index out of range")
+            assert(validateFor(x, y: y), "Index out of range")
             
-            grid[(row * columns) + column] = newValue
+            grid[(y * width) + x] = newValue
         }
     }
 

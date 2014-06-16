@@ -15,9 +15,9 @@ class BlockType3: Block {
     init() {
         super.init()
         
-        self.grid[0, 1] = 3
-        self.grid[0, 2] = 3
-        self.grid[1, 2] = 3
+        self.grid[1, 0] = 3
+        self.grid[2, 0] = 3
+        self.grid[2, 1] = 3
         self.grid[2, 2] = 3
     }
     

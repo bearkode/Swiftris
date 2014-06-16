@@ -13,6 +13,9 @@
 		2EB861AC194EAD1C0016D660 /* BlockType2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB861AB194EAD1C0016D660 /* BlockType2.swift */; };
 		2EB861AE194EADBB0016D660 /* BlockType3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB861AD194EADBB0016D660 /* BlockType3.swift */; };
 		2EB861B0194EAE7B0016D660 /* BlockType4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB861AF194EAE7B0016D660 /* BlockType4.swift */; };
+		2EB861B2194F1C5A0016D660 /* BlockType5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB861B1194F1C5A0016D660 /* BlockType5.swift */; };
+		2EB861B4194F1D0C0016D660 /* BlockType6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB861B3194F1D0C0016D660 /* BlockType6.swift */; };
+		2EB861B6194F1DB70016D660 /* BlockType7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB861B5194F1DB70016D660 /* BlockType7.swift */; };
 		2EF46ED71949CA4D000D3206 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46ED61949CA4D000D3206 /* main.swift */; };
 		2EF46ED91949CA4D000D3206 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46ED81949CA4D000D3206 /* AppDelegate.swift */; };
 		2EF46EDB1949CA4D000D3206 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EF46EDA1949CA4D000D3206 /* Images.xcassets */; };
@@ -44,6 +47,9 @@
 		2EB861AB194EAD1C0016D660 /* BlockType2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockType2.swift; sourceTree = "<group>"; };
 		2EB861AD194EADBB0016D660 /* BlockType3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockType3.swift; sourceTree = "<group>"; };
 		2EB861AF194EAE7B0016D660 /* BlockType4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockType4.swift; sourceTree = "<group>"; };
+		2EB861B1194F1C5A0016D660 /* BlockType5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockType5.swift; sourceTree = "<group>"; };
+		2EB861B3194F1D0C0016D660 /* BlockType6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockType6.swift; sourceTree = "<group>"; };
+		2EB861B5194F1DB70016D660 /* BlockType7.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockType7.swift; sourceTree = "<group>"; };
 		2EF46ED11949CA4D000D3206 /* Swiftris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiftris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EF46ED51949CA4D000D3206 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2EF46ED61949CA4D000D3206 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -159,6 +165,9 @@
 				2EB861AB194EAD1C0016D660 /* BlockType2.swift */,
 				2EB861AD194EADBB0016D660 /* BlockType3.swift */,
 				2EB861AF194EAE7B0016D660 /* BlockType4.swift */,
+				2EB861B1194F1C5A0016D660 /* BlockType5.swift */,
+				2EB861B3194F1D0C0016D660 /* BlockType6.swift */,
+				2EB861B5194F1DB70016D660 /* BlockType7.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -276,6 +285,9 @@
 				2EF46ED71949CA4D000D3206 /* main.swift in Sources */,
 				2EB861AA194EAC560016D660 /* BlockType1.swift in Sources */,
 				2EB861AE194EADBB0016D660 /* BlockType3.swift in Sources */,
+				2EB861B2194F1C5A0016D660 /* BlockType5.swift in Sources */,
+				2EB861B4194F1D0C0016D660 /* BlockType6.swift in Sources */,
+				2EB861B6194F1DB70016D660 /* BlockType7.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
