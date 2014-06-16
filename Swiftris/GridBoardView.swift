@@ -12,13 +12,11 @@ import Cocoa
 
 class GridBoardView: NSView {
 
-    
     init(frame: NSRect) {
         super.init(frame: frame)
         /*  Initialization code here.  */
     }
 
-    
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
         
@@ -28,6 +26,5 @@ class GridBoardView: NSView {
         backgroundColor.setFill()
         bezierPath.fill()
     }
-    
-    
+
 }

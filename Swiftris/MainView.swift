@@ -11,19 +11,16 @@ import AppKit
 
 
 class MainView: NSView {
-    
-    
+
     init(frame: NSRect) {
         super.init(frame: frame)
         /*  Initialization code here.  */
     }
-    
-    
+
     init(coder: NSCoder!) {
         super.init(coder: coder)
     }
 
-    
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
         
@@ -34,5 +31,4 @@ class MainView: NSView {
         bezierPath.fill()
     }
 
-    
 }
