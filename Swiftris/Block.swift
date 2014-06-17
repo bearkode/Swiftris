@@ -23,7 +23,11 @@ class Block : Printable {
     }
 
     init() {
-        
+        generateTemplate()
+    }
+    
+    func generateTemplate() {
+    
     }
     
     func draw() {

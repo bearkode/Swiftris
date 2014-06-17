@@ -11,6 +11,8 @@ import Cocoa
 
 
 class MainViewController: NSViewController, KeyboardEventDelegate {
+    
+    var logicController = GameLogicController()
 
     init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -45,5 +47,8 @@ class MainViewController: NSViewController, KeyboardEventDelegate {
         //  DOWN : 125
         //  LEFT : 123
         //  RIGHT : 124
+        if keyCode == 124 {
+            logicController.rotateBlockRight()
+        }
     }
 }

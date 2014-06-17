@@ -18,7 +18,7 @@ class GameLogicController {
     
     }
     
-    func rotateBlock() {
+    func rotateBlockRight() {
         block.debugPrint()
     }
 }
