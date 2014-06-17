@@ -10,7 +10,7 @@
 import Cocoa
 
 
-class MainViewController: NSViewController {
+class MainViewController: NSViewController, KeyboardEventDelegate {
 
     init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -28,6 +28,9 @@ class MainViewController: NSViewController {
         
         println("MainViewController loadView")
         self.view.autoresizingMask = (NSAutoresizingMaskOptions.ViewWidthSizable | NSAutoresizingMaskOptions.ViewHeightSizable)
+        
+        var view = (self.view as MainView)
+        view.delegage = self
     }
 
     override func viewDidLoad() {
@@ -35,5 +38,12 @@ class MainViewController: NSViewController {
         
         println("MainViewController viewDidLoad")   //  TODO : 이거 왜 안불리지?
     }
-
+    
+    func didKeyDown(keyCode: CUnsignedShort) {
+        println("didKeyDown = \(keyCode)")
+        //  UP : 126
+        //  DOWN : 125
+        //  LEFT : 123
+        //  RIGHT : 124
+    }
 }

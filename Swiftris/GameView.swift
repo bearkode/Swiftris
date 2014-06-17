@@ -14,12 +14,6 @@ class GameView: NSView {
     
     var gridBoardView: GridBoardView?
     
-    override var acceptsFirstResponder: Bool {
-        get {
-            return true
-        }
-    }
-    
     init(frame: NSRect) {
         super.init(frame: frame)
         /*  Initialization code here.  */
@@ -35,10 +29,6 @@ class GameView: NSView {
         
         color.setFill()
         bezierPath.fill()
-    }
-
-    override func keyDown(theEvent: NSEvent!) {
-        println("keycode = \(theEvent.keyCode)")
     }
 
 }

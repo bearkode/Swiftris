@@ -10,11 +10,25 @@
 import AppKit
 
 
+protocol KeyboardEventDelegate {
+    
+    func didKeyDown(keyCode: CUnsignedShort)
+    
+}
+
+
 class MainView: NSView {
+    
+    var delegage: KeyboardEventDelegate?
+
+    override var acceptsFirstResponder: Bool {
+        get {
+            return true
+        }
+    }
 
     init(frame: NSRect) {
         super.init(frame: frame)
-        /*  Initialization code here.  */
     }
 
     init(coder: NSCoder!) {
@@ -29,6 +43,10 @@ class MainView: NSView {
         
         backgroundColor.setFill()
         bezierPath.fill()
+    }
+
+    override func keyDown(theEvent: NSEvent!) {
+        delegage?.didKeyDown(theEvent.keyCode)
     }
 
 }
