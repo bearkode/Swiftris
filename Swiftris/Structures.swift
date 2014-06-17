@@ -68,7 +68,6 @@ struct Grid {
     func enumerateGrids(closure: (x: Int, y: Int, value: Int) -> ()) {
         for index in 0..size {
             let (x, y) = getPositionWithIndex(index)
-//            println("x = \(x), y = \(y)")
             let value = grid[(y * width) + x]
             closure(x: x, y: y, value: value)
         }
