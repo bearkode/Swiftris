@@ -2,7 +2,7 @@
  *  GridBoardView.swift
  *  Swiftris
  *
- *  Created by cgkim on 2014. 6. 12..
+ *  Created by bearkode on 2014. 6. 12..
  *  Copyright (c) 2014 bearkode. All rights reserved.
  *
  */

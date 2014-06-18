@@ -2,7 +2,7 @@
  *  BlockA.swift
  *  Swiftris
  *
- *  Created by cgkim on 2014. 6. 16..
+ *  Created by bearkode on 2014. 6. 16..
  *  Copyright (c) 2014 bearkode. All rights reserved.
  *
  */
