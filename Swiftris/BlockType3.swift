@@ -17,33 +17,38 @@ class BlockType3: Block {
     }
     
     override func generateTemplate() {
-        var grid1 = Grid(width: 4, height: 4)
-        grid1[1, 0] = 3
-        grid1[2, 0] = 3
-        grid1[2, 1] = 3
-        grid1[2, 2] = 3
-        grids += grid1
+        super.generateTemplate()
         
-        var grid2 = Grid(width: 4, height: 4)
-        grid2[2, 0] = 3
-        grid2[0, 1] = 3
-        grid2[1, 1] = 3
-        grid2[2, 1] = 3
-        grids += grid2
+        var colorIndex = 3
+        var newGrid: Grid
+
+        newGrid = Grid(width: 4, height: 4)
+        newGrid[1, 0] = colorIndex
+        newGrid[2, 0] = colorIndex
+        newGrid[2, 1] = colorIndex
+        newGrid[2, 2] = colorIndex
+        grids += newGrid
         
-        var grid3 = Grid(width: 4, height: 4)
-        grid3[1, 0] = 3
-        grid3[1, 1] = 3
-        grid3[1, 2] = 3
-        grid3[2, 2] = 3
-        grids += grid3
+        newGrid = Grid(width: 4, height: 4)
+        newGrid[2, 0] = colorIndex
+        newGrid[0, 1] = colorIndex
+        newGrid[1, 1] = colorIndex
+        newGrid[2, 1] = colorIndex
+        grids += newGrid
         
-        var grid4 = Grid(width: 4, height: 4)
-        grid4[0, 0] = 3
-        grid4[1, 0] = 3
-        grid4[2, 0] = 3
-        grid4[0, 1] = 3
-        grids += grid4
+        newGrid = Grid(width: 4, height: 4)
+        newGrid[1, 0] = colorIndex
+        newGrid[1, 1] = colorIndex
+        newGrid[1, 2] = colorIndex
+        newGrid[2, 2] = colorIndex
+        grids += newGrid
+        
+        newGrid = Grid(width: 4, height: 4)
+        newGrid[0, 0] = colorIndex
+        newGrid[1, 0] = colorIndex
+        newGrid[2, 0] = colorIndex
+        newGrid[0, 1] = colorIndex
+        grids += newGrid
     }
     
 }

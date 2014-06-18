@@ -14,11 +14,40 @@ class BlockType5: Block {
     
     init() {
         super.init()
-        
-        self.grid[1, 0] = 5
-        self.grid[0, 1] = 5
-        self.grid[1, 1] = 5
-        self.grid[2, 1] = 5
     }
-    
+ 
+    override func generateTemplate() {
+        super.generateTemplate()
+        
+        var colorIndex = 5
+        var newGrid: Grid
+
+       newGrid = Grid(width: 4, height: 4)
+        newGrid[1, 0] = colorIndex
+        newGrid[0, 1] = colorIndex
+        newGrid[1, 1] = colorIndex
+        newGrid[2, 1] = colorIndex
+        grids += newGrid
+        
+        newGrid = Grid(width: 4, height: 4)
+        newGrid[1, 0] = colorIndex
+        newGrid[1, 1] = colorIndex
+        newGrid[1, 2] = colorIndex
+        newGrid[2, 1] = colorIndex
+        grids += newGrid
+        
+        newGrid = Grid(width: 4, height: 4)
+        newGrid[0, 0] = colorIndex
+        newGrid[1, 0] = colorIndex
+        newGrid[2, 0] = colorIndex
+        newGrid[1, 1] = colorIndex
+        grids += newGrid
+        
+        newGrid = Grid(width: 4, height: 4)
+        newGrid[1, 0] = colorIndex
+        newGrid[1, 1] = colorIndex
+        newGrid[1, 2] = colorIndex
+        newGrid[0, 1] = colorIndex
+        grids += newGrid
+    }
 }

@@ -12,7 +12,7 @@ import Foundation
 
 class GameLogicController {
     
-    var block = BlockType3()
+    var block = BlockType5()
     
     init () {
     
