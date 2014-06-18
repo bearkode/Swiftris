@@ -19,14 +19,12 @@ class BlockType1: Block {
     override func generateTemplate() {
         super.generateTemplate()
         
-        var colorIndex = 1
+        var c = 1
         var newGrid: Grid
 
         newGrid = Grid(width: 4, height: 4)
-        newGrid[1, 0] = colorIndex
-        newGrid[2, 0] = colorIndex
-        newGrid[1, 1] = colorIndex
-        newGrid[2, 1] = colorIndex
+        newGrid.appendWithRowArray([0, c, c, 0], y: 0)
+        newGrid.appendWithRowArray([0, c, c, 0], y: 1)
         grids += newGrid
     }
 

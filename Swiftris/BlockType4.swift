@@ -19,35 +19,31 @@ class BlockType4: Block {
     override func generateTemplate() {
         super.generateTemplate()
         
-        var colorIndex = 4
+        var c = 4
         var newGrid: Grid
 
         newGrid = Grid(width: 4, height: 4)
-        newGrid[1, 0] = colorIndex
-        newGrid[2, 0] = colorIndex
-        newGrid[1, 1] = colorIndex
-        newGrid[1, 2] = colorIndex
+        newGrid.appendWithRowArray([0, c, c, 0], y: 0)
+        newGrid.appendWithRowArray([0, c, 0, 0], y: 1)
+        newGrid.appendWithRowArray([0, c, 0, 0], y: 2)
         grids += newGrid
         
         newGrid = Grid(width: 4, height: 4)
-        newGrid[0, 0] = colorIndex
-        newGrid[1, 0] = colorIndex
-        newGrid[2, 0] = colorIndex
-        newGrid[2, 1] = colorIndex
+        newGrid.appendWithRowArray([c, c, c, 0], y: 0)
+        newGrid.appendWithRowArray([0, 0, c, 0], y: 1)
+        newGrid.appendWithRowArray([0, 0, 0, 0], y: 2)
         grids += newGrid
         
         newGrid = Grid(width: 4, height: 4)
-        newGrid[2, 0] = colorIndex
-        newGrid[2, 1] = colorIndex
-        newGrid[2, 2] = colorIndex
-        newGrid[1, 2] = colorIndex
+        newGrid.appendWithRowArray([0, 0, c, 0], y: 0)
+        newGrid.appendWithRowArray([0, 0, c, 0], y: 1)
+        newGrid.appendWithRowArray([0, c, c, 0], y: 2)
         grids += newGrid
         
         newGrid = Grid(width: 4, height: 4)
-        newGrid[0, 0] = colorIndex
-        newGrid[0, 1] = colorIndex
-        newGrid[1, 1] = colorIndex
-        newGrid[2, 1] = colorIndex
+        newGrid.appendWithRowArray([c, 0, 0, 0], y: 0)
+        newGrid.appendWithRowArray([c, c, c, 0], y: 1)
+        newGrid.appendWithRowArray([0, 0, 0, 0], y: 2)
         grids += newGrid
     }
     

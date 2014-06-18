@@ -14,11 +14,25 @@ class BlockType7: Block {
     
     init() {
         super.init()
-        
-        self.grid[0, 0] = 7
-        self.grid[0, 1] = 7
-        self.grid[1, 1] = 7
-        self.grid[1, 2] = 7
     }
-    
+
+    override func generateTemplate() {
+        super.generateTemplate()
+        
+        var c = 7
+        var newGrid: Grid
+        
+        newGrid = Grid(width: 4, height: 4)
+        newGrid.appendWithRowArray([c, 0, 0, 0], y: 0)
+        newGrid.appendWithRowArray([c, c, 0, 0], y: 1)
+        newGrid.appendWithRowArray([0, c, 0, 0], y: 2)
+        grids += newGrid
+        
+        newGrid = Grid(width: 4, height: 4)
+        newGrid.appendWithRowArray([0, c, c, 0], y: 0)
+        newGrid.appendWithRowArray([c, c, 0, 0], y: 1)
+        newGrid.appendWithRowArray([0, 0, 0, 0], y: 2)
+        grids += newGrid
+    }
+
 }

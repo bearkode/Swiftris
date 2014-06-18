@@ -73,6 +73,13 @@ struct Grid {
         }
     }
     
+    func appendWithRowArray(array: Array<Int>, y: Int) {
+        assert(array.count == width)
+        for var x = 0; x < array.count; x++ {
+            grid[indexFrom(x, y: y)] = array[x]
+        }
+    }
+    
     subscript(x: Int, y: Int) -> Int {
         get {
             assert(validateFor(x, y: y), "Index out of range")
