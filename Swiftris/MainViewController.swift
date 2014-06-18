@@ -51,8 +51,18 @@ class MainViewController: NSViewController, KeyboardEventDelegate {
     
     func didKeyDown(keyCode: CUnsignedShort) {
         println("didKeyDown = \(keyCode)")
-        if keyCode == BKRightKeyCode {
-            logicController.rotateBlockRight()
+        
+        switch (keyCode) {
+        case BKUpKeyCode:
+            logicController.upArrowDown()
+        case BKRightKeyCode:
+            logicController.rightArrowDown()
+        case BKLeftKeyCode:
+            logicController.leftArrowDown()
+        case BKDownKeyCode:
+            logicController.downArrowDown()
+        default:
+            let empty = ""  //  TODO : switch에 반드시 default가 있어야 하고 반드시 한줄 이상이 있어야 하니 이렇게 해야 하나?
         }
     }
 }

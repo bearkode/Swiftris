@@ -12,9 +12,11 @@ import Foundation
 
 class Block : Printable {
 
+    var grids: Grid[] = Array()
+    
     var point = Point()
-    var color = Color(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.0)
     var grid = Grid(width: 4, height: 4)
+    var rotateIndex = 0
 
     var description: String {
         get {
@@ -24,10 +26,25 @@ class Block : Printable {
 
     init() {
         generateTemplate()
+        updateGrid()
     }
     
     func generateTemplate() {
+        /* TO BE OVERRIDE  */
+    }
     
+    func updateGrid() {
+        grid = grids[rotateIndex]
+    }
+    
+    func increaseRotateIndex() {
+        rotateIndex++
+        rotateIndex = rotateIndex > (grids.count - 1) ? 0 : rotateIndex
+    }
+    
+    func turn() {
+        increaseRotateIndex()
+        updateGrid()
     }
     
     func draw() {
@@ -50,6 +67,14 @@ class Block : Printable {
         }
         
         println(" ")
+    }
+    
+    func moveLeft() {
+        point.x--
+    }
+    
+    func moveRight() {
+        point.x++
     }
 
 }

@@ -18,7 +18,21 @@ class GameLogicController {
     
     }
     
-    func rotateBlockRight() {
+    func upArrowDown() {
+        block.turn()
         block.debugPrint()
     }
+
+    func leftArrowDown() {
+        block.moveLeft()
+    }
+
+    func rightArrowDown() {
+        block.moveRight()
+    }
+    
+    func downArrowDown() {
+        // TODO : do drop logic
+    }
+    
 }

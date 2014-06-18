@@ -12,12 +12,8 @@ import Foundation
 
 class BlockType3: Block {
     
-    var grids: Grid[] = Array()
-    
     init() {
         super.init()
-
-        self.grid = grids[3]
     }
     
     override func generateTemplate() {

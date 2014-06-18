@@ -12,14 +12,14 @@ import Foundation
 
 struct Point {
     
-    var x: Double = 0.0
-    var y: Double = 0.0
+    var x: Int = 0
+    var y: Int = 0
     
     init() {
 
     }
     
-    init(x: Double, y: Double) {
+    init(x: Int, y: Int) {
         self.x = x
         self.y = y
     }
@@ -62,16 +62,13 @@ struct Grid {
     }
     
     func getPositionWithIndex(index: Int) -> (x: Int, y: Int) {
-        let x = index % width
-        let y = index / width
-        
-        return (x, y)
+        return (index % width, index / width)
     }
     
     func enumerateGrids(closure: (x: Int, y: Int, value: Int) -> ()) {
         for index in 0..size {
             let (x, y) = getPositionWithIndex(index)
-            let value = grid[(y * width) + x]
+            let value = grid[indexFrom(x, y: y)]
             closure(x: x, y: y, value: value)
         }
     }
@@ -79,15 +76,17 @@ struct Grid {
     subscript(x: Int, y: Int) -> Int {
         get {
             assert(validateFor(x, y: y), "Index out of range")
-            
-            return grid[(y * width) + x]
+            return grid[indexFrom(x, y:y)]
         }
         
         set {
             assert(validateFor(x, y: y), "Index out of range")
-            
-            grid[(y * width) + x] = newValue
+            grid[indexFrom(x, y: y)] = newValue
         }
+    }
+    
+    func indexFrom(x: Int, y: Int) -> Int {
+        return y * width + x
     }
 
 }
