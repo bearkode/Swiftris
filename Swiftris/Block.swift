@@ -55,17 +55,13 @@ class Block : Printable {
     
     func debugPrint() {
         var oldY = 0
-        
         currentGrid.enumerateGrids() { (x, y, value) in
-            
             if oldY != y {
                 oldY = y
                 print("\n")
             }
-            
             print("\(value) ");
         }
-        
         println(" ")
     }
     
