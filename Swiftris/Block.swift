@@ -14,8 +14,8 @@ class Block : Printable {
 
     var grids: Grid[] = Array()
     
-    var point = Point()
-    var grid = Grid(width: 4, height: 4)
+    var position = Point()
+    var currentGrid = Grid(width: 4, height: 4)
     var rotateIndex = 0
 
     var description: String {
@@ -34,7 +34,7 @@ class Block : Printable {
     }
     
     func updateGrid() {
-        grid = grids[rotateIndex]
+        currentGrid = grids[rotateIndex]
     }
     
     func increaseRotateIndex() {
@@ -48,7 +48,7 @@ class Block : Printable {
     }
     
     func draw() {
-        grid.enumerateGrids { (x: Int, y: Int, value: Int) in
+        currentGrid.enumerateGrids { (x: Int, y: Int, value: Int) in
             println("x = \(x) y = \(y) : value = \(value)");
         }
     }
@@ -56,7 +56,7 @@ class Block : Printable {
     func debugPrint() {
         var oldY = 0
         
-        grid.enumerateGrids() { (x, y, value) in
+        currentGrid.enumerateGrids() { (x, y, value) in
             
             if oldY != y {
                 oldY = y
@@ -70,11 +70,11 @@ class Block : Printable {
     }
     
     func moveLeft() {
-        point.x--
+        position.x--
     }
     
     func moveRight() {
-        point.x++
+        position.x++
     }
 
 }
