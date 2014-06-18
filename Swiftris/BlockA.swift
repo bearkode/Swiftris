@@ -18,14 +18,11 @@ class BlockA: Block {
     
     override func generateTemplate() {
         super.generateTemplate()
-        
-        var c = 1
-        var grid: Grid
 
-        grid = Grid(width: 4, height: 4)
-        grid.appendWithRowArray([0, c, c, 0], y: 0)
-        grid.appendWithRowArray([0, c, c, 0], y: 1)
-        grids += grid
+        var c = 1
+        
+        appendTemplate(Grid(width: 4, height: 4, array: [0, c, c, 0,
+                                                         0, c, c, 0]))
     }
 
 }

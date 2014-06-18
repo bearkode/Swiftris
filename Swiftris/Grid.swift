@@ -11,13 +11,19 @@ import Foundation
 
 
 struct Grid {
-    
-    init(width: Int, height: Int) {
+
+    init(width: Int, height: Int, array: Int[]) {
         self.width = width
         self.height = height
         self.size = width * height
+        self.buffer = Array(count: self.size, repeatedValue: 0)
         
-        buffer = Array(count: size, repeatedValue: 0)
+        let count = array.count
+        buffer[0..count] = array[0..count]
+    }
+
+    init(width: Int, height: Int) {
+        self.init(width: width, height: height, array: [])
     }
     
     func enumerateGrids(closure: (x: Int, y: Int, value: Int) -> ()) {

@@ -22,7 +22,7 @@ class GameViewController: NSViewController, KeyboardEventDelegate {
 
     override func loadView() {
         
-        var gameView = GameView(frame: NSRect(x: 0, y: 0, width: 0, height: 0))    //  NSRectZero같은거 없나?
+        var gameView = GameView(frame: NSRect())
         
 //        gameView.delegate = self
         

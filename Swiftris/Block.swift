@@ -12,12 +12,6 @@ import Foundation
 
 class Block : Printable {
 
-    var grids: Grid[] = Array()
-    
-    var position = Point()
-    var currentGrid = Grid(width: 4, height: 4)
-    var rotateIndex = 0
-
     var description: String {
         get {
             return "It's Block object"
@@ -73,4 +67,17 @@ class Block : Printable {
         position.x++
     }
 
+    /*
+     *      Privates
+     */
+    var grids: Grid[] = Array()
+    
+    var position = Point()
+    var currentGrid = Grid(width: 4, height: 4)
+    var rotateIndex = 0
+    
+    func appendTemplate(grid: Grid) {
+        grids += grid
+    }
+    
 }

@@ -20,31 +20,20 @@ class BlockC: Block {
         super.generateTemplate()
         
         var c = 3
-        var grid: Grid
 
-        grid = Grid(width: 4, height: 4)
-        grid.appendWithRowArray([0, c, c, 0], y: 0)
-        grid.appendWithRowArray([0, 0, c, 0], y: 1)
-        grid.appendWithRowArray([0, 0, c, 0], y: 2)
-        grids += grid
+        appendTemplate(Grid(width: 4, height: 4, array: [0, c, c, 0,
+                                                         0, 0, c, 0,
+                                                         0, 0, c, 0]))
         
-        grid = Grid(width: 4, height: 4)
-        grid.appendWithRowArray([0, 0, c, 0], y: 0)
-        grid.appendWithRowArray([c, c, c, 0], y: 1)
-        grid.appendWithRowArray([0, 0, 0, 0], y: 2)
-        grids += grid
+        appendTemplate(Grid(width: 4, height: 4, array: [0, 0, c, 0,
+                                                         c, c, c, 0]))
         
-        grid = Grid(width: 4, height: 4)
-        grid.appendWithRowArray([0, c, 0, 0], y: 0)
-        grid.appendWithRowArray([0, c, 0, 0], y: 1)
-        grid.appendWithRowArray([0, c, c, 0], y: 2)
-        grids += grid
+        appendTemplate(Grid(width: 4, height: 4, array: [0, c, 0, 0,
+                                                         0, c, 0, 0,
+                                                         0, c, c, 0]))
         
-        grid = Grid(width: 4, height: 4)
-        grid.appendWithRowArray([c, c, c, 0], y: 0)
-        grid.appendWithRowArray([c, 0, 0, 0], y: 1)
-        grid.appendWithRowArray([0, 0, 0, 0], y: 2)
-        grids += grid
+        appendTemplate(Grid(width: 4, height: 4, array: [c, c, c, 0,
+                                                         c, 0, 0, 0]))
     }
     
 }
