@@ -13,7 +13,7 @@ import AppKit
 protocol KeyboardEventDelegate {
     
     func didKeyDown(keyCode: CUnsignedShort)
-    
+
 }
 
 
@@ -21,18 +21,18 @@ class MainView: NSView {
     
     var delegage: KeyboardEventDelegate?
 
-    override var acceptsFirstResponder: Bool {
-        get {
-            return true
-        }
-    }
-
     init(frame: NSRect) {
         super.init(frame: frame)
     }
 
     init(coder: NSCoder!) {
         super.init(coder: coder)
+    }
+
+    override var acceptsFirstResponder: Bool {
+        get {
+            return true
+        }
     }
 
     override func drawRect(dirtyRect: NSRect) {

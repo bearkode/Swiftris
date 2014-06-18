@@ -10,18 +10,25 @@
 import Cocoa
 
 
+let BKUpKeyCode: CUnsignedShort = 126
+let BKDownKeyCode: CUnsignedShort = 125
+let BKLeftKeyCode: CUnsignedShort = 123
+let BKRightKeyCode: CUnsignedShort = 124
+
+
 class MainViewController: NSViewController, KeyboardEventDelegate {
     
     var logicController = GameLogicController()
 
     init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        /*  Initialization code here.  */
+
         println("MainViewController init(nibName, bundle)")
     }
 
     init(coder: NSCoder!) {
         super.init(coder: coder)
+
         println("MainViewController init(coder)")
     }
 
@@ -31,23 +38,20 @@ class MainViewController: NSViewController, KeyboardEventDelegate {
         println("MainViewController loadView")
         self.view.autoresizingMask = (NSAutoresizingMaskOptions.ViewWidthSizable | NSAutoresizingMaskOptions.ViewHeightSizable)
         
-        var view = (self.view as MainView)
+        var view = self.view as MainView
         view.delegage = self
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        println("MainViewController viewDidLoad")   //  TODO : 이거 왜 안불리지?
+        //  TODO : 이거 왜 안불리지?
+        println("MainViewController viewDidLoad")
     }
     
     func didKeyDown(keyCode: CUnsignedShort) {
         println("didKeyDown = \(keyCode)")
-        //  UP : 126
-        //  DOWN : 125
-        //  LEFT : 123
-        //  RIGHT : 124
-        if keyCode == 124 {
+        if keyCode == BKRightKeyCode {
             logicController.rotateBlockRight()
         }
     }

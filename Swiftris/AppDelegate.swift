@@ -21,46 +21,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationDidFinishLaunching(aNotification: NSNotification?) {
-        mainViewController = MainViewController(nibName: "MainViewController", bundle: NSBundle.mainBundle())
-        
-        if let mainView = mainViewController?.view {
-            window.contentView.addSubview(mainView)
-            mainView.frame = window.contentView.bounds
-            window.makeFirstResponder(mainView)
-        }
-        
-//        var block1 = BlockType1()
-//        block1.debugPrint()
-//        println("")
-//        
-//        var block2 = BlockType2()
-//        block2.debugPrint()
-//        println("")
-//
-//        var block3 = BlockType3()
-//        block3.debugPrint()
-//        println("")
-//
-//        var block4 = BlockType4()
-//        block4.debugPrint()
-//        println("");
-//
-//        var block5 = BlockType5()
-//        block5.debugPrint()
-//        println("");
-//
-//        var block6 = BlockType6()
-//        block6.debugPrint()
-//        println("");
-//        
-//        var block7 = BlockType7()
-//        block7.debugPrint()
-//        println("");
+        setupMainViewController()
     }
 
     func applicationWillTerminate(aNotification: NSNotification?) {
 
     }
-
+    
+    func setupMainViewController() {
+        mainViewController = MainViewController(nibName: "MainViewController", bundle: NSBundle.mainBundle())
+        
+        if let mainView = mainViewController?.view {
+            let contentView = window.contentView as NSView
+            
+            contentView.addSubview(mainView)
+            mainView.frame = contentView.bounds
+            
+            window.makeFirstResponder(mainView)
+        }
+    }
+    
 }
 

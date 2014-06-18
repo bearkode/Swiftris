@@ -14,7 +14,6 @@ class GridBoardView: NSView {
 
     init(frame: NSRect) {
         super.init(frame: frame)
-        /*  Initialization code here.  */
     }
 
     override func drawRect(dirtyRect: NSRect) {
