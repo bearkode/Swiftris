@@ -20,14 +20,14 @@ class Block : Printable {
 
     init() {
         generateTemplate()
-        updateGrid()
+        updateCurrentGrid()
     }
     
     func generateTemplate() {
         /* TO BE OVERRIDE  */
     }
     
-    func updateGrid() {
+    func updateCurrentGrid() {
         currentGrid = grids[rotateIndex]
     }
     
@@ -38,7 +38,7 @@ class Block : Printable {
     
     func turn() {
         increaseRotateIndex()
-        updateGrid()
+        updateCurrentGrid()
     }
     
     func draw() {
@@ -49,7 +49,7 @@ class Block : Printable {
     
     func debugPrint() {
         var oldY = 0
-        currentGrid.enumerateGrids() { (x, y, value) in
+        currentGrid.enumerateGrids { (x, y, value) in
             if oldY != y {
                 oldY = y
                 print("\n")

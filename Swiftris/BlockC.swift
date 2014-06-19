@@ -12,10 +12,6 @@ import Foundation
 
 class BlockC: Block {
     
-    init() {
-        super.init()
-    }
-    
     override func generateTemplate() {
         super.generateTemplate()
         
