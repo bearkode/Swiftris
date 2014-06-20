@@ -12,14 +12,14 @@ import AppKit
 
 protocol KeyboardEventDelegate {
     
-    func didKeyDown(keyCode: CUnsignedShort)
+    func eventOnView(view: NSView, didKeyDown keyCode: CUnsignedShort)
 
 }
 
 
 class MainView: NSView {
     
-    var delegage: KeyboardEventDelegate?
+    var delegate: KeyboardEventDelegate?
 
     init(frame: NSRect) {
         super.init(frame: frame)
@@ -46,7 +46,7 @@ class MainView: NSView {
     }
 
     override func keyDown(theEvent: NSEvent!) {
-        delegage?.didKeyDown(theEvent.keyCode)
+        delegate?.eventOnView(self, didKeyDown: theEvent.keyCode)
     }
 
 }

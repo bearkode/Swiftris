@@ -39,7 +39,7 @@ class MainViewController: NSViewController, KeyboardEventDelegate {
         self.view.autoresizingMask = (NSAutoresizingMaskOptions.ViewWidthSizable | NSAutoresizingMaskOptions.ViewHeightSizable)
         
         var view = self.view as MainView
-        view.delegage = self
+        view.delegate = self
     }
 
     override func viewDidLoad() {
@@ -49,20 +49,17 @@ class MainViewController: NSViewController, KeyboardEventDelegate {
         println("MainViewController viewDidLoad")
     }
     
-    func didKeyDown(keyCode: CUnsignedShort) {
-        println("didKeyDown = \(keyCode)")
+    func eventOnView(view: NSView, didKeyDown keyCode: CUnsignedShort) {
+
+        let keyCodeDict = [
+            BKUpKeyCode : logicController.upArrowDown,
+            BKRightKeyCode : logicController.rightArrowDown,
+            BKLeftKeyCode : logicController.leftArrowDown,
+            BKDownKeyCode : logicController.downArrowDown
+        ]
         
-        switch (keyCode) {
-        case BKUpKeyCode:
-            logicController.upArrowDown()
-        case BKRightKeyCode:
-            logicController.rightArrowDown()
-        case BKLeftKeyCode:
-            logicController.leftArrowDown()
-        case BKDownKeyCode:
-            logicController.downArrowDown()
-        default:
-            let empty = ""  //  TODO : switch에 반드시 default가 있어야 하고 반드시 한줄 이상이 있어야 하니 이렇게 해야 하나?
+        if let function = keyCodeDict[keyCode] {
+            function()
         }
     }
 }

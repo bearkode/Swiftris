@@ -36,7 +36,7 @@ class GameViewController: NSViewController, KeyboardEventDelegate {
         println("GameViewController viewDidLoad")
     }
 
-    func didKeyDown(keyCode: CUnsignedShort) {
+    func eventOnView(view: NSView, didKeyDown keyCode: CUnsignedShort) {
         println("keydown = \(keyCode)")
     }
 }

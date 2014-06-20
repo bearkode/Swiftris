@@ -22,6 +22,10 @@ struct Grid {
         buffer[0..count] = array[0..count]
     }
 
+    init() {
+        self.init(width: 0, height: 0, array: [])
+    }
+    
     init(width: Int, height: Int) {
         self.init(width: width, height: height, array: [])
     }
@@ -29,22 +33,21 @@ struct Grid {
     func enumerateGrids(closure: (x: Int, y: Int, value: Int) -> ()) {
         for index in 0..size {
             let (x, y) = getPositionWithIndex(index)
-            let value = buffer[indexFrom(x, y: y)]
+            let value = buffer[index]
             closure(x: x, y: y, value: value)
         }
     }
     
-    func appendWithRowArray(array: Array<Int>, y: Int) {
+    mutating func replaceRow(y: Int, array: Array<Int>) {
         assert(array.count == width)
-        for var x = 0; x < array.count; x++ {
-            buffer[indexFrom(x, y: y)] = array[x]
-        }
+        let range = rangeOfRow(y)
+        buffer[range] = array[range]
     }
     
     subscript(x: Int, y: Int) -> Int {
         get {
             assert(validateFor(x, y: y), "Index out of range")
-            return buffer[indexFrom(x, y:y)]
+            return buffer[indexFrom(x, y: y)]
         }
         
         set {
@@ -64,6 +67,10 @@ struct Grid {
 
     func indexFrom(x: Int, y: Int) -> Int {
         return y * width + x
+    }
+    
+    func rangeOfRow(row: Int) -> Range<Int> {
+        return (row * width)..(row * width) + width
     }
     
     func validateFor(x: Int, y: Int) -> Bool {
