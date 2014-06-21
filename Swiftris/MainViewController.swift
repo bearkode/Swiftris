@@ -18,6 +18,7 @@ let BKRightKeyCode: CUnsignedShort = 124
 
 class MainViewController: NSViewController, KeyboardEventDelegate {
     
+    var boardView = BoardView(frame: NSRect(x: 10, y: 10, width: 100, height: 100))
     var logicController = GameLogicController()
 
     init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
@@ -40,6 +41,9 @@ class MainViewController: NSViewController, KeyboardEventDelegate {
         
         var view = self.view as MainView
         view.delegate = self
+        
+        boardView.dataSource = logicController
+        view.addSubview(boardView)
     }
 
     override func viewDidLoad() {

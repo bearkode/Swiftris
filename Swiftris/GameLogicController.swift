@@ -10,8 +10,9 @@
 import Foundation
 
 
-class GameLogicController {
+class GameLogicController : BoardViewDataSource {
     
+    var bloard = Board(size: CGSize(width: 20, height: 30))
     var block = BlockE()
     
     init () {
@@ -35,4 +36,14 @@ class GameLogicController {
         // TODO : do drop logic
     }
     
+    func getCellSizeOfBoardView(boardView: BoardView) -> CGSize!
+    {
+        return CGSize(width: 30, height: 20)
+    }
+    
+    func getGridSizeOfBoardView(boardView: BoardView) -> CGSize!
+    {
+        return CGSize(width: 10, height: 10)
+    }
+
 }
