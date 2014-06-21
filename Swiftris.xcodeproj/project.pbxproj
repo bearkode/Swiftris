@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E379A4B195433FC00F7D0A7 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E379A4A195433FC00F7D0A7 /* Board.swift */; };
 		2E7EA07619508B9B00837BBE /* GameLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7EA07519508B9B00837BBE /* GameLogicController.swift */; };
 		2EA0D7EB1951C9C9008DB5D2 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA0D7EA1951C9C9008DB5D2 /* Grid.swift */; };
+		2EB72C1D1953EDEB00574E38 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB72C1C1953EDEB00574E38 /* BoardView.swift */; };
 		2EB861A4194AB5A40016D660 /* Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB861A3194AB5A40016D660 /* Structures.swift */; };
 		2EB861A5194AB5A40016D660 /* Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB861A3194AB5A40016D660 /* Structures.swift */; };
 		2EB861AA194EAC560016D660 /* BlockA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB861A9194EAC560016D660 /* BlockA.swift */; };
@@ -44,8 +46,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E379A4A195433FC00F7D0A7 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		2E7EA07519508B9B00837BBE /* GameLogicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameLogicController.swift; sourceTree = "<group>"; };
 		2EA0D7EA1951C9C9008DB5D2 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
+		2EB72C1C1953EDEB00574E38 /* BoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		2EB861A3194AB5A40016D660 /* Structures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Structures.swift; sourceTree = "<group>"; };
 		2EB861A9194EAC560016D660 /* BlockA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockA.swift; sourceTree = "<group>"; };
 		2EB861AB194EAD1C0016D660 /* BlockB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockB.swift; sourceTree = "<group>"; };
@@ -165,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				2EF46F001949DB5D000D3206 /* MainView.swift */,
+				2EB72C1C1953EDEB00574E38 /* BoardView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -182,6 +187,7 @@
 				2EB861B1194F1C5A0016D660 /* BlockE.swift */,
 				2EB861B3194F1D0C0016D660 /* BlockF.swift */,
 				2EB861B5194F1DB70016D660 /* BlockG.swift */,
+				2E379A4A195433FC00F7D0A7 /* Board.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -288,6 +294,7 @@
 			files = (
 				2EF46EFA1949D228000D3206 /* GridBoardView.swift in Sources */,
 				2EB861A4194AB5A40016D660 /* Structures.swift in Sources */,
+				2E379A4B195433FC00F7D0A7 /* Board.swift in Sources */,
 				2EB861B0194EAE7B0016D660 /* BlockD.swift in Sources */,
 				2EF46F041949DEC2000D3206 /* Block.swift in Sources */,
 				2EF46F011949DB5D000D3206 /* MainView.swift in Sources */,
@@ -301,6 +308,7 @@
 				2EB861AA194EAC560016D660 /* BlockA.swift in Sources */,
 				2EB861AE194EADBB0016D660 /* BlockC.swift in Sources */,
 				2EB861B2194F1C5A0016D660 /* BlockE.swift in Sources */,
+				2EB72C1D1953EDEB00574E38 /* BoardView.swift in Sources */,
 				2EB861B4194F1D0C0016D660 /* BlockF.swift in Sources */,
 				2EB861B6194F1DB70016D660 /* BlockG.swift in Sources */,
 				2EA0D7EB1951C9C9008DB5D2 /* Grid.swift in Sources */,
