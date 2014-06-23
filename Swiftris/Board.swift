@@ -13,8 +13,9 @@ import Foundation
 class Board {
     
     var grid: Grid
+    var gridSize: GridSize = GridSize(width: 0, height: 0)
 
-    init(size boardSize: CGSize) {
+    init(size boardSize: GridSize) {
         self.grid = Grid(width: Int(boardSize.width), height: Int(boardSize.height))
         self.fillWithRandomValue()
     }

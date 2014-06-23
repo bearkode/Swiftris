@@ -16,7 +16,7 @@ let BKLeftKeyCode: CUnsignedShort = 123
 let BKRightKeyCode: CUnsignedShort = 124
 
 
-class MainViewController: NSViewController, KeyboardEventDelegate {
+class MainViewController: NSViewController, KeyboardEventDelegate, BoardViewDataSource {
     
     var boardView = BoardView(frame: NSRect(x: 10, y: 10, width: 100, height: 100))
     var logicController = GameLogicController()
@@ -42,7 +42,7 @@ class MainViewController: NSViewController, KeyboardEventDelegate {
         var view = self.view as MainView
         view.delegate = self
         
-        boardView.dataSource = logicController
+        boardView.dataSource = self
         view.addSubview(boardView)
     }
 
@@ -52,7 +52,10 @@ class MainViewController: NSViewController, KeyboardEventDelegate {
         //  TODO : 이거 왜 안불리지?
         println("MainViewController viewDidLoad")
     }
-    
+
+    /*
+     *  For Protocol
+     */
     func eventOnView(view: NSView, didKeyDown keyCode: CUnsignedShort) {
 
         let keyCodeDict = [
@@ -66,4 +69,17 @@ class MainViewController: NSViewController, KeyboardEventDelegate {
             function()
         }
     }
+    
+    func getCellSizeOfBoardView(boardView: BoardView) -> CGSize! {
+        return CGSizeMake(20.0, 20.0)
+    }
+    
+    func getGridSizeOfBoardView(boardView: BoardView) -> GridSize! {
+        return logicController.boardGridSize
+    }
+    
+    func getColorIndexOfBoardView(boardView: BoardView, position: Point) -> Int  {
+        return 3
+    }
+
 }

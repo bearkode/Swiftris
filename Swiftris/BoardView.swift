@@ -13,7 +13,8 @@ import Cocoa
 protocol BoardViewDataSource {
 
     func getCellSizeOfBoardView(boardView: BoardView) -> CGSize!
-    func getGridSizeOfBoardView(boardView: BoardView) -> CGSize!
+    func getGridSizeOfBoardView(boardView: BoardView) -> GridSize!
+    func getColorIndexOfBoardView(boardView: BoardView, position: Point) -> Int
     
 }
 
@@ -33,11 +34,7 @@ class BoardView: NSView {
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
         
-        var backgroundColor = NSColor(calibratedRed: 0.5, green: 1.0, blue: 0.5, alpha: 1.0)
-        var bezierPath      = NSBezierPath(rect: self.bounds)
-        
-        backgroundColor.setFill()
-        bezierPath.fill()
+        drawBackground()
     }
     
     func reload() {
@@ -50,7 +47,7 @@ class BoardView: NSView {
      *  Privates
      */
 
-    var gridSize: CGSize = CGSize()
+    var gridSize: GridSize = GridSize(width: 0, height: 0)
     var cellSize: CGSize = CGSize()
     
     func updateGridSize() {
@@ -69,8 +66,19 @@ class BoardView: NSView {
         setFrameSize(getFrameSizeWithGridSize(gridSize, cellSize: cellSize))
     }
     
-    func getFrameSizeWithGridSize(gridSize: CGSize, cellSize: CGSize) -> CGSize! {
-        return CGSize(width: gridSize.width * cellSize.width, height: gridSize.height * cellSize.height)
+    func getFrameSizeWithGridSize(gridSize: GridSize, cellSize: CGSize) -> CGSize! {
+        return CGSize(width: CGFloat(gridSize.width) * cellSize.width, height: CGFloat(gridSize.height) * cellSize.height)
     }
     
+    func drawBackground() {
+        var backgroundColor = NSColor(calibratedRed: 0.5, green: 1.0, blue: 0.5, alpha: 1.0)
+        var bezierPath      = NSBezierPath(rect: self.bounds)
+        
+        backgroundColor.setFill()
+        bezierPath.fill()
+    }
+
+    func drawCellAtPosition(position:Point, color:Int) {
+    
+    }
 }
