@@ -16,7 +16,7 @@ let BKLeftKeyCode: CUnsignedShort = 123
 let BKRightKeyCode: CUnsignedShort = 124
 
 
-class MainViewController: NSViewController, KeyboardEventDelegate, BoardViewDataSource {
+class MainViewController: NSViewController, KeyboardEventDelegate, BoardViewDataSource, LogicControllerDelegate {
     
     var boardView = BoardView(frame: NSRect(x: 10, y: 10, width: 100, height: 100))
     var logicController = GameLogicController()
@@ -24,12 +24,16 @@ class MainViewController: NSViewController, KeyboardEventDelegate, BoardViewData
     init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 
+        logicController.delegate = self
+        
         println("MainViewController init(nibName, bundle)")
     }
 
     init(coder: NSCoder!) {
         super.init(coder: coder)
 
+        logicController.delegate = self
+        
         println("MainViewController init(coder)")
     }
 
@@ -81,6 +85,10 @@ class MainViewController: NSViewController, KeyboardEventDelegate, BoardViewData
     
     func getColorIndexOfBoardView(boardView: BoardView, position: Point) -> Int!  {
         return logicController.colorIndexAtPosition(position)
+    }
+    
+    func logicControllerDidUpdate(logicController: GameLogicController) {
+        self.boardView.setNeedsDisplayInRect(boardView.bounds)
     }
 
 }

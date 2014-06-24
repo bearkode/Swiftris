@@ -44,6 +44,41 @@ class Grid {
         buffer[range] = array[range]
     }
     
+    func isOverlappedAtPosition(position: Point, grid: Grid) -> Bool {
+        var overlapped = false
+        grid.enumerateGrids { (x: Int, y: Int, value: Int) in
+            if value != 0 {
+                var px = position.x + x
+                var py = position.y - y
+                
+                println("\(px), \(py)")
+                
+                if py < 0 {
+                    overlapped = true
+                }
+                else
+                {
+                    if self[px, py] != 0 {
+                        overlapped = true   //  TODO : 찾았으면 enum을 멈추자.
+                    }
+                }
+            }
+        }
+        
+        return overlapped
+    }
+    
+    func setValuesAtPosition(position: Point, grid: Grid) {
+        grid.enumerateGrids { (x: Int, y: Int, value: Int) in
+            var px = position.x + x
+            var py = position.y - y
+            
+            if py >= 0 && value != 0 {
+                self[px, py] = value
+            }
+        }
+    }
+    
     subscript(x: Int, y: Int) -> Int {
         get {
             assert(validateFor(x, y: y), "Index out of range")
