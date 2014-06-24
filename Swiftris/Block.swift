@@ -18,12 +18,52 @@ class Block : Printable {
         }
     }
     
+    var leftPosition: Point {
+        get {
+            return Point(x: position.x - 1, y: position.y)
+        }
+    }
+    
+    var rightPosition: Point {
+        get {
+            return Point(x: position.x + 1, y: position.y)
+        }
+    }
+    
     var lowPosition: Point {
         get {
             return Point(x: position.x, y: position.y - 1)
         }
     }
+    
+    var nextGrid: Grid {
+        get {
+            var nextIndex = nextRotateIndex()
+            return grids[nextIndex]
+        }
+    }
 
+    class func randomBlock() -> Block {
+        switch Int(arc4random() % 7) {
+        case 0:
+            return BlockA()
+        case 1:
+            return BlockB()
+        case 2:
+            return BlockC()
+        case 3:
+            return BlockD()
+        case 4:
+            return BlockE()
+        case 5:
+            return BlockF()
+        case 6:
+            return BlockG()
+        default:
+            return BlockA()
+        }
+    }
+    
     init() {
         generateTemplate()
         updateCurrentGrid()
@@ -38,8 +78,7 @@ class Block : Printable {
     }
     
     func increaseRotateIndex() {
-        rotateIndex++
-        rotateIndex = rotateIndex > (grids.count - 1) ? 0 : rotateIndex
+        rotateIndex = self.nextRotateIndex()
         dirty = true
     }
     
@@ -85,12 +124,6 @@ class Block : Printable {
         }
     }
     
-    func draw() {
-        currentGrid.enumerateGrids { (x: Int, y: Int, value: Int) in
-            println("x = \(x) y = \(y) : value = \(value)");
-        }
-    }
-    
     func debugPrint() {
         var oldY = 0
         currentGrid.enumerateGrids { (x, y, value) in
@@ -115,5 +148,10 @@ class Block : Printable {
     func appendTemplate(grid: Grid) {
         grids += grid
     }
-    
+ 
+    func nextRotateIndex() -> Int {
+        var result = rotateIndex - 1
+        return result < 0 ? (grids.count - 1) : result
+    }
+
 }

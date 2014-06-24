@@ -21,7 +21,7 @@ protocol LogicControllerDelegate {
 class GameLogicController: NSObject {
     
     var delegate: LogicControllerDelegate?
-    var board = Board(size: GridSize(width: 20, height: 30))
+    var board = Board(size: GridSize(width: 10, height: 20))
     var timer: NSTimer?
     var block: Block?
     let dropCountForLevel = 5
@@ -30,10 +30,6 @@ class GameLogicController: NSObject {
     var boardGridSize: GridSize {
         get {
             return board.gridSize
-        }
-    
-        set {
-    
         }
     }
     
@@ -44,20 +40,33 @@ class GameLogicController: NSObject {
     }
     
     func upArrowDown() {
-        block?.turn()
-        block?.debugPrint()
+        if let block = self.block {
+            if board.isPossiblePosition(block.position, grid: block.nextGrid) {
+                block.turn()
+            }
+        }
     }
 
     func leftArrowDown() {
-        block?.moveLeft()
+        if let block = self.block {
+            if board.isPossiblePosition(block.leftPosition, block: block) {
+                block.moveLeft()
+            }
+        }
     }
 
     func rightArrowDown() {
-        block?.moveRight()
+        if let block = self.block {
+            if board.isPossiblePosition(block.rightPosition, block: block) {
+                block.moveRight()
+            }
+        }
     }
     
-    func downArrowDown() {
-        // TODO : do drop logic
+    func bottomArrowDown() {
+        if let block = self.block {
+        
+        }
     }
     
     func colorIndexAtPosition(position: Point) -> Int {
@@ -84,7 +93,7 @@ class GameLogicController: NSObject {
             return
         }
         
-        self.block = generateRandomBlock()
+        self.block = Block.randomBlock()
         
         if let block = self.block {
             block.position = Point(x: 5, y: board.gridSize.height - 1)
@@ -132,27 +141,6 @@ class GameLogicController: NSObject {
             if let delegate = self.delegate? {
                 delegate.logicControllerDidUpdate(self)
             }
-        }
-    }
-    
-    func generateRandomBlock() -> Block {
-        switch Int(arc4random() % 7) {
-        case 0:
-            return BlockA()
-        case 1:
-            return BlockB()
-        case 2:
-            return BlockC()
-        case 3:
-            return BlockD()
-        case 4:
-            return BlockE()
-        case 5:
-            return BlockF()
-        case 6:
-            return BlockG()
-        default:
-            return BlockA()
         }
     }
     

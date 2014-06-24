@@ -67,7 +67,7 @@ class MainViewController: NSViewController, KeyboardEventDelegate, BoardViewData
             BKUpKeyCode : logicController.upArrowDown,
             BKRightKeyCode : logicController.rightArrowDown,
             BKLeftKeyCode : logicController.leftArrowDown,
-            BKDownKeyCode : logicController.downArrowDown
+            BKDownKeyCode : logicController.bottomArrowDown
         ]
         
         if let function = keyCodeDict[keyCode] {

@@ -53,11 +53,9 @@ class Grid {
                 
                 println("\(px), \(py)")
                 
-                if py < 0 {
+                if py < 0 || px < 0  || px >= self.width || py >= self.height {
                     overlapped = true
-                }
-                else
-                {
+                } else {
                     if self[px, py] != 0 {
                         overlapped = true   //  TODO : 찾았으면 enum을 멈추자.
                     }
@@ -102,8 +100,8 @@ class Grid {
     }
     
     /*
-    *      Privates
-    */
+     *      Privates
+     */
     
     let width: Int
     let height: Int

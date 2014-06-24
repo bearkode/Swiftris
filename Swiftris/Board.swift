@@ -19,13 +19,6 @@ class Board {
     init(size boardSize: GridSize) {
         self.grid = Grid(width: boardSize.width, height: boardSize.height)
         self.gridSize = boardSize
-//        self.fillWithRandomValue()
-    }
-    
-    func fillWithRandomValue() {
-        gridSize.enumerateGrids { (position: Point) in
-            self.grid[position.x, position.y] = Int(arc4random() % 7)
-        }
     }
     
     func valueAtPosition(position: Point) -> Int {
@@ -34,6 +27,14 @@ class Board {
     
     func isOverlappedAtPosition(position: Point, block: Block) -> Bool {
         return grid.isOverlappedAtPosition(position, grid: block.currentGrid)
+    }
+    
+    func isPossiblePosition(position: Point, block: Block) -> Bool {
+        return !grid.isOverlappedAtPosition(position, grid: block.currentGrid)
+    }
+    
+    func isPossiblePosition(position: Point, grid: Grid) -> Bool {
+        return !self.grid.isOverlappedAtPosition(position, grid: grid)
     }
     
     func immobilzeBlock(block: Block) {
