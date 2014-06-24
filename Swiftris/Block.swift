@@ -43,27 +43,6 @@ class Block : Printable {
         }
     }
 
-    class func randomBlock() -> Block {
-        switch Int(arc4random() % 7) {
-        case 0:
-            return BlockA()
-        case 1:
-            return BlockB()
-        case 2:
-            return BlockC()
-        case 3:
-            return BlockD()
-        case 4:
-            return BlockE()
-        case 5:
-            return BlockF()
-        case 6:
-            return BlockG()
-        default:
-            return BlockA()
-        }
-    }
-    
     init() {
         generateTemplate()
         updateCurrentGrid()

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2E379A4B195433FC00F7D0A7 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E379A4A195433FC00F7D0A7 /* Board.swift */; };
 		2E49ED7D19594C63005C4E97 /* NSColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E49ED7C19594C63005C4E97 /* NSColorExtension.swift */; };
+		2E49ED801959CE48005C4E97 /* BlockExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E49ED7F1959CE48005C4E97 /* BlockExtensions.swift */; };
 		2E7EA07619508B9B00837BBE /* GameLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7EA07519508B9B00837BBE /* GameLogicController.swift */; };
 		2EA0D7EB1951C9C9008DB5D2 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA0D7EA1951C9C9008DB5D2 /* Grid.swift */; };
 		2EB72C1D1953EDEB00574E38 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB72C1C1953EDEB00574E38 /* BoardView.swift */; };
@@ -49,6 +50,7 @@
 /* Begin PBXFileReference section */
 		2E379A4A195433FC00F7D0A7 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		2E49ED7C19594C63005C4E97 /* NSColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSColorExtension.swift; sourceTree = "<group>"; };
+		2E49ED7F1959CE48005C4E97 /* BlockExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockExtensions.swift; sourceTree = "<group>"; };
 		2E7EA07519508B9B00837BBE /* GameLogicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameLogicController.swift; sourceTree = "<group>"; };
 		2EA0D7EA1951C9C9008DB5D2 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		2EB72C1C1953EDEB00574E38 /* BoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				2E49ED7C19594C63005C4E97 /* NSColorExtension.swift */,
+				2E49ED7F1959CE48005C4E97 /* BlockExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				2E49ED7D19594C63005C4E97 /* NSColorExtension.swift in Sources */,
 				2E379A4B195433FC00F7D0A7 /* Board.swift in Sources */,
 				2EB861B0194EAE7B0016D660 /* BlockD.swift in Sources */,
+				2E49ED801959CE48005C4E97 /* BlockExtensions.swift in Sources */,
 				2EF46F041949DEC2000D3206 /* Block.swift in Sources */,
 				2EF46F011949DB5D000D3206 /* MainView.swift in Sources */,
 				2EF46ED91949CA4D000D3206 /* AppDelegate.swift in Sources */,
