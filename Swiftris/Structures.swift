@@ -26,20 +26,31 @@ struct Point {
 }
 
 
-struct GridSize {
+struct GridSize : Printable {
     
     var width: Int = 0
     var height: Int = 0
+    
+    var description: String {
+        get {
+            return "GridSize = \(width), \(height)"
+        }
+    }
+    
+    init() {
+
+    }
     
     init(width: Int, height: Int) {
         self.width = width
         self.height = height
     }
     
-    func enumerateGrids(closure: (x: Int, y: Int) -> ()) {
+    func enumerateGrids(closure: (position: Point) -> ()) {
         for index in 0..(width * height) {
             let (x, y) = getPositionWithIndex(index)
-            closure(x: x, y: y)
+            let position = Point(x: x, y: y)
+            closure(position: position)
         }
     }
     

@@ -13,10 +13,11 @@ import Foundation
 class Board {
     
     var grid: Grid
-    var gridSize: GridSize = GridSize(width: 0, height: 0)
+    var gridSize: GridSize
 
     init(size boardSize: GridSize) {
-        self.grid = Grid(width: Int(boardSize.width), height: Int(boardSize.height))
+        self.grid = Grid(width: boardSize.width, height: boardSize.height)
+        self.gridSize = boardSize
         self.fillWithRandomValue()
     }
     

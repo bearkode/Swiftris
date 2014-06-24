@@ -10,7 +10,7 @@
 import Foundation
 
 
-struct Grid {
+class Grid {
 
     init(width: Int, height: Int, array: Int[]) {
         self.width = width
@@ -22,11 +22,11 @@ struct Grid {
         buffer[0..count] = array[0..count]
     }
 
-    init() {
+    convenience init() {
         self.init(width: 0, height: 0, array: [])
     }
     
-    init(width: Int, height: Int) {
+    convenience init(width: Int, height: Int) {
         self.init(width: width, height: height, array: [])
     }
     
@@ -38,7 +38,7 @@ struct Grid {
         }
     }
     
-    mutating func replaceRow(y: Int, array: Array<Int>) {
+    func replaceRow(y: Int, array: Array<Int>) {
         assert(array.count == width)
         let range = rangeOfRow(y)
         buffer[range] = array[range]

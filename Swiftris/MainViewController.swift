@@ -44,6 +44,7 @@ class MainViewController: NSViewController, KeyboardEventDelegate, BoardViewData
         
         boardView.dataSource = self
         view.addSubview(boardView)
+        boardView.setNeedsDisplayInRect(boardView.bounds)
     }
 
     override func viewDidLoad() {
@@ -78,7 +79,7 @@ class MainViewController: NSViewController, KeyboardEventDelegate, BoardViewData
         return logicController.boardGridSize
     }
     
-    func getColorIndexOfBoardView(boardView: BoardView, position: Point) -> Int  {
+    func getColorIndexOfBoardView(boardView: BoardView, position: Point) -> Int!  {
         return 3
     }
 
