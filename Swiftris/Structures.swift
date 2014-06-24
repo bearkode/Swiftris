@@ -59,19 +59,3 @@ struct GridSize : Printable {
     }
 
 }
-
-
-struct Color {
-    
-    var red: Double = 0.0
-    var green: Double = 0.0
-    var blue: Double = 0.0
-    var alpha: Double = 0.0
-    
-    init(red: Double, green: Double, blue: Double, alpha: Double) {
-        self.red = red
-        self.green = green
-        self.blue = blue
-        self.alpha = alpha
-    }
-}
