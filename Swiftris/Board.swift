@@ -22,16 +22,13 @@ class Board {
     }
     
     func fillWithRandomValue() {
-        for var y = 0; y < grid.height; y++ {
-            for var x = 0; x < grid.width; x++ {
-                let value = Int(arc4random() % 7)
-                grid[x, y] = value
-            }
+        gridSize.enumerateGrids { (position: Point) in
+            self.grid[position.x, position.y] = Int(arc4random() % 7)
         }
-        
-        grid.enumerateGrids { (x: Int, y: Int, value: Int) in
-            println("value = \(value)")
-        }
+    }
+    
+    func valueAtPosition(position: Point) -> Int {
+        return grid[position]
     }
     
 }

@@ -46,4 +46,7 @@ class GameLogicController {
         // TODO : do drop logic
     }
     
+    func colorIndexAtPosition(position: Point) -> Int {
+        return board.valueAtPosition(position)
+    }
 }

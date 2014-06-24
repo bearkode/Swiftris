@@ -80,7 +80,7 @@ class MainViewController: NSViewController, KeyboardEventDelegate, BoardViewData
     }
     
     func getColorIndexOfBoardView(boardView: BoardView, position: Point) -> Int!  {
-        return 3
+        return logicController.colorIndexAtPosition(position)
     }
 
 }

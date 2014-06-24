@@ -56,6 +56,16 @@ class Grid {
         }
     }
     
+    subscript(position: Point) -> Int {
+        get {
+            return self[position.x, position.y]
+        }
+        
+        set {
+            self[position.x, position.y] = newValue
+        }
+    }
+    
     /*
     *      Privates
     */

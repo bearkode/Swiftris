@@ -31,13 +31,6 @@ class BoardView: NSView {
         super.init(frame: frameRect)
     }
     
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
-        
-        drawBackground()
-        drawCells()
-    }
-    
     func reload() {
         updateGridSize()
         updateCellSize()
@@ -51,7 +44,14 @@ class BoardView: NSView {
 
     var gridSize = GridSize()
     var cellSize = CGSize()
-    
+
+    override func drawRect(dirtyRect: NSRect) {
+        super.drawRect(dirtyRect)
+        
+        drawBackground()
+        drawCells()
+    }
+
     func updateGridSize() {
         if let dataSource = self.dataSource? {
             gridSize = dataSource.getGridSizeOfBoardView(self)
@@ -70,40 +70,60 @@ class BoardView: NSView {
     }
     
     func getFrameSizeWithGridSize(gridSize: GridSize, cellSize: CGSize) -> CGSize! {
-        return CGSize(width: CGFloat(gridSize.width) * cellSize.width, height: CGFloat(gridSize.height) * cellSize.height)
+        return CGSize(width: CGFloat(gridSize.width) * cellSize.width + 1, height: CGFloat(gridSize.height) * cellSize.height + 1)
     }
     
     func drawBackground() {
-        var backgroundColor = NSColor(calibratedRed: 0.5, green: 1.0, blue: 0.5, alpha: 1.0)
-        var bezierPath      = NSBezierPath(rect: self.bounds)
-        
-        backgroundColor.setFill()
-        bezierPath.fill()
+        NSColor(calibratedRed: 0.5, green: 1.0, blue: 0.5, alpha: 1.0).setFill()
+        NSBezierPath(rect: self.bounds).fill()
     }
     
     func drawCells() {
         if let dataSource = self.dataSource? {
             gridSize.enumerateGrids { (position: Point) in
                 let colorIndex = dataSource.getColorIndexOfBoardView(self, position: position)
-                self.drawCellAtPosition(position, color: colorIndex)
+                self.drawCellAtPosition(position, colorIndex: colorIndex)
             }
         }
     }
 
-    func drawCellAtPosition(position: Point, color: Int) {
+    func drawCellAtPosition(position: Point, colorIndex: Int) {
+        var point = displayPointFromGridPosition(position)
+        var color = colorForIndex(colorIndex)
         
-        var x = CGFloat(position.x) * cellSize.width
-        var y = CGFloat(position.y) * cellSize.height
-        var bezierPath = NSBezierPath(rect: NSRect(x: x, y: y, width: cellSize.width, height: cellSize.height))
-        var cellColor = NSColor(calibratedRed: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        cellColor.setFill()
-        bezierPath.fill()
+        drawCellAtPoint(point, color: color)
+    }
+    
+    func colorForIndex(index: Int) -> NSColor {
+        var colorDict = [
+            0 : NSColor(calibratedRed: 1.0, green: 1.0, blue: 1.0, alpha: 1.0),
+            1 : NSColor(calibratedRed: 0.0, green: 0.5, blue: 1.0, alpha: 1.0),
+            2 : NSColor(calibratedRed: 1.0, green: 0.5, blue: 0.0, alpha: 1.0),
+            3 : NSColor(calibratedRed: 0.5, green: 1.0, blue: 0.0, alpha: 1.0),
+            4 : NSColor(calibratedRed: 1.0, green: 0.0, blue: 0.5, alpha: 1.0),
+            5 : NSColor(calibratedRed: 0.0, green: 1.0, blue: 0.5, alpha: 1.0),
+            6 : NSColor(calibratedRed: 0.5, green: 0.0, blue: 1.0, alpha: 1.0),
+            7 : NSColor(calibratedRed: 0.5, green: 1.0, blue: 1.0, alpha: 1.0),
+        ]
+        var color: NSColor? = colorDict[index];
         
-        x++
-        y++
-        bezierPath = NSBezierPath(rect: NSRect(x: x, y: y, width: cellSize.width - 2, height: cellSize.height - 2))
-        cellColor = NSColor(calibratedRed: 0.0, green: 1.0, blue: 0.5, alpha: 1.0)
-        cellColor.setFill()
-        bezierPath.fill()
+        if let result = color? {
+            return result
+        } else {
+            return NSColor(white: 1.0, alpha: 1.0)
+        }
+    }
+    
+    func displayPointFromGridPosition(position: Point) -> CGPoint {
+        return CGPoint(x: CGFloat(position.x) * cellSize.width + 1, y: CGFloat(position.y) * cellSize.height + 1)
+    }
+    
+    func drawCellAtPoint(point: CGPoint, color: NSColor) {
+        var halftone = color.halftone()
+
+        halftone.setFill()
+        NSBezierPath(rect: NSRect(x: point.x, y: point.y, width: cellSize.width - 1, height: cellSize.height - 1)).fill()
+        color.setFill()
+        NSBezierPath(rect: NSRect(x: point.x + 1, y: point.y + 1, width: cellSize.width - 3, height: cellSize.height - 3)).fill()
     }
 }
