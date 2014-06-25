@@ -30,34 +30,41 @@ class Grid {
         self.init(width: width, height: height, array: [])
     }
     
-    func enumerateGrids(closure: (x: Int, y: Int, value: Int) -> ()) {
+    func enumerateGrids(closure: (x: Int, y: Int, value: Int, inout stop: Bool) -> ()) {
+        var stop = false
         for index in 0..size {
             let (x, y) = getPositionWithIndex(index)
-            let value = buffer[index]
-            closure(x: x, y: y, value: value)
+            closure(x: x, y: y, value: buffer[index], stop: &stop)
+            
+            if stop == true {
+                break
+            }
         }
     }
     
-    func enumerateRow(row: Int, closure: (x: Int, y: Int, value: Int) -> ()) {
-        let range = rangeOfRow(row)
+    func enumerateRow(row: Int, closure: (x: Int, y: Int, value: Int, inout stop: Bool) -> ()) {
+        let range = getRangeOfRow(row)
         for index in range {
+            var stop = false
             let (x, y) = getPositionWithIndex(index)
-            let value = buffer[index]
-            closure(x: x, y: y, value: value)
+            
+            closure(x: x, y: y, value: buffer[index], stop: &stop)
+            
+            if stop == true {
+                break;
+            }
         }
     }
     
     func replaceRow(y: Int, array: Array<Int>) {
         assert(array.count == width)
-        let range = rangeOfRow(y)
-        println("range = \(range.startIndex)-\(range.endIndex)")
-        println("array = \(array)")
+        let range = getRangeOfRow(y)
         buffer[range] = array[0..array.count]
     }
     
     func isOverlappedAtPosition(position: Point, grid: Grid) -> Bool {
         var overlapped = false
-        grid.enumerateGrids { (x: Int, y: Int, value: Int) in
+        grid.enumerateGrids { (x: Int, y: Int, value: Int, inout stop: Bool) in
             if value != 0 {
                 var px = position.x + x
                 var py = position.y - y
@@ -68,7 +75,8 @@ class Grid {
                     overlapped = true
                 } else {
                     if self[px, py] != 0 {
-                        overlapped = true   //  TODO : 찾았으면 enum을 멈추자.
+                        overlapped = true
+                        stop = true
                     }
                 }
             }
@@ -77,29 +85,10 @@ class Grid {
         return overlapped
     }
     
-    func deleteFullRow() -> Bool {  //  TODO : board로 가야 함.
-        var result = false
-        var compacted = true
-
-        while compacted == true {
-            compacted = false
-            for var y = 0; y < height; y++ {
-                if isFullRow(y) {
-                    result = true
-                    compactRowOver(y)
-                    compacted = true
-                    y--
-                }
-            }
-        }
-        
-        return result
-    }
-    
     func compactRowOver(row: Int) {
         for var y = row; y < (height - 1); y++ {
-            var rangeSrc: Range = rangeOfRow(y + 1)
-            var rangeDst: Range = rangeOfRow(y)
+            var rangeSrc = getRangeOfRow(y + 1)
+            var rangeDst = getRangeOfRow(y)
             buffer[rangeDst] = buffer[rangeSrc]
         }
         replaceRow(height - 1, array: Array(count: width, repeatedValue:0))
@@ -109,9 +98,10 @@ class Grid {
     func isFullRow(row: Int) -> Bool {
         var hasEmpty = false
 
-        self.enumerateRow(row) { ( x: Int, y: Int, value: Int) in
+        self.enumerateRow(row) { ( x: Int, y: Int, value: Int, inout stop: Bool) in
             if value == 0 {
-                hasEmpty = true //  TODO : 중단
+                hasEmpty = true
+                stop = true
             }
         }
         
@@ -119,7 +109,8 @@ class Grid {
     }
     
     func setValuesAtPosition(position: Point, grid: Grid) {
-        grid.enumerateGrids { (x: Int, y: Int, value: Int) in
+        var stop = false
+        grid.enumerateGrids { (x: Int, y: Int, value: Int, inout stop: Bool) in
             var px = position.x + x
             var py = position.y - y
             
@@ -132,12 +123,12 @@ class Grid {
     subscript(x: Int, y: Int) -> Int {
         get {
             assert(validateFor(x, y: y), "Index out of range")
-            return buffer[indexFrom(x, y: y)]
+            return buffer[getIndexFrom(x, y: y)]
         }
         
         set {
             assert(validateFor(x, y: y), "Index out of range")
-            buffer[indexFrom(x, y: y)] = newValue
+            buffer[getIndexFrom(x, y: y)] = newValue
         }
     }
     
@@ -160,16 +151,16 @@ class Grid {
     let size: Int
     var buffer: Int[]
 
-    func indexFrom(x: Int, y: Int) -> Int {
-        return y * width + x
-    }
-    
-    func rangeOfRow(row: Int) -> Range<Int> {
+    func getRangeOfRow(row: Int) -> Range<Int> {
         return (row * width)..(row * width) + width
     }
     
     func validateFor(x: Int, y: Int) -> Bool {
         return x >= 0 && x < width && y >= 0 && y < height
+    }
+    
+    func getIndexFrom(x: Int, y: Int) -> Int {
+        return y * width + x
     }
     
     func getPositionWithIndex(index: Int) -> (x: Int, y: Int) {
