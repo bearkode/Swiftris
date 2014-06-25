@@ -42,4 +42,10 @@ class Board {
         dirty = true
     }
     
+    func deleteFullRow() {
+        if grid.deleteFullRow() == true {
+
+        }
+    }
+    
 }

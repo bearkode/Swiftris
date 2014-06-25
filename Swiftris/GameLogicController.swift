@@ -108,10 +108,10 @@ class GameLogicController: NSObject {
     func dropBlock() {
         if let block = self.block {
             if dropCount-- < 0 {
-                println("block = \(block)")
                 if checkBlockUnderCollision() {
                     immobilizeBlock()
                     self.block = nil
+                    board.deleteFullRow()
                 } else {
                     block.moveDown()
                     dropCount = dropCountForLevel

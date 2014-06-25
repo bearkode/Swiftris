@@ -38,10 +38,21 @@ class Grid {
         }
     }
     
+    func enumerateRow(row: Int, closure: (x: Int, y: Int, value: Int) -> ()) {
+        let range = rangeOfRow(row)
+        for index in range {
+            let (x, y) = getPositionWithIndex(index)
+            let value = buffer[index]
+            closure(x: x, y: y, value: value)
+        }
+    }
+    
     func replaceRow(y: Int, array: Array<Int>) {
         assert(array.count == width)
         let range = rangeOfRow(y)
-        buffer[range] = array[range]
+        println("range = \(range.startIndex)-\(range.endIndex)")
+        println("array = \(array)")
+        buffer[range] = array[0..array.count]
     }
     
     func isOverlappedAtPosition(position: Point, grid: Grid) -> Bool {
@@ -64,6 +75,47 @@ class Grid {
         }
         
         return overlapped
+    }
+    
+    func deleteFullRow() -> Bool {  //  TODO : board로 가야 함.
+        var result = false
+        var compacted = true
+
+        while compacted == true {
+            compacted = false
+            for var y = 0; y < height; y++ {
+                if isFullRow(y) {
+                    result = true
+                    compactRowOver(y)
+                    compacted = true
+                    y--
+                }
+            }
+        }
+        
+        return result
+    }
+    
+    func compactRowOver(row: Int) {
+        for var y = row; y < (height - 1); y++ {
+            var rangeSrc: Range = rangeOfRow(y + 1)
+            var rangeDst: Range = rangeOfRow(y)
+            buffer[rangeDst] = buffer[rangeSrc]
+        }
+        replaceRow(height - 1, array: Array(count: width, repeatedValue:0))
+        println("\(buffer)")
+    }
+    
+    func isFullRow(row: Int) -> Bool {
+        var hasEmpty = false
+
+        self.enumerateRow(row) { ( x: Int, y: Int, value: Int) in
+            if value == 0 {
+                hasEmpty = true //  TODO : 중단
+            }
+        }
+        
+        return !hasEmpty
     }
     
     func setValuesAtPosition(position: Point, grid: Grid) {
