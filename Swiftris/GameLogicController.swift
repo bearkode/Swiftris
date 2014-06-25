@@ -96,7 +96,7 @@ class GameLogicController: NSObject {
         self.block = Block.randomBlock()
         
         if let block = self.block {
-            block.position = Point(x: 5, y: board.gridSize.height - 1)
+            block.position = Point(x: 3, y: board.gridSize.height - 1)
             dropCount = dropCountForLevel
             
             if board.isOverlappedAtPosition(block.position, block: block) {
