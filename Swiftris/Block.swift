@@ -32,7 +32,7 @@ class Block : Printable {
     
     var lowPosition: Point {
         get {
-            return Point(x: position.x, y: position.y - 1)
+            return Point(x: position.x, y: position.y + 1)
         }
     }
     
@@ -52,22 +52,13 @@ class Block : Printable {
         /* TO BE OVERRIDE  */
     }
     
-    func updateCurrentGrid() {
-        currentGrid = grids[rotateIndex]
-    }
-    
-    func increaseRotateIndex() {
-        rotateIndex = self.nextRotateIndex()
-        dirty = true
-    }
-    
     func turn() {
         increaseRotateIndex()
         updateCurrentGrid()
     }
     
     func moveDown() {
-        position.y--
+        position.y++
         dirty = true
     }
 
@@ -82,22 +73,15 @@ class Block : Printable {
     }
     
     func containsPosition(position: Point) -> Bool {
-        if position.x >= self.position.x &&
-            position.x <= self.position.x + 4 &&
-            position.y <= self.position.y &&
-            position.y >= self.position.y - 4 {
-            return true
-        } else {
-            return false
-        }
+        return (position.x >= self.position.x &&
+                position.x < self.position.x + currentGrid.width &&
+                position.y >= self.position.y &&
+                position.y < self.position.y + currentGrid.height)
     }
 
     func valueAtPosition(position: Point) -> Int {
-        var px = position.x - self.position.x
-        var py = self.position.y - position.y
-        
-        if px >= 0 && px <= 3 && py >= 0 && py <= 3 {
-            return currentGrid[px, py]
+        if containsPosition(position) {
+            return currentGrid[blockPositionFromPosition(position)]
         } else {
             return 0
         }
@@ -128,9 +112,21 @@ class Block : Printable {
         grids += grid
     }
  
+    func increaseRotateIndex() {
+        rotateIndex = nextRotateIndex()
+    }
+
     func nextRotateIndex() -> Int {
         var result = rotateIndex - 1
         return result < 0 ? (grids.count - 1) : result
     }
+    
+    func updateCurrentGrid() {
+        currentGrid = grids[rotateIndex]
+        dirty = true
+    }
 
+    func blockPositionFromPosition(position: Point) -> Point {
+        return Point(x: (position.x - self.position.x), y: (position.y - self.position.y))
+    }
 }

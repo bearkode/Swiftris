@@ -27,6 +27,12 @@ class BoardView: NSView {
         }
     }
     
+    override var flipped: Bool {
+        get {
+            return true
+        }
+    }
+    
     init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
     }
@@ -51,7 +57,7 @@ class BoardView: NSView {
         drawBackground()
         drawCells()
     }
-
+    
     func updateGridSize() {
         if let dataSource = self.dataSource? {
             gridSize = dataSource.getGridSizeOfBoardView(self)

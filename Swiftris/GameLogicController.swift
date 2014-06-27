@@ -96,7 +96,7 @@ class GameLogicController: NSObject {
         self.block = Block.randomBlock()
         
         if let block = self.block {
-            block.position = Point(x: 3, y: board.gridSize.height - 1)
+            block.position = Point(x: 3, y: 0)
             dropCount = dropCountForLevel
             
             if board.isOverlappedAtPosition(block.position, block: block) {
@@ -108,9 +108,8 @@ class GameLogicController: NSObject {
     func dropBlock() {
         if let block = self.block {
             if dropCount-- < 0 {
-                if checkBlockUnderCollision() {
-                    immobilizeBlock()
-                    self.block = nil
+                if checkBlockDownCollision(block) {
+                    immobilizeBlock(block)
                     board.deleteFullRow()
                 } else {
                     block.moveDown()
@@ -120,20 +119,13 @@ class GameLogicController: NSObject {
         }
     }
     
-    func checkBlockUnderCollision() -> Bool {
-        if let block = self.block {
-            if board.isOverlappedAtPosition(block.lowPosition, block: block) == true {
-                return true
-            }
-        }
-        
-        return false
+    func checkBlockDownCollision(block: Block!) -> Bool {
+        return board.isOverlappedAtPosition(block.lowPosition, block: block)
     }
     
-    func immobilizeBlock() {
-        if let block = self.block {
-            board.immobilzeBlock(block)
-        }
+    func immobilizeBlock(block: Block!) {
+        board.immobilzeBlock(block)
+        self.block = nil
     }
     
     func sendDidUpdateIfNeeded() {

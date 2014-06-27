@@ -67,10 +67,8 @@ class Grid {
         grid.enumerateGrids { (x: Int, y: Int, value: Int, inout stop: Bool) in
             if value != 0 {
                 var px = position.x + x
-                var py = position.y - y
-                
-                println("\(px), \(py)")
-                
+                var py = position.y + y
+
                 if py < 0 || px < 0  || px >= self.width || py >= self.height {
                     overlapped = true
                 } else {
@@ -86,12 +84,12 @@ class Grid {
     }
     
     func compactRowOver(row: Int) {
-        for var y = row; y < (height - 1); y++ {
-            var rangeSrc = getRangeOfRow(y + 1)
+        for var y = row; y > 0; y-- {
+            var rangeSrc = getRangeOfRow(y - 1)
             var rangeDst = getRangeOfRow(y)
             buffer[rangeDst] = buffer[rangeSrc]
         }
-        replaceRow(height - 1, array: Array(count: width, repeatedValue:0))
+        replaceRow(0, array: Array(count: width, repeatedValue:0))
         println("\(buffer)")
     }
     
@@ -112,7 +110,7 @@ class Grid {
         var stop = false
         grid.enumerateGrids { (x: Int, y: Int, value: Int, inout stop: Bool) in
             var px = position.x + x
-            var py = position.y - y
+            var py = position.y + y
             
             if py >= 0 && value != 0 {
                 self[px, py] = value
