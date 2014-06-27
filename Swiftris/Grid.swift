@@ -34,6 +34,7 @@ class Grid {
         var stop = false
         for index in 0..size {
             let (x, y) = getPositionWithIndex(index)
+            
             closure(x: x, y: y, value: buffer[index], stop: &stop)
             
             if stop == true {
@@ -42,8 +43,9 @@ class Grid {
         }
     }
     
-    func enumerateRow(row: Int, closure: (x: Int, y: Int, value: Int, inout stop: Bool) -> ()) {
+    func enumerateRow(row: Int, closure: (x: Int, y: Int, value: Int, inout stop: Bool) -> ()) {    //  TODO : closure loop를 중단시키는 더 효율적인 방법은 없나?
         let range = getRangeOfRow(row)
+
         for index in range {
             var stop = false
             let (x, y) = getPositionWithIndex(index)
@@ -58,11 +60,10 @@ class Grid {
     
     func replaceRow(y: Int, array: Array<Int>) {
         assert(array.count == width)
-        let range = getRangeOfRow(y)
-        buffer[range] = array[0..array.count]
+        buffer[getRangeOfRow(y)] = array[0..array.count]
     }
     
-    func isOverlappedAtPosition(position: Point, grid: Grid) -> Bool {
+    func isOverlappedAtPosition(position: Point, grid: Grid) -> Bool {  //  TODO : 메소드 이름 변경, 로직 단순화
         var overlapped = false
         grid.enumerateGrids { (x: Int, y: Int, value: Int, inout stop: Bool) in
             if value != 0 {
@@ -83,17 +84,14 @@ class Grid {
         return overlapped
     }
     
-    func compactRowOver(row: Int) {
+    func compactRowOver(row: Int) {     //  TODO : 메모리 왕창 복사하면 안됨? 구간이 중복되면 데이터가 깨질려나?
         for var y = row; y > 0; y-- {
-            var rangeSrc = getRangeOfRow(y - 1)
-            var rangeDst = getRangeOfRow(y)
-            buffer[rangeDst] = buffer[rangeSrc]
+            buffer[getRangeOfRow(y)] = buffer[getRangeOfRow(y - 1)]
         }
         replaceRow(0, array: Array(count: width, repeatedValue:0))
-        println("\(buffer)")
     }
     
-    func isFullRow(row: Int) -> Bool {
+    func isFullRow(row: Int) -> Bool {  //  TODO : getRangeOfRow를 사용한 루프로 재구성
         var hasEmpty = false
 
         self.enumerateRow(row) { ( x: Int, y: Int, value: Int, inout stop: Bool) in
@@ -106,7 +104,7 @@ class Grid {
         return !hasEmpty
     }
     
-    func setValuesAtPosition(position: Point, grid: Grid) {
+    func setValuesAtPosition(position: Point, grid: Grid) { // TODO : 이름이 모호함
         var stop = false
         grid.enumerateGrids { (x: Int, y: Int, value: Int, inout stop: Bool) in
             var px = position.x + x
@@ -120,12 +118,12 @@ class Grid {
     
     subscript(x: Int, y: Int) -> Int {
         get {
-            assert(validateFor(x, y: y), "Index out of range")
+            assert(validateCoordinate(x, y: y), "Index out of range")
             return buffer[getIndexFrom(x, y: y)]
         }
         
         set {
-            assert(validateFor(x, y: y), "Index out of range")
+            assert(validateCoordinate(x, y: y), "Index out of range")
             buffer[getIndexFrom(x, y: y)] = newValue
         }
     }
@@ -153,7 +151,7 @@ class Grid {
         return (row * width)..(row * width) + width
     }
     
-    func validateFor(x: Int, y: Int) -> Bool {
+    func validateCoordinate(x: Int, y: Int) -> Bool {
         return x >= 0 && x < width && y >= 0 && y < height
     }
     
