@@ -18,6 +18,8 @@
 		2E494FD9195D20B500A7DF91 /* BlockE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB861B1194F1C5A0016D660 /* BlockE.swift */; };
 		2E494FDA195D20B700A7DF91 /* BlockF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB861B3194F1D0C0016D660 /* BlockF.swift */; };
 		2E494FDB195D20BA00A7DF91 /* BlockG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB861B5194F1DB70016D660 /* BlockG.swift */; };
+		2E494FE1195D2BF500A7DF91 /* BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E494FE0195D2BF500A7DF91 /* BoardTests.swift */; };
+		2E494FE2195D2D2600A7DF91 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E379A4A195433FC00F7D0A7 /* Board.swift */; };
 		2E49ED7D19594C63005C4E97 /* NSColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E49ED7C19594C63005C4E97 /* NSColorExtension.swift */; };
 		2E49ED801959CE48005C4E97 /* BlockExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E49ED7F1959CE48005C4E97 /* BlockExtensions.swift */; };
 		2E7EA07619508B9B00837BBE /* GameLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7EA07519508B9B00837BBE /* GameLogicController.swift */; };
@@ -53,6 +55,13 @@
 			remoteGlobalIDString = 2EF46ED01949CA4D000D3206;
 			remoteInfo = Swiftris;
 		};
+		2E494FDE195D232700A7DF91 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2EF46EC91949CA4D000D3206 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2EF46ED01949CA4D000D3206;
+			remoteInfo = Swiftris;
+		};
 		2EF46EE41949CA4D000D3206 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2EF46EC91949CA4D000D3206 /* Project object */;
@@ -65,6 +74,7 @@
 /* Begin PBXFileReference section */
 		2E2CE89C195AFA3500E900E6 /* GridTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridTests.swift; sourceTree = "<group>"; };
 		2E379A4A195433FC00F7D0A7 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		2E494FE0195D2BF500A7DF91 /* BoardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardTests.swift; sourceTree = "<group>"; };
 		2E49ED7C19594C63005C4E97 /* NSColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSColorExtension.swift; sourceTree = "<group>"; };
 		2E49ED7F1959CE48005C4E97 /* BlockExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockExtensions.swift; sourceTree = "<group>"; };
 		2E7EA07519508B9B00837BBE /* GameLogicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameLogicController.swift; sourceTree = "<group>"; };
@@ -171,6 +181,7 @@
 				2EF46EE91949CA4D000D3206 /* SwiftrisTests.swift */,
 				2E2CE89C195AFA3500E900E6 /* GridTests.swift */,
 				2E9FC13B195C648100BAE43E /* BlockTests.swift */,
+				2E494FE0195D2BF500A7DF91 /* BoardTests.swift */,
 				2EF46EE71949CA4D000D3206 /* Supporting Files */,
 			);
 			path = SwiftrisTests;
@@ -244,6 +255,7 @@
 			dependencies = (
 				2EF46EE51949CA4D000D3206 /* PBXTargetDependency */,
 				2E494FDD195D232700A7DF91 /* PBXTargetDependency */,
+				2E494FDF195D232700A7DF91 /* PBXTargetDependency */,
 			);
 			name = SwiftrisTests;
 			productName = SwiftrisTests;
@@ -264,7 +276,6 @@
 					};
 					2EF46EE21949CA4D000D3206 = {
 						CreatedOnToolsVersion = 6.0;
-						TestTargetID = 2EF46ED01949CA4D000D3206;
 					};
 				};
 			};
@@ -349,8 +360,10 @@
 				2EF46F051949DEC2000D3206 /* Block.swift in Sources */,
 				2E494FDB195D20BA00A7DF91 /* BlockG.swift in Sources */,
 				2E494FD4195D209400A7DF91 /* BlockExtensions.swift in Sources */,
+				2E494FE1195D2BF500A7DF91 /* BoardTests.swift in Sources */,
 				2E494FD7195D20B000A7DF91 /* BlockC.swift in Sources */,
 				2E2CE89E195AFB6200E900E6 /* Grid.swift in Sources */,
+				2E494FE2195D2D2600A7DF91 /* Board.swift in Sources */,
 				2E2CE89D195AFA3500E900E6 /* GridTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,6 +375,11 @@
 			isa = PBXTargetDependency;
 			target = 2EF46ED01949CA4D000D3206 /* Swiftris */;
 			targetProxy = 2E494FDC195D232700A7DF91 /* PBXContainerItemProxy */;
+		};
+		2E494FDF195D232700A7DF91 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2EF46ED01949CA4D000D3206 /* Swiftris */;
+			targetProxy = 2E494FDE195D232700A7DF91 /* PBXContainerItemProxy */;
 		};
 		2EF46EE51949CA4D000D3206 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -484,7 +502,6 @@
 		2EF46EF11949CA4D000D3206 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Swiftris.app/Contents/MacOS/Swiftris";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -499,14 +516,12 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Debug;
 		};
 		2EF46EF21949CA4D000D3206 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Swiftris.app/Contents/MacOS/Swiftris";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -517,7 +532,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Release;
 		};
