@@ -18,44 +18,27 @@ let BKRightKeyCode: CUnsignedShort = 124
 
 class MainViewController: NSViewController, KeyboardEventDelegate, BoardViewDataSource, LogicControllerDelegate {
     
-    var boardView = BoardView(frame: NSRect(x: 10, y: 10, width: 100, height: 100))
-    var logicController = GameLogicController()
-
     init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 
         logicController.delegate = self
-        
-        println("MainViewController init(nibName, bundle)")
+        boardView.dataSource = self
     }
 
     init(coder: NSCoder!) {
         super.init(coder: coder)
 
         logicController.delegate = self
-        
-        println("MainViewController init(coder)")
+        boardView.dataSource = self
     }
 
     override func loadView() {
         super.loadView()
         
-        println("MainViewController loadView")
-        self.view.autoresizingMask = (NSAutoresizingMaskOptions.ViewWidthSizable | NSAutoresizingMaskOptions.ViewHeightSizable)
-        
-        var view = self.view as MainView
+        let view = self.view as MainView
+        view.autoresizingMask = (NSAutoresizingMaskOptions.ViewWidthSizable | NSAutoresizingMaskOptions.ViewHeightSizable)
         view.delegate = self
-        
-        boardView.dataSource = self
         view.addSubview(boardView)
-        boardView.setNeedsDisplayInRect(boardView.bounds)
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //  TODO : 이거 왜 안불리지?
-        println("MainViewController viewDidLoad")
     }
 
     /*
@@ -90,5 +73,11 @@ class MainViewController: NSViewController, KeyboardEventDelegate, BoardViewData
     func logicControllerDidUpdate(logicController: GameLogicController) {
         self.boardView.setNeedsDisplayInRect(boardView.bounds)
     }
+
+    /*
+     *  Privates
+     */
+    let boardView = BoardView(frame: NSRect(x: 10, y: 10, width: 100, height: 100))
+    let logicController = GameLogicController()
 
 }

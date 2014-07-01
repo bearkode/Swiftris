@@ -38,7 +38,7 @@ class Board {
     }
     
     func immobilzeBlock(block: Block) {
-        grid.setValuesAtPosition(block.position, grid: block.currentGrid)
+        grid.copyGrid(block.currentGrid, position: block.position)
         dirty = true
     }
     

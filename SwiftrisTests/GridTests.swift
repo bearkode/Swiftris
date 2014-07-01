@@ -19,7 +19,27 @@ class GridTests: XCTestCase {
     override func tearDown() {
         super.tearDown()
     }
-    
+
+    func testEnumerateGrid() {
+        let grid = Grid(width: 3, height: 3, array: [1, 1, 1, 2, 2, 2, 3, 3, 3])
+        
+        grid.enumerateGrid(3...5) { (point: Point, value: Int, inout stop: Bool) in
+            XCTAssertTrue(point.y == 1, "")
+            XCTAssertTrue(value == 2, "")
+        }
+    }
+
+    func testEnumerateRow() {
+        var grid = Grid(width: 3, height: 3, array: [1, 1, 1, 2, 2, 2, 3, 3, 3])
+        
+        XCTAssertNotNil(grid, "")
+        
+        grid.enumerateRow(1) { (point: Point, value: Int, inout stop: Bool) in
+            XCTAssertTrue(point.y == 1, "")
+            XCTAssertTrue(value == 2, "")
+        }
+    }
+
     func testReplaceRow() {
         var grid = Grid(width: 3, height: 3)
         
@@ -29,17 +49,6 @@ class GridTests: XCTestCase {
         XCTAssertTrue(grid[0, 1] == 2, "")
         XCTAssertTrue(grid[1, 1] == 3, "")
         XCTAssertTrue(grid[2, 1] == 4, "")
-    }
-    
-    func testEnumerateRow() {
-        var grid = Grid(width: 3, height: 3, array: [1, 1, 1, 2, 2, 2, 3, 3, 3])
-        
-        XCTAssertNotNil(grid, "")
-        
-        grid.enumerateRow(1) { (x: Int, y: Int, value: Int, inout stop: Bool) in
-            XCTAssertTrue(y == 1, "")
-            XCTAssertTrue(value == 2, "")
-        }
     }
     
     func testIsOverlappedAtPosition() {
@@ -54,7 +63,35 @@ class GridTests: XCTestCase {
         XCTAssertFalse(grid1.isOverlappedAtPosition(Point(x: 1, y: 2), grid: grid2), "")
         XCTAssertTrue(grid1.isOverlappedAtPosition(Point(x: 1, y: 3), grid: grid2), "")
         XCTAssertTrue(grid1.isOverlappedAtPosition(Point(x: 0, y: 2), grid: grid2), "")
+        XCTAssertTrue(grid1.isOverlappedAtPosition(Point(x: 3, y: 4), grid: grid2), "")
 
     }
     
+    func testCompactRowOver() {
+    
+    }
+    
+    func testIsFullRow() {
+    
+    }
+    
+    func testCopyGrid() {
+    
+    }
+    
+    func testSubscript() {
+    
+    }
+    
+    func testGetRangeOfRow() {
+    
+    }
+    
+    func testGetIndexFrom() {
+    
+    }
+    
+    func testGetPositionWithIndex() {
+    
+    }
 }

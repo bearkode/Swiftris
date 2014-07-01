@@ -33,10 +33,6 @@ class BoardView: NSView {
         }
     }
     
-    init(frame frameRect: NSRect) {
-        super.init(frame: frameRect)
-    }
-    
     func reload() {
         updateGridSize()
         updateCellSize()

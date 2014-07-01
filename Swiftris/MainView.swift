@@ -10,6 +10,10 @@
 import AppKit
 
 
+/*
+ *  Can't use @class_protocol. if use @class_protocol, may crash when using optional chaining.
+ *  It looks like a bug.
+ */
 protocol KeyboardEventDelegate {
     
     func eventOnView(view: NSView, didKeyDown keyCode: CUnsignedShort)
@@ -19,15 +23,7 @@ protocol KeyboardEventDelegate {
 
 class MainView: NSView {
     
-    var delegate: KeyboardEventDelegate?
-
-    init(frame: NSRect) {
-        super.init(frame: frame)
-    }
-
-    init(coder: NSCoder!) {
-        super.init(coder: coder)
-    }
+    var delegate: KeyboardEventDelegate?    /*  Can't use weak. It looks like a bug.  */
 
     override var acceptsFirstResponder: Bool {
         get {
@@ -38,11 +34,8 @@ class MainView: NSView {
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
         
-        var backgroundColor = NSColor(calibratedRed: 1.0, green: 0.5, blue: 0.5, alpha: 1.0)
-        var bezierPath      = NSBezierPath(rect: self.bounds)
-        
-        backgroundColor.setFill()
-        bezierPath.fill()
+        NSColor(calibratedRed: 1.0, green: 0.5, blue: 0.5, alpha: 1.0).setFill()
+        NSBezierPath(rect: self.bounds).fill()
     }
 
     override func keyDown(theEvent: NSEvent!) {

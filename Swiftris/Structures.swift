@@ -15,8 +15,8 @@ struct Point {
     var x: Int = 0
     var y: Int = 0
     
-    init() {
-
+    init () {
+    
     }
     
     init(x: Int, y: Int) {
@@ -24,11 +24,6 @@ struct Point {
         self.y = y
     }
     
-}
-
-
-@infix func == (left: Point, right: Point) -> Bool {
-    return (left.x == right.x) && (left.y == right.y)
 }
 
 
@@ -43,8 +38,8 @@ struct GridSize : Printable {
         }
     }
     
-    init() {
-
+    init () {
+    
     }
     
     init(width: Int, height: Int) {
@@ -64,4 +59,19 @@ struct GridSize : Printable {
         return (index % width, index / width)
     }
 
+}
+
+
+@infix func == (left: Point, right: Point) -> Bool {
+    return (left.x == right.x) && (left.y == right.y)
+}
+
+
+@infix func + (left: Point, right: Point) -> Point {
+    return Point(x: (left.x + right.x), y: (left.y + right.y))
+}
+
+
+@infix func == (left: GridSize, right: GridSize) -> Bool {
+    return (left.width == right.width) && (left.height == right.height)
 }

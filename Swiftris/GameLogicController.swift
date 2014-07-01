@@ -21,17 +21,6 @@ protocol LogicControllerDelegate {
 class GameLogicController: NSObject {
     
     var delegate: LogicControllerDelegate?
-    var board = Board(size: GridSize(width: 10, height: 20))
-    var timer: NSTimer?
-    var block: Block?
-    let dropCountForLevel = 5
-    var dropCount: Int = 0
-    
-    var boardGridSize: GridSize {
-        get {
-            return board.gridSize
-        }
-    }
     
     init () {
         super.init()
@@ -130,9 +119,7 @@ class GameLogicController: NSObject {
     
     func sendDidUpdateIfNeeded() {
         if isDirtyStatus() {
-            if let delegate = self.delegate? {
-                delegate.logicControllerDidUpdate(self)
-            }
+            delegate?.logicControllerDidUpdate(self)
         }
     }
     
@@ -148,6 +135,22 @@ class GameLogicController: NSObject {
         }
         
         return false
+    }
+    
+    /*
+     *  Privates
+     */
+    
+    var board = Board(size: GridSize(width: 10, height: 20))
+    var timer: NSTimer?
+    var block: Block?
+    let dropCountForLevel = 5
+    var dropCount: Int = 0
+    
+    var boardGridSize: GridSize {
+        get {
+            return board.gridSize
+        }
     }
 
 }

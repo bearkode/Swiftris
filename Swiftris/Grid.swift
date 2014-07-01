@@ -22,35 +22,20 @@ class Grid {
         buffer[0..count] = array[0..count]
     }
 
-    convenience init() {
-        self.init(width: 0, height: 0, array: [])
-    }
-    
     convenience init(width: Int, height: Int) {
         self.init(width: width, height: height, array: [])
     }
     
-    func enumerateGrids(closure: (x: Int, y: Int, value: Int, inout stop: Bool) -> ()) {
-        var stop = false
-        for index in 0..size {
-            let (x, y) = getPositionWithIndex(index)
-            
-            closure(x: x, y: y, value: buffer[index], stop: &stop)
-            
-            if stop == true {
-                break
-            }
-        }
+    func enumerateGrid(closure: (point:Point, value: Int, inout stop: Bool) -> ()) {
+        enumerateGrid(0..size, closure)
     }
     
-    func enumerateRow(row: Int, closure: (x: Int, y: Int, value: Int, inout stop: Bool) -> ()) {    //  TODO : closure loop를 중단시키는 더 효율적인 방법은 없나?
-        let range = getRangeOfRow(row)
-
+    func enumerateGrid(range: Range<Int>, closure: (point: Point, value: Int, inout stop: Bool) -> ()) {
         for index in range {
-            var stop = false
             let (x, y) = getPositionWithIndex(index)
+            var stop = false
             
-            closure(x: x, y: y, value: buffer[index], stop: &stop)
+            closure(point: Point(x: x, y: y), value: buffer[index], stop: &stop)
             
             if stop == true {
                 break;
@@ -58,57 +43,56 @@ class Grid {
         }
     }
     
-    func replaceRow(y: Int, array: Array<Int>) {
+    func enumerateRow(row: Int, closure: (point: Point, value: Int, inout stop: Bool) -> ()) {
+        enumerateGrid(getRangeOfRow(row), closure)
+    }
+    
+    func replaceRow(row: Int, array: Array<Int>) {
         assert(array.count == width)
-        buffer[getRangeOfRow(y)] = array[0..array.count]
+        buffer[getRangeOfRow(row)] = array[0..array.count]
     }
     
     func isOverlappedAtPosition(position: Point, grid: Grid) -> Bool {  //  TODO : 메소드 이름 변경, 로직 단순화
         var overlapped = false
-        grid.enumerateGrids { (x: Int, y: Int, value: Int, inout stop: Bool) in
+        
+        grid.enumerateGrid { (point: Point, value: Int, inout stop: Bool) in
             if value != 0 {
-                var px = position.x + x
-                var py = position.y + y
-
-                if py < 0 || px < 0  || px >= self.width || py >= self.height {
-                    overlapped = true
+                let gridPoint = position + point
+                
+                if self.validateCoordinate(gridPoint) {
+                    overlapped = (self[gridPoint] != 0) ? true : false
                 } else {
-                    if self[px, py] != 0 {
-                        overlapped = true
-                        stop = true
-                    }
+                    overlapped = true
                 }
+                
+                stop = overlapped
             }
         }
         
         return overlapped
     }
     
-    func compactRowOver(row: Int) {     //  TODO : 메모리 왕창 복사하면 안됨? 구간이 중복되면 데이터가 깨질려나?
+    func compactRowOver(row: Int) {
         for var y = row; y > 0; y-- {
             buffer[getRangeOfRow(y)] = buffer[getRangeOfRow(y - 1)]
         }
         replaceRow(0, array: Array(count: width, repeatedValue:0))
     }
     
-    func isFullRow(row: Int) -> Bool {  //  TODO : getRangeOfRow를 사용한 루프로 재구성
-        var hasEmpty = false
-
-        self.enumerateRow(row) { ( x: Int, y: Int, value: Int, inout stop: Bool) in
-            if value == 0 {
-                hasEmpty = true
-                stop = true
+    func isFullRow(row: Int) -> Bool {
+        for index in getRangeOfRow(row) {
+            if buffer[index] == 0 {
+                return false
             }
         }
         
-        return !hasEmpty
+        return true;
     }
     
-    func setValuesAtPosition(position: Point, grid: Grid) { // TODO : 이름이 모호함
-        var stop = false
-        grid.enumerateGrids { (x: Int, y: Int, value: Int, inout stop: Bool) in
-            var px = position.x + x
-            var py = position.y + y
+    func copyGrid(grid: Grid, position: Point) {
+        grid.enumerateGrid { (point: Point, value: Int, inout stop: Bool) in
+            var px = point.x + position.x
+            var py = point.y + position.y
             
             if py >= 0 && value != 0 {
                 self[px, py] = value
@@ -118,12 +102,11 @@ class Grid {
     
     subscript(x: Int, y: Int) -> Int {
         get {
-            assert(validateCoordinate(x, y: y), "Index out of range")
+            assert(validateCoordinate(Point(x: x, y: y)), "Index out of range")
             return buffer[getIndexFrom(x, y: y)]
         }
-        
         set {
-            assert(validateCoordinate(x, y: y), "Index out of range")
+            assert(validateCoordinate(Point(x: x, y: y)), "Index out of range")
             buffer[getIndexFrom(x, y: y)] = newValue
         }
     }
@@ -132,7 +115,6 @@ class Grid {
         get {
             return self[position.x, position.y]
         }
-        
         set {
             self[position.x, position.y] = newValue
         }
@@ -151,8 +133,8 @@ class Grid {
         return (row * width)..(row * width) + width
     }
     
-    func validateCoordinate(x: Int, y: Int) -> Bool {
-        return x >= 0 && x < width && y >= 0 && y < height
+    func validateCoordinate(point: Point) -> Bool {
+        return point.x >= 0 && point.x < width && point.y >= 0 && point.y < height
     }
     
     func getIndexFrom(x: Int, y: Int) -> Int {

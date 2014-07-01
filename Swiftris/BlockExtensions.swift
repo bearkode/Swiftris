@@ -12,7 +12,7 @@ import Foundation
 
 extension Block {
 
-    class func randomBlock() -> Block {
+    class func randomBlock() -> Block! {
         switch Int(arc4random() % 7) {
         case 0:
             return BlockA()

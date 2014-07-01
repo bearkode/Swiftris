@@ -89,9 +89,9 @@ class Block : Printable {
     
     func debugPrint() {
         var oldY = 0
-        currentGrid.enumerateGrids { (x, y, value, stop) in
-            if oldY != y {
-                oldY = y
+        currentGrid.enumerateGrid { (point, value, stop) in
+            if oldY != point.y {
+                oldY = point.y
                 print("\n")
             }
             print("\(value) ");
