@@ -47,7 +47,7 @@ class Board {
         
         while compacted == true {
             compacted = false
-            for var y = grid.height - 1; y >= 0; y-- {
+            for var y = grid.gridSize.height - 1; y >= 0; y-- {
                 if grid.isFullRow(y) {
                     grid.compactRowOver(y)
                     compacted = true

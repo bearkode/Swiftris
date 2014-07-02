@@ -28,7 +28,7 @@ class GridTests: XCTestCase {
             XCTAssertTrue(value == 2, "")
         }
     }
-
+    
     func testEnumerateRow() {
         var grid = Grid(width: 3, height: 3, array: [1, 1, 1, 2, 2, 2, 3, 3, 3])
         
@@ -64,7 +64,6 @@ class GridTests: XCTestCase {
         XCTAssertTrue(grid1.isOverlappedAtPosition(Point(x: 1, y: 3), grid: grid2), "")
         XCTAssertTrue(grid1.isOverlappedAtPosition(Point(x: 0, y: 2), grid: grid2), "")
         XCTAssertTrue(grid1.isOverlappedAtPosition(Point(x: 3, y: 4), grid: grid2), "")
-
     }
     
     func testCompactRowOver() {
@@ -76,14 +75,32 @@ class GridTests: XCTestCase {
     }
     
     func testCopyGrid() {
-    
+        var grid1 = Grid(width: 5, height: 5, array: [0, 0, 0, 0, 0,
+                                                      0, 0, 0, 0, 0,
+                                                      0, 0, 0, 0, 0,
+                                                      0, 1, 0, 0, 0,
+                                                      0, 1, 1, 0, 0])
+        var grid2 = Grid(width: 2, height: 2, array: [3, 3, 3, 3])
+        
+        grid1.copyGrid(grid2, position: Point(x: 3, y: 1))
+        XCTAssertTrue(grid1[3, 1] == 3, "");
+        XCTAssertTrue(grid1[4, 1] == 3, "");
+        XCTAssertTrue(grid1[3, 2] == 3, "");
+        XCTAssertTrue(grid1[4, 2] == 3, "");
+        XCTAssertTrue(grid1[4, 3] != 3, "");
+        XCTAssertTrue(grid1[2, 1] != 3, "");
     }
+    
     
     func testSubscript() {
     
     }
     
     func testGetRangeOfRow() {
+    
+    }
+    
+    func testValidateCoordinate() {
     
     }
     
@@ -94,4 +111,5 @@ class GridTests: XCTestCase {
     func testGetPositionWithIndex() {
     
     }
+
 }

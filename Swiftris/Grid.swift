@@ -11,11 +11,10 @@ import Foundation
 
 
 class Grid {
-
+    
     init(width: Int, height: Int, array: Int[]) {
-        self.width = width
-        self.height = height
-        self.size = width * height
+        self.gridSize = GridSize(width: width, height: height)
+        self.size = gridSize.width * gridSize.height
         self.buffer = Array(count: self.size, repeatedValue: 0)
         
         let count = array.count
@@ -32,10 +31,9 @@ class Grid {
     
     func enumerateGrid(range: Range<Int>, closure: (point: Point, value: Int, inout stop: Bool) -> ()) {
         for index in range {
-            let (x, y) = getPositionWithIndex(index)
             var stop = false
             
-            closure(point: Point(x: x, y: y), value: buffer[index], stop: &stop)
+            closure(point: getPositionOfIndex(index), value: buffer[index], stop: &stop)
             
             if stop == true {
                 break;
@@ -48,7 +46,7 @@ class Grid {
     }
     
     func replaceRow(row: Int, array: Array<Int>) {
-        assert(array.count == width)
+        assert(array.count == gridSize.width)
         buffer[getRangeOfRow(row)] = array[0..array.count]
     }
     
@@ -59,7 +57,7 @@ class Grid {
             if value != 0 {
                 let gridPoint = position + point
                 
-                if self.validateCoordinate(gridPoint) {
+                if self.validatePosition(gridPoint) {
                     overlapped = (self[gridPoint] != 0) ? true : false
                 } else {
                     overlapped = true
@@ -76,7 +74,7 @@ class Grid {
         for var y = row; y > 0; y-- {
             buffer[getRangeOfRow(y)] = buffer[getRangeOfRow(y - 1)]
         }
-        replaceRow(0, array: Array(count: width, repeatedValue:0))
+        replaceRow(0, array: Array(count: gridSize.width, repeatedValue:0))
     }
     
     func isFullRow(row: Int) -> Bool {
@@ -91,58 +89,55 @@ class Grid {
     
     func copyGrid(grid: Grid, position: Point) {
         grid.enumerateGrid { (point: Point, value: Int, inout stop: Bool) in
-            var px = point.x + position.x
-            var py = point.y + position.y
+            let gridPoint = point + position
             
-            if py >= 0 && value != 0 {
-                self[px, py] = value
+            if gridPoint.y >= 0 && value != 0 {
+                self[gridPoint] = value
             }
         }
     }
     
     subscript(x: Int, y: Int) -> Int {
         get {
-            assert(validateCoordinate(Point(x: x, y: y)), "Index out of range")
-            return buffer[getIndexFrom(x, y: y)]
+            return self[Point(x: x, y: y)]
         }
         set {
-            assert(validateCoordinate(Point(x: x, y: y)), "Index out of range")
-            buffer[getIndexFrom(x, y: y)] = newValue
+            self[Point(x: x, y: y)] = newValue
         }
     }
     
     subscript(position: Point) -> Int {
         get {
-            return self[position.x, position.y]
+            assert(validatePosition(position), "Index out of range")
+            return buffer[getIndexOfPosition(position)]
         }
         set {
-            self[position.x, position.y] = newValue
+            assert(validatePosition(position), "Index out of range")
+            buffer[getIndexOfPosition(position)] = newValue
         }
     }
-    
+
     /*
      *      Privates
      */
-    
-    let width: Int
-    let height: Int
+    let gridSize: GridSize
     let size: Int
     var buffer: Int[]
 
     func getRangeOfRow(row: Int) -> Range<Int> {
-        return (row * width)..(row * width) + width
+        return (row * gridSize.width)..(row * gridSize.width) + gridSize.width
     }
     
-    func validateCoordinate(point: Point) -> Bool {
-        return point.x >= 0 && point.x < width && point.y >= 0 && point.y < height
+    func validatePosition(point: Point) -> Bool {
+        return point.x >= 0 && point.x < gridSize.width && point.y >= 0 && point.y < gridSize.height
     }
     
-    func getIndexFrom(x: Int, y: Int) -> Int {
-        return y * width + x
+    func getIndexOfPosition(position: Point) -> Int {
+        return position.y * gridSize.width + position.x
     }
     
-    func getPositionWithIndex(index: Int) -> (x: Int, y: Int) {
-        return (index % width, index / width)
+    func getPositionOfIndex(index: Int) -> Point {
+        return Point(x: (index % gridSize.width), y: (index / gridSize.width))
     }
-    
+
 }

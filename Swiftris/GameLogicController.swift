@@ -53,9 +53,7 @@ class GameLogicController: NSObject {
     }
     
     func bottomArrowDown() {
-        if let block = self.block {
-        
-        }
+
     }
     
     func colorIndexAtPosition(position: Point) -> Int {

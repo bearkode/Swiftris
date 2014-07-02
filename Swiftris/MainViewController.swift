@@ -45,7 +45,6 @@ class MainViewController: NSViewController, KeyboardEventDelegate, BoardViewData
      *  For Protocol
      */
     func eventOnView(view: NSView, didKeyDown keyCode: CUnsignedShort) {
-
         let keyCodeDict = [
             BKUpKeyCode : logicController.upArrowDown,
             BKRightKeyCode : logicController.rightArrowDown,

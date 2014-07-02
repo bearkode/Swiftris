@@ -74,9 +74,9 @@ class Block : Printable {
     
     func containsPosition(position: Point) -> Bool {
         return (position.x >= self.position.x &&
-                position.x < self.position.x + currentGrid.width &&
+                position.x < self.position.x + currentGrid.gridSize.width &&
                 position.y >= self.position.y &&
-                position.y < self.position.y + currentGrid.height)
+                position.y < self.position.y + currentGrid.gridSize.height)
     }
 
     func valueAtPosition(position: Point) -> Int {
