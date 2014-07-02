@@ -58,18 +58,15 @@ class Block : Printable {
     }
     
     func moveDown() {
-        position.y++
-        dirty = true
+        position = self.lowPosition;
     }
 
     func moveLeft() {
-        position.x--
-        dirty = true
+        position = self.leftPosition;
     }
     
     func moveRight() {
-        position.x++
-        dirty = true
+        position = self.rightPosition
     }
     
     func isTimeToDrop() -> Bool {
@@ -114,8 +111,16 @@ class Block : Printable {
      *      Privates
      */
     var grids: Grid[] = Array()
-    var position = Point()
-    var currentGrid = Grid(width: 4, height: 4)
+    var position: Point = Point() {
+        didSet {
+            dirty = true;
+        }
+    }
+    var currentGrid: Grid = Grid(width: 4, height: 4) {
+        didSet {
+            dirty = true;
+        }
+    }
     var rotateIndex = 0
     let dropCountForLevel = 5
     var dropCount = 0
@@ -136,7 +141,6 @@ class Block : Printable {
     
     func updateCurrentGrid() {
         currentGrid = grids[rotateIndex]
-        dirty = true
     }
 
     func blockPositionFromPosition(position: Point) -> Point {

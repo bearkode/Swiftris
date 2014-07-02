@@ -59,7 +59,7 @@ class GameLogicController: NSObject {
     func colorIndexAtPosition(position: Point) -> Int {
         if let block = self.block {
             if block.containsPosition(position) {
-                var value = block.valueAtPosition(position)
+                let value = block.valueAtPosition(position)
                 if value != 0 {
                     return value
                 }
@@ -76,16 +76,11 @@ class GameLogicController: NSObject {
     }
     
     func generateBlockIfNeeded() {
-        if self.block != nil {
-            return
-        }
-        
-        self.block = Block.randomBlock()
-        
-        if let block = self.block {
-            block.position = Point(x: 3, y: 0)
+        if block == nil {
+            block = Block.randomBlock()
+            block!.position = Point(x: 3, y: 0)
             
-            if board.isOverlappedAtPosition(block.position, block: block) {
+            if board.isOverlappedAtPosition(block!.position, block: block!) {
                 println("Game Over")
             }
         }
