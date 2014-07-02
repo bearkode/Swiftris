@@ -12,10 +12,12 @@ import Foundation
 
 class Grid {
     
+    let gridSize: GridSize
+    var buffer: Int[]
+    
     init(width: Int, height: Int, array: Int[]) {
         self.gridSize = GridSize(width: width, height: height)
-        self.size = gridSize.width * gridSize.height
-        self.buffer = Array(count: self.size, repeatedValue: 0)
+        self.buffer = Array(count: width * height, repeatedValue: 0)
         
         let count = array.count
         buffer[0..count] = array[0..count]
@@ -26,14 +28,14 @@ class Grid {
     }
     
     func enumerateGrid(closure: (point:Point, value: Int, inout stop: Bool) -> ()) {
-        enumerateGrid(0..size, closure)
+        enumerateGrid(gridSize.indexRange, closure)
     }
     
     func enumerateGrid(range: Range<Int>, closure: (point: Point, value: Int, inout stop: Bool) -> ()) {
         for index in range {
             var stop = false
             
-            closure(point: getPositionOfIndex(index), value: buffer[index], stop: &stop)
+            closure(point: gridSize.getPositionOfIndex(index), value: buffer[index], stop: &stop)
             
             if stop == true {
                 break;
@@ -42,12 +44,12 @@ class Grid {
     }
     
     func enumerateRow(row: Int, closure: (point: Point, value: Int, inout stop: Bool) -> ()) {
-        enumerateGrid(getRangeOfRow(row), closure)
+        enumerateGrid(gridSize.getRangeOfRow(row), closure)
     }
     
     func replaceRow(row: Int, array: Array<Int>) {
         assert(array.count == gridSize.width)
-        buffer[getRangeOfRow(row)] = array[0..array.count]
+        buffer[gridSize.getRangeOfRow(row)] = array[0..array.count]
     }
     
     func isOverlappedAtPosition(position: Point, grid: Grid) -> Bool {  //  TODO : 메소드 이름 변경, 로직 단순화
@@ -57,7 +59,7 @@ class Grid {
             if value != 0 {
                 let gridPoint = position + point
                 
-                if self.validatePosition(gridPoint) {
+                if self.gridSize.validatePosition(gridPoint) {
                     overlapped = (self[gridPoint] != 0) ? true : false
                 } else {
                     overlapped = true
@@ -72,13 +74,13 @@ class Grid {
     
     func compactRowOver(row: Int) {
         for var y = row; y > 0; y-- {
-            buffer[getRangeOfRow(y)] = buffer[getRangeOfRow(y - 1)]
+            buffer[gridSize.getRangeOfRow(y)] = buffer[gridSize.getRangeOfRow(y - 1)]
         }
         replaceRow(0, array: Array(count: gridSize.width, repeatedValue:0))
     }
     
     func isFullRow(row: Int) -> Bool {
-        for index in getRangeOfRow(row) {
+        for index in gridSize.getRangeOfRow(row) {
             if buffer[index] == 0 {
                 return false
             }
@@ -108,36 +110,13 @@ class Grid {
     
     subscript(position: Point) -> Int {
         get {
-            assert(validatePosition(position), "Index out of range")
-            return buffer[getIndexOfPosition(position)]
+            assert(gridSize.validatePosition(position), "Index out of range")
+            return buffer[gridSize.getIndexOfPosition(position)]
         }
         set {
-            assert(validatePosition(position), "Index out of range")
-            buffer[getIndexOfPosition(position)] = newValue
+            assert(gridSize.validatePosition(position), "Index out of range")
+            buffer[gridSize.getIndexOfPosition(position)] = newValue
         }
-    }
-
-    /*
-     *      Privates
-     */
-    let gridSize: GridSize
-    let size: Int
-    var buffer: Int[]
-
-    func getRangeOfRow(row: Int) -> Range<Int> {
-        return (row * gridSize.width)..(row * gridSize.width) + gridSize.width
-    }
-    
-    func validatePosition(point: Point) -> Bool {
-        return point.x >= 0 && point.x < gridSize.width && point.y >= 0 && point.y < gridSize.height
-    }
-    
-    func getIndexOfPosition(position: Point) -> Int {
-        return position.y * gridSize.width + position.x
-    }
-    
-    func getPositionOfIndex(index: Int) -> Point {
-        return Point(x: (index % gridSize.width), y: (index / gridSize.width))
     }
 
 }

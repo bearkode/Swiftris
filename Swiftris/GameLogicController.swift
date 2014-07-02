@@ -138,7 +138,6 @@ class GameLogicController: NSObject {
     /*
      *  Privates
      */
-    
     var board = Board(size: GridSize(width: 10, height: 20))
     var timer: NSTimer?
     var block: Block?

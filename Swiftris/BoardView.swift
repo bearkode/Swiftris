@@ -67,7 +67,7 @@ class BoardView: NSView {
     }
     
     func updateFrameSize() {
-        var frameSize = getFrameSizeWithGridSize(gridSize, cellSize: cellSize)
+        let frameSize = getFrameSizeWithGridSize(gridSize, cellSize: cellSize)
         setFrameSize(frameSize)
     }
     
@@ -90,8 +90,8 @@ class BoardView: NSView {
     }
 
     func drawCellAtPosition(position: Point, colorIndex: Int) {
-        var point = displayPointFromGridPosition(position)
-        var color = NSColor.colorWithIndex(colorIndex)
+        let point = displayPointFromGridPosition(position)
+        let color = NSColor.colorWithIndex(colorIndex)
         
         drawCellAtPoint(point, color: color)
     }
