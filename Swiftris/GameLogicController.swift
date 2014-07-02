@@ -84,7 +84,6 @@ class GameLogicController: NSObject {
         
         if let block = self.block {
             block.position = Point(x: 3, y: 0)
-            dropCount = dropCountForLevel
             
             if board.isOverlappedAtPosition(block.position, block: block) {
                 println("Game Over")
@@ -94,13 +93,12 @@ class GameLogicController: NSObject {
     
     func dropBlock() {
         if let block = self.block {
-            if dropCount-- < 0 {
+            if block.isTimeToDrop() {
                 if checkBlockDownCollision(block) {
                     immobilizeBlock(block)
                     board.deleteFullRow()
                 } else {
                     block.moveDown()
-                    dropCount = dropCountForLevel
                 }
             }
         }
@@ -141,8 +139,6 @@ class GameLogicController: NSObject {
     var board = Board(size: GridSize(width: 10, height: 20))
     var timer: NSTimer?
     var block: Block?
-    let dropCountForLevel = 5
-    var dropCount: Int = 0
     
     var boardGridSize: GridSize {
         get {

@@ -38,14 +38,14 @@ class Block : Printable {
     
     var nextGrid: Grid {
         get {
-            var nextIndex = nextRotateIndex()
-            return grids[nextIndex]
+            return grids[nextRotateIndex()]
         }
     }
 
     init() {
         generateTemplate()
         updateCurrentGrid()
+        dropCount = dropCountForLevel
     }
     
     func generateTemplate() {
@@ -70,6 +70,17 @@ class Block : Printable {
     func moveRight() {
         position.x++
         dirty = true
+    }
+    
+    func isTimeToDrop() -> Bool {
+        var result = false
+        
+        if dropCount-- < 0 {
+            dropCount = dropCountForLevel
+            result = true
+        }
+        
+        return result
     }
     
     func containsPosition(position: Point) -> Bool {
@@ -106,6 +117,8 @@ class Block : Printable {
     var position = Point()
     var currentGrid = Grid(width: 4, height: 4)
     var rotateIndex = 0
+    let dropCountForLevel = 5
+    var dropCount = 0
     var dirty = true
     
     func appendTemplate(grid: Grid) {
@@ -129,4 +142,5 @@ class Block : Printable {
     func blockPositionFromPosition(position: Point) -> Point {
         return Point(x: (position.x - self.position.x), y: (position.y - self.position.y))
     }
+    
 }
