@@ -10,14 +10,13 @@
 import Foundation
 
 
-let blockClasses: Block.Type[] = [BlockA.self, BlockB.self, BlockC.self, BlockD.self, BlockE.self, BlockF.self, BlockG.self];
+let globalBlockTypes: Block.Type[] = [BlockA.self, BlockB.self, BlockC.self, BlockD.self, BlockE.self, BlockF.self, BlockG.self];
 
 
 extension Block {
 
     class func randomBlock() -> Block! {
-        let blockClass = blockClasses[Int(arc4random() % 7)]
-        return blockClass()
+        return globalBlockTypes[Int(arc4random() % 7)]()
     }
 
 }
