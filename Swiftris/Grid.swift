@@ -30,21 +30,16 @@ class Grid {
     func enumerateGrid(closure: (point:Point, value: Int, inout stop: Bool) -> ()) {
         enumerateGrid(gridSize.indexRange, closure)
     }
-    
-    func enumerateGrid(range: Range<Int>, closure: (point: Point, value: Int, inout stop: Bool) -> ()) {
-        for index in range {
-            var stop = false
-            
-            closure(point: gridSize.getPositionOfIndex(index), value: buffer[index], stop: &stop)
-            
-            if stop == true {
-                break;
-            }
-        }
-    }
-    
+
     func enumerateRow(row: Int, closure: (point: Point, value: Int, inout stop: Bool) -> ()) {
         enumerateGrid(gridSize.getRangeOfRow(row), closure)
+    }
+
+    func enumerateGrid(range: Range<Int>, closure: (point: Point, value: Int, inout stop: Bool) -> ()) {
+        var stop = false
+        for var index = range.startIndex; index < range.endIndex && !stop; index++ {
+            closure(point: gridSize.getPositionOfIndex(index), value: buffer[index], stop: &stop)
+        }
     }
     
     func replaceRow(row: Int, array: Array<Int>) {
@@ -52,24 +47,20 @@ class Grid {
         buffer[gridSize.getRangeOfRow(row)] = array[0..array.count]
     }
     
-    func isOverlappedAtPosition(position: Point, grid: Grid) -> Bool {  //  TODO : 메소드 이름 변경, 로직 단순화
+    func isOverlappedGrid(grid: Grid, position: Point) -> Bool {
         var overlapped = false
         
         grid.enumerateGrid { (point: Point, value: Int, inout stop: Bool) in
-            if value != 0 {
-                let gridPoint = position + point
-                
-                if self.gridSize.validatePosition(gridPoint) {
-                    overlapped = (self[gridPoint] != 0) ? true : false
-                } else {
-                    overlapped = true
-                }
-                
-                stop = overlapped
+            if value.exist && self.valueAtPosition(position + point).exist {
+                (overlapped, stop) = (true, true)
             }
         }
         
         return overlapped
+    }
+    
+    func valueAtPosition(position: Point) -> Int {
+        return gridSize.validatePosition(position) ? self[position] : Int.max
     }
     
     func compactRowOver(row: Int) {

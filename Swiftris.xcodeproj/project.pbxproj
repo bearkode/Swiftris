@@ -22,6 +22,8 @@
 		2E494FE2195D2D2600A7DF91 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E379A4A195433FC00F7D0A7 /* Board.swift */; };
 		2E49ED7D19594C63005C4E97 /* NSColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E49ED7C19594C63005C4E97 /* NSColorExtension.swift */; };
 		2E49ED801959CE48005C4E97 /* BlockExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E49ED7F1959CE48005C4E97 /* BlockExtensions.swift */; };
+		2E79B1311965A1DC00B5486F /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E79B1301965A1DC00B5486F /* IntExtension.swift */; };
+		2E79B1321965A1DC00B5486F /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E79B1301965A1DC00B5486F /* IntExtension.swift */; };
 		2E7EA07619508B9B00837BBE /* GameLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7EA07519508B9B00837BBE /* GameLogicController.swift */; };
 		2E9FC13C195C648100BAE43E /* BlockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9FC13B195C648100BAE43E /* BlockTests.swift */; };
 		2EA0D7EB1951C9C9008DB5D2 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA0D7EA1951C9C9008DB5D2 /* Grid.swift */; };
@@ -79,6 +81,7 @@
 		2E494FE0195D2BF500A7DF91 /* BoardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardTests.swift; sourceTree = "<group>"; };
 		2E49ED7C19594C63005C4E97 /* NSColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSColorExtension.swift; sourceTree = "<group>"; };
 		2E49ED7F1959CE48005C4E97 /* BlockExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockExtensions.swift; sourceTree = "<group>"; };
+		2E79B1301965A1DC00B5486F /* IntExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
 		2E7EA07519508B9B00837BBE /* GameLogicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameLogicController.swift; sourceTree = "<group>"; };
 		2E9FC13B195C648100BAE43E /* BlockTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockTests.swift; sourceTree = "<group>"; };
 		2EA0D7EA1951C9C9008DB5D2 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
@@ -130,6 +133,7 @@
 			children = (
 				2E49ED7C19594C63005C4E97 /* NSColorExtension.swift */,
 				2E49ED7F1959CE48005C4E97 /* BlockExtensions.swift */,
+				2E79B1301965A1DC00B5486F /* IntExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -329,6 +333,7 @@
 			files = (
 				2E49ED7D19594C63005C4E97 /* NSColorExtension.swift in Sources */,
 				2E379A4B195433FC00F7D0A7 /* Board.swift in Sources */,
+				2E79B1311965A1DC00B5486F /* IntExtension.swift in Sources */,
 				2EB861B0194EAE7B0016D660 /* BlockD.swift in Sources */,
 				2E49ED801959CE48005C4E97 /* BlockExtensions.swift in Sources */,
 				2EF46F041949DEC2000D3206 /* Block.swift in Sources */,
@@ -359,6 +364,7 @@
 				2EBACFCF1963C87F00FAAA40 /* GridSize.swift in Sources */,
 				2E494FD9195D20B500A7DF91 /* BlockE.swift in Sources */,
 				2E494FDA195D20B700A7DF91 /* BlockF.swift in Sources */,
+				2E79B1321965A1DC00B5486F /* IntExtension.swift in Sources */,
 				2E494FD6195D20AE00A7DF91 /* BlockB.swift in Sources */,
 				2E494FD8195D20B300A7DF91 /* BlockD.swift in Sources */,
 				2E494FD5195D20AC00A7DF91 /* BlockA.swift in Sources */,

@@ -60,10 +60,10 @@ class GridTests: XCTestCase {
         var grid2 = Grid(width: 2, height: 2, array: [1, 1,
                                                       0, 1])
 
-        XCTAssertFalse(grid1.isOverlappedAtPosition(Point(x: 1, y: 2), grid: grid2), "")
-        XCTAssertTrue(grid1.isOverlappedAtPosition(Point(x: 1, y: 3), grid: grid2), "")
-        XCTAssertTrue(grid1.isOverlappedAtPosition(Point(x: 0, y: 2), grid: grid2), "")
-        XCTAssertTrue(grid1.isOverlappedAtPosition(Point(x: 3, y: 4), grid: grid2), "")
+        XCTAssertFalse(grid1.isOverlappedGrid(grid2, position: Point(x: 1, y: 2)), "")
+        XCTAssertTrue(grid1.isOverlappedGrid(grid2, position: Point(x: 1, y: 3)), "")
+        XCTAssertTrue(grid1.isOverlappedGrid(grid2, position: Point(x: 0, y: 2)), "")
+        XCTAssertTrue(grid1.isOverlappedGrid(grid2, position: Point(x: 3, y: 4)), "")
     }
     
     func testCompactRowOver() {

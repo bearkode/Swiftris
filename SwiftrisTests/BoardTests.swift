@@ -25,13 +25,13 @@ class BoardTests: XCTestCase {
         var block = BlockA()
         
         block.position = Point(x: 0, y: 6)
-        XCTAssertTrue(board.isOverlappedAtPosition(block.lowPosition, block: block) == false, "")
+        XCTAssertTrue(board.isOverlappedAtPosition(block.position.downPoint, block: block) == false, "")
         block.position = Point(x: 0, y: 7)
-        XCTAssertTrue(board.isOverlappedAtPosition(block.lowPosition, block: block) == false, "")
+        XCTAssertTrue(board.isOverlappedAtPosition(block.position.downPoint, block: block) == false, "")
         block.position = Point(x: 0, y: 8)
-        XCTAssertTrue(board.isOverlappedAtPosition(block.lowPosition, block: block) == true, "")
+        XCTAssertTrue(board.isOverlappedAtPosition(block.position.downPoint, block: block) == true, "")
         block.position = Point(x: 0, y: 9)
-        XCTAssertTrue(board.isOverlappedAtPosition(block.lowPosition, block: block) == true, "")
+        XCTAssertTrue(board.isOverlappedAtPosition(block.position.downPoint, block: block) == true, "")
     }
 
 }
