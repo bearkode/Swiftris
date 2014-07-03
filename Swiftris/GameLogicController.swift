@@ -37,7 +37,7 @@ class GameLogicController: NSObject {
 
     func leftArrowDown() {
         if let block = self.block {
-            if board.isPossiblePosition(block.position.leftPoint, block: block) {
+            if board.isPossiblePosition(block.position.leftPoint, block: block) {   // TODO : avoid message chain
                 block.moveLeft()
             }
         }
@@ -45,7 +45,7 @@ class GameLogicController: NSObject {
 
     func rightArrowDown() {
         if let block = self.block {
-            if board.isPossiblePosition(block.position.rightPoint, block: block) {
+            if board.isPossiblePosition(block.position.rightPoint, block: block) {  // TODO : avoid message chain
                 block.moveRight()
             }
         }
@@ -55,7 +55,7 @@ class GameLogicController: NSObject {
 
     }
     
-    func colorIndexAtPosition(position: Point) -> Int {
+    func colorIndexAtPosition(position: Point) -> Int { //  TODO : blockAtPosition
         if let block = self.block {
             if block.containsPosition(position) {
                 let value = block.valueAtPosition(position)
@@ -72,16 +72,13 @@ class GameLogicController: NSObject {
         generateBlockIfNeeded()
         dropBlock()
         sendDidUpdateIfNeeded()
+        checkGameOver()
     }
     
     func generateBlockIfNeeded() {
-        if block == nil {
+        if !block {
             block = Block.randomBlock()
             block!.position = Point(x: 3, y: 0)
-            
-            if board.isOverlappedAtPosition(block!.position, block: block!) {
-                println("Game Over")
-            }
         }
     }
     
@@ -99,7 +96,7 @@ class GameLogicController: NSObject {
     }
     
     func checkBlockDownCollision(block: Block!) -> Bool {
-        return board.isOverlappedAtPosition(block.position.downPoint, block: block)
+        return board.isOverlappedAtPosition(block.position.downPoint, block: block) //  TODO : avoid message chain
     }
     
     func immobilizeBlock(block: Block!) {
@@ -110,6 +107,14 @@ class GameLogicController: NSObject {
     func sendDidUpdateIfNeeded() {
         if isDirtyStatus() {
             delegate?.logicControllerDidUpdate(self)
+        }
+    }
+    
+    func checkGameOver() {
+        if let block = self.block {
+            if board.isOverlappedAtPosition(block.position, block: block) {
+                println("Game Over")
+            }
         }
     }
     
@@ -136,7 +141,7 @@ class GameLogicController: NSObject {
     
     var boardGridSize: GridSize {
         get {
-            return board.grid.gridSize
+            return board.grid.gridSize  // TODO : avoid message chain
         }
     }
 

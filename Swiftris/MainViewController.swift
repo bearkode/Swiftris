@@ -70,7 +70,7 @@ class MainViewController: NSViewController, KeyboardEventDelegate, BoardViewData
     }
     
     func logicControllerDidUpdate(logicController: GameLogicController) {
-        self.boardView.setNeedsDisplayInRect(boardView.bounds)
+        boardView.setNeedsDisplayInRect(boardView.bounds)
     }
 
     /*

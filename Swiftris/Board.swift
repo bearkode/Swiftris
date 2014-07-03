@@ -41,16 +41,11 @@ class Board {
     }
     
     func deleteFullRow() {
-        var compacted = true
-        
-        while compacted == true {
-            compacted = false
-            for var y = grid.gridSize.height - 1; y >= 0; y-- {
-                if grid.isFullRow(y) {
-                    grid.compactRowOver(y)
-                    compacted = true
-                    y++
-                }
+        for i in (grid.gridSize.height - 1...0).by(-1) {
+            if grid.isFullRow(i) {  //  TODO : grid.findFullRow() grid.compactRowOver(), deleteFullRow()
+                grid.compactRowOver(i)
+                deleteFullRow()
+                break;
             }
         }
     }

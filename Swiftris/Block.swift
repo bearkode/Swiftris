@@ -66,7 +66,7 @@ class Block : Printable {
         return (position.x >= self.position.x &&
                 position.x < self.position.x + currentGrid.gridSize.width &&
                 position.y >= self.position.y &&
-                position.y < self.position.y + currentGrid.gridSize.height)
+                position.y < self.position.y + currentGrid.gridSize.height) //  TODO : avoid message chain
     }
 
     func valueAtPosition(position: Point) -> Int {
