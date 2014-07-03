@@ -19,7 +19,7 @@ class BlockD: Block {
     override func generateTemplate() {
         super.generateTemplate()
         
-        var c = 4
+        let c = 4
 
         appendTemplate(Grid(width: 4, height: 4, array: [0, c, c, 0,
                                                          0, c, 0, 0,
