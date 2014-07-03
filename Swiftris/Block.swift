@@ -42,7 +42,7 @@ class Block : Printable {
         }
     }
 
-    init() {
+    @required init() {
         generateTemplate()
         updateCurrentGrid()
         dropCount = dropCountForLevel

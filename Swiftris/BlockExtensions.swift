@@ -10,27 +10,14 @@
 import Foundation
 
 
+let blockClasses: Block.Type[] = [BlockA.self, BlockB.self, BlockC.self, BlockD.self, BlockE.self, BlockF.self, BlockG.self];
+
+
 extension Block {
 
     class func randomBlock() -> Block! {
-        switch Int(arc4random() % 7) {
-        case 0:
-            return BlockA()
-        case 1:
-            return BlockB()
-        case 2:
-            return BlockC()
-        case 3:
-            return BlockD()
-        case 4:
-            return BlockE()
-        case 5:
-            return BlockF()
-        case 6:
-            return BlockG()
-        default:
-            return BlockA()
-        }
+        let blockClass = blockClasses[Int(arc4random() % 7)]
+        return blockClass()
     }
 
 }
