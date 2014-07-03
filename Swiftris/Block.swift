@@ -18,24 +18,6 @@ class Block : Printable {
         }
     }
     
-    var leftPosition: Point {
-        get {
-            return Point(x: position.x - 1, y: position.y)
-        }
-    }
-    
-    var rightPosition: Point {
-        get {
-            return Point(x: position.x + 1, y: position.y)
-        }
-    }
-    
-    var lowPosition: Point {
-        get {
-            return Point(x: position.x, y: position.y + 1)
-        }
-    }
-    
     var nextGrid: Grid {
         get {
             return grids[nextRotateIndex()]
@@ -58,15 +40,15 @@ class Block : Printable {
     }
     
     func moveDown() {
-        position = self.lowPosition;
+        position = position.downPoint;
     }
 
     func moveLeft() {
-        position = self.leftPosition;
+        position = position.leftPoint;
     }
     
     func moveRight() {
-        position = self.rightPosition
+        position = position.rightPoint
     }
     
     func isTimeToDrop() -> Bool {

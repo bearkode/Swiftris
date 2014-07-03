@@ -13,12 +13,10 @@ import Foundation
 class Board {
     
     var grid: Grid
-    var gridSize: GridSize
     var dirty = true
 
     init(size boardSize: GridSize) {
         self.grid = Grid(width: boardSize.width, height: boardSize.height)
-        self.gridSize = boardSize
     }
     
     func valueAtPosition(position: Point) -> Int {

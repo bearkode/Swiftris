@@ -17,7 +17,6 @@ protocol LogicControllerDelegate {
 }
 
 
-/*  NSObject를 상속받지 않으면 NSTimer의 target으로 설정할 수 없음  */
 class GameLogicController: NSObject {
     
     var delegate: LogicControllerDelegate?
@@ -38,7 +37,7 @@ class GameLogicController: NSObject {
 
     func leftArrowDown() {
         if let block = self.block {
-            if board.isPossiblePosition(block.leftPosition, block: block) {
+            if board.isPossiblePosition(block.position.leftPoint, block: block) {
                 block.moveLeft()
             }
         }
@@ -46,7 +45,7 @@ class GameLogicController: NSObject {
 
     func rightArrowDown() {
         if let block = self.block {
-            if board.isPossiblePosition(block.rightPosition, block: block) {
+            if board.isPossiblePosition(block.position.rightPoint, block: block) {
                 block.moveRight()
             }
         }
@@ -100,7 +99,7 @@ class GameLogicController: NSObject {
     }
     
     func checkBlockDownCollision(block: Block!) -> Bool {
-        return board.isOverlappedAtPosition(block.lowPosition, block: block)
+        return board.isOverlappedAtPosition(block.position.downPoint, block: block)
     }
     
     func immobilizeBlock(block: Block!) {
@@ -137,7 +136,7 @@ class GameLogicController: NSObject {
     
     var boardGridSize: GridSize {
         get {
-            return board.gridSize
+            return board.grid.gridSize
         }
     }
 

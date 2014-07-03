@@ -14,6 +14,24 @@ struct Point {
     
     var x: Int = 0
     var y: Int = 0
+
+    var leftPoint: Point {
+        get {
+            return Point(x: x - 1, y: y)
+        }
+    }
+    
+    var rightPoint: Point {
+        get {
+            return Point(x: x + 1, y: y)
+        }
+    }
+    
+    var downPoint: Point {
+        get {
+            return Point(x: x, y: y + 1)
+        }
+    }
     
     init () {
         
