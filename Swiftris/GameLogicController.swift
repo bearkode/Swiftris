@@ -11,16 +11,19 @@ import Foundation
 
 
 protocol LogicControllerDelegate {
-
     func logicControllerDidUpdate(logicController: GameLogicController)
-    
 }
 
 
 class GameLogicController: NSObject {
     
     var delegate: LogicControllerDelegate?
-    
+    var boardGridSize: GridSize {
+        get {
+            return board.grid.gridSize  // TODO : avoid message chain
+        }
+    }
+
     init () {
         super.init()
 
@@ -55,24 +58,33 @@ class GameLogicController: NSObject {
 
     }
     
-    func colorIndexAtPosition(position: Point) -> Int { //  TODO : blockAtPosition
-        if let block = self.block {
-            if block.containsPosition(position) {
-                let value = block.valueAtPosition(position)
-                if value != 0 {
-                    return value
-                }
+    func colorIndexAtPosition(position: Point) -> Int {
+        if let value = block?.valueAtPosition(position) {
+            if value != 0 {
+                return value
             }
         }
         
         return board.valueAtPosition(position)
     }
     
+    /*
+     *  Privates
+     */
+    var board = Board(size: GridSize(width: 10, height: 20))
+    var block: Block?
+    var timer: NSTimer?
+
     func timerFired() {
-        generateBlockIfNeeded()
-        dropBlock()
+        if let block = self.block {
+            if block.isTimeToDrop() {
+                dropBlock(block)
+            }
+        } else {
+            generateBlockIfNeeded()
+            checkGameOver()
+        }
         sendDidUpdateIfNeeded()
-        checkGameOver()
     }
     
     func generateBlockIfNeeded() {
@@ -82,21 +94,13 @@ class GameLogicController: NSObject {
         }
     }
     
-    func dropBlock() {
-        if let block = self.block {
-            if block.isTimeToDrop() {
-                if checkBlockDownCollision(block) {
-                    immobilizeBlock(block)
-                    board.deleteFullRow()
-                } else {
-                    block.moveDown()
-                }
-            }
+    func dropBlock(block: Block!) {
+        if checkBlockDownCollision(block) {
+            immobilizeBlock(block)
+            deleteFullRow()
+        } else {
+            moveDownBlock(block)
         }
-    }
-    
-    func checkBlockDownCollision(block: Block!) -> Bool {
-        return board.isOverlappedAtPosition(block.position.downPoint, block: block) //  TODO : avoid message chain
     }
     
     func immobilizeBlock(block: Block!) {
@@ -104,10 +108,30 @@ class GameLogicController: NSObject {
         self.block = nil
     }
     
+    func deleteFullRow() {
+        board.deleteFullRow()
+    }
+    
+    func moveDownBlock(block: Block!) {
+        block.moveDown()
+    }
+    
     func sendDidUpdateIfNeeded() {
-        if isDirtyStatus() {
+        if isDirty() {
             delegate?.logicControllerDidUpdate(self)
+            resetDirty()
         }
+    }
+
+    func isDirty() -> Bool {
+        return (board.dirty || block?.dirty)
+    }
+    
+    func resetDirty() {
+        if let block = self.block {
+            block.dirty = false;
+        }
+        board.dirty = false
     }
     
     func checkGameOver() {
@@ -117,32 +141,9 @@ class GameLogicController: NSObject {
             }
         }
     }
-    
-    func isDirtyStatus() -> Bool {
-        if block?.dirty == true {
-            block!.dirty = false
-            return true
-        }
 
-        if board.dirty == true {
-            board.dirty = false
-            return true
-        }
-        
-        return false
+    func checkBlockDownCollision(block: Block!) -> Bool {
+        return board.isOverlappedAtPosition(block.position.downPoint, block: block) //  TODO : avoid message chain
     }
     
-    /*
-     *  Privates
-     */
-    var board = Board(size: GridSize(width: 10, height: 20))
-    var timer: NSTimer?
-    var block: Block?
-    
-    var boardGridSize: GridSize {
-        get {
-            return board.grid.gridSize  // TODO : avoid message chain
-        }
-    }
-
 }
