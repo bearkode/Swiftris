@@ -91,7 +91,7 @@ class BoardView: NSView {
 
     func drawCellAtPosition(position: Point, colorIndex: Int) {
         let point = displayPointFromGridPosition(position)
-        let color = NSColor.colorWithIndex(colorIndex)
+        let color = NSColor.colorForIndex(colorIndex)
         
         drawCellAtPoint(point, color: color)
     }

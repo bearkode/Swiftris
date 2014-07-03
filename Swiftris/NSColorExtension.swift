@@ -29,7 +29,7 @@ extension NSColor {
         return NSColor(calibratedRed: redComponent * factor, green: greenComponent * factor, blue: blueComponent * factor, alpha: alphaComponent)
     }
     
-    class func colorWithIndex(index: Int) -> NSColor! {
+    class func colorForIndex(index: Int) -> NSColor! {
         if let result = globalColorDict[index] {
             return result
         } else {
