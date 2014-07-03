@@ -10,15 +10,13 @@
 import Foundation
 
 
-struct GridSize : Printable {
+struct GridSize {
     
     var width: Int = 0
     var height: Int = 0
-    var indexRange: Range<Int> = 0..0
-    
-    var description: String {
+    var indexRange: Range<Int> {
         get {
-            return "GridSize = \(width), \(height)"
+            return 0..(width * height)
         }
     }
     
@@ -29,13 +27,11 @@ struct GridSize : Printable {
     init(width: Int, height: Int) {
         self.width = width
         self.height = height
-        self.indexRange = 0..(width * height)
     }
     
     func enumerateGrids(closure: (position: Point) -> ()) {
         for index in indexRange {
-            let position = getPositionOfIndex(index)
-            closure(position: position)
+            closure(position: getPositionOfIndex(index))
         }
     }
     
@@ -61,3 +57,4 @@ struct GridSize : Printable {
 @infix func == (left: GridSize, right: GridSize) -> Bool {
     return (left.width == right.width) && (left.height == right.height)
 }
+
