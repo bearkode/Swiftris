@@ -16,7 +16,7 @@ struct GridSize {
     var height: Int = 0
     var indexRange: Range<Int> {
         get {
-            return 0..(width * height)
+            return 0..<(width * height)
         }
     }
     
@@ -48,13 +48,13 @@ struct GridSize {
     }
     
     func getRangeOfRow(row: Int) -> Range<Int> {
-        return (row * width)..((row * width) + width)
+        return (row * width)..<((row * width) + width)
     }
     
 }
 
 
-@infix func == (left: GridSize, right: GridSize) -> Bool {
+func == (left: GridSize, right: GridSize) -> Bool {
     return (left.width == right.width) && (left.height == right.height)
 }
 

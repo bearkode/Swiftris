@@ -12,7 +12,7 @@ import Foundation
 
 class BlockA: Block {
 
-    @required init()  {
+    required init()  {
         super.init()
     }
     

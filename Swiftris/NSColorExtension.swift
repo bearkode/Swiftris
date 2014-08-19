@@ -25,7 +25,7 @@ let globalColorDict: Dictionary<Int, NSColor> = [
 extension NSColor {
     
     func halftone() -> NSColor {
-        let factor = 0.5
+        let factor: CGFloat = 0.5
         return NSColor(calibratedRed: redComponent * factor, green: greenComponent * factor, blue: blueComponent * factor, alpha: alphaComponent)
     }
     

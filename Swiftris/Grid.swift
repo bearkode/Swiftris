@@ -13,14 +13,14 @@ import Foundation
 class Grid {
     
     let gridSize: GridSize
-    var buffer: Int[]
+    var buffer: [Int]
     
-    init(width: Int, height: Int, array: Int[]) {
+    init(width: Int, height: Int, array: [Int]) {
         self.gridSize = GridSize(width: width, height: height)
         self.buffer = Array(count: width * height, repeatedValue: 0)
         
         let count = array.count
-        buffer[0..count] = array[0..count]
+        buffer[0..<count] = array[0..<count]
     }
 
     convenience init(width: Int, height: Int) {
@@ -44,7 +44,7 @@ class Grid {
     
     func replaceRow(row: Int, array: Array<Int>) {
         assert(array.count == gridSize.width)
-        buffer[gridSize.getRangeOfRow(row)] = array[0..array.count]
+        buffer[gridSize.getRangeOfRow(row)] = array[0..<array.count]
     }
     
     func isOverlappedGrid(grid: Grid, position: Point) -> Bool {

@@ -41,7 +41,7 @@ class Board {
     }
     
     func deleteFullRow() {
-        for i in (grid.gridSize.height - 1...0).by(-1) {
+        for i in stride(from: grid.gridSize.height - 1, to: 0, by: -1.0) {
             if grid.isFullRow(i) {  //  TODO : grid.findFullRow() grid.compactRowOver(), deleteFullRow()
                 grid.compactRowOver(i)
                 deleteFullRow()

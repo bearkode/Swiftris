@@ -12,11 +12,11 @@ import Cocoa
 
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    @IBOutlet var window: NSWindow
+    @IBOutlet var window: NSWindow?
     
     var mainViewController: MainViewController?
 
-    init() {
+    override init() {
     
     }
 
@@ -32,12 +32,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         mainViewController = MainViewController(nibName: "MainViewController", bundle: NSBundle.mainBundle())
         
         if let mainView = mainViewController?.view {
-            let contentView = window.contentView as NSView
+            let contentView = window?.contentView as NSView
             
             contentView.addSubview(mainView)
             mainView.frame = contentView.bounds
             
-            window.makeFirstResponder(mainView)
+            window?.makeFirstResponder(mainView)
         }
     }
     

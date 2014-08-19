@@ -45,11 +45,11 @@ struct Point {
 }
 
 
-@infix func == (left: Point, right: Point) -> Bool {
+func == (left: Point, right: Point) -> Bool {
     return (left.x == right.x) && (left.y == right.y)
 }
 
 
-@infix func + (left: Point, right: Point) -> Point {
+func + (left: Point, right: Point) -> Point {
     return Point(x: (left.x + right.x), y: (left.y + right.y))
 }

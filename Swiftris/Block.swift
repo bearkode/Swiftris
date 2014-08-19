@@ -24,7 +24,7 @@ class Block : Printable {
         }
     }
 
-    @required init() {
+    required init() {
         generateTemplate()
         updateCurrentGrid()
         dropCount = dropCountForLevel
@@ -92,7 +92,7 @@ class Block : Printable {
     /*
      *      Privates
      */
-    var grids: Grid[] = Array()
+    var grids: [Grid] = Array()
     var position: Point = Point() {
         didSet {
             dirty = true;
@@ -109,7 +109,7 @@ class Block : Printable {
     var dirty = true
     
     func appendTemplate(grid: Grid) {
-        grids += grid
+        grids.append(grid)
     }
  
     func increaseRotateIndex() {

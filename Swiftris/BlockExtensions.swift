@@ -10,7 +10,7 @@
 import Foundation
 
 
-let globalBlockTypes: Block.Type[] = [BlockA.self, BlockB.self, BlockC.self, BlockD.self, BlockE.self, BlockF.self, BlockG.self];
+let globalBlockTypes: [Block.Type] = [BlockA.self, BlockB.self, BlockC.self, BlockD.self, BlockE.self, BlockF.self, BlockG.self];
 
 
 extension Block {

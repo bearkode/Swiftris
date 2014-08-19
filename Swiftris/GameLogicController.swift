@@ -24,7 +24,7 @@ class GameLogicController: NSObject {
         }
     }
 
-    init () {
+    override init () {
         super.init()
 
         self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0 / 30.0, target: self, selector: Selector("timerFired"), userInfo: nil, repeats: true)
@@ -88,7 +88,7 @@ class GameLogicController: NSObject {
     }
     
     func generateBlockIfNeeded() {
-        if !block {
+        if block == nil {
             block = Block.randomBlock()
             block!.position = Point(x: 3, y: 0)
         }
@@ -124,7 +124,13 @@ class GameLogicController: NSObject {
     }
 
     func isDirty() -> Bool {
-        return (board.dirty || block?.dirty)
+        if board.dirty {
+            return true;
+        } else if let block = self.block {
+            return block.dirty
+        } else {
+            return false;
+        }
     }
     
     func resetDirty() {
