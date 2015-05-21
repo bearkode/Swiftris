@@ -28,11 +28,11 @@ class Grid {
     }
     
     func enumerateGrid(closure: (point:Point, value: Int, inout stop: Bool) -> ()) {
-        enumerateGrid(gridSize.indexRange, closure)
+        enumerateGrid(gridSize.indexRange, closure: closure)
     }
 
     func enumerateRow(row: Int, closure: (point: Point, value: Int, inout stop: Bool) -> ()) {
-        enumerateGrid(gridSize.getRangeOfRow(row), closure)
+        enumerateGrid(gridSize.getRangeOfRow(row), closure: closure)
     }
 
     func enumerateGrid(range: Range<Int>, closure: (point: Point, value: Int, inout stop: Bool) -> ()) {

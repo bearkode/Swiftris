@@ -20,11 +20,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     }
 
-    func applicationDidFinishLaunching(aNotification: NSNotification?) {
+    func applicationDidFinishLaunching(aNotification: NSNotification) {
         setupMainViewController()
     }
 
-    func applicationWillTerminate(aNotification: NSNotification?) {
+    func applicationWillTerminate(aNotification: NSNotification) {
 
     }
     
@@ -32,7 +32,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         mainViewController = MainViewController(nibName: "MainViewController", bundle: NSBundle.mainBundle())
         
         if let mainView = mainViewController?.view {
-            let contentView = window?.contentView as NSView
+            let contentView = window?.contentView as! NSView
             
             contentView.addSubview(mainView)
             mainView.frame = contentView.bounds

@@ -35,7 +35,7 @@ class MainViewController: NSViewController, KeyboardEventDelegate, BoardViewData
     override func loadView() {
         super.loadView()
         
-        let view = self.view as MainView
+        let view = self.view as! MainView
         view.autoresizingMask = (NSAutoresizingMaskOptions.ViewWidthSizable | NSAutoresizingMaskOptions.ViewHeightSizable)
         view.delegate = self
         view.addSubview(boardView)

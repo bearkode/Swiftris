@@ -55,13 +55,13 @@ class BoardView: NSView {
     }
     
     func updateGridSize() {
-        if let dataSource = self.dataSource? {
+        if let dataSource = self.dataSource {
             gridSize = dataSource.getGridSizeOfBoardView(self)
         }
     }
     
     func updateCellSize() {
-        if let dataSource = self.dataSource? {
+        if let dataSource = self.dataSource {
             cellSize = dataSource.getCellSizeOfBoardView(self)
         }
     }
@@ -81,7 +81,7 @@ class BoardView: NSView {
     }
     
     func drawCells() {
-        if let dataSource = self.dataSource? {
+        if let dataSource = self.dataSource {
             gridSize.enumerateGrids { (position: Point) in
                 let colorIndex = dataSource.getColorIndexOfBoardView(self, position: position)
                 self.drawCellAtPosition(position, colorIndex: colorIndex)
