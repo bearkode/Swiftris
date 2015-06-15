@@ -10,11 +10,7 @@
 import AppKit
 
 
-/*
- *  Can't use @class_protocol. if use @class_protocol, may crash when using optional chaining.
- *  It looks like a bug.
- */
-protocol KeyboardEventDelegate {
+protocol KeyboardEventDelegate: class {
     
     func eventOnView(view: NSView, didKeyDown keyCode: CUnsignedShort)
 
@@ -23,7 +19,7 @@ protocol KeyboardEventDelegate {
 
 class MainView: NSView {
     
-    var delegate: KeyboardEventDelegate?    /*  Can't use weak. It looks like a bug.  */
+    weak var delegate: KeyboardEventDelegate?    /*  Can't use weak. It looks like a bug.  */
 
     override var acceptsFirstResponder: Bool {
         get {

@@ -10,14 +10,14 @@
 import Foundation
 
 
-protocol LogicControllerDelegate {
+protocol LogicControllerDelegate: class {
     func logicControllerDidUpdate(logicController: GameLogicController)
 }
 
 
 class GameLogicController: NSObject {
     
-    var delegate: LogicControllerDelegate?
+    weak var delegate: LogicControllerDelegate?
     var boardGridSize: GridSize {
         get {
             return board.grid.gridSize  // TODO : avoid message chain

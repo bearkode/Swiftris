@@ -10,7 +10,7 @@
 import Cocoa
 
 
-protocol BoardViewDataSource {
+protocol BoardViewDataSource: class {
 
     func getCellSizeOfBoardView(boardView: BoardView) -> CGSize!
     func getGridSizeOfBoardView(boardView: BoardView) -> GridSize!
@@ -21,7 +21,7 @@ protocol BoardViewDataSource {
 
 class BoardView: NSView {
     
-    var dataSource: BoardViewDataSource? {
+    weak var dataSource: BoardViewDataSource? {
         didSet {
             reload()
         }
