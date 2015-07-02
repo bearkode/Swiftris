@@ -20,14 +20,13 @@ class Block : CustomStringConvertible {
     
     var nextGrid: Grid {
         get {
-            return grids[nextRotateIndex()]
+            return self.grids[self.nextRotateIndex()]
         }
     }
 
     required init() {
-        generateTemplate()
-        updateCurrentGrid()
-        dropCount = dropCountForLevel
+        self.generateTemplate()
+        self.updateCurrentGrid()
     }
     
     func generateTemplate() {
@@ -35,8 +34,8 @@ class Block : CustomStringConvertible {
     }
     
     func turn() {
-        increaseRotateIndex()
-        updateCurrentGrid()
+        self.increaseRotateIndex()
+        self.updateCurrentGrid()
     }
     
     func moveDown() {
@@ -52,12 +51,7 @@ class Block : CustomStringConvertible {
     }
     
     func isTimeToDrop() -> Bool {
-        if dropCount-- < 0 {
-            dropCount = dropCountForLevel
-            return true
-        } else {
-            return false
-        }
+        return self.dropTimer.isTimeToDrop()
     }
     
     func containsPosition(position: Point) -> Bool {
@@ -68,8 +62,8 @@ class Block : CustomStringConvertible {
     }
 
     func valueAtPosition(position: Point) -> Int {
-        if containsPosition(position) {
-            return currentGrid[blockPositionFromPosition(position)]
+        if self.containsPosition(position) {
+            return self.currentGrid[blockPositionFromPosition(position)]
         } else {
             return 0
         }
@@ -77,7 +71,7 @@ class Block : CustomStringConvertible {
     
     func debugPrint() {
         var oldY = 0
-        currentGrid.enumerateGrid { (point, value, stop) in
+        self.currentGrid.enumerateGrid { (point, value, stop) in
             if oldY != point.y {
                 oldY = point.y
                 print("\n", appendNewline: false)
@@ -93,19 +87,18 @@ class Block : CustomStringConvertible {
 
     var position: Point = Point() {
         didSet {
-            dirty = true;
+            self.dirty = true;
         }
     }
     
     var currentGrid: Grid = Grid(width: 4, height: 4) {
         didSet {
-            dirty = true;
+            self.dirty = true;
         }
     }
     
     private var rotateIndex = 0
-    private let dropCountForLevel = 5
-    private var dropCount = 0
+    private var dropTimer = DropTimer()
     var dirty = true
     
     func appendTemplate(grid: Grid) {

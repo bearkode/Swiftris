@@ -49,6 +49,8 @@
 		2EF46F011949DB5D000D3206 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46F001949DB5D000D3206 /* MainView.swift */; };
 		2EF46F041949DEC2000D3206 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46F031949DEC2000D3206 /* Block.swift */; };
 		2EF46F051949DEC2000D3206 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46F031949DEC2000D3206 /* Block.swift */; };
+		55DC3B351B458D28003E717B /* DropTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC3B341B458D28003E717B /* DropTimer.swift */; };
+		55DC3B361B458D28003E717B /* DropTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC3B341B458D28003E717B /* DropTimer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +110,7 @@
 		2EF46EFD1949D4E2000D3206 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		2EF46F001949DB5D000D3206 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		2EF46F031949DEC2000D3206 /* Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
+		55DC3B341B458D28003E717B /* DropTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropTimer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +220,7 @@
 				2ECC2087196432270023733D /* Point.swift */,
 				2EBACFCD1963C87F00FAAA40 /* GridSize.swift */,
 				2EA0D7EA1951C9C9008DB5D2 /* Grid.swift */,
+				55DC3B341B458D28003E717B /* DropTimer.swift */,
 				2EF46F031949DEC2000D3206 /* Block.swift */,
 				2EB861A9194EAC560016D660 /* BlockA.swift */,
 				2EB861AB194EAD1C0016D660 /* BlockB.swift */,
@@ -344,6 +348,7 @@
 				2EB861AC194EAD1C0016D660 /* BlockB.swift in Sources */,
 				2EBACFCE1963C87F00FAAA40 /* GridSize.swift in Sources */,
 				2ECC2088196432270023733D /* Point.swift in Sources */,
+				55DC3B351B458D28003E717B /* DropTimer.swift in Sources */,
 				2EF46EFE1949D4E2000D3206 /* MainViewController.swift in Sources */,
 				2EF46ED71949CA4D000D3206 /* main.swift in Sources */,
 				2EB861AA194EAC560016D660 /* BlockA.swift in Sources */,
@@ -371,6 +376,7 @@
 				2E494FD5195D20AC00A7DF91 /* BlockA.swift in Sources */,
 				2EF46F051949DEC2000D3206 /* Block.swift in Sources */,
 				2E494FDB195D20BA00A7DF91 /* BlockG.swift in Sources */,
+				55DC3B361B458D28003E717B /* DropTimer.swift in Sources */,
 				2E494FD4195D209400A7DF91 /* Block+Extensions.swift in Sources */,
 				2E494FE1195D2BF500A7DF91 /* BoardTests.swift in Sources */,
 				2E494FD7195D20B000A7DF91 /* BlockC.swift in Sources */,

@@ -74,10 +74,8 @@ class GameLogicController: NSObject {
     var timer: NSTimer?
 
     func timerFired() {
-        if let block = self.block {
-            if block.isTimeToDrop() {
-                dropBlock(block)
-            }
+        if let block = self.block where block.isTimeToDrop() {
+            self.dropBlock(block)
         } else {
             generateBlockIfNeeded()
             checkGameOver()
