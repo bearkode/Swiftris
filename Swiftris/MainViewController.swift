@@ -35,10 +35,11 @@ class MainViewController: NSViewController, KeyboardEventDelegate, BoardViewData
     override func loadView() {
         super.loadView()
         
-        let view = self.view as! MainView
-        view.autoresizingMask = (NSAutoresizingMaskOptions.ViewWidthSizable | NSAutoresizingMaskOptions.ViewHeightSizable)
-        view.delegate = self
-        view.addSubview(boardView)
+        if let view = self.view as? MainView {
+            view.autoresizingMask = (NSAutoresizingMaskOptions.ViewWidthSizable | NSAutoresizingMaskOptions.ViewHeightSizable)
+            view.delegate = self
+            view.addSubview(boardView)
+        }
     }
 
     /*
@@ -57,15 +58,15 @@ class MainViewController: NSViewController, KeyboardEventDelegate, BoardViewData
         }
     }
     
-    func getCellSizeOfBoardView(boardView: BoardView) -> CGSize! {
+    func cellSizeOfBoardView(boardView: BoardView) -> CGSize {
         return CGSizeMake(20.0, 20.0)
     }
     
-    func getGridSizeOfBoardView(boardView: BoardView) -> GridSize! {
+    func gridSizeOfBoardView(boardView: BoardView) -> GridSize {
         return logicController.boardGridSize
     }
     
-    func getColorIndexOfBoardView(boardView: BoardView, position: Point) -> Int!  {
+    func colorIndexOfBoardView(boardView: BoardView, position: Point) -> Int {
         return logicController.colorIndexAtPosition(position)
     }
     

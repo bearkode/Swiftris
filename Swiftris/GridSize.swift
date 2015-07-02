@@ -12,26 +12,27 @@ import Foundation
 
 struct GridSize {
     
-    var width: Int = 0
-    var height: Int = 0
+    let width: Int
+    let height: Int
+
     var indexRange: Range<Int> {
         get {
             return 0..<(width * height)
         }
     }
     
-    init () {
-        
-    }
-    
     init(width: Int, height: Int) {
         self.width = width
         self.height = height
     }
-    
+
+    init () {
+        self.init(width: 0, height: 0)
+    }
+
     func enumerateGrids(closure: (position: Point) -> ()) {
         for index in indexRange {
-            closure(position: getPositionOfIndex(index))
+            closure(position: positionOfIndex(index))
         }
     }
     
@@ -39,15 +40,15 @@ struct GridSize {
         return position.x >= 0 && position.x < width && position.y >= 0 && position.y < height
     }
     
-    func getIndexOfPosition(position: Point) -> Int {
+    func indexOfPosition(position: Point) -> Int {
         return position.y * width + position.x
     }
     
-    func getPositionOfIndex(index: Int) -> Point {
+    func positionOfIndex(index: Int) -> Point {
         return Point(x: index % width, y: index / width)
     }
     
-    func getRangeOfRow(row: Int) -> Range<Int> {
+    func rangeOfRow(row: Int) -> Range<Int> {
         return (row * width)..<((row * width) + width)
     }
     

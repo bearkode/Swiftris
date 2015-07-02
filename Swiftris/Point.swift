@@ -32,9 +32,9 @@ struct Point {
             return Point(x: x, y: y + 1)
         }
     }
+
+    init() {
     
-    init () {
-        
     }
     
     init(x: Int, y: Int) {

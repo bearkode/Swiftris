@@ -14,11 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet var window: NSWindow?
     
-    var mainViewController: MainViewController?
-
-    override init() {
-    
-    }
+    let mainViewController = MainViewController(nibName: "MainViewController", bundle: NSBundle.mainBundle())
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         setupMainViewController()
@@ -29,11 +25,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func setupMainViewController() {
-        mainViewController = MainViewController(nibName: "MainViewController", bundle: NSBundle.mainBundle())
-        
-        if let mainView = mainViewController?.view {
-            let contentView = window?.contentView as! NSView
-            
+        if let mainView = mainViewController?.view,
+           let contentView = window?.contentView as? NSView {
             contentView.addSubview(mainView)
             mainView.frame = contentView.bounds
             

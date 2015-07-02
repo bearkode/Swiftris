@@ -59,10 +59,8 @@ class GameLogicController: NSObject {
     }
     
     func colorIndexAtPosition(position: Point) -> Int {
-        if let value = block?.valueAtPosition(position) {
-            if value != 0 {
-                return value
-            }
+        if let value = block?.valueAtPosition(position) where value != 0 {
+            return value
         }
         
         return board.valueAtPosition(position)
@@ -90,7 +88,7 @@ class GameLogicController: NSObject {
     func generateBlockIfNeeded() {
         if block == nil {
             block = Block.randomBlock()
-            block!.position = Point(x: 3, y: 0)
+            block?.position = Point(x: 3, y: 0)
         }
     }
     

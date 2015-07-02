@@ -19,7 +19,7 @@ protocol KeyboardEventDelegate: class {
 
 class MainView: NSView {
     
-    weak var delegate: KeyboardEventDelegate?    /*  Can't use weak. It looks like a bug.  */
+    weak var delegate: KeyboardEventDelegate?
 
     override var acceptsFirstResponder: Bool {
         get {

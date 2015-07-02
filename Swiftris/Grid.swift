@@ -32,19 +32,19 @@ class Grid {
     }
 
     func enumerateRow(row: Int, closure: (point: Point, value: Int, inout stop: Bool) -> ()) {
-        enumerateGrid(gridSize.getRangeOfRow(row), closure: closure)
+        enumerateGrid(gridSize.rangeOfRow(row), closure: closure)
     }
 
     func enumerateGrid(range: Range<Int>, closure: (point: Point, value: Int, inout stop: Bool) -> ()) {
         var stop = false
         for var index = range.startIndex; index < range.endIndex && !stop; index++ {
-            closure(point: gridSize.getPositionOfIndex(index), value: buffer[index], stop: &stop)
+            closure(point: gridSize.positionOfIndex(index), value: buffer[index], stop: &stop)
         }
     }
     
     func replaceRow(row: Int, array: Array<Int>) {
         assert(array.count == gridSize.width)
-        buffer[gridSize.getRangeOfRow(row)] = array[0..<array.count]
+        buffer[gridSize.rangeOfRow(row)] = array[0..<array.count]
     }
     
     func isOverlappedGrid(grid: Grid, position: Point) -> Bool {
@@ -65,13 +65,13 @@ class Grid {
     
     func compactRowOver(row: Int) {
         for var y = row; y > 0; y-- {
-            buffer[gridSize.getRangeOfRow(y)] = buffer[gridSize.getRangeOfRow(y - 1)]
+            buffer[gridSize.rangeOfRow(y)] = buffer[gridSize.rangeOfRow(y - 1)]
         }
         replaceRow(0, array: Array(count: gridSize.width, repeatedValue:0))
     }
     
     func isFullRow(row: Int) -> Bool {
-        for index in gridSize.getRangeOfRow(row) {
+        for index in gridSize.rangeOfRow(row) {
             if buffer[index] == 0 {
                 return false
             }
@@ -102,11 +102,11 @@ class Grid {
     subscript(position: Point) -> Int {
         get {
             assert(gridSize.validatePosition(position), "Index out of range")
-            return buffer[gridSize.getIndexOfPosition(position)]
+            return buffer[gridSize.indexOfPosition(position)]
         }
         set {
             assert(gridSize.validatePosition(position), "Index out of range")
-            buffer[gridSize.getIndexOfPosition(position)] = newValue
+            buffer[gridSize.indexOfPosition(position)] = newValue
         }
     }
 

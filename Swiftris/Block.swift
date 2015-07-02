@@ -52,14 +52,12 @@ class Block : Printable {
     }
     
     func isTimeToDrop() -> Bool {
-        var result = false
-        
         if dropCount-- < 0 {
             dropCount = dropCountForLevel
-            result = true
+            return true
+        } else {
+            return false
         }
-        
-        return result
     }
     
     func containsPosition(position: Point) -> Bool {
@@ -89,10 +87,10 @@ class Block : Printable {
         println(" ")
     }
     
-    /*
-     *      Privates
-     */
-    var grids: [Grid] = Array()
+    //  MARK: - Privates
+
+    private var grids: [Grid] = Array()
+
     var position: Point = Point() {
         didSet {
             dirty = true;
