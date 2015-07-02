@@ -34,7 +34,7 @@ class Block : CustomStringConvertible {
     }
     
     func turn() {
-        self.increaseRotateIndex()
+        self.rotateIndex = self.nextRotateIndex()
         self.updateCurrentGrid()
     }
     
@@ -63,7 +63,7 @@ class Block : CustomStringConvertible {
 
     func valueAtPosition(position: Point) -> Int {
         if self.containsPosition(position) {
-            return self.currentGrid[blockPositionFromPosition(position)]
+            return self.currentGrid[self.blockPositionFromPosition(position)]
         } else {
             return 0
         }
@@ -102,20 +102,15 @@ class Block : CustomStringConvertible {
     var dirty = true
     
     func appendTemplate(grid: Grid) {
-        grids.append(grid)
+        self.grids.append(grid)
     }
  
-    func increaseRotateIndex() {
-        rotateIndex = nextRotateIndex()
-    }
-
-    func nextRotateIndex() -> Int {
-        let result = rotateIndex - 1
-        return result < 0 ? (grids.count - 1) : result
+    private func nextRotateIndex() -> Int {
+        return (self.rotateIndex - 1) < 0 ? (self.grids.count - 1) : (self.rotateIndex - 1)
     }
     
     func updateCurrentGrid() {
-        currentGrid = grids[rotateIndex]
+        self.currentGrid = self.grids[rotateIndex]
     }
 
     func blockPositionFromPosition(position: Point) -> Point {
