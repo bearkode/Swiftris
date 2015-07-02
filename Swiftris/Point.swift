@@ -2,7 +2,7 @@
  *  Point.swift
  *  Swiftris
  *
- *  Created by cgkim on 2014. 7. 2..
+ *  Created by bearkode on 2014. 7. 2..
  *  Copyright (c) 2014 bearkode. All rights reserved.
  *
  */

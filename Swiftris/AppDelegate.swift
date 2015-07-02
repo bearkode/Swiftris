@@ -25,13 +25,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func setupMainViewController() {
-        if let mainView = mainViewController?.view,
-           let contentView = window?.contentView {
-            contentView.addSubview(mainView)
-            mainView.frame = contentView.bounds
-            
-            window?.makeFirstResponder(mainView)
+        guard let mainView = mainViewController?.view,
+              let window = self.window else {
+            return
         }
+        
+        window.contentView.addSubview(mainView)
+        mainView.frame = window.contentView.bounds
+        window.makeFirstResponder(mainView)
     }
     
 }

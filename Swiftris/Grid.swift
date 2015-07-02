@@ -13,36 +13,49 @@ import Foundation
 class Grid {
     
     let gridSize: GridSize
-    var buffer: [Int]
+    
+    var width: Int {
+        get {
+            return self.gridSize.width
+        }
+    }
+    
+    var height: Int {
+        get {
+            return self.gridSize.height
+        }
+    }
+    
+    private var buffer: [Int]
     
     init(width: Int, height: Int, array: [Int]) {
         self.gridSize = GridSize(width: width, height: height)
         self.buffer = Array(count: width * height, repeatedValue: 0)
         
         let count = array.count
-        buffer[0..<count] = array[0..<count]
+        self.buffer[0..<count] = array[0..<count]
     }
 
     convenience init(width: Int, height: Int) {
-        self.init(width: width, height: height, array: [])
+        self.init(width: width, height: height, array: Array(count: width * height, repeatedValue:0))
     }
     
-    func enumerateGrid(closure: (point:Point, value: Int, inout stop: Bool) -> ()) {
+    func enumerateGrid(closure: (point:Point, value: Int, inout stop: Bool) -> Void) {
         enumerateGrid(gridSize.indexRange, closure: closure)
     }
 
-    func enumerateRow(row: Int, closure: (point: Point, value: Int, inout stop: Bool) -> ()) {
+    func enumerateRow(row: Int, closure: (point: Point, value: Int, inout stop: Bool) -> Void) {
         enumerateGrid(gridSize.rangeOfRow(row), closure: closure)
     }
 
-    func enumerateGrid(range: Range<Int>, closure: (point: Point, value: Int, inout stop: Bool) -> ()) {
+    func enumerateGrid(range: Range<Int>, closure: (point: Point, value: Int, inout stop: Bool) -> Void) {
         var stop = false
         for var index = range.startIndex; index < range.endIndex && !stop; index++ {
             closure(point: gridSize.positionOfIndex(index), value: buffer[index], stop: &stop)
         }
     }
     
-    func replaceRow(row: Int, array: Array<Int>) {
+    func replaceRow(row: Int, array: [Int]) {
         assert(array.count == gridSize.width)
         buffer[gridSize.rangeOfRow(row)] = array[0..<array.count]
     }
@@ -71,10 +84,8 @@ class Grid {
     }
     
     func isFullRow(row: Int) -> Bool {
-        for index in gridSize.rangeOfRow(row) {
-            if buffer[index] == 0 {
-                return false
-            }
+        for index in gridSize.rangeOfRow(row) where buffer[index].empty {
+            return false
         }
         
         return true;
@@ -84,7 +95,7 @@ class Grid {
         grid.enumerateGrid { (point: Point, value: Int, inout stop: Bool) in
             let gridPoint = point + position
             
-            if gridPoint.y >= 0 && value != 0 {
+            if gridPoint.y >= 0 && value.exist {
                 self[gridPoint] = value
             }
         }

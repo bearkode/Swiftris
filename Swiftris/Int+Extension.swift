@@ -2,7 +2,7 @@
  *  IntExtension.swift
  *  Swiftris
  *
- *  Created by cgkim on 2014. 7. 3..
+ *  Created by bearkode on 2014. 7. 3..
  *  Copyright (c) 2014 bearkode. All rights reserved.
  *
  */
@@ -15,6 +15,12 @@ extension Int {
     var exist: Bool {
         get{
             return (self != 0) ? true : false
+        }
+    }
+    
+    var empty: Bool {
+        get {
+            return (self == 0) ? true : false
         }
     }
     

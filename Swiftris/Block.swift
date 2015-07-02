@@ -40,15 +40,15 @@ class Block : CustomStringConvertible {
     }
     
     func moveDown() {
-        position = position.downPoint;
+        self.position = self.position.downPoint;
     }
 
     func moveLeft() {
-        position = position.leftPoint;
+        self.position = self.position.leftPoint;
     }
     
     func moveRight() {
-        position = position.rightPoint
+        self.position = self.position.rightPoint
     }
     
     func isTimeToDrop() -> Bool {
@@ -62,9 +62,9 @@ class Block : CustomStringConvertible {
     
     func containsPosition(position: Point) -> Bool {
         return (position.x >= self.position.x &&
-                position.x < self.position.x + currentGrid.gridSize.width &&
+                position.x < self.position.x + self.currentGrid.width &&
                 position.y >= self.position.y &&
-                position.y < self.position.y + currentGrid.gridSize.height) //  TODO : avoid message chain
+                position.y < self.position.y + self.currentGrid.height)
     }
 
     func valueAtPosition(position: Point) -> Int {
@@ -96,14 +96,16 @@ class Block : CustomStringConvertible {
             dirty = true;
         }
     }
+    
     var currentGrid: Grid = Grid(width: 4, height: 4) {
         didSet {
             dirty = true;
         }
     }
-    var rotateIndex = 0
-    let dropCountForLevel = 5
-    var dropCount = 0
+    
+    private var rotateIndex = 0
+    private let dropCountForLevel = 5
+    private var dropCount = 0
     var dirty = true
     
     func appendTemplate(grid: Grid) {
