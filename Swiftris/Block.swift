@@ -10,14 +10,8 @@
 import Foundation
 
 
-class Block : CustomStringConvertible {
+class Block {
 
-    var description: String {
-        get {
-            return "It's Block object \(position.x), \(position.y)"
-        }
-    }
-    
     var nextGrid: Grid {
         get {
             return self.grids[self.nextRotateIndex()]
@@ -67,18 +61,6 @@ class Block : CustomStringConvertible {
         } else {
             return 0
         }
-    }
-    
-    func debugPrint() {
-        var oldY = 0
-        self.currentGrid.enumerateGrid { (point, value, stop) in
-            if oldY != point.y {
-                oldY = point.y
-                print("\n", appendNewline: false)
-            }
-            print("\(value) ", appendNewline: false);
-        }
-        print(" ")
     }
     
     //  MARK: - Privates
