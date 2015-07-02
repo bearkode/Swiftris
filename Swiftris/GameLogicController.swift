@@ -141,7 +141,7 @@ class GameLogicController: NSObject {
     func checkGameOver() {
         if let block = self.block {
             if board.isOverlappedAtPosition(block.position, block: block) {
-                println("Game Over")
+                print("Game Over")
             }
         }
     }

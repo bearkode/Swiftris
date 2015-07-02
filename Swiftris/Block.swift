@@ -10,7 +10,7 @@
 import Foundation
 
 
-class Block : Printable {
+class Block : CustomStringConvertible {
 
     var description: String {
         get {
@@ -80,11 +80,11 @@ class Block : Printable {
         currentGrid.enumerateGrid { (point, value, stop) in
             if oldY != point.y {
                 oldY = point.y
-                print("\n")
+                print("\n", appendNewline: false)
             }
-            print("\(value) ");
+            print("\(value) ", appendNewline: false);
         }
-        println(" ")
+        print(" ")
     }
     
     //  MARK: - Privates
@@ -115,7 +115,7 @@ class Block : Printable {
     }
 
     func nextRotateIndex() -> Int {
-        var result = rotateIndex - 1
+        let result = rotateIndex - 1
         return result < 0 ? (grids.count - 1) : result
     }
     

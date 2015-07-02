@@ -276,6 +276,7 @@
 		2EF46EC91949CA4D000D3206 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = bearkode;
 				TargetAttributes = {

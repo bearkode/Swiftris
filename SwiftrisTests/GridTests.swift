@@ -30,7 +30,7 @@ class GridTests: XCTestCase {
     }
     
     func testEnumerateRow() {
-        var grid = Grid(width: 3, height: 3, array: [1, 1, 1, 2, 2, 2, 3, 3, 3])
+        let grid = Grid(width: 3, height: 3, array: [1, 1, 1, 2, 2, 2, 3, 3, 3])
         
         XCTAssertNotNil(grid, "")
         
@@ -41,7 +41,7 @@ class GridTests: XCTestCase {
     }
 
     func testReplaceRow() {
-        var grid = Grid(width: 3, height: 3)
+        let grid = Grid(width: 3, height: 3)
         
         XCTAssertNotNil(grid, "")
         
@@ -52,12 +52,12 @@ class GridTests: XCTestCase {
     }
     
     func testIsOverlappedAtPosition() {
-        var grid1 = Grid(width: 5, height: 5, array: [0, 0, 0, 0, 0,
+        let grid1 = Grid(width: 5, height: 5, array: [0, 0, 0, 0, 0,
                                                       0, 0, 0, 0, 0,
                                                       0, 0, 0, 0, 0,
                                                       0, 1, 0, 0, 0,
                                                       0, 1, 1, 0, 0])
-        var grid2 = Grid(width: 2, height: 2, array: [1, 1,
+        let grid2 = Grid(width: 2, height: 2, array: [1, 1,
                                                       0, 1])
 
         XCTAssertFalse(grid1.isOverlappedGrid(grid2, position: Point(x: 1, y: 2)), "")
@@ -75,12 +75,12 @@ class GridTests: XCTestCase {
     }
     
     func testCopyGrid() {
-        var grid1 = Grid(width: 5, height: 5, array: [0, 0, 0, 0, 0,
+        let grid1 = Grid(width: 5, height: 5, array: [0, 0, 0, 0, 0,
                                                       0, 0, 0, 0, 0,
                                                       0, 0, 0, 0, 0,
                                                       0, 1, 0, 0, 0,
                                                       0, 1, 1, 0, 0])
-        var grid2 = Grid(width: 2, height: 2, array: [3, 3, 3, 3])
+        let grid2 = Grid(width: 2, height: 2, array: [3, 3, 3, 3])
         
         grid1.copyGrid(grid2, position: Point(x: 3, y: 1))
         XCTAssertTrue(grid1[3, 1] == 3, "");

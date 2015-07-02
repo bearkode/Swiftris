@@ -10,9 +10,17 @@
 import AppKit
 
 
+enum BKKeyCode: UInt16 {
+    case Up = 126
+    case Down = 125
+    case Left = 123
+    case Right = 124
+}
+
+
 protocol KeyboardEventDelegate: class {
     
-    func eventOnView(view: NSView, didKeyDown keyCode: CUnsignedShort)
+    func eventOnView(view: NSView, didKeyDown keyCode: BKKeyCode)
 
 }
 
@@ -35,7 +43,9 @@ class MainView: NSView {
     }
 
     override func keyDown(theEvent: NSEvent) {
-        delegate?.eventOnView(self, didKeyDown: theEvent.keyCode)
+        if let keyCode = BKKeyCode(rawValue: theEvent.keyCode) {
+            delegate?.eventOnView(self, didKeyDown: keyCode)
+        }
     }
 
 }

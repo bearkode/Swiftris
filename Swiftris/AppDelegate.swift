@@ -26,7 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func setupMainViewController() {
         if let mainView = mainViewController?.view,
-           let contentView = window?.contentView as? NSView {
+           let contentView = window?.contentView {
             contentView.addSubview(mainView)
             mainView.frame = contentView.bounds
             

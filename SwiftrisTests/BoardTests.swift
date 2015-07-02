@@ -21,8 +21,8 @@ class BoardTests: XCTestCase {
     }
 
     func testIsOverlappedAtPosition() {
-        var board = Board(size: GridSize(width: 30, height: 10))
-        var block = BlockA()
+        let board = Board(size: GridSize(width: 30, height: 10))
+        let block = BlockA()
         
         block.position = Point(x: 0, y: 6)
         XCTAssertTrue(board.isOverlappedAtPosition(block.position.downPoint, block: block) == false, "")
