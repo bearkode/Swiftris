@@ -64,4 +64,93 @@ class BlockTests: XCTestCase {
         XCTAssertTrue(block.valueAtPosition(Point(x: 10, y: 10)) == 0, "")
     }
 
+    let grid0 = Grid(width: 4, height: 4, array: [0, 3, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0])
+    let grid3 = Grid(width: 4, height: 4, array: [3, 3, 3, 0, 3, 0, 0, 0])
+    let grid2 = Grid(width: 4, height: 4, array: [0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 3, 0])
+    let grid1 = Grid(width: 4, height: 4, array: [0, 0, 3, 0, 3, 3, 3, 0])
+    
+    func testTurn() {
+        let block = BlockC()
+
+        XCTAssertTrue(block.currentGrid == grid0)
+        block.turn()
+        XCTAssertTrue(block.currentGrid == grid3)
+        block.turn()
+        XCTAssertTrue(block.currentGrid == grid2)
+        block.turn()
+        XCTAssertTrue(block.currentGrid == grid1)
+        block.turn()
+        XCTAssertTrue(block.currentGrid == grid0)
+        block.turn()
+        XCTAssertTrue(block.currentGrid == grid3)
+        block.turn()
+        XCTAssertTrue(block.currentGrid == grid2)
+        block.turn()
+        XCTAssertTrue(block.currentGrid == grid1)
+        block.turn()
+        XCTAssertTrue(block.currentGrid == grid0)
+    }
+    
+    func testNextGrid() {
+        let block = BlockC()
+
+        XCTAssertTrue(block.currentGrid == grid0)
+        XCTAssertTrue(block.nextGrid == grid3)
+        
+        block.turn()
+        XCTAssertTrue(block.currentGrid == grid3)
+        XCTAssertTrue(block.nextGrid == grid2)
+        
+        block.turn()
+        XCTAssertTrue(block.currentGrid == grid2)
+        XCTAssertTrue(block.nextGrid == grid1)
+
+        block.turn()
+        XCTAssertTrue(block.currentGrid == grid1)
+        XCTAssertTrue(block.nextGrid == grid0)
+
+        block.turn()
+        XCTAssertTrue(block.currentGrid == grid0)
+        XCTAssertTrue(block.nextGrid == grid3)
+        
+        block.turn()
+        XCTAssertTrue(block.currentGrid == grid3)
+        XCTAssertTrue(block.nextGrid == grid2)
+    }
+
+    func testMove() {
+        let block = BlockC()
+        
+        block.position = Point(x: 3, y: 3)
+        XCTAssertTrue(block.position == Point(x: 3, y: 3))
+        block.moveDown()
+        XCTAssertTrue(block.position == Point(x: 3, y: 4))
+        block.moveLeft()
+        XCTAssertTrue(block.position == Point(x: 2, y: 4))
+        block.moveLeft()
+        XCTAssertTrue(block.position == Point(x: 1, y: 4))
+        block.moveDown()
+        XCTAssertTrue(block.position == Point(x: 1, y: 5))
+        block.moveRight()
+        block.moveRight()
+        XCTAssertTrue(block.position == Point(x: 3, y: 5))
+    }
+    
+    func testDrop() {
+        let block = BlockC()
+        
+        XCTAssert(block.isTimeToDrop() == false)
+        XCTAssert(block.isTimeToDrop() == false)
+        XCTAssert(block.isTimeToDrop() == false)
+        XCTAssert(block.isTimeToDrop() == false)
+        XCTAssert(block.isTimeToDrop() == false)
+        XCTAssert(block.isTimeToDrop() == true)
+        XCTAssert(block.isTimeToDrop() == false)
+        XCTAssert(block.isTimeToDrop() == false)
+        XCTAssert(block.isTimeToDrop() == false)
+        XCTAssert(block.isTimeToDrop() == false)
+        XCTAssert(block.isTimeToDrop() == false)
+        XCTAssert(block.isTimeToDrop() == true)
+    }
+
 }
