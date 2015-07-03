@@ -20,12 +20,13 @@ struct DropTimer {
     }
     
     mutating func isTimeToDrop() -> Bool {
-        if self.currentvalue-- < 0 {
-            self.currentvalue = self.initValue
-            return true
-        } else {
+        if self.currentvalue-- > 0 {
             return false
         }
+        
+        self.currentvalue = self.initValue
+
+        return true
     }
     
 }

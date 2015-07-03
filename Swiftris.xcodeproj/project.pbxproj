@@ -51,6 +51,14 @@
 		2EF46F051949DEC2000D3206 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46F031949DEC2000D3206 /* Block.swift */; };
 		55DC3B351B458D28003E717B /* DropTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC3B341B458D28003E717B /* DropTimer.swift */; };
 		55DC3B361B458D28003E717B /* DropTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC3B341B458D28003E717B /* DropTimer.swift */; };
+		55DC3B381B459193003E717B /* Block+Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC3B371B459193003E717B /* Block+Debugging.swift */; };
+		55DC3B391B459193003E717B /* Block+Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC3B371B459193003E717B /* Block+Debugging.swift */; };
+		55DC3B3B1B461BF4003E717B /* Grid+Enumeration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC3B3A1B461BF4003E717B /* Grid+Enumeration.swift */; };
+		55DC3B3C1B461BF4003E717B /* Grid+Enumeration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC3B3A1B461BF4003E717B /* Grid+Enumeration.swift */; };
+		55DC3B3E1B461CDF003E717B /* Grid+Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC3B3D1B461CDF003E717B /* Grid+Subscript.swift */; };
+		55DC3B3F1B461CDF003E717B /* Grid+Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC3B3D1B461CDF003E717B /* Grid+Subscript.swift */; };
+		55DC3B411B462723003E717B /* DropTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC3B401B462723003E717B /* DropTimerTests.swift */; };
+		55DC3B431B4628F8003E717B /* IntExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC3B421B4628F8003E717B /* IntExtensionTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +119,11 @@
 		2EF46F001949DB5D000D3206 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		2EF46F031949DEC2000D3206 /* Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 		55DC3B341B458D28003E717B /* DropTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropTimer.swift; sourceTree = "<group>"; };
+		55DC3B371B459193003E717B /* Block+Debugging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Block+Debugging.swift"; sourceTree = "<group>"; };
+		55DC3B3A1B461BF4003E717B /* Grid+Enumeration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Grid+Enumeration.swift"; sourceTree = "<group>"; };
+		55DC3B3D1B461CDF003E717B /* Grid+Subscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Grid+Subscript.swift"; sourceTree = "<group>"; };
+		55DC3B401B462723003E717B /* DropTimerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropTimerTests.swift; sourceTree = "<group>"; };
+		55DC3B421B4628F8003E717B /* IntExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntExtensionTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,9 +202,11 @@
 			isa = PBXGroup;
 			children = (
 				2EF46EE91949CA4D000D3206 /* SwiftrisTests.swift */,
+				55DC3B421B4628F8003E717B /* IntExtensionTests.swift */,
 				2E2CE89C195AFA3500E900E6 /* GridTests.swift */,
 				2E9FC13B195C648100BAE43E /* BlockTests.swift */,
 				2E494FE0195D2BF500A7DF91 /* BoardTests.swift */,
+				55DC3B401B462723003E717B /* DropTimerTests.swift */,
 				2EF46EE71949CA4D000D3206 /* Supporting Files */,
 			);
 			path = SwiftrisTests;
@@ -220,8 +235,11 @@
 				2ECC2087196432270023733D /* Point.swift */,
 				2EBACFCD1963C87F00FAAA40 /* GridSize.swift */,
 				2EA0D7EA1951C9C9008DB5D2 /* Grid.swift */,
+				55DC3B3D1B461CDF003E717B /* Grid+Subscript.swift */,
+				55DC3B3A1B461BF4003E717B /* Grid+Enumeration.swift */,
 				55DC3B341B458D28003E717B /* DropTimer.swift */,
 				2EF46F031949DEC2000D3206 /* Block.swift */,
+				55DC3B371B459193003E717B /* Block+Debugging.swift */,
 				2EB861A9194EAC560016D660 /* BlockA.swift */,
 				2EB861AB194EAD1C0016D660 /* BlockB.swift */,
 				2EB861AD194EADBB0016D660 /* BlockC.swift */,
@@ -337,6 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E49ED7D19594C63005C4E97 /* NSColor+Extension.swift in Sources */,
+				55DC3B3B1B461BF4003E717B /* Grid+Enumeration.swift in Sources */,
 				2E379A4B195433FC00F7D0A7 /* Board.swift in Sources */,
 				2E79B1311965A1DC00B5486F /* Int+Extension.swift in Sources */,
 				2EB861B0194EAE7B0016D660 /* BlockD.swift in Sources */,
@@ -350,8 +369,10 @@
 				2ECC2088196432270023733D /* Point.swift in Sources */,
 				55DC3B351B458D28003E717B /* DropTimer.swift in Sources */,
 				2EF46EFE1949D4E2000D3206 /* MainViewController.swift in Sources */,
+				55DC3B381B459193003E717B /* Block+Debugging.swift in Sources */,
 				2EF46ED71949CA4D000D3206 /* main.swift in Sources */,
 				2EB861AA194EAC560016D660 /* BlockA.swift in Sources */,
+				55DC3B3E1B461CDF003E717B /* Grid+Subscript.swift in Sources */,
 				2EB861AE194EADBB0016D660 /* BlockC.swift in Sources */,
 				2EB861B2194F1C5A0016D660 /* BlockE.swift in Sources */,
 				2EB72C1D1953EDEB00574E38 /* BoardView.swift in Sources */,
@@ -374,11 +395,16 @@
 				2E494FD6195D20AE00A7DF91 /* BlockB.swift in Sources */,
 				2E494FD8195D20B300A7DF91 /* BlockD.swift in Sources */,
 				2E494FD5195D20AC00A7DF91 /* BlockA.swift in Sources */,
+				55DC3B3F1B461CDF003E717B /* Grid+Subscript.swift in Sources */,
 				2EF46F051949DEC2000D3206 /* Block.swift in Sources */,
+				55DC3B3C1B461BF4003E717B /* Grid+Enumeration.swift in Sources */,
 				2E494FDB195D20BA00A7DF91 /* BlockG.swift in Sources */,
+				55DC3B431B4628F8003E717B /* IntExtensionTests.swift in Sources */,
 				55DC3B361B458D28003E717B /* DropTimer.swift in Sources */,
 				2E494FD4195D209400A7DF91 /* Block+Extensions.swift in Sources */,
+				55DC3B411B462723003E717B /* DropTimerTests.swift in Sources */,
 				2E494FE1195D2BF500A7DF91 /* BoardTests.swift in Sources */,
+				55DC3B391B459193003E717B /* Block+Debugging.swift in Sources */,
 				2E494FD7195D20B000A7DF91 /* BlockC.swift in Sources */,
 				2ECC2089196432270023733D /* Point.swift in Sources */,
 				2E2CE89E195AFB6200E900E6 /* Grid.swift in Sources */,

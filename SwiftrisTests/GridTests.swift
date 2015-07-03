@@ -19,6 +19,19 @@ class GridTests: XCTestCase {
     override func tearDown() {
         super.tearDown()
     }
+    
+    func testEqual() {
+        let left = Grid(width: 3, height: 3, array: [1, 1, 1, 2, 2, 2, 3, 3, 3])
+        let right = Grid(width: 3, height: 3, array: [1, 1, 1, 2, 2, 2, 3, 3, 3])
+        
+        XCTAssertTrue(left == right)
+        
+        right[2, 2] = 20
+        XCTAssertFalse(left == right)
+        
+        left[2, 2] = 20
+        XCTAssertTrue(left == right)
+    }
 
     func testEnumerateGrid() {
         let grid = Grid(width: 3, height: 3, array: [1, 1, 1, 2, 2, 2, 3, 3, 3])
@@ -67,11 +80,20 @@ class GridTests: XCTestCase {
     }
     
     func testCompactRowOver() {
-    
+        let grid   = Grid(width: 3, height: 3, array: [ 0, 0, 1, 2, 3, 4, 0, 0, 0])
+        let result = Grid(width: 3, height: 3, array: [ 0, 0, 0, 0, 0, 1, 2, 3, 4])
+        
+        XCTAssertFalse(grid == result)
+        grid.compactRowOver(2)
+        XCTAssertTrue(grid == result)
     }
     
     func testIsFullRow() {
-    
+        let grid = Grid(width: 3, height: 3, array: [ 0, 0, 1, 2, 3, 4, 0, 0, 0])
+        
+        XCTAssertTrue(grid.isFullRow(0) == false)
+        XCTAssertTrue(grid.isFullRow(1) == true)
+        XCTAssertTrue(grid.isFullRow(2) == false)
     }
     
     func testCopyGrid() {
@@ -93,7 +115,25 @@ class GridTests: XCTestCase {
     
     
     func testSubscript() {
-    
+        let grid = Grid(width: 3, height: 3, array: [ 0, 0, 0, 0, 0, 0, 0, 0, 0])
+        
+        XCTAssertTrue(grid[2, 2] == 0)
+        grid[2, 2] = 10
+        XCTAssertTrue(grid[2, 2] == 10)
+        
+        XCTAssertTrue(grid[Point(x: 1, y: 0)] == 0)
+        grid[Point(x: 1, y: 0)] = 1234
+        XCTAssertTrue(grid[Point(x: 1, y: 0)] == 1234)
+
+        XCTAssertTrue(grid[Point(x: 0, y: 0)] == 0)
+        XCTAssertTrue(grid[Point(x: 1, y: 0)] == 1234)
+        XCTAssertTrue(grid[Point(x: 2, y: 0)] == 0)
+        XCTAssertTrue(grid[Point(x: 0, y: 1)] == 0)
+        XCTAssertTrue(grid[Point(x: 1, y: 1)] == 0)
+        XCTAssertTrue(grid[Point(x: 2, y: 1)] == 0)
+        XCTAssertTrue(grid[Point(x: 0, y: 2)] == 0)
+        XCTAssertTrue(grid[Point(x: 1, y: 2)] == 0)
+        XCTAssertTrue(grid[Point(x: 2, y: 2)] == 10)
     }
     
     func testGetRangeOfRow() {

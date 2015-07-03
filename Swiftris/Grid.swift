@@ -26,7 +26,7 @@ class Grid {
         }
     }
     
-    private var buffer: [Int]
+    var buffer: [Int]
     
     init(width: Int, height: Int, array: [Int]) {
         self.gridSize = GridSize(width: width, height: height)
@@ -38,21 +38,6 @@ class Grid {
 
     convenience init(width: Int, height: Int) {
         self.init(width: width, height: height, array: Array(count: width * height, repeatedValue:0))
-    }
-    
-    func enumerateGrid(closure: (point:Point, value: Int, inout stop: Bool) -> Void) {
-        enumerateGrid(gridSize.indexRange, closure: closure)
-    }
-
-    func enumerateRow(row: Int, closure: (point: Point, value: Int, inout stop: Bool) -> Void) {
-        enumerateGrid(gridSize.rangeOfRow(row), closure: closure)
-    }
-
-    func enumerateGrid(range: Range<Int>, closure: (point: Point, value: Int, inout stop: Bool) -> Void) {
-        var stop = false
-        for var index = range.startIndex; index < range.endIndex && !stop; index++ {
-            closure(point: gridSize.positionOfIndex(index), value: buffer[index], stop: &stop)
-        }
     }
     
     func replaceRow(row: Int, array: [Int]) {
@@ -80,6 +65,7 @@ class Grid {
         for var y = row; y > 0; y-- {
             buffer[gridSize.rangeOfRow(y)] = buffer[gridSize.rangeOfRow(y - 1)]
         }
+
         replaceRow(0, array: Array(count: gridSize.width, repeatedValue:0))
     }
     
@@ -100,25 +86,18 @@ class Grid {
             }
         }
     }
-    
-    subscript(x: Int, y: Int) -> Int {
-        get {
-            return self[Point(x: x, y: y)]
-        }
-        set {
-            self[Point(x: x, y: y)] = newValue
-        }
-    }
-    
-    subscript(position: Point) -> Int {
-        get {
-            assert(gridSize.validatePosition(position), "Index out of range")
-            return buffer[gridSize.indexOfPosition(position)]
-        }
-        set {
-            assert(gridSize.validatePosition(position), "Index out of range")
-            buffer[gridSize.indexOfPosition(position)] = newValue
-        }
-    }
 
+}
+
+
+func == (left: Grid, right: Grid) -> Bool {
+    var result = true
+    
+    left.enumerateGrid { (point, value, stop) -> Void in
+        if right.valueAtPosition(point) != value {
+            stop = true
+            result = false
+        }
+    }
+    return result
 }
