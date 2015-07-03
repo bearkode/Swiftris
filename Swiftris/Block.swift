@@ -12,12 +12,26 @@ import Foundation
 
 class Block {
 
+    var currentGrid: Grid = Grid(width: 4, height: 4) {
+        didSet {
+            self.dirty = true;
+        }
+    }
+
     var nextGrid: Grid {
         get {
             return self.grids[self.nextRotateIndex()]
         }
     }
 
+    var position: Point = Point() {
+        didSet {
+            self.dirty = true;
+        }
+    }
+    
+    var dirty = true
+    
     required init() {
         self.generateTemplate()
         self.updateCurrentGrid()
@@ -27,13 +41,21 @@ class Block {
         /* TO BE OVERRIDE  */
     }
     
+    func appendTemplate(grid: Grid) {
+        self.grids.append(grid)
+    }
+    
+    /**
+        Movements
+    */
+    
     func turn() {
         self.rotateIndex = self.nextRotateIndex()
         self.updateCurrentGrid()
     }
     
     func moveDown() {
-        self.position = self.position.downPoint;
+        self.position = self.position.underPoint;
     }
 
     func moveLeft() {
@@ -47,6 +69,10 @@ class Block {
     func isTimeToDrop() -> Bool {
         return self.dropTimer.isTimeToDrop()
     }
+    
+    /**
+    
+    */
     
     func containsPosition(position: Point) -> Bool {
         return (position.x >= self.position.x &&
@@ -62,41 +88,23 @@ class Block {
             return 0
         }
     }
-    
-    //  MARK: - Privates
-
-    private var grids: [Grid] = Array()
-
-    var position: Point = Point() {
-        didSet {
-            self.dirty = true;
-        }
-    }
-    
-    var currentGrid: Grid = Grid(width: 4, height: 4) {
-        didSet {
-            self.dirty = true;
-        }
-    }
-    
-    private var rotateIndex = 0
-    private var dropTimer = DropTimer()
-    var dirty = true
-    
-    func appendTemplate(grid: Grid) {
-        self.grids.append(grid)
-    }
- 
-    private func nextRotateIndex() -> Int {
-        return (self.rotateIndex - 1) < 0 ? (self.grids.count - 1) : (self.rotateIndex - 1)
-    }
-    
-    func updateCurrentGrid() {
-        self.currentGrid = self.grids[rotateIndex]
-    }
 
     func blockPositionFromPosition(position: Point) -> Point {
         return Point(x: (position.x - self.position.x), y: (position.y - self.position.y))
     }
+
+    //  MARK: - Privates
+
+    private var grids: [Grid] = Array()
+    private var rotateIndex = 0
+    private var dropTimer = DropTimer()
     
+    private func nextRotateIndex() -> Int {
+        return (self.rotateIndex - 1) < 0 ? (self.grids.count - 1) : (self.rotateIndex - 1)
+    }
+    
+    private func updateCurrentGrid() {
+        self.currentGrid = self.grids[rotateIndex]
+    }
+
 }

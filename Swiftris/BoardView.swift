@@ -32,26 +32,23 @@ class BoardView: NSView {
             return true
         }
     }
-    
-    func reload() {
-        updateGridSize()
-        updateCellSize()
-        updateFrameSize()
-        setNeedsDisplayInRect(self.bounds)
-    }
-    
-    /*
-     *  Privates
-     */
-
-    var gridSize = GridSize()
-    var cellSize = CGSize()
 
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
         
         drawBackground()
         drawCells()
+    }
+
+    /**
+    
+    */
+    
+    func reload() {
+        updateGridSize()
+        updateCellSize()
+        updateFrameSize()
+        setNeedsDisplayInRect(self.bounds)
     }
     
     func updateGridSize() {
@@ -66,13 +63,6 @@ class BoardView: NSView {
         self.setFrameSize(self.suitableFrameSize)
     }
     
-    private var suitableFrameSize: CGSize {
-        get {
-            return CGSize(width: CGFloat(self.gridSize.width) * self.cellSize.width + 1,
-                          height: CGFloat(self.gridSize.height) * self.cellSize.height + 1)
-        }
-    }
-    
     func drawBackground() {
         NSColor(calibratedRed: 0.5, green: 1.0, blue: 0.5, alpha: 1.0).setFill()
         NSBezierPath(rect: self.bounds).fill()
@@ -83,7 +73,7 @@ class BoardView: NSView {
             return
         }
         
-        gridSize.enumerateGrids { (position: Point) in
+        gridSize.enumerate { (position: Point) in
             let colorIndex = dataSource.colorIndexOfBoardView(self, position: position)
             self.drawCellAtPosition(position, colorIndex: colorIndex)
         }
@@ -107,4 +97,16 @@ class BoardView: NSView {
         NSBezierPath(rect: NSRect(x: point.x + 1, y: point.y + 1, width: cellSize.width - 3, height: cellSize.height - 3)).fill()
     }
     
+    // MARK: - Private
+    
+    private var gridSize = GridSize()
+    private var cellSize = CGSize()
+ 
+    private var suitableFrameSize: CGSize {
+        get {
+            return CGSize(width: CGFloat(self.gridSize.width) * self.cellSize.width + 1,
+                height: CGFloat(self.gridSize.height) * self.cellSize.height + 1)
+        }
+    }
+
 }

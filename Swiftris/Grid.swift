@@ -12,24 +12,27 @@ import Foundation
 
 class Grid {
     
-    let gridSize: GridSize
+    let size: GridSize
     
     var width: Int {
         get {
-            return self.gridSize.width
+            return self.size.width
         }
     }
     
     var height: Int {
         get {
-            return self.gridSize.height
+            return self.size.height
         }
     }
     
     var buffer: [Int]
     
+    /**
+        Init
+    */
     init(width: Int, height: Int, array: [Int]) {
-        self.gridSize = GridSize(width: width, height: height)
+        self.size = GridSize(width: width, height: height)
         self.buffer = Array(count: width * height, repeatedValue: 0)
         
         let count = array.count
@@ -40,11 +43,33 @@ class Grid {
         self.init(width: width, height: height, array: Array(count: width * height, repeatedValue:0))
     }
     
+    /**
+    
+    */
     func replaceRow(row: Int, array: [Int]) {
-        assert(array.count == gridSize.width)
-        buffer[gridSize.rangeOfRow(row)] = array[0..<array.count]
+        assert(array.count == size.width)
+        buffer[size.rangeOfRow(row)] = array[0..<array.count]
+    }
+
+    func compactRowOver(row: Int) {
+        for var y = row; y > 0; y-- {
+            buffer[size.rangeOfRow(y)] = buffer[self.size.rangeOfRow(y - 1)]
+        }
+        
+        replaceRow(0, array: Array(count: size.width, repeatedValue:0))
     }
     
+    func isFullRow(row: Int) -> Bool {
+        for index in size.rangeOfRow(row) where buffer[index].empty {
+            return false
+        }
+        
+        return true;
+    }
+
+    /**
+    
+    */
     func isOverlappedGrid(grid: Grid, position: Point) -> Bool {
         var overlapped = false
         
@@ -58,23 +83,7 @@ class Grid {
     }
     
     func valueAtPosition(position: Point) -> Int {
-        return gridSize.validatePosition(position) ? self[position] : Int.max
-    }
-    
-    func compactRowOver(row: Int) {
-        for var y = row; y > 0; y-- {
-            buffer[gridSize.rangeOfRow(y)] = buffer[gridSize.rangeOfRow(y - 1)]
-        }
-
-        replaceRow(0, array: Array(count: gridSize.width, repeatedValue:0))
-    }
-    
-    func isFullRow(row: Int) -> Bool {
-        for index in gridSize.rangeOfRow(row) where buffer[index].empty {
-            return false
-        }
-        
-        return true;
+        return self.size.validatePosition(position) ? self[position] : Int.max
     }
     
     func copyGrid(grid: Grid, position: Point) {

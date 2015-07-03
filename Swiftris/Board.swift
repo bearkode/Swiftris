@@ -14,10 +14,19 @@ class Board {
     
     var grid: Grid
     var dirty = true
+    var gridSize: GridSize {
+        get {
+            return self.grid.size
+        }
+    }
 
     init(size boardSize: GridSize) {
         self.grid = Grid(width: boardSize.width, height: boardSize.height)
     }
+    
+    /**
+    
+    */
     
     func valueAtPosition(position: Point) -> Int {
         return grid[position]

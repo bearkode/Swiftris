@@ -20,7 +20,7 @@ class GameLogicController: NSObject {
     weak var delegate: LogicControllerDelegate?
     var boardGridSize: GridSize {
         get {
-            return board.grid.gridSize  // TODO : avoid message chain
+            return self.board.grid.size  // TODO : avoid message chain
         }
     }
 
@@ -145,7 +145,7 @@ class GameLogicController: NSObject {
     }
 
     func checkBlockDownCollision(block: Block!) -> Bool {
-        return board.isOverlappedAtPosition(block.position.downPoint, block: block) //  TODO : avoid message chain
+        return board.isOverlappedAtPosition(block.position.underPoint, block: block) //  TODO : avoid message chain
     }
     
 }

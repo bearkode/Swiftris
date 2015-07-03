@@ -12,9 +12,6 @@ import Foundation
 
 struct DropTimer {
 
-    let initValue = 5
-    var currentvalue: Int
-    
     init() {
         self.currentvalue = initValue
     }
@@ -28,5 +25,8 @@ struct DropTimer {
 
         return true
     }
+
+    private let initValue = 5
+    private var currentvalue: Int
     
 }

@@ -27,7 +27,7 @@ struct Point {
         }
     }
     
-    var downPoint: Point {
+    var underPoint: Point {
         get {
             return Point(x: x, y: y + 1)
         }

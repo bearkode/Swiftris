@@ -29,7 +29,10 @@ class MainViewController: NSViewController, KeyboardEventDelegate, BoardViewData
     }
     
     // MARK: - Override
-
+    /**
+        Override
+    */
+    
     override func loadView() {
         super.loadView()
         
@@ -41,7 +44,9 @@ class MainViewController: NSViewController, KeyboardEventDelegate, BoardViewData
     }
 
     // MARK: - For Protocol
-
+    /**
+        For Protocol
+    */
     func eventOnView(view: NSView, didKeyDown keyCode: BKKeyCode) {
         let keyCodeDict = [BKKeyCode.Up : logicController.upArrowDown,
                            BKKeyCode.Right : logicController.rightArrowDown,
@@ -71,7 +76,7 @@ class MainViewController: NSViewController, KeyboardEventDelegate, BoardViewData
 
     // MARK: - Privates
 
-    let boardView = BoardView(frame: NSRect(x: 10, y: 10, width: 100, height: 100))
-    let logicController = GameLogicController()
+    private let boardView = BoardView(frame: NSRect(x: 10, y: 10, width: 100, height: 100))
+    private let logicController = GameLogicController()
 
 }
