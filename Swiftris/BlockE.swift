@@ -12,25 +12,21 @@ import Foundation
 
 class BlockE: Block {
     
-    override func generateTemplate() {
-        super.generateTemplate()
-        
+    required init() {
+        super.init()
+
         let c = 5
-        
-        appendTemplate(Grid(width: 4, height: 4, array: [0, c, 0, 0,
-                                                         c, c, c, 0]))
-
-        appendTemplate(Grid(width: 4, height: 4, array: [0, c, 0, 0,
-                                                         0, c, c, 0,
-                                                         0, c, 0, 0]))
-
-        appendTemplate(Grid(width: 4, height: 4, array: [0, 0, 0, 0,
-                                                         c, c, c, 0,
-                                                         0, c, 0, 0]))
-
-        appendTemplate(Grid(width: 4, height: 4, array: [0, c, 0, 0,
-                                                         c, c, 0, 0,
-                                                         0, c, 0, 0]))
+        self.grids = [Grid(width: 4, height: 4, array: [0, c, 0, 0,
+                                                        c, c, c, 0]),
+                      Grid(width: 4, height: 4, array: [0, c, 0, 0,
+                                                        0, c, c, 0,
+                                                        0, c, 0, 0]),
+                      Grid(width: 4, height: 4, array: [0, 0, 0, 0,
+                                                        c, c, c, 0,
+                                                        0, c, 0, 0]),
+                      Grid(width: 4, height: 4, array: [0, c, 0, 0,
+                                                        c, c, 0, 0,
+                                                        0, c, 0, 0])]
     }
-    
+
 }

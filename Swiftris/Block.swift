@@ -33,16 +33,7 @@ class Block {
     var dirty = true
     
     required init() {
-        self.generateTemplate()
-        self.updateCurrentGrid()
-    }
-    
-    func generateTemplate() {
-        /* TO BE OVERRIDE  */
-    }
-    
-    func appendTemplate(grid: Grid) {
-        self.grids.append(grid)
+        self.grids = []
     }
     
     /**
@@ -76,9 +67,9 @@ class Block {
     
     func containsPosition(position: Point) -> Bool {
         return (position.x >= self.position.x &&
-                position.x < self.position.x + self.currentGrid.width &&
+                position.x < self.position.x + self.currentGrid.size.width &&
                 position.y >= self.position.y &&
-                position.y < self.position.y + self.currentGrid.height)
+                position.y < self.position.y + self.currentGrid.size.height)
     }
 
     func valueAtPosition(position: Point) -> Int {
@@ -95,7 +86,11 @@ class Block {
 
     //  MARK: - Privates
 
-    private var grids: [Grid] = Array()
+    var grids: [Grid] {
+        didSet {
+            self.updateCurrentGrid()
+        }
+    }
     private var rotateIndex = 0
     private var dropTimer = DropTimer()
     

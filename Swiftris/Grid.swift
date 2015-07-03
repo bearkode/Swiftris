@@ -13,19 +13,6 @@ import Foundation
 class Grid {
     
     let size: GridSize
-    
-    var width: Int {
-        get {
-            return self.size.width
-        }
-    }
-    
-    var height: Int {
-        get {
-            return self.size.height
-        }
-    }
-    
     var buffer: [Int]
     
     /**

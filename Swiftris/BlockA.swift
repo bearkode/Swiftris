@@ -12,13 +12,12 @@ import Foundation
 
 class BlockA: Block {
 
-    override func generateTemplate() {
-        super.generateTemplate()
+    required init() {
+        super.init()
 
         let c = 1
-        
-        appendTemplate(Grid(width: 4, height: 4, array: [0, c, c, 0,
-                                                         0, c, c, 0]))
+        self.grids = [Grid(width: 4, height: 4, array: [0, c, c, 0,
+                                                        0, c, c, 0])]
     }
 
 }
