@@ -21,7 +21,7 @@ class DropTimerTests: XCTestCase {
     }
 
     func testBasic() {
-        var timer = DropTimer()
+        let timer = DropTimer()
         
         XCTAssert(timer.isTimeToDrop() == false)
         XCTAssert(timer.isTimeToDrop() == false)

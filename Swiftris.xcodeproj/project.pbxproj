@@ -49,6 +49,9 @@
 		2EF46F011949DB5D000D3206 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46F001949DB5D000D3206 /* MainView.swift */; };
 		2EF46F041949DEC2000D3206 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46F031949DEC2000D3206 /* Block.swift */; };
 		2EF46F051949DEC2000D3206 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46F031949DEC2000D3206 /* Block.swift */; };
+		5502930D1B46809A000FDE2D /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5502930C1B46809A000FDE2D /* Movement.swift */; };
+		5502930E1B46809A000FDE2D /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5502930C1B46809A000FDE2D /* Movement.swift */; };
+		550293101B46844E000FDE2D /* MovementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5502930F1B46844E000FDE2D /* MovementTests.swift */; };
 		558728CA1B4642A900745139 /* NSColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E49ED7C19594C63005C4E97 /* NSColor+Extension.swift */; };
 		558728CD1B4642CE00745139 /* GameLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7EA07519508B9B00837BBE /* GameLogicController.swift */; };
 		558728CF1B4643B400745139 /* PointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558728CE1B4643B400745139 /* PointTests.swift */; };
@@ -122,6 +125,8 @@
 		2EF46EFD1949D4E2000D3206 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		2EF46F001949DB5D000D3206 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		2EF46F031949DEC2000D3206 /* Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
+		5502930C1B46809A000FDE2D /* Movement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
+		5502930F1B46844E000FDE2D /* MovementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementTests.swift; sourceTree = "<group>"; };
 		558728CE1B4643B400745139 /* PointTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointTests.swift; sourceTree = "<group>"; };
 		558728D01B46451500745139 /* GridSizeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridSizeTests.swift; sourceTree = "<group>"; };
 		55DC3B341B458D28003E717B /* DropTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropTimer.swift; sourceTree = "<group>"; };
@@ -212,6 +217,7 @@
 				558728D01B46451500745139 /* GridSizeTests.swift */,
 				55DC3B421B4628F8003E717B /* IntExtensionTests.swift */,
 				2E2CE89C195AFA3500E900E6 /* GridTests.swift */,
+				5502930F1B46844E000FDE2D /* MovementTests.swift */,
 				2E9FC13B195C648100BAE43E /* BlockTests.swift */,
 				2E494FE0195D2BF500A7DF91 /* BoardTests.swift */,
 				55DC3B401B462723003E717B /* DropTimerTests.swift */,
@@ -246,6 +252,7 @@
 				55DC3B3D1B461CDF003E717B /* Grid+Subscript.swift */,
 				55DC3B3A1B461BF4003E717B /* Grid+Enumeration.swift */,
 				55DC3B341B458D28003E717B /* DropTimer.swift */,
+				5502930C1B46809A000FDE2D /* Movement.swift */,
 				2EF46F031949DEC2000D3206 /* Block.swift */,
 				55DC3B371B459193003E717B /* Block+Debugging.swift */,
 				2EB861A9194EAC560016D660 /* BlockA.swift */,
@@ -378,6 +385,7 @@
 				55DC3B351B458D28003E717B /* DropTimer.swift in Sources */,
 				2EF46EFE1949D4E2000D3206 /* MainViewController.swift in Sources */,
 				55DC3B381B459193003E717B /* Block+Debugging.swift in Sources */,
+				5502930D1B46809A000FDE2D /* Movement.swift in Sources */,
 				2EF46ED71949CA4D000D3206 /* main.swift in Sources */,
 				2EB861AA194EAC560016D660 /* BlockA.swift in Sources */,
 				55DC3B3E1B461CDF003E717B /* Grid+Subscript.swift in Sources */,
@@ -412,12 +420,14 @@
 				55DC3B431B4628F8003E717B /* IntExtensionTests.swift in Sources */,
 				55DC3B361B458D28003E717B /* DropTimer.swift in Sources */,
 				2E494FD4195D209400A7DF91 /* Block+Extensions.swift in Sources */,
+				550293101B46844E000FDE2D /* MovementTests.swift in Sources */,
 				558728D11B46451500745139 /* GridSizeTests.swift in Sources */,
 				55DC3B411B462723003E717B /* DropTimerTests.swift in Sources */,
 				2E494FE1195D2BF500A7DF91 /* BoardTests.swift in Sources */,
 				55DC3B391B459193003E717B /* Block+Debugging.swift in Sources */,
 				558728CF1B4643B400745139 /* PointTests.swift in Sources */,
 				2E494FD7195D20B000A7DF91 /* BlockC.swift in Sources */,
+				5502930E1B46809A000FDE2D /* Movement.swift in Sources */,
 				2ECC2089196432270023733D /* Point.swift in Sources */,
 				2E2CE89E195AFB6200E900E6 /* Grid.swift in Sources */,
 				2E494FE2195D2D2600A7DF91 /* Board.swift in Sources */,

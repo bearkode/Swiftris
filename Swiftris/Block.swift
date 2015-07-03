@@ -75,9 +75,9 @@ class Block {
     func valueAtPosition(position: Point) -> Int {
         if self.containsPosition(position) {
             return self.currentGrid[self.blockPositionFromPosition(position)]
-        } else {
-            return 0
         }
+
+        return 0
     }
 
     func blockPositionFromPosition(position: Point) -> Point {

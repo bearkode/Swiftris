@@ -10,13 +10,13 @@
 import Foundation
 
 
-struct DropTimer {
+class DropTimer {
 
     init() {
         self.currentvalue = initValue
     }
     
-    mutating func isTimeToDrop() -> Bool {
+    func isTimeToDrop() -> Bool {
         if self.currentvalue-- > 0 {
             return false
         }

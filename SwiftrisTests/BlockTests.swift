@@ -61,7 +61,7 @@ class BlockTests: XCTestCase {
         XCTAssertTrue(block.valueAtPosition(Point(x: 7, y: 7)) == 0, "")
         XCTAssertTrue(block.valueAtPosition(Point(x: 8, y: 5)) == 0, "")
         XCTAssertTrue(block.valueAtPosition(Point(x: 8, y: 6)) == 0, "")
-        
+        XCTAssertTrue(block.valueAtPosition(Point(x: 10, y: 10)) == 0, "")
     }
 
 }
