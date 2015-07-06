@@ -13,13 +13,7 @@ import Foundation
 class BlockB: Block {
     
     override class func gridsForBlock() -> [Grid] {
-        let c = 2
-        return [Grid(width: 4, height: 4, array: [0, c, 0, 0,
-                                                  0, c, 0, 0,
-                                                  0, c, 0, 0,
-                                                  0, c, 0, 0]),
-                Grid(width: 4, height: 4, array: [0, 0, 0, 0,
-                                                  c, c, c, c])]
+        return BlockTemplate.blockB
     }
 
 }
