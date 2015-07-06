@@ -11,21 +11,19 @@ import Foundation
 
 
 class BlockD: Block {
-
-    required init() {
-        super.init()
-        
+    
+    override class func gridsForBlock() -> [Grid] {
         let c = 4
-        self.grids = [Grid(width: 4, height: 4, array: [0, c, c, 0,
-                                                        0, c, 0, 0,
-                                                        0, c, 0, 0]),
-                      Grid(width: 4, height: 4, array: [c, c, c, 0,
-                                                        0, 0, c, 0]),
-                      Grid(width: 4, height: 4, array: [0, 0, c, 0,
-                                                        0, 0, c, 0,
-                                                        0, c, c, 0]),
-                      Grid(width: 4, height: 4, array: [c, 0, 0, 0,
-                                                        c, c, c, 0])]
+        return [Grid(width: 4, height: 4, array: [0, c, c, 0,
+                                                  0, c, 0, 0,
+                                                  0, c, 0, 0]),
+                Grid(width: 4, height: 4, array: [c, c, c, 0,
+                                                  0, 0, c, 0]),
+                Grid(width: 4, height: 4, array: [0, 0, c, 0,
+                                                  0, 0, c, 0,
+                                                  0, c, c, 0]),
+                Grid(width: 4, height: 4, array: [c, 0, 0, 0,
+                                                  c, c, c, 0])]
     }
 
 }

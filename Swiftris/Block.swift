@@ -11,7 +11,7 @@ import Foundation
 
 
 class Block {
-
+    
     var currentGrid: Grid = Grid(width: 4, height: 4) {
         didSet {
             self.dirty = true;
@@ -20,20 +20,30 @@ class Block {
 
     var nextGrid: Grid {
         get {
-            return self.grids[self.nextRotateIndex()]
+            return self.grids[self.movement.nextRotateIndex]
         }
     }
 
-    var position: Point = Point() {
-        didSet {
+    var position: Point {
+        set {
+            self.movement.position = newValue
             self.dirty = true;
+        }
+        get {
+            return self.movement.position
         }
     }
     
     var dirty = true
     
     required init() {
-        self.grids = []
+        self.grids = self.dynamicType.gridsForBlock()
+        self.movement = Movement(position: Point(), shapeCount: self.grids.count)
+        self.updateCurrentGrid()
+    }
+    
+    class func gridsForBlock() -> [Grid] {
+        return []
     }
     
     /**
@@ -41,24 +51,24 @@ class Block {
     */
     
     func turn() {
-        self.rotateIndex = self.nextRotateIndex()
+        self.movement.turn()
         self.updateCurrentGrid()
     }
     
     func moveDown() {
-        self.position = self.position.underPoint;
+        self.movement.down()
     }
 
     func moveLeft() {
-        self.position = self.position.leftPoint;
+        self.movement.left()
     }
     
     func moveRight() {
-        self.position = self.position.rightPoint
+        self.movement.right()
     }
     
     func isTimeToDrop() -> Bool {
-        return self.dropTimer.isTimeToDrop()
+        return self.movement.isTimeToDrop()
     }
     
     /**
@@ -86,20 +96,11 @@ class Block {
 
     //  MARK: - Privates
 
-    var grids: [Grid] {
-        didSet {
-            self.updateCurrentGrid()
-        }
-    }
-    private var rotateIndex = 0
-    private var dropTimer = DropTimer()
-    
-    private func nextRotateIndex() -> Int {
-        return (self.rotateIndex - 1) < 0 ? (self.grids.count - 1) : (self.rotateIndex - 1)
-    }
+    var grids: [Grid]
+    let movement: Movement
     
     private func updateCurrentGrid() {
-        self.currentGrid = self.grids[rotateIndex]
+        self.currentGrid = self.grids[self.movement.rotateIndex]
     }
 
 }

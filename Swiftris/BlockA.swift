@@ -12,12 +12,10 @@ import Foundation
 
 class BlockA: Block {
 
-    required init() {
-        super.init()
-
+    override class func gridsForBlock() -> [Grid] {
         let c = 1
-        self.grids = [Grid(width: 4, height: 4, array: [0, c, c, 0,
-                                                        0, c, c, 0])]
+        return [Grid(width: 4, height: 4, array: [0, c, c, 0,
+                                                  0, c, c, 0])]
     }
-
+    
 }
