@@ -92,7 +92,9 @@ class Block {
     let movement: Movement
     
     private func updateCurrentGrid() {
-        self.currentGrid = self.grids[self.movement.rotateIndex]
+        if self.grids.count > 0 {
+            self.currentGrid = self.grids[self.movement.rotateIndex]
+        }
     }
 
 }

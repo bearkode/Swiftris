@@ -51,6 +51,8 @@
 		2EF46F051949DEC2000D3206 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46F031949DEC2000D3206 /* Block.swift */; };
 		55001E881B4A3E7200908B4A /* BlockTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55001E871B4A3E7200908B4A /* BlockTemplate.swift */; };
 		55001E891B4A3E7200908B4A /* BlockTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55001E871B4A3E7200908B4A /* BlockTemplate.swift */; };
+		55001E8B1B4A4ABD00908B4A /* GameLogicController+Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55001E8A1B4A4ABD00908B4A /* GameLogicController+Movement.swift */; };
+		55001E8C1B4A4ABD00908B4A /* GameLogicController+Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55001E8A1B4A4ABD00908B4A /* GameLogicController+Movement.swift */; };
 		5502930D1B46809A000FDE2D /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5502930C1B46809A000FDE2D /* Movement.swift */; };
 		5502930E1B46809A000FDE2D /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5502930C1B46809A000FDE2D /* Movement.swift */; };
 		550293101B46844E000FDE2D /* MovementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5502930F1B46844E000FDE2D /* MovementTests.swift */; };
@@ -128,6 +130,7 @@
 		2EF46F001949DB5D000D3206 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		2EF46F031949DEC2000D3206 /* Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 		55001E871B4A3E7200908B4A /* BlockTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockTemplate.swift; sourceTree = "<group>"; };
+		55001E8A1B4A4ABD00908B4A /* GameLogicController+Movement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GameLogicController+Movement.swift"; sourceTree = "<group>"; };
 		5502930C1B46809A000FDE2D /* Movement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
 		5502930F1B46844E000FDE2D /* MovementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementTests.swift; sourceTree = "<group>"; };
 		558728CE1B4643B400745139 /* PointTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointTests.swift; sourceTree = "<group>"; };
@@ -194,7 +197,6 @@
 				2EF46EFB1949D22F000D3206 /* Views */,
 				2EF46ED81949CA4D000D3206 /* AppDelegate.swift */,
 				2EF46EFC1949D4E2000D3206 /* MainViewController.swift */,
-				2E7EA07519508B9B00837BBE /* GameLogicController.swift */,
 				2EF46EDA1949CA4D000D3206 /* Images.xcassets */,
 				2EF46EDC1949CA4D000D3206 /* MainMenu.xib */,
 				2EF46EFD1949D4E2000D3206 /* MainViewController.xib */,
@@ -256,8 +258,8 @@
 				55DC3B3A1B461BF4003E717B /* Grid+Enumeration.swift */,
 				55DC3B341B458D28003E717B /* DropTimer.swift */,
 				5502930C1B46809A000FDE2D /* Movement.swift */,
-				2EF46F031949DEC2000D3206 /* Block.swift */,
 				55001E871B4A3E7200908B4A /* BlockTemplate.swift */,
+				2EF46F031949DEC2000D3206 /* Block.swift */,
 				55DC3B371B459193003E717B /* Block+Debugging.swift */,
 				2EB861A9194EAC560016D660 /* BlockA.swift */,
 				2EB861AB194EAD1C0016D660 /* BlockB.swift */,
@@ -267,6 +269,8 @@
 				2EB861B3194F1D0C0016D660 /* BlockF.swift */,
 				2EB861B5194F1DB70016D660 /* BlockG.swift */,
 				2E379A4A195433FC00F7D0A7 /* Board.swift */,
+				2E7EA07519508B9B00837BBE /* GameLogicController.swift */,
+				55001E8A1B4A4ABD00908B4A /* GameLogicController+Movement.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -396,6 +400,7 @@
 				55DC3B3E1B461CDF003E717B /* Grid+Subscript.swift in Sources */,
 				2EB861AE194EADBB0016D660 /* BlockC.swift in Sources */,
 				2EB861B2194F1C5A0016D660 /* BlockE.swift in Sources */,
+				55001E8B1B4A4ABD00908B4A /* GameLogicController+Movement.swift in Sources */,
 				2EB72C1D1953EDEB00574E38 /* BoardView.swift in Sources */,
 				2EB861B4194F1D0C0016D660 /* BlockF.swift in Sources */,
 				2EB861B6194F1DB70016D660 /* BlockG.swift in Sources */,
@@ -434,6 +439,7 @@
 				55001E891B4A3E7200908B4A /* BlockTemplate.swift in Sources */,
 				2E494FD7195D20B000A7DF91 /* BlockC.swift in Sources */,
 				5502930E1B46809A000FDE2D /* Movement.swift in Sources */,
+				55001E8C1B4A4ABD00908B4A /* GameLogicController+Movement.swift in Sources */,
 				2ECC2089196432270023733D /* Point.swift in Sources */,
 				2E2CE89E195AFB6200E900E6 /* Grid.swift in Sources */,
 				2E494FE2195D2D2600A7DF91 /* Board.swift in Sources */,

@@ -19,6 +19,27 @@ class BlockTests: XCTestCase {
     override func tearDown() {
         super.tearDown()
     }
+    
+    func testCreation() {
+        var block: Block
+        
+        block = Block()
+        XCTAssertTrue(block.grids.count == 0)
+        block = BlockA()
+        XCTAssertTrue(block.grids.count == 1)
+        block = BlockB()
+        XCTAssertTrue(block.grids.count == 2)
+        block = BlockC()
+        XCTAssertTrue(block.grids.count == 4)
+        block = BlockD()
+        XCTAssertTrue(block.grids.count == 4)
+        block = BlockE()
+        XCTAssertTrue(block.grids.count == 4)
+        block = BlockF()
+        XCTAssertTrue(block.grids.count == 2)
+        block = BlockG()
+        XCTAssertTrue(block.grids.count == 2)
+    }
 
     func testContains() {
         let block = BlockA()

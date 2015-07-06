@@ -11,7 +11,9 @@ import Foundation
 
 
 protocol LogicControllerDelegate: class {
+    
     func logicControllerDidUpdate(logicController: GameLogicController)
+
 }
 
 
@@ -20,42 +22,15 @@ class GameLogicController: NSObject {
     weak var delegate: LogicControllerDelegate?
     var boardGridSize: GridSize {
         get {
-            return self.board.grid.size  // TODO : avoid message chain
+            return self.board.gridSize
         }
     }
 
     override init () {
         super.init()
 
+        //  다른 곳으로 이동
         self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0 / 30.0, target: self, selector: Selector("timerFired"), userInfo: nil, repeats: true)
-    }
-    
-    func upArrowDown() {
-        if let block = self.block {
-            if board.isPossiblePosition(block.position, grid: block.nextGrid) {
-                block.turn()
-            }
-        }
-    }
-
-    func leftArrowDown() {
-        if let block = self.block {
-            if board.isPossiblePosition(block.position.leftPoint, block: block) {   // TODO : avoid message chain
-                block.moveLeft()
-            }
-        }
-    }
-
-    func rightArrowDown() {
-        if let block = self.block {
-            if board.isPossiblePosition(block.position.rightPoint, block: block) {  // TODO : avoid message chain
-                block.moveRight()
-            }
-        }
-    }
-    
-    func bottomArrowDown() {
-
     }
     
     func colorIndexAtPosition(position: Point) -> Int {
@@ -77,29 +52,28 @@ class GameLogicController: NSObject {
         if let block = self.block where block.isTimeToDrop() {
             self.dropBlock(block)
         } else {
-            generateBlockIfNeeded()
-            checkGameOver()
+            self.generateBlockIfNeeded()
+            self.checkGameOver()
         }
         sendDidUpdateIfNeeded()
     }
     
     func generateBlockIfNeeded() {
         if block == nil {
-            block = Block.randomBlock()
-            block?.position = Point(x: 3, y: 0)
+            block = Block.randomBlock(Point(x: 3, y: 0))
         }
     }
     
-    func dropBlock(block: Block!) {
+    func dropBlock(block: Block) {
         if checkBlockDownCollision(block) {
-            immobilizeBlock(block)
+            immobilize(block)
             deleteFullRow()
         } else {
             moveDownBlock(block)
         }
     }
     
-    func immobilizeBlock(block: Block!) {
+    func immobilize(block: Block) {
         board.immobilzeBlock(block)
         self.block = nil
     }
@@ -108,12 +82,8 @@ class GameLogicController: NSObject {
         board.deleteFullRow()
     }
     
-    func moveDownBlock(block: Block!) {
-        block.moveDown()
-    }
-    
     func sendDidUpdateIfNeeded() {
-        if isDirty() {
+        if self.isDirty() {
             delegate?.logicControllerDidUpdate(self)
             resetDirty()
         }
@@ -130,10 +100,8 @@ class GameLogicController: NSObject {
     }
     
     func resetDirty() {
-        if let block = self.block {
-            block.movement.dirty = false;
-        }
-        board.dirty = false
+        self.block?.movement.dirty = false
+        self.board.dirty = false
     }
     
     func checkGameOver() {
