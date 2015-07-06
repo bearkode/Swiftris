@@ -49,6 +49,8 @@
 		2EF46F011949DB5D000D3206 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46F001949DB5D000D3206 /* MainView.swift */; };
 		2EF46F041949DEC2000D3206 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46F031949DEC2000D3206 /* Block.swift */; };
 		2EF46F051949DEC2000D3206 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46F031949DEC2000D3206 /* Block.swift */; };
+		55001E881B4A3E7200908B4A /* BlockTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55001E871B4A3E7200908B4A /* BlockTemplate.swift */; };
+		55001E891B4A3E7200908B4A /* BlockTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55001E871B4A3E7200908B4A /* BlockTemplate.swift */; };
 		5502930D1B46809A000FDE2D /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5502930C1B46809A000FDE2D /* Movement.swift */; };
 		5502930E1B46809A000FDE2D /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5502930C1B46809A000FDE2D /* Movement.swift */; };
 		550293101B46844E000FDE2D /* MovementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5502930F1B46844E000FDE2D /* MovementTests.swift */; };
@@ -125,6 +127,7 @@
 		2EF46EFD1949D4E2000D3206 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		2EF46F001949DB5D000D3206 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		2EF46F031949DEC2000D3206 /* Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
+		55001E871B4A3E7200908B4A /* BlockTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockTemplate.swift; sourceTree = "<group>"; };
 		5502930C1B46809A000FDE2D /* Movement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
 		5502930F1B46844E000FDE2D /* MovementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementTests.swift; sourceTree = "<group>"; };
 		558728CE1B4643B400745139 /* PointTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointTests.swift; sourceTree = "<group>"; };
@@ -254,6 +257,7 @@
 				55DC3B341B458D28003E717B /* DropTimer.swift */,
 				5502930C1B46809A000FDE2D /* Movement.swift */,
 				2EF46F031949DEC2000D3206 /* Block.swift */,
+				55001E871B4A3E7200908B4A /* BlockTemplate.swift */,
 				55DC3B371B459193003E717B /* Block+Debugging.swift */,
 				2EB861A9194EAC560016D660 /* BlockA.swift */,
 				2EB861AB194EAD1C0016D660 /* BlockB.swift */,
@@ -383,6 +387,7 @@
 				2EBACFCE1963C87F00FAAA40 /* GridSize.swift in Sources */,
 				2ECC2088196432270023733D /* Point.swift in Sources */,
 				55DC3B351B458D28003E717B /* DropTimer.swift in Sources */,
+				55001E881B4A3E7200908B4A /* BlockTemplate.swift in Sources */,
 				2EF46EFE1949D4E2000D3206 /* MainViewController.swift in Sources */,
 				55DC3B381B459193003E717B /* Block+Debugging.swift in Sources */,
 				5502930D1B46809A000FDE2D /* Movement.swift in Sources */,
@@ -426,6 +431,7 @@
 				2E494FE1195D2BF500A7DF91 /* BoardTests.swift in Sources */,
 				55DC3B391B459193003E717B /* Block+Debugging.swift in Sources */,
 				558728CF1B4643B400745139 /* PointTests.swift in Sources */,
+				55001E891B4A3E7200908B4A /* BlockTemplate.swift in Sources */,
 				2E494FD7195D20B000A7DF91 /* BlockC.swift in Sources */,
 				5502930E1B46809A000FDE2D /* Movement.swift in Sources */,
 				2ECC2089196432270023733D /* Point.swift in Sources */,
