@@ -14,8 +14,17 @@ class Movement {
 
     private let shapeCount: Int
     private let dropTimer: DropTimer
-    private(set) var rotateIndex: Int
-    var position: Point
+    private(set) var rotateIndex: Int {
+        didSet {
+            self.dirty = true
+        }
+    }
+    var dirty = true
+    var position: Point {
+        didSet {
+            self.dirty = true
+        }
+    }
     var nextRotateIndex: Int {
         get {
             return (self.rotateIndex - 1) < 0 ? (self.shapeCount - 1) : (self.rotateIndex - 1)

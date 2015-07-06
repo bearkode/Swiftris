@@ -123,7 +123,7 @@ class GameLogicController: NSObject {
         if board.dirty {
             return true;
         } else if let block = self.block {
-            return block.dirty
+            return block.movement.dirty
         } else {
             return false;
         }
@@ -131,7 +131,7 @@ class GameLogicController: NSObject {
     
     func resetDirty() {
         if let block = self.block {
-            block.dirty = false;
+            block.movement.dirty = false;
         }
         board.dirty = false
     }
@@ -145,7 +145,7 @@ class GameLogicController: NSObject {
     }
 
     func checkBlockDownCollision(block: Block!) -> Bool {
-        return board.isOverlappedAtPosition(block.position.underPoint, block: block) //  TODO : avoid message chain
+        return board.isOverlappedAtPosition(block.position.underPoint, block: block)
     }
     
 }

@@ -12,12 +12,7 @@ import Foundation
 
 class Block {
     
-    var currentGrid: Grid = Grid(width: 4, height: 4) {
-        didSet {
-            self.dirty = true;
-        }
-    }
-
+    var currentGrid: Grid = Grid(width: 4, height: 4)
     var nextGrid: Grid {
         get {
             return self.grids[self.movement.nextRotateIndex]
@@ -27,14 +22,11 @@ class Block {
     var position: Point {
         set {
             self.movement.position = newValue
-            self.dirty = true;
         }
         get {
             return self.movement.position
         }
     }
-    
-    var dirty = true
     
     required init() {
         self.grids = self.dynamicType.gridsForBlock()
