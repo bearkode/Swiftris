@@ -37,7 +37,7 @@ class Board {
     }
     
     func isPossiblePosition(position: Point, block: Block) -> Bool {
-        return !grid.isOverlappedGrid(block.currentGrid, position: position)
+        return self.isPossiblePosition(position, grid: block.currentGrid)
     }
     
     func isPossiblePosition(position: Point, grid: Grid) -> Bool {
