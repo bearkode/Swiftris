@@ -16,7 +16,7 @@ private let globalBlockTypes: [Block.Type] = [BlockA.self, BlockB.self, BlockC.s
 extension Block {
 
     class func randomBlock(position: Point) -> Block {
-        let block = globalBlockTypes[Int(arc4random() % 7)]()
+        let block = globalBlockTypes[Int(arc4random() % 7)].init()
 
         block.position = position
 
