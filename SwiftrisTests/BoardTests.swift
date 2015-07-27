@@ -93,5 +93,104 @@ class BoardTests: XCTestCase {
         block.position = Point(x: 0, y: 9)
         XCTAssertTrue(board.isOverlappedAtPosition(block.position.underPoint, block: block) == true, "")
     }
+    
+    func testDeleteFullRow() {
+        let board = Board(size: GridSize(width: 6, height: 4))
+        var block: Block
+        
+        block = BlockE()
+        block.position = Point(x: 0, y: 2)
+        board.immobilzeBlock(block)
+        block = BlockE()
+        block.turn()
+        block.position = Point(x: 2, y: 1)
+        board.immobilzeBlock(block)
+        block = BlockD()
+        block.turn()
+        block.turn()
+        block.position = Point(x: 3, y: 1)
+        board.immobilzeBlock(block)
 
+//        for var y = 0; y < 4; y++ {
+//            var str = ""
+//            for var x = 0; x < 6; x++ {
+//                let value = board.valueAtPosition(Point(x: x, y: y))
+//                str += "\(value)"
+//            }
+//            NSLog("\(str)")
+//        }
+
+        XCTAssertTrue(board.valueAtPosition(Point(x: 0, y: 0)) == 0)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 1, y: 0)) == 0)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 2, y: 0)) == 0)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 3, y: 0)) == 0)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 4, y: 0)) == 0)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 5, y: 0)) == 0)
+        
+        XCTAssertTrue(board.valueAtPosition(Point(x: 0, y: 1)) == 0)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 1, y: 1)) == 0)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 2, y: 1)) == 0)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 3, y: 1)) == 5)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 4, y: 1)) == 0)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 5, y: 1)) == 4)
+        
+        XCTAssertTrue(board.valueAtPosition(Point(x: 0, y: 2)) == 0)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 1, y: 2)) == 5)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 2, y: 2)) == 5)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 3, y: 2)) == 5)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 4, y: 2)) == 0)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 5, y: 2)) == 4)
+        
+        XCTAssertTrue(board.valueAtPosition(Point(x: 0, y: 3)) == 5)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 1, y: 3)) == 5)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 2, y: 3)) == 5)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 3, y: 3)) == 5)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 4, y: 3)) == 4)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 5, y: 3)) == 4)
+        
+        board.deleteFullRow()
+        
+        XCTAssertTrue(board.valueAtPosition(Point(x: 0, y: 0)) == 0)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 1, y: 0)) == 0)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 2, y: 0)) == 0)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 3, y: 0)) == 0)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 4, y: 0)) == 0)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 5, y: 0)) == 0)
+
+        XCTAssertTrue(board.valueAtPosition(Point(x: 0, y: 1)) == 0)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 1, y: 1)) == 0)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 2, y: 1)) == 0)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 3, y: 1)) == 0)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 4, y: 1)) == 0)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 5, y: 1)) == 0)
+        
+        XCTAssertTrue(board.valueAtPosition(Point(x: 0, y: 2)) == 0)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 1, y: 2)) == 0)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 2, y: 2)) == 0)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 3, y: 2)) == 5)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 4, y: 2)) == 0)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 5, y: 2)) == 4)
+        
+        XCTAssertTrue(board.valueAtPosition(Point(x: 0, y: 3)) == 0)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 1, y: 3)) == 5)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 2, y: 3)) == 5)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 3, y: 3)) == 5)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 4, y: 3)) == 0)
+        XCTAssertTrue(board.valueAtPosition(Point(x: 5, y: 3)) == 4)
+    }
+
+    func testDeleteFullRow2() {
+        let board = Board(size: GridSize(width: 5, height: 5))
+        board.grid.buffer = [ 0, 0, 0, 0, 0,
+                              2, 2, 2, 2, 2,
+                              1, 1, 0, 1, 0,
+                              3, 3, 3, 3, 3,
+                              4, 4, 0, 0, 4 ]
+        board.deleteFullRow()
+        XCTAssertTrue(board.grid.buffer == [ 0, 0, 0, 0, 0,
+                                             0, 0, 0, 0, 0,
+                                             0, 0, 0, 0, 0,
+                                             1, 1, 0, 1, 0,
+                                             4, 4, 0, 0, 4])
+    }
 }

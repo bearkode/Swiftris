@@ -23,11 +23,11 @@ extension Grid {
     
     subscript(position: Point) -> Int {
         get {
-            assert(self.size.validatePosition(position), "Index out of range")
+//            assert(self.size.validatePosition(position), "Index out of range")
             return buffer[self.size.indexOfPosition(position)]
         }
         set {
-            assert(self.size.validatePosition(position), "Index out of range")
+//            assert(self.size.validatePosition(position), "Index out of range")
             buffer[self.size.indexOfPosition(position)] = newValue
         }
     }
