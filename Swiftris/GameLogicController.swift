@@ -55,12 +55,12 @@ class GameLogicController: NSObject {
             self.generateBlockIfNeeded()
             self.checkGameOver()
         }
-        sendDidUpdateIfNeeded()
+        self.sendDidUpdateIfNeeded()
     }
     
     func generateBlockIfNeeded() {
-        if block == nil {
-            block = Block.randomBlock(Point(x: 3, y: 0))
+        if self.block == nil {
+            self.block = Block.randomBlock(Point(x: 3, y: 0))
         }
     }
     
@@ -79,18 +79,18 @@ class GameLogicController: NSObject {
     }
     
     func deleteFullRow() {
-        board.deleteFullRow()
+        self.board.deleteFullRow()
     }
     
     func sendDidUpdateIfNeeded() {
         if self.isDirty() {
-            delegate?.logicControllerDidUpdate(self)
-            resetDirty()
+            self.delegate?.logicControllerDidUpdate(self)
+            self.resetDirty()
         }
     }
 
     func isDirty() -> Bool {
-        if board.dirty {
+        if self.board.dirty {
             return true;
         } else if let block = self.block {
             return block.movement.dirty
@@ -106,14 +106,14 @@ class GameLogicController: NSObject {
     
     func checkGameOver() {
         if let block = self.block {
-            if board.isOverlappedAtPosition(block.position, block: block) {
+            if self.board.isOverlappedAtPosition(block.position, block: block) {
                 print("Game Over")
             }
         }
     }
 
     func checkBlockDownCollision(block: Block!) -> Bool {
-        return board.isOverlappedAtPosition(block.position.underPoint, block: block)
+        return self.board.isOverlappedAtPosition(block.position.underPoint, block: block)
     }
     
 }

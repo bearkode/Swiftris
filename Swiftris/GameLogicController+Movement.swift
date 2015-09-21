@@ -46,7 +46,7 @@ extension GameLogicController {
         
     }
     
-    func moveDownBlock(block: Block!) {
+    func moveDownBlock(block: Block) {
         block.moveDown()
     }
 

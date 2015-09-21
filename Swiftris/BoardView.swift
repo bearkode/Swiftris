@@ -23,7 +23,7 @@ class BoardView: NSView {
     
     weak var dataSource: BoardViewDataSource? {
         didSet {
-            reload()
+            self.reload()
         }
     }
     
@@ -36,8 +36,8 @@ class BoardView: NSView {
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
         
-        drawBackground()
-        drawCells()
+        self.drawBackground()
+        self.drawCells()
     }
 
     /**
@@ -45,9 +45,10 @@ class BoardView: NSView {
     */
     
     func reload() {
-        updateGridSize()
-        updateCellSize()
-        updateFrameSize()
+        self.updateGridSize()
+        self.updateCellSize()
+        self.updateFrameSize()
+        
         setNeedsDisplayInRect(self.bounds)
     }
     
@@ -73,7 +74,7 @@ class BoardView: NSView {
             return
         }
         
-        gridSize.enumerate { (position: Point) in
+        self.gridSize.enumerate { (position: Point) in
             let colorIndex = dataSource.colorIndexOfBoardView(self, position: position)
             self.drawCellAtPosition(position, colorIndex: colorIndex)
         }
@@ -83,7 +84,7 @@ class BoardView: NSView {
         let point = displayPointFromGridPosition(position)
         let color = NSColor.colorForIndex(colorIndex)
         
-        drawCellAtPoint(point, color: color)
+        self.drawCellAtPoint(point, color: color)
     }
     
     func displayPointFromGridPosition(position: Point) -> CGPoint {

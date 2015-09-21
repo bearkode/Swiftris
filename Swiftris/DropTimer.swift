@@ -13,20 +13,20 @@ import Foundation
 class DropTimer {
 
     init() {
-        self.currentvalue = initValue
+        self.currentValue = initValue
     }
     
     func isTimeToDrop() -> Bool {
-        if self.currentvalue-- > 0 {
+        if self.currentValue-- > 0 {
             return false
         }
         
-        self.currentvalue = self.initValue
+        self.currentValue = self.initValue
 
         return true
     }
 
     private let initValue = 5
-    private var currentvalue: Int
+    private var currentValue: Int
     
 }

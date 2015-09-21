@@ -23,9 +23,9 @@ extension Block: CustomStringConvertible {
         self.currentGrid.enumerateGrid { (point, value, stop) in
             if oldY != point.y {
                 oldY = point.y
-                print("\n", appendNewline: false)
+                print("", terminator: "\n")
             }
-            print("\(value) ", appendNewline: false);
+            print("\(value) ", terminator: "");
         }
         print(" ")
     }

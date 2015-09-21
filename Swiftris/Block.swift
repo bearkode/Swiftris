@@ -86,7 +86,7 @@ class Block {
         return Point(x: (position.x - self.position.x), y: (position.y - self.position.y))
     }
 
-    //  MARK: - Privates
+    //  MARK: - privates
 
     var grids: [Grid]
     let movement: Movement
