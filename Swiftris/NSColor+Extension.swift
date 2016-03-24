@@ -23,12 +23,7 @@ private let globalColorDict: Dictionary<Int, NSColor> = [
 
 
 extension NSColor {
-    
-    func halftone() -> NSColor {
-        let factor: CGFloat = 0.5
-        return NSColor(calibratedRed: redComponent * factor, green: greenComponent * factor, blue: blueComponent * factor, alpha: alphaComponent)
-    }
-    
+
     class func colorForIndex(index: Int) -> NSColor {
         if let result = globalColorDict[index] {
             return result
@@ -36,5 +31,10 @@ extension NSColor {
             return NSColor(calibratedRed: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         }
     }
-    
+
+    func halftone() -> NSColor {
+        let factor: CGFloat = 0.5
+        return NSColor(calibratedRed: redComponent * factor, green: greenComponent * factor, blue: blueComponent * factor, alpha: alphaComponent)
+    }
+
 }

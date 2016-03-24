@@ -17,7 +17,8 @@ class DropTimer {
     }
     
     func isTimeToDrop() -> Bool {
-        if self.currentValue-- > 0 {
+        if self.currentValue > 0 {
+            self.currentValue -= 1
             return false
         }
         

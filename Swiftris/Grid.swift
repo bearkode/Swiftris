@@ -39,7 +39,7 @@ class Grid {
     }
 
     func compactRowOver(row: Int) {
-        for var y = row; y > 0; y-- {
+        for y in row.stride(to: 0, by: -1) {
             buffer[size.rangeOfRow(y)] = buffer[self.size.rangeOfRow(y - 1)]
         }
         

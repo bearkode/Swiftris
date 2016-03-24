@@ -30,7 +30,7 @@ class GameLogicController: NSObject {
         super.init()
 
         //  다른 곳으로 이동
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0 / 30.0, target: self, selector: Selector("timerFired"), userInfo: nil, repeats: true)
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0 / 30.0, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
     }
     
     func colorIndexAtPosition(position: Point) -> Int {

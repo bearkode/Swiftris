@@ -30,7 +30,7 @@ class GridSizeTests: XCTestCase {
         let size = GridSize(width: 10, height: 10)
         var acc = 0
         size.enumerate { (position) -> () in
-            acc++
+            acc += 1
         }
         XCTAssertTrue(acc == 100)
     }

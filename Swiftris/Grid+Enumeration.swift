@@ -22,9 +22,14 @@ extension Grid {
     
     func enumerateGrid(range: Range<Int>, closure: (point: Point, value: Int, inout stop: Bool) -> Void) {
         var stop = false
-        for var index = range.startIndex; index < range.endIndex && !stop; index++ {
+
+        for index in range {
             closure(point: self.size.positionOfIndex(index), value: self.buffer[index], stop: &stop)
+            if stop {
+                break;
+            }
         }
+        
     }
 
 }
