@@ -29,25 +29,25 @@ struct GridSize {
     
     //  MARK: -
     func enumerate(closure: (position: Point) -> ()) {
-        for index in indexRange {
+        for index in self.indexRange {
             closure(position: positionOfIndex(index))
         }
     }
     
     func validatePosition(position: Point) -> Bool {
-        return position.x >= 0 && position.x < width && position.y >= 0 && position.y < height
+        return position.x >= 0 && position.x < self.width && position.y >= 0 && position.y < self.height
     }
     
     func indexOfPosition(position: Point) -> Int {
-        return position.y * width + position.x
+        return position.y * self.width + position.x
     }
     
     func positionOfIndex(index: Int) -> Point {
-        return Point(x: index % width, y: index / width)
+        return Point(x: index % self.width, y: index / self.width)
     }
     
     func rangeOfRow(row: Int) -> Range<Int> {
-        return (row * width)..<((row * width) + width)
+        return (row * self.width)..<((row * self.width) + self.width)
     }
     
 }

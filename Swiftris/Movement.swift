@@ -21,7 +21,12 @@ class Movement {
     var nextRotateIndex: Int {
         return (self.rotateIndex - 1) < 0 ? (self.shapeCount - 1) : (self.rotateIndex - 1)
     }
-
+    private(set) var rotateIndex: Int {
+        didSet {
+            self.dirty = true
+        }
+    }
+    
     init(position: Point, shapeCount: Int) {
         self.shapeCount = shapeCount
         self.dropTimer = DropTimer()
@@ -52,10 +57,5 @@ class Movement {
     //  MARK: -
     private let shapeCount: Int
     private let dropTimer: DropTimer
-    private(set) var rotateIndex: Int {
-        didSet {
-            self.dirty = true
-        }
-    }
 
 }

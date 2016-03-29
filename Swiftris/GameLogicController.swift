@@ -61,16 +61,16 @@ class GameLogicController: NSObject {
     }
     
     func dropBlock(block: Block) {
-        if checkBlockDownCollision(block) {
-            immobilize(block)
-            deleteFullRow()
+        if self.checkBlockDownCollision(block) {
+            self.immobilize(block)
+            self.deleteFullRow()
         } else {
-            moveDownBlock(block)
+            self.moveDownBlock(block)
         }
     }
     
     func immobilize(block: Block) {
-        board.immobilzeBlock(block)
+        self.board.immobilzeBlock(block)
         self.block = nil
     }
     

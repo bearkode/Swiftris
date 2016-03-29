@@ -12,33 +12,33 @@ import Cocoa
 
 class MainViewController: NSViewController, KeyboardEventDelegate, BoardViewDataSource, LogicControllerDelegate {
     
-    // MARK: - Init
+    // MARK: - init
     required override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 
-        logicController.delegate = self
-        boardView.dataSource = self
+        self.logicController.delegate = self
+        self.boardView.dataSource = self
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
 
-        logicController.delegate = self
-        boardView.dataSource = self
+        self.logicController.delegate = self
+        self.boardView.dataSource = self
     }
     
-    // MARK: - Override
+    // MARK: - override
     override func loadView() {
         super.loadView()
         
         if let view = self.view as? MainView {
             view.autoresizingMask = ([NSAutoresizingMaskOptions.ViewWidthSizable, NSAutoresizingMaskOptions.ViewHeightSizable])
             view.delegate = self
-            view.addSubview(boardView)
+            view.addSubview(self.boardView)
         }
     }
 
-    // MARK: - For Protocol
+    // MARK: - for protocol
     func eventOnView(view: NSView, didKeyDown keyCode: BKKeyCode) {
         let keyCodeDict = [BKKeyCode.Up : logicController.upArrowDown,
                            BKKeyCode.Right : logicController.rightArrowDown,
@@ -55,18 +55,18 @@ class MainViewController: NSViewController, KeyboardEventDelegate, BoardViewData
     }
     
     func gridSizeOfBoardView(boardView: BoardView) -> GridSize {
-        return logicController.boardGridSize
+        return self.logicController.boardGridSize
     }
     
     func colorIndexOfBoardView(boardView: BoardView, position: Point) -> Int {
-        return logicController.colorIndexAtPosition(position)
+        return self.logicController.colorIndexAtPosition(position)
     }
     
     func logicControllerDidUpdate(logicController: GameLogicController) {
-        boardView.setNeedsDisplayInRect(boardView.bounds)
+        self.boardView.setNeedsDisplayInRect(boardView.bounds)
     }
 
-    // MARK: - Privates
+    // MARK: - private
     private let boardView = BoardView(frame: NSRect(x: 10, y: 10, width: 100, height: 100))
     private let logicController = GameLogicController()
 

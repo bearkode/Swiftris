@@ -24,11 +24,11 @@ class Board {
     
     //  MARK: -
     func valueAtPosition(position: Point) -> Int {
-        return grid[position]
+        return self.grid[position]
     }
     
     func isOverlappedAtPosition(position: Point, block: Block) -> Bool {
-        return grid.isOverlappedGrid(block.currentGrid, position: position)
+        return self.grid.isOverlappedGrid(block.currentGrid, position: position)
     }
     
     func isPossiblePosition(position: Point, block: Block) -> Bool {
@@ -40,14 +40,14 @@ class Board {
     }
     
     func immobilzeBlock(block: Block) {
-        grid.copyGrid(block.currentGrid, position: block.position)
-        dirty = true
+        self.grid.copyGrid(block.currentGrid, position: block.position)
+        self.dirty = true
     }
     
     func deleteFullRow() {
         for i in (self.grid.size.height - 1).stride(through: 0, by: -1) {
-            if grid.isFullRow(i) {
-                grid.compactRowOver(i)
+            if self.grid.isFullRow(i) {
+                self.grid.compactRowOver(i)
                 self.deleteFullRow()
                 break;
             }

@@ -17,7 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let mainViewController = MainViewController(nibName: "MainViewController", bundle: NSBundle.mainBundle())
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        setupMainViewController()
+        self.setupMainViewController()
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
@@ -25,7 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func setupMainViewController() {
-        guard let mainView = mainViewController?.view,
+        guard let mainView = self.mainViewController?.view,
               let window = self.window,
               let contentView = window.contentView else {
             return

@@ -30,20 +30,20 @@ class Grid {
     
     //  MARK: -
     func replaceRow(row: Int, array: [Int]) {
-        assert(array.count == size.width)
-        buffer[size.rangeOfRow(row)] = array[0..<array.count]
+        assert(array.count == self.size.width)
+        self.buffer[self.size.rangeOfRow(row)] = array[0..<array.count]
     }
 
     func compactRowOver(row: Int) {
         for y in row.stride(to: 0, by: -1) {
-            buffer[size.rangeOfRow(y)] = buffer[self.size.rangeOfRow(y - 1)]
+            self.buffer[size.rangeOfRow(y)] = self.buffer[self.size.rangeOfRow(y - 1)]
         }
         
-        replaceRow(0, array: Array(count: size.width, repeatedValue:0))
+        self.replaceRow(0, array: Array(count: self.size.width, repeatedValue:0))
     }
     
     func isFullRow(row: Int) -> Bool {
-        for index in size.rangeOfRow(row) where buffer[index].empty {
+        for index in self.size.rangeOfRow(row) where self.buffer[index].empty {
             return false
         }
         

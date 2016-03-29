@@ -13,11 +13,11 @@ import Foundation
 extension Grid {
 
     func enumerateGrid(closure: (point:Point, value: Int, inout stop: Bool) -> Void) {
-        enumerateGrid(self.size.indexRange, closure: closure)
+        self.enumerateGrid(self.size.indexRange, closure: closure)
     }
     
     func enumerateRow(row: Int, closure: (point: Point, value: Int, inout stop: Bool) -> Void) {
-        enumerateGrid(self.size.rangeOfRow(row), closure: closure)
+        self.enumerateGrid(self.size.rangeOfRow(row), closure: closure)
     }
     
     func enumerateGrid(range: Range<Int>, closure: (point: Point, value: Int, inout stop: Bool) -> Void) {

@@ -42,7 +42,7 @@ class MainView: NSView {
 
     override func keyDown(theEvent: NSEvent) {
         if let keyCode = BKKeyCode(rawValue: theEvent.keyCode) {
-            delegate?.eventOnView(self, didKeyDown: keyCode)
+            self.delegate?.eventOnView(self, didKeyDown: keyCode)
         }
     }
 

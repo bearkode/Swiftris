@@ -76,14 +76,14 @@ class BoardView: NSView {
     }
 
     func drawCellAtPosition(position: Point, colorIndex: Int) {
-        let point = displayPointFromGridPosition(position)
+        let point = self.displayPointFromGridPosition(position)
         let color = NSColor.colorForIndex(colorIndex)
         
         self.drawCellAtPoint(point, color: color)
     }
     
     func displayPointFromGridPosition(position: Point) -> CGPoint {
-        return CGPoint(x: CGFloat(position.x) * cellSize.width + 1, y: CGFloat(position.y) * cellSize.height + 1)
+        return CGPoint(x: CGFloat(position.x) * self.cellSize.width + 1, y: CGFloat(position.y) * self.cellSize.height + 1)
     }
     
     func drawCellAtPoint(point: CGPoint, color: NSColor) {
