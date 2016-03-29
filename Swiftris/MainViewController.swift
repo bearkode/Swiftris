@@ -10,64 +10,74 @@
 import Cocoa
 
 
-class MainViewController: NSViewController, KeyboardEventDelegate, BoardViewDataSource, LogicControllerDelegate {
+class MainViewController: NSViewController {
     
     // MARK: - init
     required override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-
-        self.logicController.delegate = self
-        self.boardView.dataSource = self
+        self.setup()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-
-        self.logicController.delegate = self
-        self.boardView.dataSource = self
+        self.setup()
     }
     
     // MARK: - override
-    override func loadView() {
-        super.loadView()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        if let view = self.view as? MainView {
-            view.autoresizingMask = ([NSAutoresizingMaskOptions.ViewWidthSizable, NSAutoresizingMaskOptions.ViewHeightSizable])
-            view.delegate = self
-            view.addSubview(self.boardView)
+        guard let view = self.view as? MainView else {
+            return
         }
-    }
-
-    // MARK: - for protocol
-    func eventOnView(view: NSView, didKeyDown keyCode: BKKeyCode) {
-        let keyCodeDict = [BKKeyCode.Up : logicController.upArrowDown,
-                           BKKeyCode.Right : logicController.rightArrowDown,
-                           BKKeyCode.Left : logicController.leftArrowDown,
-                           BKKeyCode.Down : logicController.bottomArrowDown]
         
-        if let function = keyCodeDict[keyCode] {
-            function()
-        }
-    }
-    
-    func cellSizeOfBoardView(boardView: BoardView) -> CGSize {
-        return CGSizeMake(20.0, 20.0)
-    }
-    
-    func gridSizeOfBoardView(boardView: BoardView) -> GridSize {
-        return self.logicController.boardGridSize
-    }
-    
-    func colorIndexOfBoardView(boardView: BoardView, position: Point) -> Int {
-        return self.logicController.colorIndexAtPosition(position)
-    }
-    
-    func logicControllerDidUpdate(logicController: GameLogicController) {
-        self.boardView.setNeedsDisplayInRect(boardView.bounds)
+        view.autoresizingMask = ([NSAutoresizingMaskOptions.ViewWidthSizable, NSAutoresizingMaskOptions.ViewHeightSizable])
+        view.delegate = self
+        view.addSubview(self.boardView)
     }
 
     // MARK: - private
     private let boardView = BoardView(frame: NSRect(x: 10, y: 10, width: 100, height: 100))
     private let logicController = GameLogicController()
+    
+    func setup() {
+        self.logicController.delegate = self
+        self.boardView.dataSource = self
+    }
+    
+}
+
+
+extension MainViewController: BoardViewDataSource {
+
+    func cellSizeOfBoardView(boardView: BoardView) -> CGSize {
+        return CGSizeMake(20.0, 20.0)
+    }
+    
+    func gridSizeOfBoardView(boardView: BoardView) -> GridSize {
+        return self.logicController.boardSize
+    }
+    
+    func colorIndexOfBoardView(boardView: BoardView, position: Point) -> Int {
+        return self.logicController.colorIndexAtPosition(position)
+    }
+
+}
+
+
+extension MainViewController: KeyboardEventDelegate {
+
+    func eventOnView(view: NSView, didKeyDown keyCode: BKKeyCode) {
+        self.logicController.handleKeyCode(keyCode)
+    }
+
+}
+
+
+extension MainViewController: LogicControllerDelegate {
+
+    func logicControllerDidUpdate(logicController: GameLogicController) {
+        self.boardView.setNeedsDisplayInRect(boardView.bounds)
+    }
 
 }

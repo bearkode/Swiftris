@@ -28,11 +28,11 @@ class Board {
     }
     
     func isOverlappedAtPosition(position: Point, block: Block) -> Bool {
-        return self.grid.isOverlappedGrid(block.currentGrid, position: position)
+        return self.grid.isOverlappedGrid(block.currentShape, position: position)
     }
     
     func isPossiblePosition(position: Point, block: Block) -> Bool {
-        return self.isPossiblePosition(position, grid: block.currentGrid)
+        return self.isPossiblePosition(position, grid: block.currentShape)
     }
     
     func isPossiblePosition(position: Point, grid: Grid) -> Bool {
@@ -40,7 +40,7 @@ class Board {
     }
     
     func immobilzeBlock(block: Block) {
-        self.grid.copyGrid(block.currentGrid, position: block.position)
+        self.grid.copyGrid(block.currentShape, position: block.position)
         self.dirty = true
     }
     

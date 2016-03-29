@@ -56,6 +56,7 @@
 		5502930D1B46809A000FDE2D /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5502930C1B46809A000FDE2D /* Movement.swift */; };
 		5502930E1B46809A000FDE2D /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5502930C1B46809A000FDE2D /* Movement.swift */; };
 		550293101B46844E000FDE2D /* MovementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5502930F1B46844E000FDE2D /* MovementTests.swift */; };
+		556650991CAA668A001CE2EB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46F001949DB5D000D3206 /* MainView.swift */; };
 		558728CA1B4642A900745139 /* NSColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E49ED7C19594C63005C4E97 /* NSColor+Extension.swift */; };
 		558728CD1B4642CE00745139 /* GameLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7EA07519508B9B00837BBE /* GameLogicController.swift */; };
 		558728CF1B4643B400745139 /* PointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558728CE1B4643B400745139 /* PointTests.swift */; };
@@ -419,6 +420,7 @@
 				558728CA1B4642A900745139 /* NSColor+Extension.swift in Sources */,
 				2E494FDA195D20B700A7DF91 /* BlockF.swift in Sources */,
 				558728CD1B4642CE00745139 /* GameLogicController.swift in Sources */,
+				556650991CAA668A001CE2EB /* MainView.swift in Sources */,
 				2E79B1321965A1DC00B5486F /* Int+Extension.swift in Sources */,
 				2E494FD6195D20AE00A7DF91 /* BlockB.swift in Sources */,
 				2E494FD8195D20B300A7DF91 /* BlockD.swift in Sources */,
@@ -513,7 +515,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				METAL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -550,7 +552,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				METAL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};

@@ -93,50 +93,50 @@ class BlockTests: XCTestCase {
     func testTurn() {
         let block = BlockC()
 
-        XCTAssertTrue(block.currentGrid == grid0)
+        XCTAssertTrue(block.currentShape == grid0)
         block.turn()
-        XCTAssertTrue(block.currentGrid == grid3)
+        XCTAssertTrue(block.currentShape == grid3)
         block.turn()
-        XCTAssertTrue(block.currentGrid == grid2)
+        XCTAssertTrue(block.currentShape == grid2)
         block.turn()
-        XCTAssertTrue(block.currentGrid == grid1)
+        XCTAssertTrue(block.currentShape == grid1)
         block.turn()
-        XCTAssertTrue(block.currentGrid == grid0)
+        XCTAssertTrue(block.currentShape == grid0)
         block.turn()
-        XCTAssertTrue(block.currentGrid == grid3)
+        XCTAssertTrue(block.currentShape == grid3)
         block.turn()
-        XCTAssertTrue(block.currentGrid == grid2)
+        XCTAssertTrue(block.currentShape == grid2)
         block.turn()
-        XCTAssertTrue(block.currentGrid == grid1)
+        XCTAssertTrue(block.currentShape == grid1)
         block.turn()
-        XCTAssertTrue(block.currentGrid == grid0)
+        XCTAssertTrue(block.currentShape == grid0)
     }
     
     func testNextGrid() {
         let block = BlockC()
 
-        XCTAssertTrue(block.currentGrid == grid0)
-        XCTAssertTrue(block.nextGrid == grid3)
+        XCTAssertTrue(block.currentShape == grid0)
+        XCTAssertTrue(block.nextShape == grid3)
         
         block.turn()
-        XCTAssertTrue(block.currentGrid == grid3)
-        XCTAssertTrue(block.nextGrid == grid2)
+        XCTAssertTrue(block.currentShape == grid3)
+        XCTAssertTrue(block.nextShape == grid2)
         
         block.turn()
-        XCTAssertTrue(block.currentGrid == grid2)
-        XCTAssertTrue(block.nextGrid == grid1)
+        XCTAssertTrue(block.currentShape == grid2)
+        XCTAssertTrue(block.nextShape == grid1)
 
         block.turn()
-        XCTAssertTrue(block.currentGrid == grid1)
-        XCTAssertTrue(block.nextGrid == grid0)
+        XCTAssertTrue(block.currentShape == grid1)
+        XCTAssertTrue(block.nextShape == grid0)
 
         block.turn()
-        XCTAssertTrue(block.currentGrid == grid0)
-        XCTAssertTrue(block.nextGrid == grid3)
+        XCTAssertTrue(block.currentShape == grid0)
+        XCTAssertTrue(block.nextShape == grid3)
         
         block.turn()
-        XCTAssertTrue(block.currentGrid == grid3)
-        XCTAssertTrue(block.nextGrid == grid2)
+        XCTAssertTrue(block.currentShape == grid3)
+        XCTAssertTrue(block.nextShape == grid2)
     }
 
     func testMove() {
@@ -160,18 +160,18 @@ class BlockTests: XCTestCase {
     func testDrop() {
         let block = BlockC()
         
-        XCTAssert(block.isTimeToDrop() == false)
-        XCTAssert(block.isTimeToDrop() == false)
-        XCTAssert(block.isTimeToDrop() == false)
-        XCTAssert(block.isTimeToDrop() == false)
-        XCTAssert(block.isTimeToDrop() == false)
-        XCTAssert(block.isTimeToDrop() == true)
-        XCTAssert(block.isTimeToDrop() == false)
-        XCTAssert(block.isTimeToDrop() == false)
-        XCTAssert(block.isTimeToDrop() == false)
-        XCTAssert(block.isTimeToDrop() == false)
-        XCTAssert(block.isTimeToDrop() == false)
-        XCTAssert(block.isTimeToDrop() == true)
+        XCTAssert(block.timeToDrop == false)
+        XCTAssert(block.timeToDrop == false)
+        XCTAssert(block.timeToDrop == false)
+        XCTAssert(block.timeToDrop == false)
+        XCTAssert(block.timeToDrop == false)
+        XCTAssert(block.timeToDrop == true)
+        XCTAssert(block.timeToDrop == false)
+        XCTAssert(block.timeToDrop == false)
+        XCTAssert(block.timeToDrop == false)
+        XCTAssert(block.timeToDrop == false)
+        XCTAssert(block.timeToDrop == false)
+        XCTAssert(block.timeToDrop == true)
     }
 
 }

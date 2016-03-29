@@ -20,7 +20,7 @@ protocol LogicControllerDelegate: class {
 class GameLogicController: NSObject {
     
     weak var delegate: LogicControllerDelegate?
-    var boardGridSize: GridSize {
+    var boardSize: GridSize {
         return self.board.gridSize
     }
 
@@ -32,25 +32,33 @@ class GameLogicController: NSObject {
     }
     
     func colorIndexAtPosition(position: Point) -> Int {
-        if let value = block?.valueAtPosition(position) where value != 0 {
+        if let value = self.block?.valueAtPosition(position) where value != 0 {
             return value
         }
         
         return board.valueAtPosition(position)
     }
     
-    //  MARK: - privates
+    //  MARK: - private
     let board = Board(size: GridSize(width: 10, height: 20))
     var block: Block?
     var timer: NSTimer?
 
+    func handleKeyCode(keyCode: BKKeyCode) {
+        self.keyCodeHandlers[keyCode]?()
+    }
+    
     func timerFired() {
-        if let block = self.block where block.isTimeToDrop() {
-            self.dropBlock(block)
-        } else {
+        guard let block = self.block else {
             self.generateBlockIfNeeded()
             self.checkGameOver()
+            return
         }
+        
+        if block.timeToDrop {
+            self.dropBlock()
+        }
+        
         self.sendDidUpdateIfNeeded()
     }
     
@@ -59,17 +67,21 @@ class GameLogicController: NSObject {
             self.block = Block.randomBlock(Point(x: 3, y: 0))
         }
     }
-    
-    func dropBlock(block: Block) {
-        if self.checkBlockDownCollision(block) {
-            self.immobilize(block)
+
+    private func dropBlock() {
+        if self.checkBlockDownCollision() {
+            self.immobilize()
             self.deleteFullRow()
         } else {
-            self.moveDownBlock(block)
+            self.moveDownBlock()
         }
     }
     
-    func immobilize(block: Block) {
+    private func immobilize() {
+        guard let block = self.block else {
+            return
+        }
+        
         self.board.immobilzeBlock(block)
         self.block = nil
     }
@@ -79,37 +91,49 @@ class GameLogicController: NSObject {
     }
     
     func sendDidUpdateIfNeeded() {
-        if self.isDirty() {
+        if self.dirty {
             self.delegate?.logicControllerDidUpdate(self)
             self.resetDirty()
         }
     }
 
-    func isDirty() -> Bool {
+    var dirty : Bool {
         if self.board.dirty {
-            return true;
-        } else if let block = self.block {
-            return block.movement.dirty
+            return true
         } else {
-            return false;
+            return self.block?.dirty ?? false
         }
     }
     
     func resetDirty() {
-        self.block?.movement.dirty = false
         self.board.dirty = false
+        self.block?.dirty = false
     }
     
     func checkGameOver() {
-        if let block = self.block {
-            if self.board.isOverlappedAtPosition(block.position, block: block) {
-                print("Game Over")
-            }
+        guard let block = self.block else {
+            return
+        }
+
+        if self.board.isOverlappedAtPosition(block.position, block: block) {
+            print("Game Over")
         }
     }
 
-    func checkBlockDownCollision(block: Block!) -> Bool {
+    func checkBlockDownCollision() -> Bool {
+        guard let block = self.block else {
+            return false
+        }
+
         return self.board.isOverlappedAtPosition(block.position.underPoint, block: block)
     }
+    
+    //  MARK: - private
+    private lazy var keyCodeHandlers: [BKKeyCode: () -> Void] = {
+        return [BKKeyCode.Up : self.upArrowDown,
+                BKKeyCode.Right : self.rightArrowDown,
+                BKKeyCode.Left : self.leftArrowDown,
+                BKKeyCode.Down : self.downArrowDown]
+    } ()
     
 }

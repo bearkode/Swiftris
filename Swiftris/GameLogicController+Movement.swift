@@ -17,7 +17,7 @@ extension GameLogicController {
             return
         }
         
-        if self.board.isPossiblePosition(block.position, grid: block.nextGrid) {
+        if self.board.isPossiblePosition(block.position, grid: block.nextShape) {
             block.turn()
         }
     }
@@ -42,12 +42,12 @@ extension GameLogicController {
         }
     }
     
-    func bottomArrowDown() {
+    func downArrowDown() {
         
     }
     
-    func moveDownBlock(block: Block) {
-        block.moveDown()
+    func moveDownBlock() {
+        self.block?.moveDown()
     }
 
 }

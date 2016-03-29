@@ -12,13 +12,19 @@ import Foundation
 
 class Block {
 
-    let movement: Movement
     var grids: [Grid]
-    var currentGrid: Grid = Grid(width: 4, height: 4)
-    var nextGrid: Grid {
+    var currentShape: Grid = Grid(width: 4, height: 4)
+    var nextShape: Grid {
         return self.grids[self.movement.nextRotateIndex]
     }
-
+    var dirty: Bool {
+        set {
+            self.movement.dirty = newValue
+        }
+        get {
+            return self.movement.dirty
+        }
+    }
     var position: Point {
         set {
             self.movement.position = newValue
@@ -27,7 +33,11 @@ class Block {
             return self.movement.position
         }
     }
+    var timeToDrop: Bool {
+        return self.movement.isTimeToDrop()
+    }
     
+    //  MARK: - init
     required init() {
         self.grids = self.dynamicType.gridsForBlock()
         self.movement = Movement(position: Point(), shapeCount: self.grids.count)
@@ -56,21 +66,17 @@ class Block {
         self.movement.right()
     }
     
-    func isTimeToDrop() -> Bool {
-        return self.movement.isTimeToDrop()
-    }
-    
     //  MARK: -
     func containsPosition(position: Point) -> Bool {
         return (position.x >= self.position.x &&
-                position.x < self.position.x + self.currentGrid.size.width &&
+                position.x < self.position.x + self.currentShape.size.width &&
                 position.y >= self.position.y &&
-                position.y < self.position.y + self.currentGrid.size.height)
+                position.y < self.position.y + self.currentShape.size.height)
     }
 
     func valueAtPosition(position: Point) -> Int {
         if self.containsPosition(position) {
-            return self.currentGrid[self.blockPositionFromPosition(position)]
+            return self.currentShape[self.blockPositionFromPosition(position)]
         }
 
         return 0
@@ -80,10 +86,11 @@ class Block {
         return Point(x: (position.x - self.position.x), y: (position.y - self.position.y))
     }
 
-    //  MARK: - privates
+    //  MARK: - private
+    private let movement: Movement
     private func updateCurrentGrid() {
         if self.grids.count > 0 {
-            self.currentGrid = self.grids[self.movement.rotateIndex]
+            self.currentShape = self.grids[self.movement.rotateIndex]
         }
     }
 
