@@ -28,9 +28,7 @@ class BoardView: NSView {
     }
     
     override var flipped: Bool {
-        get {
-            return true
-        }
+        return true
     }
 
     override func drawRect(dirtyRect: NSRect) {
@@ -40,10 +38,7 @@ class BoardView: NSView {
         self.drawCells()
     }
 
-    /**
-    
-    */
-    
+    //  MARK: -
     func reload() {
         self.updateGridSize()
         self.updateCellSize()
@@ -104,10 +99,7 @@ class BoardView: NSView {
     private var cellSize = CGSize()
  
     private var suitableFrameSize: CGSize {
-        get {
-            return CGSize(width: CGFloat(self.gridSize.width) * self.cellSize.width + 1,
-                height: CGFloat(self.gridSize.height) * self.cellSize.height + 1)
-        }
+        return CGSize(width: CGFloat(self.gridSize.width) * self.cellSize.width + 1, height: CGFloat(self.gridSize.height) * self.cellSize.height + 1)
     }
 
 }

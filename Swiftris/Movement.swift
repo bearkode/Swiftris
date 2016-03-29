@@ -19,9 +19,7 @@ class Movement {
         }
     }
     var nextRotateIndex: Int {
-        get {
-            return (self.rotateIndex - 1) < 0 ? (self.shapeCount - 1) : (self.rotateIndex - 1)
-        }
+        return (self.rotateIndex - 1) < 0 ? (self.shapeCount - 1) : (self.rotateIndex - 1)
     }
 
     init(position: Point, shapeCount: Int) {
@@ -50,7 +48,8 @@ class Movement {
     func isTimeToDrop() -> Bool {
         return self.dropTimer.isTimeToDrop()
     }
- 
+    
+    //  MARK: -
     private let shapeCount: Int
     private let dropTimer: DropTimer
     private(set) var rotateIndex: Int {

@@ -21,15 +21,13 @@ class GameLogicController: NSObject {
     
     weak var delegate: LogicControllerDelegate?
     var boardGridSize: GridSize {
-        get {
-            return self.board.gridSize
-        }
+        return self.board.gridSize
     }
 
     override init () {
         super.init()
 
-        //  다른 곳으로 이동
+        //  TODO: 다른 곳으로 이동
         self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0 / 30.0, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
     }
     
@@ -41,10 +39,8 @@ class GameLogicController: NSObject {
         return board.valueAtPosition(position)
     }
     
-    /*
-     *  Privates
-     */
-    var board = Board(size: GridSize(width: 10, height: 20))
+    //  MARK: - privates
+    let board = Board(size: GridSize(width: 10, height: 20))
     var block: Block?
     var timer: NSTimer?
 

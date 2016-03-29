@@ -14,10 +14,8 @@ class Grid {
     
     let size: GridSize
     var buffer: [Int]
-    
-    /**
-        Init
-    */
+
+    //  MARK: -
     init(width: Int, height: Int, array: [Int]) {
         self.size = GridSize(width: width, height: height)
         self.buffer = Array(count: width * height, repeatedValue: 0)
@@ -30,9 +28,7 @@ class Grid {
         self.init(width: width, height: height, array: Array(count: width * height, repeatedValue:0))
     }
     
-    /**
-    
-    */
+    //  MARK: -
     func replaceRow(row: Int, array: [Int]) {
         assert(array.count == size.width)
         buffer[size.rangeOfRow(row)] = array[0..<array.count]
@@ -54,9 +50,7 @@ class Grid {
         return true;
     }
 
-    /**
-    
-    */
+    //  MARK: -
     func isOverlappedGrid(grid: Grid, position: Point) -> Bool {
         var overlapped = false
         
@@ -95,5 +89,6 @@ func == (left: Grid, right: Grid) -> Bool {
             result = false
         }
     }
+
     return result
 }

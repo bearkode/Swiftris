@@ -30,9 +30,7 @@ class MainView: NSView {
     weak var delegate: KeyboardEventDelegate?
 
     override var acceptsFirstResponder: Bool {
-        get {
-            return true
-        }
+        return true
     }
 
     override func drawRect(dirtyRect: NSRect) {

@@ -16,10 +16,7 @@ struct GridSize {
     let height: Int
     let indexRange: Range<Int>
     
-    /**
-    
-    */
-    
+    // MARK: -
     init(width: Int, height: Int) {
         self.width = width
         self.height = height
@@ -30,10 +27,7 @@ struct GridSize {
         self.init(width: 0, height: 0)
     }
     
-    /**
-    
-    */
-
+    //  MARK: -
     func enumerate(closure: (position: Point) -> ()) {
         for index in indexRange {
             closure(position: positionOfIndex(index))

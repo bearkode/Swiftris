@@ -13,15 +13,11 @@ import Foundation
 extension Int {
 
     var exist: Bool {
-        get{
-            return (self != 0) ? true : false
-        }
+        return (self != 0) ? true : false
     }
     
     var empty: Bool {
-        get {
-            return (self == 0) ? true : false
-        }
+        return (self == 0) ? true : false
     }
     
 }

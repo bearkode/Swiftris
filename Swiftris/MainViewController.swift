@@ -13,7 +13,6 @@ import Cocoa
 class MainViewController: NSViewController, KeyboardEventDelegate, BoardViewDataSource, LogicControllerDelegate {
     
     // MARK: - Init
-    
     required override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 
@@ -29,10 +28,6 @@ class MainViewController: NSViewController, KeyboardEventDelegate, BoardViewData
     }
     
     // MARK: - Override
-    /**
-        Override
-    */
-    
     override func loadView() {
         super.loadView()
         
@@ -44,9 +39,6 @@ class MainViewController: NSViewController, KeyboardEventDelegate, BoardViewData
     }
 
     // MARK: - For Protocol
-    /**
-        For Protocol
-    */
     func eventOnView(view: NSView, didKeyDown keyCode: BKKeyCode) {
         let keyCodeDict = [BKKeyCode.Up : logicController.upArrowDown,
                            BKKeyCode.Right : logicController.rightArrowDown,
@@ -75,7 +67,6 @@ class MainViewController: NSViewController, KeyboardEventDelegate, BoardViewData
     }
 
     // MARK: - Privates
-
     private let boardView = BoardView(frame: NSRect(x: 10, y: 10, width: 100, height: 100))
     private let logicController = GameLogicController()
 

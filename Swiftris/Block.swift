@@ -11,12 +11,12 @@ import Foundation
 
 
 class Block {
-    
+
+    let movement: Movement
+    var grids: [Grid]
     var currentGrid: Grid = Grid(width: 4, height: 4)
     var nextGrid: Grid {
-        get {
-            return self.grids[self.movement.nextRotateIndex]
-        }
+        return self.grids[self.movement.nextRotateIndex]
     }
 
     var position: Point {
@@ -38,10 +38,7 @@ class Block {
         return []
     }
     
-    /**
-        Movements
-    */
-    
+    //  MARK: -
     func turn() {
         self.movement.turn()
         self.updateCurrentGrid()
@@ -63,10 +60,7 @@ class Block {
         return self.movement.isTimeToDrop()
     }
     
-    /**
-    
-    */
-    
+    //  MARK: -
     func containsPosition(position: Point) -> Bool {
         return (position.x >= self.position.x &&
                 position.x < self.position.x + self.currentGrid.size.width &&
@@ -87,10 +81,6 @@ class Block {
     }
 
     //  MARK: - privates
-
-    var grids: [Grid]
-    let movement: Movement
-    
     private func updateCurrentGrid() {
         if self.grids.count > 0 {
             self.currentGrid = self.grids[self.movement.rotateIndex]

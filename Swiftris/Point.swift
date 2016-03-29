@@ -16,21 +16,15 @@ struct Point {
     var y: Int = 0
 
     var leftPoint: Point {
-        get {
-            return Point(x: self.x - 1, y: self.y)
-        }
+        return Point(x: self.x - 1, y: self.y)
     }
     
     var rightPoint: Point {
-        get {
-            return Point(x: self.x + 1, y: self.y)
-        }
+        return Point(x: self.x + 1, y: self.y)
     }
     
     var underPoint: Point {
-        get {
-            return Point(x: self.x, y: self.y + 1)
-        }
+        return Point(x: self.x, y: self.y + 1)
     }
 
 }
