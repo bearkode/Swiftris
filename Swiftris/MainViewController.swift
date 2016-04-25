@@ -27,6 +27,19 @@ class MainViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setupMainView()
+    }
+
+    // MARK: - private
+    private let boardView = BoardView(frame: NSRect(x: 10, y: 10, width: 100, height: 100))
+    private let logicController = GameLogicController()
+    
+    private func setup() {
+        self.logicController.delegate = self
+        self.boardView.dataSource = self
+    }
+    
+    private func setupMainView() {
         guard let view = self.view as? MainView else {
             return
         }
@@ -34,15 +47,6 @@ class MainViewController: NSViewController {
         view.autoresizingMask = ([NSAutoresizingMaskOptions.ViewWidthSizable, NSAutoresizingMaskOptions.ViewHeightSizable])
         view.delegate = self
         view.addSubview(self.boardView)
-    }
-
-    // MARK: - private
-    private let boardView = BoardView(frame: NSRect(x: 10, y: 10, width: 100, height: 100))
-    private let logicController = GameLogicController()
-    
-    func setup() {
-        self.logicController.delegate = self
-        self.boardView.dataSource = self
     }
     
 }

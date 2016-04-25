@@ -27,6 +27,7 @@ class BoardView: NSView {
         }
     }
     
+    //  MARK: - override
     override var flipped: Bool {
         return true
     }
@@ -94,7 +95,6 @@ class BoardView: NSView {
     }
     
     // MARK: - Private
-    
     private var gridSize = GridSize()
     private var cellSize = CGSize()
  

@@ -20,17 +20,21 @@ protocol LogicControllerDelegate: class {
 class GameLogicController: NSObject {
     
     weak var delegate: LogicControllerDelegate?
+    let board = Board(size: GridSize(width: 10, height: 20))
+    var block: Block?
     var boardSize: GridSize {
         return self.board.gridSize
     }
 
+    //  MARK: - init
     override init () {
         super.init()
 
         //  TODO: 다른 곳으로 이동
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0 / 30.0, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0 / 30.0, target: self, selector: #selector(timeTick), userInfo: nil, repeats: true)
     }
-    
+
+    //  MARK: - public
     func colorIndexAtPosition(position: Point) -> Int {
         if let value = self.block?.valueAtPosition(position) where value != 0 {
             return value
@@ -38,46 +42,47 @@ class GameLogicController: NSObject {
         
         return board.valueAtPosition(position)
     }
-    
-    //  MARK: - private
-    let board = Board(size: GridSize(width: 10, height: 20))
-    var block: Block?
-    var timer: NSTimer?
 
     func handleKeyCode(keyCode: BKKeyCode) {
         self.keyCodeHandlers[keyCode]?()
     }
     
-    func timerFired() {
-        guard let block = self.block else {
-            self.generateBlockIfNeeded()
-            self.checkGameOver()
-            return
-        }
-        
-        if block.timeToDrop {
+    func timeTick() {
+        if self.hasBlock {
             self.dropBlock()
+        } else {
+            self.generateBlock()
+            self.checkGameOver()
         }
         
-        self.sendDidUpdateIfNeeded()
+        self.sendDidUpdate()
     }
-    
-    func generateBlockIfNeeded() {
-        if self.block == nil {
-            self.block = Block.randomBlock(Point(x: 3, y: 0))
-        }
+
+    //  MARK: - private
+    private var timer: NSTimer?
+    private var hasBlock: Bool {
+        return self.block != nil
+    }
+
+    private func generateBlock() {
+        assert(self.block == nil)
+        self.block = Block.randomBlock(Point(x: 3, y: 0))
     }
 
     private func dropBlock() {
+        guard let _ = self.block else {
+            return
+        }
+
         if self.checkBlockDownCollision() {
-            self.immobilize()
+            self.immobilizeBlock()
             self.deleteFullRow()
         } else {
             self.moveDownBlock()
         }
     }
     
-    private func immobilize() {
+    private func immobilizeBlock() {
         guard let block = self.block else {
             return
         }
@@ -86,18 +91,18 @@ class GameLogicController: NSObject {
         self.block = nil
     }
     
-    func deleteFullRow() {
+    private func deleteFullRow() {
         self.board.deleteFullRow()
     }
     
-    func sendDidUpdateIfNeeded() {
+    private func sendDidUpdate() {
         if self.dirty {
             self.delegate?.logicControllerDidUpdate(self)
             self.resetDirty()
         }
     }
 
-    var dirty : Bool {
+    private var dirty : Bool {
         if self.board.dirty {
             return true
         } else {
@@ -105,12 +110,12 @@ class GameLogicController: NSObject {
         }
     }
     
-    func resetDirty() {
+    private func resetDirty() {
         self.board.dirty = false
         self.block?.dirty = false
     }
     
-    func checkGameOver() {
+    private func checkGameOver() {
         guard let block = self.block else {
             return
         }
@@ -120,7 +125,7 @@ class GameLogicController: NSObject {
         }
     }
 
-    func checkBlockDownCollision() -> Bool {
+    private func checkBlockDownCollision() -> Bool {
         guard let block = self.block else {
             return false
         }
@@ -128,7 +133,6 @@ class GameLogicController: NSObject {
         return self.board.isOverlappedAtPosition(block.position.underPoint, block: block)
     }
     
-    //  MARK: - private
     private lazy var keyCodeHandlers: [BKKeyCode: () -> Void] = {
         return [BKKeyCode.Up : self.upArrowDown,
                 BKKeyCode.Right : self.rightArrowDown,
