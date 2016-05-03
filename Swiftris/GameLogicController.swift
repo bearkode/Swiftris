@@ -48,8 +48,10 @@ class GameLogicController: NSObject {
     }
     
     func timeTick() {
-        if self.hasBlock {
-            self.dropBlock()
+        if let block = self.block {
+            if block.timeToDrop {
+                self.dropBlock()
+            }
         } else {
             self.generateBlock()
             self.checkGameOver()
@@ -60,9 +62,6 @@ class GameLogicController: NSObject {
 
     //  MARK: - private
     private var timer: NSTimer?
-    private var hasBlock: Bool {
-        return self.block != nil
-    }
 
     private func generateBlock() {
         assert(self.block == nil)
