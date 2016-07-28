@@ -63,10 +63,10 @@ class GameLogicController: NSObject {
     //  MARK: - private
     private var timer: Timer?
     private lazy var keyCodeHandlers: [BKKeyCode: () -> Void] = {
-        return [BKKeyCode.up : self.upArrowDown,
-                BKKeyCode.right : self.rightArrowDown,
-                BKKeyCode.left : self.leftArrowDown,
-                BKKeyCode.down : self.downArrowDown]
+        return [BKKeyCode.up: self.upArrowDown,
+                BKKeyCode.right: self.rightArrowDown,
+                BKKeyCode.left: self.leftArrowDown,
+                BKKeyCode.down: self.downArrowDown]
     } ()
 
 }
@@ -80,29 +80,21 @@ private extension GameLogicController {
     }
     
     private func dropBlock() {
-        guard let _ = self.block else {
-            return
-        }
-        
-        if self.checkBlockDownCollision() {
-            self.immobilizeBlock()
-            self.deleteFullRow()
-        } else {
-            self.moveDownBlock()
-        }
-    }
-    
-    private func immobilizeBlock() {
         guard let block = self.block else {
             return
         }
         
-        self.board.immobilze(block: block)
-        self.block = nil
+        if self.checkBlockDownCollision(block) {
+            self.immobilize(block: block)
+            self.board.deleteFullRow()
+        } else {
+            block.moveDown()
+        }
     }
     
-    private func deleteFullRow() {
-        self.board.deleteFullRow()
+    private func immobilize(block: Block) {
+        self.board.immobilze(block: block)
+        self.block = nil
     }
     
     private func sendDidUpdate() {
@@ -135,11 +127,7 @@ private extension GameLogicController {
         }
     }
     
-    private func checkBlockDownCollision() -> Bool {
-        guard let block = self.block else {
-            return false
-        }
-        
+    private func checkBlockDownCollision(_ block: Block) -> Bool {
         return self.board.isOverlapped(with: block, at: block.position.underPoint)
     }
     

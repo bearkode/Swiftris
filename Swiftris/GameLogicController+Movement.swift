@@ -45,9 +45,5 @@ extension GameLogicController {
     func downArrowDown() {
         
     }
-    
-    func moveDownBlock() {
-        self.block?.moveDown()
-    }
 
 }

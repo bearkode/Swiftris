@@ -13,7 +13,7 @@ import Foundation
 class BlockF: Block {
     
     override class func gridsForBlock() -> [Grid] {
-        return BlockTemplate.blockF
+        return BlockTemplate.zigzagA
     }
 
 }

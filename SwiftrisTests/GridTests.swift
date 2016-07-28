@@ -33,7 +33,7 @@ class GridTests: XCTestCase {
         XCTAssertTrue(left == right)
     }
 
-    func testEnumerateGrid() {
+    func testEnumerateInRange() {
         let grid = Grid(width: 3, height: 3, array: [1, 1, 1, 2, 2, 2, 3, 3, 3])
         
         let range = 3..<6
@@ -43,7 +43,7 @@ class GridTests: XCTestCase {
         }
     }
     
-    func testEnumerateRow() {
+    func testEnumerateInRow() {
         let grid = Grid(width: 3, height: 3, array: [1, 1, 1, 2, 2, 2, 3, 3, 3])
         
         XCTAssertNotNil(grid, "")
@@ -52,6 +52,16 @@ class GridTests: XCTestCase {
             XCTAssertTrue(point.y == 1, "")
             XCTAssertTrue(value == 2, "")
         }
+    }
+    
+    func testEnumerateRowsFromTop() {
+        let grid = Grid(width: 5, height: 5)
+        
+        var sum = 0
+        grid.enumerateRowsFromTop { (row: Int) in
+            sum += row
+        }
+        XCTAssertTrue(sum == (4 + 3 + 2 + 1 + 0))
     }
 
     func testReplaceRow() {
@@ -80,12 +90,12 @@ class GridTests: XCTestCase {
         XCTAssertTrue(grid1.isOverlapped(withGrid: grid2, position: Point(x: 3, y: 4)), "")
     }
     
-    func testCompactRowOver() {
+    func testCompress() {
         let grid   = Grid(width: 3, height: 3, array: [ 0, 0, 1, 2, 3, 4, 0, 0, 0])
         let result = Grid(width: 3, height: 3, array: [ 0, 0, 0, 0, 0, 1, 2, 3, 4])
         
         XCTAssertFalse(grid == result)
-        grid.compact(rowOver: 2)
+        grid.compress(rowOver: 2)
         XCTAssertTrue(grid == result)
     }
     

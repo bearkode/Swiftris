@@ -56,6 +56,7 @@
 		5502930D1B46809A000FDE2D /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5502930C1B46809A000FDE2D /* Movement.swift */; };
 		5502930E1B46809A000FDE2D /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5502930C1B46809A000FDE2D /* Movement.swift */; };
 		550293101B46844E000FDE2D /* MovementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5502930F1B46844E000FDE2D /* MovementTests.swift */; };
+		551A71B91D49EDC1005725C0 /* BlockType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A71B81D49EDC1005725C0 /* BlockType.swift */; };
 		556650991CAA668A001CE2EB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46F001949DB5D000D3206 /* MainView.swift */; };
 		558728CA1B4642A900745139 /* NSColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E49ED7C19594C63005C4E97 /* NSColor+Extension.swift */; };
 		558728CD1B4642CE00745139 /* GameLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7EA07519508B9B00837BBE /* GameLogicController.swift */; };
@@ -134,6 +135,7 @@
 		55001E8A1B4A4ABD00908B4A /* GameLogicController+Movement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GameLogicController+Movement.swift"; sourceTree = "<group>"; };
 		5502930C1B46809A000FDE2D /* Movement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
 		5502930F1B46844E000FDE2D /* MovementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementTests.swift; sourceTree = "<group>"; };
+		551A71B81D49EDC1005725C0 /* BlockType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockType.swift; sourceTree = "<group>"; };
 		558728CE1B4643B400745139 /* PointTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointTests.swift; sourceTree = "<group>"; };
 		558728D01B46451500745139 /* GridSizeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridSizeTests.swift; sourceTree = "<group>"; };
 		55DC3B341B458D28003E717B /* DropTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropTimer.swift; sourceTree = "<group>"; };
@@ -166,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				2E49ED7C19594C63005C4E97 /* NSColor+Extension.swift */,
-				2E49ED7F1959CE48005C4E97 /* Block+Extensions.swift */,
 				2E79B1301965A1DC00B5486F /* Int+Extension.swift */,
 			);
 			name = Extensions;
@@ -269,6 +270,8 @@
 				2EB861B1194F1C5A0016D660 /* BlockE.swift */,
 				2EB861B3194F1D0C0016D660 /* BlockF.swift */,
 				2EB861B5194F1DB70016D660 /* BlockG.swift */,
+				551A71B81D49EDC1005725C0 /* BlockType.swift */,
+				2E49ED7F1959CE48005C4E97 /* Block+Extensions.swift */,
 				2E379A4A195433FC00F7D0A7 /* Board.swift */,
 				2E7EA07519508B9B00837BBE /* GameLogicController.swift */,
 				55001E8A1B4A4ABD00908B4A /* GameLogicController+Movement.swift */,
@@ -403,6 +406,7 @@
 				55DC3B3E1B461CDF003E717B /* Grid+Subscript.swift in Sources */,
 				2EB861AE194EADBB0016D660 /* BlockC.swift in Sources */,
 				2EB861B2194F1C5A0016D660 /* BlockE.swift in Sources */,
+				551A71B91D49EDC1005725C0 /* BlockType.swift in Sources */,
 				55001E8B1B4A4ABD00908B4A /* GameLogicController+Movement.swift in Sources */,
 				2EB72C1D1953EDEB00574E38 /* BoardView.swift in Sources */,
 				2EB861B4194F1D0C0016D660 /* BlockF.swift in Sources */,

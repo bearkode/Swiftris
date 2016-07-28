@@ -45,11 +45,10 @@ class Board {
     }
     
     func deleteFullRow() {
-        for i in stride(from: (self.grid.size.height - 1), through: 0, by: -1) {
-            if self.grid.isFull(row: i) {
-                self.grid.compact(rowOver: i)
+        self.grid.enumerateRowsFromTop { (row: Int) in
+            if self.grid.isFull(row: row) {
+                self.grid.compress(rowOver: row)
                 self.deleteFullRow()
-                break;
             }
         }
     }

@@ -34,7 +34,7 @@ class Grid {
         self.buffer[self.size.range(ofRow: row)] = array[0..<array.count]
     }
 
-    func compact(rowOver row: Int) {
+    func compress(rowOver row: Int) {
         for y in stride(from: row, to: 0, by: -1) {
             self.buffer[size.range(ofRow: y)] = self.buffer[self.size.range(ofRow: y - 1)]
         }
