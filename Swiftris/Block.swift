@@ -36,16 +36,15 @@ class Block {
     var timeToDrop: Bool {
         return self.movement.isTimeToDrop()
     }
+    private(set) var type: BlockType
     
     //  MARK: - init
-    required init() {
-        self.grids = self.dynamicType.gridsForBlock()
-        self.movement = Movement(position: Point(), shapeCount: self.grids.count)
+    init(type: BlockType, position: Point = Point()) {
+        self.type = type
+        self.grids = type.grids
+        self.movement = Movement(position: position, shapeCount: self.grids.count)
+        self.position = position
         self.updateCurrentGrid()
-    }
-    
-    class func gridsForBlock() -> [Grid] {
-        return []
     }
     
     //  MARK: -

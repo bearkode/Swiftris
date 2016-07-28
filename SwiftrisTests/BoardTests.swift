@@ -29,7 +29,7 @@ class BoardTests: XCTestCase {
     
     func testValue() {
         let board = Board(size: GridSize(width: 5, height: 5))
-        let block = BlockA()
+        let block = Block(type: .box)
         
         block.position = Point(x: 0, y: 0)
         
@@ -68,8 +68,8 @@ class BoardTests: XCTestCase {
     
     func testIsPossiblePosition() {
         let board = Board(size: GridSize(width: 5, height: 5))
-        let block = BlockD()
-        let other = BlockE()
+        let block = Block(type: .foldB)
+        let other = Block(type: .bump)
         
         block.position = Point(x: 0, y: 2)
         board.immobilze(block: block)
@@ -82,7 +82,7 @@ class BoardTests: XCTestCase {
 
     func testIsOverlappedAtPosition() {
         let board = Board(size: GridSize(width: 30, height: 10))
-        let block = BlockA()
+        let block = Block(type: .box)
         
         block.position = Point(x: 0, y: 6)
         XCTAssertTrue(board.isOverlapped(with: block, at: block.position.underPoint) == false, "")
@@ -98,14 +98,14 @@ class BoardTests: XCTestCase {
         let board = Board(size: GridSize(width: 6, height: 4))
         var block: Block
         
-        block = BlockE()
+        block = Block(type: .bump)
         block.position = Point(x: 0, y: 2)
         board.immobilze(block: block)
-        block = BlockE()
+        block = Block(type: .bump)
         block.turn()
         block.position = Point(x: 2, y: 1)
         board.immobilze(block: block)
-        block = BlockD()
+        block = Block(type: .foldB)
         block.turn()
         block.turn()
         block.position = Point(x: 3, y: 1)

@@ -76,7 +76,7 @@ private extension GameLogicController {
 
     private func generateBlock() {
         assert(self.block == nil)
-        self.block = Block.randomBlock(withPosition: Point(x: 3, y: 0))
+        self.block = BlockGenerator.sharedGenerator.block(withPosition: Point(x: 3, y: 0))
     }
     
     private func dropBlock() {

@@ -25,6 +25,14 @@ enum BlockType: Int {
 
 extension BlockType {
 
+    static let allTypes: Set<BlockType> = [.box, .bar, .foldA, .foldB, .bump, .zigzagA, .zigzagB]
+    
+    static var randomType: BlockType {
+        let index = Int(arc4random() % UInt32(self.zigzagB.rawValue + 1))
+        
+        return BlockType(rawValue: index)!
+    }
+
     var grids: [Grid] {
         switch self {
         case .box:
