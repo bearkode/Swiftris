@@ -12,9 +12,9 @@ import Cocoa
 
 protocol BoardViewDataSource: class {
 
-    func cellSizeOfBoardView(boardView: BoardView) -> CGSize
-    func gridSizeOfBoardView(boardView: BoardView) -> GridSize
-    func colorIndexOfBoardView(boardView: BoardView, position: Point) -> Int
+    func cellSizeOfBoardView(_ boardView: BoardView) -> CGSize
+    func gridSizeOfBoardView(_ boardView: BoardView) -> GridSize
+    func colorIndexOfBoardView(_ boardView: BoardView, position: Point) -> Int
     
 }
 
@@ -28,12 +28,12 @@ class BoardView: NSView {
     }
     
     //  MARK: - override
-    override var flipped: Bool {
+    override var isFlipped: Bool {
         return true
     }
 
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
         
         self.drawBackground()
         self.drawCells()
@@ -45,7 +45,7 @@ class BoardView: NSView {
         self.updateCellSize()
         self.updateFrameSize()
         
-        setNeedsDisplayInRect(self.bounds)
+        setNeedsDisplay(self.bounds)
     }
     
     func updateGridSize() {
@@ -76,18 +76,18 @@ class BoardView: NSView {
         }
     }
 
-    func drawCellAtPosition(position: Point, colorIndex: Int) {
+    func drawCellAtPosition(_ position: Point, colorIndex: Int) {
         let point = self.displayPointFromGridPosition(position)
         let color = NSColor.colorForIndex(colorIndex)
         
         self.drawCellAtPoint(point, color: color)
     }
     
-    func displayPointFromGridPosition(position: Point) -> CGPoint {
+    func displayPointFromGridPosition(_ position: Point) -> CGPoint {
         return CGPoint(x: CGFloat(position.x) * self.cellSize.width + 1, y: CGFloat(position.y) * self.cellSize.height + 1)
     }
     
-    func drawCellAtPoint(point: CGPoint, color: NSColor) {
+    func drawCellAtPoint(_ point: CGPoint, color: NSColor) {
         color.halftone().setFill()
         NSBezierPath(rect: NSRect(x: point.x, y: point.y, width: cellSize.width - 1, height: cellSize.height - 1)).fill()
         color.setFill()

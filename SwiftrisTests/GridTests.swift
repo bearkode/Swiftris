@@ -36,7 +36,8 @@ class GridTests: XCTestCase {
     func testEnumerateGrid() {
         let grid = Grid(width: 3, height: 3, array: [1, 1, 1, 2, 2, 2, 3, 3, 3])
         
-        grid.enumerateGrid(3...5) { (point: Point, value: Int, inout stop: Bool) in
+        let range = 3..<6
+        grid.enumerateGrid(range) { (point: Point, value: Int, stop: inout Bool) in
             XCTAssertTrue(point.y == 1, "")
             XCTAssertTrue(value == 2, "")
         }
@@ -47,7 +48,7 @@ class GridTests: XCTestCase {
         
         XCTAssertNotNil(grid, "")
         
-        grid.enumerateRow(1) { (point: Point, value: Int, inout stop: Bool) in
+        grid.enumerateRow(1) { (point: Point, value: Int, stop: inout Bool) in
             XCTAssertTrue(point.y == 1, "")
             XCTAssertTrue(value == 2, "")
         }

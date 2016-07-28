@@ -14,13 +14,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet var window: NSWindow?
     
-    let mainViewController = MainViewController(nibName: "MainViewController", bundle: NSBundle.mainBundle())
+    let mainViewController = MainViewController(nibName: "MainViewController", bundle: Bundle.main)
 
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         self.setupMainViewController()
     }
 
-    func applicationWillTerminate(aNotification: NSNotification) {
+    func applicationWillTerminate(_ aNotification: Notification) {
 
     }
     

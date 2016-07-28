@@ -18,31 +18,31 @@ class Grid {
     //  MARK: -
     init(width: Int, height: Int, array: [Int]) {
         self.size = GridSize(width: width, height: height)
-        self.buffer = Array(count: width * height, repeatedValue: 0)
+        self.buffer = Array(repeating: 0, count: width * height)
         
         let count = array.count
         self.buffer[0..<count] = array[0..<count]
     }
 
     convenience init(width: Int, height: Int) {
-        self.init(width: width, height: height, array: Array(count: width * height, repeatedValue:0))
+        self.init(width: width, height: height, array: Array(repeating: 0, count: width * height))
     }
     
     //  MARK: -
-    func replaceRow(row: Int, array: [Int]) {
+    func replaceRow(_ row: Int, array: [Int]) {
         assert(array.count == self.size.width)
         self.buffer[self.size.rangeOfRow(row)] = array[0..<array.count]
     }
 
-    func compactRowOver(row: Int) {
-        for y in row.stride(to: 0, by: -1) {
+    func compactRowOver(_ row: Int) {
+        for y in stride(from: row, to: 0, by: -1) {
             self.buffer[size.rangeOfRow(y)] = self.buffer[self.size.rangeOfRow(y - 1)]
         }
         
-        self.replaceRow(0, array: Array(count: self.size.width, repeatedValue:0))
+        self.replaceRow(0, array: Array(repeating: 0, count: self.size.width))
     }
     
-    func isFullRow(row: Int) -> Bool {
+    func isFullRow(_ row: Int) -> Bool {
         for index in self.size.rangeOfRow(row) where self.buffer[index].empty {
             return false
         }
@@ -51,10 +51,10 @@ class Grid {
     }
 
     //  MARK: -
-    func isOverlappedGrid(grid: Grid, position: Point) -> Bool {
+    func isOverlappedGrid(_ grid: Grid, position: Point) -> Bool {
         var overlapped = false
         
-        grid.enumerateGrid { (point: Point, value: Int, inout stop: Bool) in
+        grid.enumerateGrid { (point: Point, value: Int, stop: inout Bool) in
             if value.exist && self.valueAtPosition(position + point).exist {
                 (overlapped, stop) = (true, true)
             }
@@ -63,12 +63,12 @@ class Grid {
         return overlapped
     }
     
-    func valueAtPosition(position: Point) -> Int {
+    func valueAtPosition(_ position: Point) -> Int {
         return self.size.validatePosition(position) ? self[position] : Int.max
     }
     
-    func copyGrid(grid: Grid, position: Point) {
-        grid.enumerateGrid { (point: Point, value: Int, inout stop: Bool) in
+    func copyGrid(_ grid: Grid, position: Point) {
+        grid.enumerateGrid { (point: Point, value: Int, stop: inout Bool) in
             let gridPoint = point + position
             
             if gridPoint.y >= 0 && value.exist {

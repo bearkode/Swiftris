@@ -25,7 +25,7 @@ class SwiftrisTests: XCTestCase {
     }
     
     func testPerformanceExample() {
-        self.measureBlock() {
+        self.measure() {
             
         }
     }

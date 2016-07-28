@@ -13,7 +13,7 @@ import Cocoa
 class MainViewController: NSViewController {
     
     // MARK: - init
-    required override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    required override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.setup()
     }
@@ -44,7 +44,7 @@ class MainViewController: NSViewController {
             return
         }
         
-        view.autoresizingMask = ([NSAutoresizingMaskOptions.ViewWidthSizable, NSAutoresizingMaskOptions.ViewHeightSizable])
+        view.autoresizingMask = ([NSAutoresizingMaskOptions.viewWidthSizable, NSAutoresizingMaskOptions.viewHeightSizable])
         view.delegate = self
         view.addSubview(self.boardView)
     }
@@ -54,15 +54,15 @@ class MainViewController: NSViewController {
 
 extension MainViewController: BoardViewDataSource {
 
-    func cellSizeOfBoardView(boardView: BoardView) -> CGSize {
-        return CGSizeMake(20.0, 20.0)
+    func cellSizeOfBoardView(_ boardView: BoardView) -> CGSize {
+        return CGSize(width: 20.0, height: 20.0)
     }
     
-    func gridSizeOfBoardView(boardView: BoardView) -> GridSize {
+    func gridSizeOfBoardView(_ boardView: BoardView) -> GridSize {
         return self.logicController.boardSize
     }
     
-    func colorIndexOfBoardView(boardView: BoardView, position: Point) -> Int {
+    func colorIndexOfBoardView(_ boardView: BoardView, position: Point) -> Int {
         return self.logicController.colorIndexAtPosition(position)
     }
 
@@ -71,7 +71,7 @@ extension MainViewController: BoardViewDataSource {
 
 extension MainViewController: KeyboardEventDelegate {
 
-    func eventOnView(view: NSView, didKeyDown keyCode: BKKeyCode) {
+    func eventOnView(_ view: NSView, didKeyDown keyCode: BKKeyCode) {
         self.logicController.handleKeyCode(keyCode)
     }
 
@@ -80,8 +80,8 @@ extension MainViewController: KeyboardEventDelegate {
 
 extension MainViewController: LogicControllerDelegate {
 
-    func logicControllerDidUpdate(logicController: GameLogicController) {
-        self.boardView.setNeedsDisplayInRect(boardView.bounds)
+    func logicControllerDidUpdate(_ logicController: GameLogicController) {
+        self.boardView.setNeedsDisplay(boardView.bounds)
     }
 
 }

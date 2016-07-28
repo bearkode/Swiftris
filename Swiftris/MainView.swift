@@ -11,16 +11,16 @@ import AppKit
 
 
 enum BKKeyCode: UInt16 {
-    case Up = 126
-    case Down = 125
-    case Left = 123
-    case Right = 124
+    case up = 126
+    case down = 125
+    case left = 123
+    case right = 124
 }
 
 
 protocol KeyboardEventDelegate: class {
     
-    func eventOnView(view: NSView, didKeyDown keyCode: BKKeyCode)
+    func eventOnView(_ view: NSView, didKeyDown keyCode: BKKeyCode)
 
 }
 
@@ -33,14 +33,14 @@ class MainView: NSView {
         return true
     }
 
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
         
         NSColor(calibratedRed: 1.0, green: 0.5, blue: 0.5, alpha: 1.0).setFill()
         NSBezierPath(rect: self.bounds).fill()
     }
 
-    override func keyDown(theEvent: NSEvent) {
+    override func keyDown(_ theEvent: NSEvent) {
         if let keyCode = BKKeyCode(rawValue: theEvent.keyCode) {
             self.delegate?.eventOnView(self, didKeyDown: keyCode)
         }

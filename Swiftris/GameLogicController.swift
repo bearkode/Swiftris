@@ -12,7 +12,7 @@ import Foundation
 
 protocol LogicControllerDelegate: class {
     
-    func logicControllerDidUpdate(logicController: GameLogicController)
+    func logicControllerDidUpdate(_ logicController: GameLogicController)
 
 }
 
@@ -31,19 +31,19 @@ class GameLogicController: NSObject {
         super.init()
 
         //  TODO: 다른 곳으로 이동
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0 / 30.0, target: self, selector: #selector(timeTick), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: 1.0 / 30.0, target: self, selector: #selector(timeTick), userInfo: nil, repeats: true)
     }
 
     //  MARK: - public
-    func colorIndexAtPosition(position: Point) -> Int {
-        if let value = self.block?.valueAtPosition(position) where value != 0 {
+    func colorIndexAtPosition(_ position: Point) -> Int {
+        if let value = self.block?.valueAtPosition(position), value != 0 {
             return value
         }
         
         return board.valueAtPosition(position)
     }
 
-    func handleKeyCode(keyCode: BKKeyCode) {
+    func handleKeyCode(_ keyCode: BKKeyCode) {
         self.keyCodeHandlers[keyCode]?()
     }
     
@@ -61,7 +61,7 @@ class GameLogicController: NSObject {
     }
 
     //  MARK: - private
-    private var timer: NSTimer?
+    private var timer: Timer?
 
     private func generateBlock() {
         assert(self.block == nil)
@@ -133,10 +133,10 @@ class GameLogicController: NSObject {
     }
     
     private lazy var keyCodeHandlers: [BKKeyCode: () -> Void] = {
-        return [BKKeyCode.Up : self.upArrowDown,
-                BKKeyCode.Right : self.rightArrowDown,
-                BKKeyCode.Left : self.leftArrowDown,
-                BKKeyCode.Down : self.downArrowDown]
+        return [BKKeyCode.up : self.upArrowDown,
+                BKKeyCode.right : self.rightArrowDown,
+                BKKeyCode.left : self.leftArrowDown,
+                BKKeyCode.down : self.downArrowDown]
     } ()
     
 }
