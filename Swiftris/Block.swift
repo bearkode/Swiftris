@@ -67,22 +67,22 @@ class Block {
     }
     
     //  MARK: -
-    func containsPosition(_ position: Point) -> Bool {
+    func contains(position: Point) -> Bool {
         return (position.x >= self.position.x &&
                 position.x < self.position.x + self.currentShape.size.width &&
                 position.y >= self.position.y &&
                 position.y < self.position.y + self.currentShape.size.height)
     }
 
-    func valueAtPosition(_ position: Point) -> Int {
-        if self.containsPosition(position) {
-            return self.currentShape[self.blockPositionFromPosition(position)]
+    func value(at position: Point) -> Int {
+        if self.contains(position: position) {
+            return self.currentShape[self.positionInBlock(from: position)]
         }
 
         return 0
     }
 
-    func blockPositionFromPosition(_ position: Point) -> Point {
+    func positionInBlock(from position: Point) -> Point {
         return Point(x: (position.x - self.position.x), y: (position.y - self.position.y))
     }
 

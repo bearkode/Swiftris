@@ -63,7 +63,7 @@ extension MainViewController: BoardViewDataSource {
     }
     
     func colorIndexOfBoardView(_ boardView: BoardView, position: Point) -> Int {
-        return self.logicController.colorIndexAtPosition(position)
+        return self.logicController.colorIndex(at: position)
     }
 
 }

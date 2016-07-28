@@ -18,7 +18,7 @@ extension Block: CustomStringConvertible {
     
     func debugPrint() {
         var oldY = 0
-        self.currentShape.enumerateGrid { (point, value, stop) in
+        self.currentShape.enumerate { (point, value, stop) in
             if oldY != point.y {
                 oldY = point.y
                 print("", terminator: "\n")

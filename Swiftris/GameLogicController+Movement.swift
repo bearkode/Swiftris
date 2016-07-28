@@ -17,7 +17,7 @@ extension GameLogicController {
             return
         }
         
-        if self.board.isPossiblePosition(block.position, grid: block.nextShape) {
+        if self.board.isPossible(at: block.position, withGrid: block.nextShape) {
             block.turn()
         }
     }
@@ -27,7 +27,7 @@ extension GameLogicController {
             return
         }
         
-        if self.board.isPossiblePosition(block.position.leftPoint, block: block) {
+        if self.board.isPossible(at: block.position.leftPoint, withBlock: block) {
             block.moveLeft()
         }
     }
@@ -37,7 +37,7 @@ extension GameLogicController {
             return
         }
         
-        if self.board.isPossiblePosition(block.position.rightPoint, block: block) {
+        if self.board.isPossible(at: block.position.rightPoint, withBlock: block) {
             block.moveRight()
         }
     }

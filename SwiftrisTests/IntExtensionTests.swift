@@ -22,14 +22,14 @@ class IntExtensionTests: XCTestCase {
 
     func testZero() {
         let zero = 0
-        XCTAssert(zero.empty == true)
-        XCTAssert(zero.exist == false)
+        XCTAssert(zero.isEmpty == true)
+        XCTAssert(zero.isExist == false)
     }
 
     func testNonZero() {
         let nonZero = 10
-        XCTAssert(nonZero.empty == false)
-        XCTAssert(nonZero.exist == true)
+        XCTAssert(nonZero.isEmpty == false)
+        XCTAssert(nonZero.isExist == true)
     }
 
 }

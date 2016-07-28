@@ -24,7 +24,7 @@ private let globalColorDict: [Int: NSColor] = [
 
 extension NSColor {
 
-    class func colorForIndex(_ index: Int) -> NSColor {
+    class func color(forIndex index: Int) -> NSColor {
         return globalColorDict[index] ?? NSColor(calibratedRed: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     }
 

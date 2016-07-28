@@ -12,11 +12,11 @@ import Foundation
 
 extension Int {
 
-    var exist: Bool {
+    var isExist: Bool {
         return (self != 0) ? true : false
     }
     
-    var empty: Bool {
+    var isEmpty: Bool {
         return (self == 0) ? true : false
     }
     

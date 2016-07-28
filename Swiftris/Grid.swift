@@ -29,21 +29,21 @@ class Grid {
     }
     
     //  MARK: -
-    func replaceRow(_ row: Int, array: [Int]) {
+    func replace(with array: [Int], forRow row: Int) {
         assert(array.count == self.size.width)
-        self.buffer[self.size.rangeOfRow(row)] = array[0..<array.count]
+        self.buffer[self.size.range(ofRow: row)] = array[0..<array.count]
     }
 
-    func compactRowOver(_ row: Int) {
+    func compact(rowOver row: Int) {
         for y in stride(from: row, to: 0, by: -1) {
-            self.buffer[size.rangeOfRow(y)] = self.buffer[self.size.rangeOfRow(y - 1)]
+            self.buffer[size.range(ofRow: y)] = self.buffer[self.size.range(ofRow: y - 1)]
         }
         
-        self.replaceRow(0, array: Array(repeating: 0, count: self.size.width))
+        self.replace(with: Array(repeating: 0, count: self.size.width), forRow: 0)
     }
     
-    func isFullRow(_ row: Int) -> Bool {
-        for index in self.size.rangeOfRow(row) where self.buffer[index].empty {
+    func isFull(row: Int) -> Bool {
+        for index in self.size.range(ofRow: row) where self.buffer[index].isEmpty {
             return false
         }
         
@@ -51,11 +51,11 @@ class Grid {
     }
 
     //  MARK: -
-    func isOverlappedGrid(_ grid: Grid, position: Point) -> Bool {
+    func isOverlapped(withGrid grid: Grid, position: Point) -> Bool {
         var overlapped = false
         
-        grid.enumerateGrid { (point: Point, value: Int, stop: inout Bool) in
-            if value.exist && self.valueAtPosition(position + point).exist {
+        grid.enumerate { (point: Point, value: Int, stop: inout Bool) in
+            if value.isExist && self.value(at: position + point).isExist {
                 (overlapped, stop) = (true, true)
             }
         }
@@ -63,15 +63,15 @@ class Grid {
         return overlapped
     }
     
-    func valueAtPosition(_ position: Point) -> Int {
-        return self.size.validatePosition(position) ? self[position] : Int.max
+    func value(at position: Point) -> Int {
+        return self.size.isValidPosition(position) ? self[position] : Int.max
     }
     
-    func copyGrid(_ grid: Grid, position: Point) {
-        grid.enumerateGrid { (point: Point, value: Int, stop: inout Bool) in
+    func copy(from grid: Grid, position: Point) {
+        grid.enumerate { (point: Point, value: Int, stop: inout Bool) in
             let gridPoint = point + position
             
-            if gridPoint.y >= 0 && value.exist {
+            if gridPoint.y >= 0 && value.isExist {
                 self[gridPoint] = value
             }
         }
@@ -83,8 +83,8 @@ class Grid {
 func == (left: Grid, right: Grid) -> Bool {
     var result = true
     
-    left.enumerateGrid { (point, value, stop) -> Void in
-        if right.valueAtPosition(point) != value {
+    left.enumerate { (point, value, stop) -> Void in
+        if right.value(at: point) != value {
             stop = true
             result = false
         }

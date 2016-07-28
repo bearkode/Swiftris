@@ -35,12 +35,12 @@ class GameLogicController: NSObject {
     }
 
     //  MARK: - public
-    func colorIndexAtPosition(_ position: Point) -> Int {
-        if let value = self.block?.valueAtPosition(position), value != 0 {
+    func colorIndex(at position: Point) -> Int {
+        if let value = self.block?.value(at: position), value != 0 {
             return value
         }
         
-        return board.valueAtPosition(position)
+        return board.value(at: position)
     }
 
     func handleKeyCode(_ keyCode: BKKeyCode) {
@@ -62,17 +62,28 @@ class GameLogicController: NSObject {
 
     //  MARK: - private
     private var timer: Timer?
+    private lazy var keyCodeHandlers: [BKKeyCode: () -> Void] = {
+        return [BKKeyCode.up : self.upArrowDown,
+                BKKeyCode.right : self.rightArrowDown,
+                BKKeyCode.left : self.leftArrowDown,
+                BKKeyCode.down : self.downArrowDown]
+    } ()
+
+}
+
+
+private extension GameLogicController {
 
     private func generateBlock() {
         assert(self.block == nil)
-        self.block = Block.randomBlock(Point(x: 3, y: 0))
+        self.block = Block.randomBlock(withPosition: Point(x: 3, y: 0))
     }
-
+    
     private func dropBlock() {
         guard let _ = self.block else {
             return
         }
-
+        
         if self.checkBlockDownCollision() {
             self.immobilizeBlock()
             self.deleteFullRow()
@@ -86,7 +97,7 @@ class GameLogicController: NSObject {
             return
         }
         
-        self.board.immobilzeBlock(block)
+        self.board.immobilze(block: block)
         self.block = nil
     }
     
@@ -100,7 +111,7 @@ class GameLogicController: NSObject {
             self.resetDirty()
         }
     }
-
+    
     private var dirty : Bool {
         if self.board.dirty {
             return true
@@ -118,25 +129,18 @@ class GameLogicController: NSObject {
         guard let block = self.block else {
             return
         }
-
-        if self.board.isOverlappedAtPosition(block.position, block: block) {
+        
+        if self.board.isOverlapped(with: block, at: block.position) {
             print("Game Over")
         }
     }
-
+    
     private func checkBlockDownCollision() -> Bool {
         guard let block = self.block else {
             return false
         }
-
-        return self.board.isOverlappedAtPosition(block.position.underPoint, block: block)
+        
+        return self.board.isOverlapped(with: block, at: block.position.underPoint)
     }
-    
-    private lazy var keyCodeHandlers: [BKKeyCode: () -> Void] = {
-        return [BKKeyCode.up : self.upArrowDown,
-                BKKeyCode.right : self.rightArrowDown,
-                BKKeyCode.left : self.leftArrowDown,
-                BKKeyCode.down : self.downArrowDown]
-    } ()
     
 }

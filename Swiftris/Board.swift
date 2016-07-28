@@ -23,31 +23,31 @@ class Board {
     }
     
     //  MARK: -
-    func valueAtPosition(_ position: Point) -> Int {
+    func value(at position: Point) -> Int {
         return self.grid[position]
     }
     
-    func isOverlappedAtPosition(_ position: Point, block: Block) -> Bool {
-        return self.grid.isOverlappedGrid(block.currentShape, position: position)
+    func isOverlapped(with block: Block, at position: Point) -> Bool {
+        return self.grid.isOverlapped(withGrid: block.currentShape, position: position)
     }
     
-    func isPossiblePosition(_ position: Point, block: Block) -> Bool {
-        return self.isPossiblePosition(position, grid: block.currentShape)
+    func isPossible(at position: Point, withBlock block: Block) -> Bool {
+        return self.isPossible(at: position, withGrid: block.currentShape)
     }
     
-    func isPossiblePosition(_ position: Point, grid: Grid) -> Bool {
-        return !self.grid.isOverlappedGrid(grid, position: position)
+    func isPossible(at position: Point, withGrid grid: Grid) -> Bool {
+        return !self.grid.isOverlapped(withGrid: grid, position: position)
     }
     
-    func immobilzeBlock(_ block: Block) {
-        self.grid.copyGrid(block.currentShape, position: block.position)
+    func immobilze(block: Block) {
+        self.grid.copy(from: block.currentShape, position: block.position)
         self.dirty = true
     }
     
     func deleteFullRow() {
         for i in stride(from: (self.grid.size.height - 1), through: 0, by: -1) {
-            if self.grid.isFullRow(i) {
-                self.grid.compactRowOver(i)
+            if self.grid.isFull(row: i) {
+                self.grid.compact(rowOver: i)
                 self.deleteFullRow()
                 break;
             }
