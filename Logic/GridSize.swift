@@ -12,8 +12,8 @@ import Foundation
 
 public struct GridSize {
     
-    public let width: Int
-    public let height: Int
+    public var width: Int
+    public var height: Int
     
     let indexRange: CountableRange<Int>
     

@@ -16,19 +16,23 @@ class MainViewController: NSViewController {
     // MARK: - init
     required override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        self.setup()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        self.setup()
     }
     
     // MARK: - override
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.view.autoresizingMask = [.viewWidthSizable, .viewHeightSizable]
         
-        self.setupMainView()
+        DispatchQueue.main.async {
+            self.setup()
+            self.setupMainView()
+        }
+        
         self.timer = Timer.scheduledTimer(timeInterval: 1.0 / 30.0, target: self, selector: #selector(timeTick), userInfo: nil, repeats: true)
     }
     
@@ -49,6 +53,7 @@ private extension MainViewController {
     private func setup() {
         self.logicController.delegate = self
         self.boardView.dataSource = self
+        self.boardView.delegate = self
     }
     
     private func setupMainView() {
@@ -59,6 +64,21 @@ private extension MainViewController {
         view.autoresizingMask = [.viewWidthSizable, .viewHeightSizable]
         view.delegate = self
         view.addSubview(self.boardView)
+    }
+
+}
+
+
+extension MainViewController: BoardViewDelegate {
+
+    func boardView(didChangeFrame frame: CGRect) {
+        guard let window = self.view.window else {
+            return
+        }
+        
+        let origin = window.frame.origin
+        
+        window.setFrame(CGRect(x: origin.x, y: origin.y, width: frame.size.width + 120, height: frame.size.height + 40), display: true)
     }
 
 }

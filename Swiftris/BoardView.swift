@@ -11,6 +11,13 @@ import Cocoa
 import Logic
 
 
+protocol BoardViewDelegate: class {
+
+    func boardView(didChangeFrame frame: CGRect)
+    
+}
+
+
 protocol BoardViewDataSource: class {
 
     func cellSizeOfBoardView(_ boardView: BoardView) -> CGSize
@@ -22,6 +29,11 @@ protocol BoardViewDataSource: class {
 
 class BoardView: NSView {
     
+    weak var delegate: BoardViewDelegate? {
+        didSet {
+            self.updateFrameSize()
+        }
+    }
     weak var dataSource: BoardViewDataSource? {
         didSet {
             self.reload()
@@ -44,7 +56,6 @@ class BoardView: NSView {
     func reload() {
         self.updateGridSize()
         self.updateCellSize()
-        self.updateFrameSize()
         
         setNeedsDisplay(self.bounds)
     }
@@ -68,6 +79,7 @@ private extension BoardView {
     
     private func updateFrameSize() {
         self.setFrameSize(self.suitableFrameSize)
+        self.delegate?.boardView(didChangeFrame: self.frame)
     }
     
     private func drawBackground() {

@@ -36,7 +36,7 @@ class Grid {
 
     func compress(rowOver row: Int) {
         for y in stride(from: row, to: 0, by: -1) {
-            self.buffer[size.range(ofRow: y)] = self.buffer[self.size.range(ofRow: y - 1)]
+            self.buffer[self.size.range(ofRow: y)] = self.buffer[self.size.range(ofRow: y - 1)]
         }
         
         self.replace(with: Array(repeating: 0, count: self.size.width), forRow: 0)

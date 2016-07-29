@@ -30,7 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
               let contentView = window.contentView else {
             return
         }
-        
+
         contentView.addSubview(mainView)
         mainView.frame = contentView.bounds
         window.makeFirstResponder(mainView)
