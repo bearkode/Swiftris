@@ -14,6 +14,7 @@ public struct GridSize {
     
     public let width: Int
     public let height: Int
+    
     let indexRange: CountableRange<Int>
     
     // MARK: -

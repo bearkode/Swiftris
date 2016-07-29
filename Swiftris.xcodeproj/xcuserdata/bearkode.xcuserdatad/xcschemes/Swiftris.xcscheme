@@ -34,6 +34,20 @@
                ReferencedContainer = "container:Swiftris.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "551A71D11D4B14D2005725C0"
+               BuildableName = "LogicTests.xctest"
+               BlueprintName = "LogicTests"
+               ReferencedContainer = "container:Swiftris.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -44,12 +58,22 @@
       codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
-            skipped = "NO">
+            skipped = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2EF46EE21949CA4D000D3206"
                BuildableName = "SwiftrisTests.xctest"
                BlueprintName = "SwiftrisTests"
+               ReferencedContainer = "container:Swiftris.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "551A71D11D4B14D2005725C0"
+               BuildableName = "LogicTests.xctest"
+               BlueprintName = "LogicTests"
                ReferencedContainer = "container:Swiftris.xcodeproj">
             </BuildableReference>
          </TestableReference>
