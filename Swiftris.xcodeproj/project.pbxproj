@@ -15,6 +15,7 @@
 		2EF46EFE1949D4E2000D3206 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46EFC1949D4E2000D3206 /* MainViewController.swift */; };
 		2EF46EFF1949D4E2000D3206 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EF46EFD1949D4E2000D3206 /* MainViewController.xib */; };
 		2EF46F011949DB5D000D3206 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46F001949DB5D000D3206 /* MainView.swift */; };
+		5504C1D61D4B6F4900668C43 /* GameLogicController+Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5504C1D51D4B6F4900668C43 /* GameLogicController+Interface.swift */; };
 		551A71D31D4B14D7005725C0 /* Logic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551A71CA1D4B14CE005725C0 /* Logic.framework */; };
 		551A71DC1D4B14D7005725C0 /* Logic.h in Headers */ = {isa = PBXBuildFile; fileRef = 551A71CC1D4B14D2005725C0 /* Logic.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		551A71DF1D4B14D7005725C0 /* Logic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551A71CA1D4B14CE005725C0 /* Logic.framework */; };
@@ -51,6 +52,7 @@
 		556650991CAA668A001CE2EB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46F001949DB5D000D3206 /* MainView.swift */; };
 		55947B981D4B3DA800F2DC58 /* NSColorExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55947B971D4B3DA800F2DC58 /* NSColorExtensionTests.swift */; };
 		55947B9A1D4B404400F2DC58 /* BlockDebuggingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55947B991D4B404400F2DC58 /* BlockDebuggingTests.swift */; };
+		55947B9F1D4B6D5A00F2DC58 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55947B9E1D4B6D5A00F2DC58 /* State.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +127,7 @@
 		2EF46EFC1949D4E2000D3206 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2EF46EFD1949D4E2000D3206 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		2EF46F001949DB5D000D3206 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		5504C1D51D4B6F4900668C43 /* GameLogicController+Interface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GameLogicController+Interface.swift"; sourceTree = "<group>"; };
 		551A71CA1D4B14CE005725C0 /* Logic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Logic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		551A71CC1D4B14D2005725C0 /* Logic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Logic.h; sourceTree = "<group>"; };
 		551A71CD1D4B14D2005725C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -161,6 +164,7 @@
 		551A72211D4B15CF005725C0 /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		55947B971D4B3DA800F2DC58 /* NSColorExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSColorExtensionTests.swift; sourceTree = "<group>"; };
 		55947B991D4B404400F2DC58 /* BlockDebuggingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockDebuggingTests.swift; sourceTree = "<group>"; };
+		55947B9E1D4B6D5A00F2DC58 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,10 +271,9 @@
 				551A721C1D4B1563005725C0 /* Int+Extension.swift */,
 				55D36A1A1D4B2BED0076EE47 /* Types */,
 				55D36A1B1D4B2C290076EE47 /* Block */,
-				551A72051D4B154F005725C0 /* Board.swift */,
+				55947B9B1D4B6CF300F2DC58 /* Board */,
 				551A720D1D4B154F005725C0 /* KeyCode.swift */,
-				551A72071D4B154F005725C0 /* GameLogicController.swift */,
-				551A72081D4B154F005725C0 /* GameLogicController+Movement.swift */,
+				55947B9D1D4B6D2700F2DC58 /* GameLogic */,
 				551A721D1D4B1563005725C0 /* NSColor+Extension.swift */,
 				551A71CD1D4B14D2005725C0 /* Info.plist */,
 			);
@@ -283,11 +286,38 @@
 				551A71EF1D4B1501005725C0 /* IntExtensionTests.swift */,
 				55D36A1C1D4B2C560076EE47 /* Types */,
 				55D36A1D1D4B2C720076EE47 /* Block */,
-				551A71EB1D4B1501005725C0 /* BoardTests.swift */,
+				55947B9C1D4B6D0000F2DC58 /* Board */,
 				55947B971D4B3DA800F2DC58 /* NSColorExtensionTests.swift */,
 				551A71DB1D4B14D7005725C0 /* Info.plist */,
 			);
 			path = LogicTests;
+			sourceTree = "<group>";
+		};
+		55947B9B1D4B6CF300F2DC58 /* Board */ = {
+			isa = PBXGroup;
+			children = (
+				551A72051D4B154F005725C0 /* Board.swift */,
+			);
+			name = Board;
+			sourceTree = "<group>";
+		};
+		55947B9C1D4B6D0000F2DC58 /* Board */ = {
+			isa = PBXGroup;
+			children = (
+				551A71EB1D4B1501005725C0 /* BoardTests.swift */,
+			);
+			name = Board;
+			sourceTree = "<group>";
+		};
+		55947B9D1D4B6D2700F2DC58 /* GameLogic */ = {
+			isa = PBXGroup;
+			children = (
+				55947B9E1D4B6D5A00F2DC58 /* State.swift */,
+				551A72071D4B154F005725C0 /* GameLogicController.swift */,
+				551A72081D4B154F005725C0 /* GameLogicController+Movement.swift */,
+				5504C1D51D4B6F4900668C43 /* GameLogicController+Interface.swift */,
+			);
+			name = GameLogic;
 			sourceTree = "<group>";
 		};
 		55D36A1A1D4B2BED0076EE47 /* Types */ = {
@@ -551,6 +581,8 @@
 				551A72181D4B154F005725C0 /* Grid+Enumeration.swift in Sources */,
 				551A72111D4B154F005725C0 /* BlockTemplate.swift in Sources */,
 				551A72131D4B154F005725C0 /* Board.swift in Sources */,
+				5504C1D61D4B6F4900668C43 /* GameLogicController+Interface.swift in Sources */,
+				55947B9F1D4B6D5A00F2DC58 /* State.swift in Sources */,
 				551A721F1D4B1563005725C0 /* NSColor+Extension.swift in Sources */,
 				551A72191D4B154F005725C0 /* Grid+Subscript.swift in Sources */,
 				551A72141D4B154F005725C0 /* DropTimer.swift in Sources */,

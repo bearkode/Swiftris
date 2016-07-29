@@ -20,8 +20,6 @@ public protocol LogicControllerDelegate: class {
 public class GameLogicController: NSObject {
     
     public weak var delegate: LogicControllerDelegate?
-    let board = Board(size: GridSize(width: 10, height: 20))
-    var block: Block?
     public var boardSize: GridSize {
         return self.board.gridSize
     }
@@ -45,6 +43,10 @@ public class GameLogicController: NSObject {
     }
     
     public func timeTick() {
+        if self.state != .playing {
+            return
+        }
+        
         if let block = self.block {
             if block.timeToDrop {
                 self.dropBlock()
@@ -56,6 +58,11 @@ public class GameLogicController: NSObject {
         
         self.sendDidUpdate()
     }
+
+    //  MARK: - internal
+    let board = Board(size: GridSize(width: 10, height: 20))
+    var block: Block?
+    var state: State = .ready
 
     //  MARK: - private
     private lazy var keyCodeHandlers: [KeyCode: () -> Void] = {
@@ -94,13 +101,13 @@ private extension GameLogicController {
     }
     
     private func sendDidUpdate() {
-        if self.dirty {
+        if self.isDirty {
             self.delegate?.logicControllerDidUpdate(self)
             self.resetDirty()
         }
     }
     
-    private var dirty : Bool {
+    private var isDirty : Bool {
         if self.board.dirty {
             return true
         } else {

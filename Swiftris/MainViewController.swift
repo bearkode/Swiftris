@@ -36,6 +36,15 @@ class MainViewController: NSViewController {
         self.timer = Timer.scheduledTimer(timeInterval: 1.0 / 30.0, target: self, selector: #selector(timeTick), userInfo: nil, repeats: true)
     }
     
+    // MARK: - outlets
+    @IBOutlet var startButton: NSButton?
+    
+    // MARK: - actions
+    @IBAction func startButtonClicked(sender: AnyObject) {
+        self.logicController.startButtonClicked()
+        self.startButton?.title = self.logicController.startButtonTitle
+    }
+    
     func timeTick() {
         self.logicController.timeTick()
     }
