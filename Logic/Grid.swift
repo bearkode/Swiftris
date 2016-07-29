@@ -29,6 +29,10 @@ class Grid {
     }
     
     //  MARK: -
+    func reset() {
+        self.buffer = Array(repeating: 0, count: self.size.width * self.size.height)
+    }
+    
     func replace(with array: [Int], forRow row: Int) {
         assert(array.count == self.size.width)
         self.buffer[self.size.range(ofRow: row)] = array[0..<array.count]

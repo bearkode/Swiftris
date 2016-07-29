@@ -12,6 +12,10 @@ import Foundation
 
 public protocol LogicControllerDelegate: class {
     
+    func logicControllerDidStartGame(_ logicController: GameLogicController)
+    func logicControllerDidPause(_ logicController: GameLogicController)
+    func logicControllerDidResume(_ logicController: GameLogicController)
+    func logicControllerDidGameOver(_ logicController: GameLogicController)
     func logicControllerDidUpdate(_ logicController: GameLogicController)
 
 }
@@ -62,7 +66,26 @@ public class GameLogicController: NSObject {
     //  MARK: - internal
     let board = Board(size: GridSize(width: 10, height: 20))
     var block: Block?
-    var state: State = .ready
+    var state: State = .ready {
+        didSet {
+            switch self.state {
+            case .ready:
+                ()
+            case .playing:
+                if oldValue == .ready || oldValue == .gameOver {
+                    self.board.reset()
+                    self.block = nil
+                    self.delegate?.logicControllerDidStartGame(self)
+                } else {
+                    self.delegate?.logicControllerDidResume(self)
+                }
+            case .pause:
+                self.delegate?.logicControllerDidPause(self)
+            case .gameOver:
+                self.delegate?.logicControllerDidGameOver(self)
+            }
+        }
+    }
 
     //  MARK: - private
     private lazy var keyCodeHandlers: [KeyCode: () -> Void] = {
@@ -126,7 +149,7 @@ private extension GameLogicController {
         }
         
         if self.board.isOverlapped(with: block, at: block.position) {
-            print("Game Over")
+            self.state = .gameOver
         }
     }
     

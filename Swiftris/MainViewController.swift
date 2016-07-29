@@ -42,7 +42,6 @@ class MainViewController: NSViewController {
     // MARK: - actions
     @IBAction func startButtonClicked(sender: AnyObject) {
         self.logicController.startButtonClicked()
-        self.startButton?.title = self.logicController.startButtonTitle
     }
     
     func timeTick() {
@@ -120,6 +119,22 @@ extension MainViewController: KeyboardEventDelegate {
 
 
 extension MainViewController: LogicControllerDelegate {
+
+    func logicControllerDidStartGame(_ logicController: GameLogicController) {
+        self.startButton?.title = self.logicController.startButtonTitle
+    }
+
+    func logicControllerDidPause(_ logicController: GameLogicController) {
+        self.startButton?.title = self.logicController.startButtonTitle
+    }
+    
+    func logicControllerDidResume(_ logicController: GameLogicController) {
+        self.startButton?.title = self.logicController.startButtonTitle
+    }
+    
+    func logicControllerDidGameOver(_ logicController: GameLogicController) {
+        self.startButton?.title = self.logicController.startButtonTitle
+    }
 
     func logicControllerDidUpdate(_ logicController: GameLogicController) {
         self.boardView.setNeedsDisplay(boardView.bounds)

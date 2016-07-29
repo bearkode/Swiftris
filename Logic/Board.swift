@@ -23,6 +23,11 @@ class Board {
     }
     
     //  MARK: -
+    func reset() {
+        self.grid.reset()
+        self.dirty = true
+    }
+    
     func value(at position: Point) -> Int {
         return self.grid[position]
     }
