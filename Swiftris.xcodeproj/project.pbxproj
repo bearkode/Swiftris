@@ -46,6 +46,8 @@
 		551A71BE1D49F825005725C0 /* BlockTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A71BD1D49F825005725C0 /* BlockTypeTests.swift */; };
 		551A71BF1D49FB8D005725C0 /* BlockGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A71BA1D49F5BF005725C0 /* BlockGenerator.swift */; };
 		551A71C11D49FB9C005725C0 /* BlockGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A71C01D49FB9C005725C0 /* BlockGeneratorTests.swift */; };
+		551A71C31D4B0090005725C0 /* KeyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A71C21D4B0090005725C0 /* KeyCode.swift */; };
+		551A71C41D4B0090005725C0 /* KeyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A71C21D4B0090005725C0 /* KeyCode.swift */; };
 		556650991CAA668A001CE2EB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46F001949DB5D000D3206 /* MainView.swift */; };
 		558728CA1B4642A900745139 /* NSColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E49ED7C19594C63005C4E97 /* NSColor+Extension.swift */; };
 		558728CD1B4642CE00745139 /* GameLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7EA07519508B9B00837BBE /* GameLogicController.swift */; };
@@ -120,6 +122,7 @@
 		551A71BA1D49F5BF005725C0 /* BlockGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockGenerator.swift; sourceTree = "<group>"; };
 		551A71BD1D49F825005725C0 /* BlockTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockTypeTests.swift; sourceTree = "<group>"; };
 		551A71C01D49FB9C005725C0 /* BlockGeneratorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockGeneratorTests.swift; sourceTree = "<group>"; };
+		551A71C21D4B0090005725C0 /* KeyCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyCode.swift; sourceTree = "<group>"; };
 		558728CE1B4643B400745139 /* PointTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointTests.swift; sourceTree = "<group>"; };
 		558728D01B46451500745139 /* GridSizeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridSizeTests.swift; sourceTree = "<group>"; };
 		55DC3B341B458D28003E717B /* DropTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropTimer.swift; sourceTree = "<group>"; };
@@ -181,8 +184,8 @@
 				2E49ED7E19594C6E005C4E97 /* Extensions */,
 				2EF46F021949DEA6000D3206 /* Model */,
 				2EF46EFB1949D22F000D3206 /* Views */,
-				2EF46ED81949CA4D000D3206 /* AppDelegate.swift */,
 				2EF46EFC1949D4E2000D3206 /* MainViewController.swift */,
+				2EF46ED81949CA4D000D3206 /* AppDelegate.swift */,
 				2EF46EDA1949CA4D000D3206 /* Images.xcassets */,
 				2EF46EDC1949CA4D000D3206 /* MainMenu.xib */,
 				2EF46EFD1949D4E2000D3206 /* MainViewController.xib */,
@@ -239,6 +242,7 @@
 		2EF46F021949DEA6000D3206 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				551A71C21D4B0090005725C0 /* KeyCode.swift */,
 				2ECC2087196432270023733D /* Point.swift */,
 				2EBACFCD1963C87F00FAAA40 /* GridSize.swift */,
 				2EA0D7EA1951C9C9008DB5D2 /* Grid.swift */,
@@ -380,6 +384,7 @@
 				5502930D1B46809A000FDE2D /* Movement.swift in Sources */,
 				2EF46ED71949CA4D000D3206 /* main.swift in Sources */,
 				55DC3B3E1B461CDF003E717B /* Grid+Subscript.swift in Sources */,
+				551A71C31D4B0090005725C0 /* KeyCode.swift in Sources */,
 				551A71B91D49EDC1005725C0 /* BlockType.swift in Sources */,
 				55001E8B1B4A4ABD00908B4A /* GameLogicController+Movement.swift in Sources */,
 				2EB72C1D1953EDEB00574E38 /* BoardView.swift in Sources */,
@@ -401,6 +406,7 @@
 				2E79B1321965A1DC00B5486F /* Int+Extension.swift in Sources */,
 				55DC3B3F1B461CDF003E717B /* Grid+Subscript.swift in Sources */,
 				2EF46F051949DEC2000D3206 /* Block.swift in Sources */,
+				551A71C41D4B0090005725C0 /* KeyCode.swift in Sources */,
 				55DC3B3C1B461BF4003E717B /* Grid+Enumeration.swift in Sources */,
 				55DC3B431B4628F8003E717B /* IntExtensionTests.swift in Sources */,
 				55DC3B361B458D28003E717B /* DropTimer.swift in Sources */,

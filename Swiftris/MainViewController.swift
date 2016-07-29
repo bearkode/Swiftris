@@ -34,6 +34,11 @@ class MainViewController: NSViewController {
     private let boardView = BoardView(frame: NSRect(x: 10, y: 10, width: 100, height: 100))
     private let logicController = GameLogicController()
     
+}
+
+
+private extension MainViewController {
+
     private func setup() {
         self.logicController.delegate = self
         self.boardView.dataSource = self
@@ -44,11 +49,11 @@ class MainViewController: NSViewController {
             return
         }
         
-        view.autoresizingMask = ([NSAutoresizingMaskOptions.viewWidthSizable, NSAutoresizingMaskOptions.viewHeightSizable])
+        view.autoresizingMask = [.viewWidthSizable, .viewHeightSizable]
         view.delegate = self
         view.addSubview(self.boardView)
     }
-    
+
 }
 
 
@@ -71,7 +76,7 @@ extension MainViewController: BoardViewDataSource {
 
 extension MainViewController: KeyboardEventDelegate {
 
-    func eventOnView(_ view: NSView, didKeyDown keyCode: BKKeyCode) {
+    func eventOnView(_ view: NSView, didKeyDown keyCode: KeyCode) {
         self.logicController.handleKeyCode(keyCode)
     }
 

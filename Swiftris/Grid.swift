@@ -55,7 +55,7 @@ class Grid {
         var overlapped = false
         
         grid.enumerate { (point: Point, value: Int, stop: inout Bool) in
-            if value.isExist && self.value(at: position + point).isExist {
+            if value.isExist && self.value(atPosition: position + point).isExist {
                 (overlapped, stop) = (true, true)
             }
         }
@@ -63,7 +63,7 @@ class Grid {
         return overlapped
     }
     
-    func value(at position: Point) -> Int {
+    func value(atPosition position: Point) -> Int {
         return self.size.isValidPosition(position) ? self[position] : Int.max
     }
     
@@ -84,7 +84,7 @@ func == (left: Grid, right: Grid) -> Bool {
     var result = true
     
     left.enumerate { (point, value, stop) -> Void in
-        if right.value(at: point) != value {
+        if right.value(atPosition: point) != value {
             stop = true
             result = false
         }

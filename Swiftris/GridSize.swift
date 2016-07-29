@@ -56,4 +56,3 @@ struct GridSize {
 func == (left: GridSize, right: GridSize) -> Bool {
     return (left.width == right.width) && (left.height == right.height)
 }
-

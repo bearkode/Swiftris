@@ -43,7 +43,7 @@ class GameLogicController: NSObject {
         return board.value(at: position)
     }
 
-    func handleKeyCode(_ keyCode: BKKeyCode) {
+    func handleKeyCode(_ keyCode: KeyCode) {
         self.keyCodeHandlers[keyCode]?()
     }
     
@@ -62,11 +62,11 @@ class GameLogicController: NSObject {
 
     //  MARK: - private
     private var timer: Timer?
-    private lazy var keyCodeHandlers: [BKKeyCode: () -> Void] = {
-        return [BKKeyCode.up: self.upArrowDown,
-                BKKeyCode.right: self.rightArrowDown,
-                BKKeyCode.left: self.leftArrowDown,
-                BKKeyCode.down: self.downArrowDown]
+    private lazy var keyCodeHandlers: [KeyCode: () -> Void] = {
+        return [.up: self.upArrowDown,
+                .right: self.rightArrowDown,
+                .left: self.leftArrowDown,
+                .down: self.downArrowDown]
     } ()
 
 }
