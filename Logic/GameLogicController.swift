@@ -29,9 +29,6 @@ public class GameLogicController: NSObject {
     //  MARK: - init
     public override init () {
         super.init()
-
-        //  TODO: 다른 곳으로 이동
-        self.timer = Timer.scheduledTimer(timeInterval: 1.0 / 30.0, target: self, selector: #selector(timeTick), userInfo: nil, repeats: true)
     }
 
     //  MARK: - public
@@ -47,7 +44,7 @@ public class GameLogicController: NSObject {
         self.keyCodeHandlers[keyCode]?()
     }
     
-    func timeTick() {
+    public func timeTick() {
         if let block = self.block {
             if block.timeToDrop {
                 self.dropBlock()
@@ -61,7 +58,6 @@ public class GameLogicController: NSObject {
     }
 
     //  MARK: - private
-    private var timer: Timer?
     private lazy var keyCodeHandlers: [KeyCode: () -> Void] = {
         return [.up: self.upArrowDown,
                 .right: self.rightArrowDown,

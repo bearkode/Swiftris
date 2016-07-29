@@ -49,6 +49,8 @@
 		551A72221D4B15CF005725C0 /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A72201D4B15CF005725C0 /* Movement.swift */; };
 		551A72231D4B15CF005725C0 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A72211D4B15CF005725C0 /* Point.swift */; };
 		556650991CAA668A001CE2EB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46F001949DB5D000D3206 /* MainView.swift */; };
+		55947B981D4B3DA800F2DC58 /* NSColorExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55947B971D4B3DA800F2DC58 /* NSColorExtensionTests.swift */; };
+		55947B9A1D4B404400F2DC58 /* BlockDebuggingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55947B991D4B404400F2DC58 /* BlockDebuggingTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +159,8 @@
 		551A721D1D4B1563005725C0 /* NSColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSColor+Extension.swift"; sourceTree = "<group>"; };
 		551A72201D4B15CF005725C0 /* Movement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
 		551A72211D4B15CF005725C0 /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
+		55947B971D4B3DA800F2DC58 /* NSColorExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSColorExtensionTests.swift; sourceTree = "<group>"; };
+		55947B991D4B404400F2DC58 /* BlockDebuggingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockDebuggingTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,6 +284,7 @@
 				55D36A1C1D4B2C560076EE47 /* Types */,
 				55D36A1D1D4B2C720076EE47 /* Block */,
 				551A71EB1D4B1501005725C0 /* BoardTests.swift */,
+				55947B971D4B3DA800F2DC58 /* NSColorExtensionTests.swift */,
 				551A71DB1D4B14D7005725C0 /* Info.plist */,
 			);
 			path = LogicTests;
@@ -329,6 +334,7 @@
 				551A71EA1D4B1501005725C0 /* BlockTypeTests.swift */,
 				551A71E91D4B1501005725C0 /* BlockTests.swift */,
 				551A71E81D4B1501005725C0 /* BlockGeneratorTests.swift */,
+				55947B991D4B404400F2DC58 /* BlockDebuggingTests.swift */,
 			);
 			name = Block;
 			sourceTree = "<group>";
@@ -566,9 +572,11 @@
 				551A71F91D4B1501005725C0 /* GridTests.swift in Sources */,
 				551A71FA1D4B1501005725C0 /* IntExtensionTests.swift in Sources */,
 				551A71F41D4B1501005725C0 /* BlockTests.swift in Sources */,
+				55947B981D4B3DA800F2DC58 /* NSColorExtensionTests.swift in Sources */,
 				551A71F81D4B1501005725C0 /* GridSizeTests.swift in Sources */,
 				551A71F31D4B1501005725C0 /* BlockGeneratorTests.swift in Sources */,
 				551A71FB1D4B1501005725C0 /* MovementTests.swift in Sources */,
+				55947B9A1D4B404400F2DC58 /* BlockDebuggingTests.swift in Sources */,
 				551A71F51D4B1501005725C0 /* BlockTypeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

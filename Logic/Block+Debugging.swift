@@ -13,7 +13,7 @@ import Foundation
 extension Block: CustomStringConvertible {
 
     var description: String {
-        return "It's Block object \(position.x), \(position.y)"
+        return "Block type: \(self.type) at: \(position.x), \(position.y)"
     }
     
     func debugPrint() {

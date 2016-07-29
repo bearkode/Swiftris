@@ -29,11 +29,17 @@ class MainViewController: NSViewController {
         super.viewDidLoad()
         
         self.setupMainView()
+        self.timer = Timer.scheduledTimer(timeInterval: 1.0 / 30.0, target: self, selector: #selector(timeTick), userInfo: nil, repeats: true)
+    }
+    
+    func timeTick() {
+        self.logicController.timeTick()
     }
 
     // MARK: - private
     private let boardView = BoardView(frame: NSRect(x: 10, y: 10, width: 100, height: 100))
     private let logicController = GameLogicController()
+    private var timer: Timer?
     
 }
 

@@ -30,7 +30,10 @@ extension NSColor {
 
     public func halftone() -> NSColor {
         let factor: CGFloat = 0.5
-        return NSColor(calibratedRed: redComponent * factor, green: greenComponent * factor, blue: blueComponent * factor, alpha: alphaComponent)
+        return NSColor(calibratedRed: self.redComponent * factor,
+                       green: self.greenComponent * factor,
+                       blue: self.blueComponent * factor,
+                       alpha: self.alphaComponent)
     }
 
 }
