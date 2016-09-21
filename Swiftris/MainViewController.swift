@@ -49,22 +49,22 @@ class MainViewController: NSViewController {
     }
 
     // MARK: - private
-    private let boardView = BoardView(frame: NSRect(x: 10, y: 10, width: 100, height: 100))
-    private let logicController = GameLogicController()
+    fileprivate let boardView = BoardView(frame: NSRect(x: 10, y: 10, width: 100, height: 100))
+    fileprivate let logicController = GameLogicController()
     private var timer: Timer?
     
 }
 
 
-private extension MainViewController {
+fileprivate extension MainViewController {
 
-    private func setup() {
+    func setup() {
         self.logicController.delegate = self
         self.boardView.dataSource = self
         self.boardView.delegate = self
     }
     
-    private func setupMainView() {
+    func setupMainView() {
         guard let view = self.view as? MainView else {
             return
         }

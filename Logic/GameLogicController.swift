@@ -98,14 +98,14 @@ public class GameLogicController: NSObject {
 }
 
 
-private extension GameLogicController {
+fileprivate extension GameLogicController {
 
-    private func generateBlock() {
+    func generateBlock() {
         assert(self.block == nil)
         self.block = BlockGenerator.sharedGenerator.block(withPosition: Point(x: 3, y: 0))
     }
     
-    private func dropBlock() {
+    func dropBlock() {
         guard let block = self.block else {
             return
         }
@@ -118,19 +118,19 @@ private extension GameLogicController {
         }
     }
     
-    private func immobilize(block: Block) {
+    func immobilize(block: Block) {
         self.board.immobilze(block: block)
         self.block = nil
     }
     
-    private func sendDidUpdate() {
+    func sendDidUpdate() {
         if self.isDirty {
             self.delegate?.logicControllerDidUpdate(self)
             self.resetDirty()
         }
     }
     
-    private var isDirty : Bool {
+    var isDirty : Bool {
         if self.board.dirty {
             return true
         } else {
@@ -138,12 +138,12 @@ private extension GameLogicController {
         }
     }
     
-    private func resetDirty() {
+    func resetDirty() {
         self.board.dirty = false
         self.block?.dirty = false
     }
     
-    private func checkGameOver() {
+    func checkGameOver() {
         guard let block = self.block else {
             return
         }
@@ -153,7 +153,7 @@ private extension GameLogicController {
         }
     }
     
-    private func checkBlockDownCollision(_ block: Block) -> Bool {
+    func checkBlockDownCollision(_ block: Block) -> Bool {
         return self.board.isOverlapped(with: block, at: block.position.underPoint)
     }
     

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2EB72C1D1953EDEB00574E38 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB72C1C1953EDEB00574E38 /* BoardView.swift */; };
-		2EF46ED71949CA4D000D3206 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46ED61949CA4D000D3206 /* main.swift */; };
 		2EF46ED91949CA4D000D3206 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46ED81949CA4D000D3206 /* AppDelegate.swift */; };
 		2EF46EDB1949CA4D000D3206 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EF46EDA1949CA4D000D3206 /* Images.xcassets */; };
 		2EF46EDE1949CA4D000D3206 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EF46EDC1949CA4D000D3206 /* MainMenu.xib */; };
@@ -118,7 +117,6 @@
 		2EB72C1C1953EDEB00574E38 /* BoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		2EF46ED11949CA4D000D3206 /* Swiftris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiftris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EF46ED51949CA4D000D3206 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2EF46ED61949CA4D000D3206 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		2EF46ED81949CA4D000D3206 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EF46EDA1949CA4D000D3206 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2EF46EDD1949CA4D000D3206 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -242,7 +240,6 @@
 			isa = PBXGroup;
 			children = (
 				2EF46ED51949CA4D000D3206 /* Info.plist */,
-				2EF46ED61949CA4D000D3206 /* main.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -479,6 +476,7 @@
 					};
 					551A71C91D4B14CE005725C0 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = K9UP278937;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
@@ -553,7 +551,6 @@
 				2EF46F011949DB5D000D3206 /* MainView.swift in Sources */,
 				2EF46ED91949CA4D000D3206 /* AppDelegate.swift in Sources */,
 				2EF46EFE1949D4E2000D3206 /* MainViewController.swift in Sources */,
-				2EF46ED71949CA4D000D3206 /* main.swift in Sources */,
 				2EB72C1D1953EDEB00574E38 /* BoardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -810,6 +807,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -827,6 +825,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.naver.Logic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -843,6 +842,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
@@ -859,6 +859,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.naver.Logic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;

@@ -33,7 +33,7 @@ class MainView: NSView {
         NSBezierPath(rect: self.bounds).fill()
     }
 
-    override func keyDown(_ theEvent: NSEvent) {
+    override func keyDown(with theEvent: NSEvent) {
         if let keyCode = KeyCode(rawValue: theEvent.keyCode) {
             self.delegate?.eventOnView(self, didKeyDown: keyCode)
         }

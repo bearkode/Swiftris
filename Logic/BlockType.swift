@@ -43,7 +43,7 @@ extension BlockType {
             return BlockTemplate.foldA
         case .foldB:
             return BlockTemplate.foldB
-        case bump:
+        case .bump:
             return BlockTemplate.bump
         case .zigzagA:
             return BlockTemplate.zigzagA

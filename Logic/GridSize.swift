@@ -29,9 +29,9 @@ public struct GridSize {
     }
     
     //  MARK: -
-    public func enumerate(_ closure: (position: Point) -> ()) {
+    public func enumerate(_ closure: (_: Point) -> ()) {
         for index in self.indexRange {
-            closure(position: self.position(ofIndex: index))
+            closure(self.position(ofIndex: index))
         }
     }
     

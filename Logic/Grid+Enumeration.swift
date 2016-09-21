@@ -12,28 +12,28 @@ import Foundation
 
 extension Grid {
 
-    func enumerate(_ closure: (point:Point, value: Int, stop: inout Bool) -> Void) {
+    func enumerate(_ closure: (_: Point, _: Int, _: inout Bool) -> Void) {
         self.enumerate(inRange: self.size.indexRange, closure: closure)
     }
     
-    func enumerate(inRow row: Int, closure: (point: Point, value: Int, stop: inout Bool) -> Void) {
+    func enumerate(inRow row: Int, closure: (_: Point, _: Int, _: inout Bool) -> Void) {
         self.enumerate(inRange: self.size.range(ofRow: row), closure: closure)
     }
     
-    func enumerate(inRange range: CountableRange<Int>, closure: (point: Point, value: Int, stop: inout Bool) -> Void) {
+    func enumerate(inRange range: CountableRange<Int>, closure: (_: Point, _: Int, _: inout Bool) -> Void) {
         var stop = false
 
         for index in range {
-            closure(point: self.size.position(ofIndex: index), value: self.buffer[index], stop: &stop)
+            closure(self.size.position(ofIndex: index), self.buffer[index], &stop)
             if stop {
                 break;
             }
         }
     }
     
-    func enumerateRowsFromTop(_ closure: (row: Int) -> Void) {
+    func enumerateRowsFromTop(_ closure: (_: Int) -> Void) {
         for row in stride(from: (self.size.height - 1), through: 0, by: -1) {
-            closure(row: row)
+            closure(row)
         }
     }
 
