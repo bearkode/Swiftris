@@ -21,7 +21,7 @@ public protocol LogicControllerDelegate: class {
 }
 
 
-public class GameLogicController: NSObject {
+public class GameLogicController {
     
     public weak var delegate: LogicControllerDelegate?
     public var boardSize: GridSize {
@@ -29,8 +29,8 @@ public class GameLogicController: NSObject {
     }
 
     //  MARK: - init
-    public override init () {
-        super.init()
+    public init () {
+
     }
 
     //  MARK: - public
@@ -47,7 +47,7 @@ public class GameLogicController: NSObject {
     }
     
     public func timeTick() {
-        if self.state != .playing {
+        if !(self.state is PlayingState) {
             return
         }
         
@@ -66,23 +66,16 @@ public class GameLogicController: NSObject {
     //  MARK: - internal
     let board = Board(size: GridSize(width: 10, height: 20))
     var block: Block?
-    var state: State = .ready {
+    var state: GameState = ReadyState(prevState: nil) {
         didSet {
-            switch self.state {
-            case .ready:
-                ()
-            case .playing:
-                if oldValue == .ready || oldValue == .gameOver {
-                    self.board.reset()
-                    self.block = nil
-                    self.delegate?.logicControllerDidStartGame(self)
-                } else {
-                    self.delegate?.logicControllerDidResume(self)
-                }
-            case .pause:
-                self.delegate?.logicControllerDidPause(self)
-            case .gameOver:
-                self.delegate?.logicControllerDidGameOver(self)
+            if self.state.isStarted {
+                self.didStart()
+            } else if self.state.isResumed {
+                self.didResume()
+            } else if self.state.isPaused {
+                self.didPause()
+            } else if self.state.isGameOver {
+                self.didGameOver()
             }
         }
     }
@@ -99,6 +92,24 @@ public class GameLogicController: NSObject {
 
 
 fileprivate extension GameLogicController {
+    
+    func didStart() {
+        self.board.reset()
+        self.block = nil
+        self.delegate?.logicControllerDidStartGame(self)
+    }
+    
+    func didResume() {
+        self.delegate?.logicControllerDidResume(self)
+    }
+
+    func didPause() {
+        self.delegate?.logicControllerDidPause(self)
+    }
+    
+    func didGameOver() {
+        self.delegate?.logicControllerDidGameOver(self)
+    }
 
     func generateBlock() {
         assert(self.block == nil)
@@ -149,7 +160,7 @@ fileprivate extension GameLogicController {
         }
         
         if self.board.isOverlapped(with: block, at: block.position) {
-            self.state = .gameOver
+            self.state = GameOverState(prevState: self.state)
         }
     }
     
