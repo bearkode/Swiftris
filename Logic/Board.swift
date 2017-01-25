@@ -10,7 +10,7 @@
 import Foundation
 
 
-class Board {
+class Board: DirtyCheckable {
     
     let grid: Grid
     var dirty = true

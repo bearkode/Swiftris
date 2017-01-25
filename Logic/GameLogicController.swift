@@ -135,23 +135,15 @@ fileprivate extension GameLogicController {
     }
     
     func sendDidUpdate() {
-        if self.isDirty {
+        self.dirtyCheckables.checkDirty {
             self.delegate?.logicControllerDidUpdate(self)
-            self.resetDirty()
         }
     }
     
-    var isDirty : Bool {
-        if self.board.dirty {
-            return true
-        } else {
-            return self.block?.dirty ?? false
+    var dirtyCheckables: [DirtyCheckable] {
+        return Array<DirtyCheckable?>(arrayLiteral: self.board, self.block).flatMap {
+            $0
         }
-    }
-    
-    func resetDirty() {
-        self.board.dirty = false
-        self.block?.dirty = false
     }
     
     func checkGameOver() {

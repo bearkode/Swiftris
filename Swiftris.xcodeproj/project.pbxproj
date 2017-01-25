@@ -49,6 +49,7 @@
 		551A72221D4B15CF005725C0 /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A72201D4B15CF005725C0 /* Movement.swift */; };
 		551A72231D4B15CF005725C0 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A72211D4B15CF005725C0 /* Point.swift */; };
 		556650991CAA668A001CE2EB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46F001949DB5D000D3206 /* MainView.swift */; };
+		5577B9C41E374FA400FB551B /* DirtyCheckable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5577B9C31E374FA400FB551B /* DirtyCheckable.swift */; };
 		55947B981D4B3DA800F2DC58 /* NSColorExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55947B971D4B3DA800F2DC58 /* NSColorExtensionTests.swift */; };
 		55947B9A1D4B404400F2DC58 /* BlockDebuggingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55947B991D4B404400F2DC58 /* BlockDebuggingTests.swift */; };
 		55947B9F1D4B6D5A00F2DC58 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55947B9E1D4B6D5A00F2DC58 /* GameState.swift */; };
@@ -160,6 +161,7 @@
 		551A721D1D4B1563005725C0 /* NSColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSColor+Extension.swift"; sourceTree = "<group>"; };
 		551A72201D4B15CF005725C0 /* Movement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
 		551A72211D4B15CF005725C0 /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
+		5577B9C31E374FA400FB551B /* DirtyCheckable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirtyCheckable.swift; sourceTree = "<group>"; };
 		55947B971D4B3DA800F2DC58 /* NSColorExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSColorExtensionTests.swift; sourceTree = "<group>"; };
 		55947B991D4B404400F2DC58 /* BlockDebuggingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockDebuggingTests.swift; sourceTree = "<group>"; };
 		55947B9E1D4B6D5A00F2DC58 /* GameState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
@@ -269,7 +271,6 @@
 				55D36A1A1D4B2BED0076EE47 /* Types */,
 				55D36A1B1D4B2C290076EE47 /* Block */,
 				55947B9B1D4B6CF300F2DC58 /* Board */,
-				551A720D1D4B154F005725C0 /* KeyCode.swift */,
 				55947B9D1D4B6D2700F2DC58 /* GameLogic */,
 				551A721D1D4B1563005725C0 /* NSColor+Extension.swift */,
 				551A71CD1D4B14D2005725C0 /* Info.plist */,
@@ -325,6 +326,8 @@
 				551A72091D4B154F005725C0 /* Grid.swift */,
 				551A720A1D4B154F005725C0 /* Grid+Enumeration.swift */,
 				551A720B1D4B154F005725C0 /* Grid+Subscript.swift */,
+				5577B9C31E374FA400FB551B /* DirtyCheckable.swift */,
+				551A720D1D4B154F005725C0 /* KeyCode.swift */,
 			);
 			name = Types;
 			sourceTree = "<group>";
@@ -584,6 +587,7 @@
 				551A721F1D4B1563005725C0 /* NSColor+Extension.swift in Sources */,
 				551A72191D4B154F005725C0 /* Grid+Subscript.swift in Sources */,
 				551A72141D4B154F005725C0 /* DropTimer.swift in Sources */,
+				5577B9C41E374FA400FB551B /* DirtyCheckable.swift in Sources */,
 				551A72121D4B154F005725C0 /* BlockType.swift in Sources */,
 				551A72231D4B15CF005725C0 /* Point.swift in Sources */,
 				551A720F1D4B154F005725C0 /* Block+Debugging.swift in Sources */,
