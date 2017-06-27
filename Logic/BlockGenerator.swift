@@ -15,7 +15,7 @@ class BlockGenerator {
     static let sharedGenerator = BlockGenerator()
     
     private init() {
-        self.nextBlock = Block(type: BlockType.randomType, position: Point())
+        self.nextBlock = Block(type: .randomType, position: Point())
     }
 
     private(set) var nextBlock: Block
@@ -25,7 +25,7 @@ class BlockGenerator {
         
         result.position = position
         
-        self.nextBlock = Block(type: BlockType.randomType, position: Point())
+        self.nextBlock = Block(type: .randomType, position: Point())
         
         return result
     }

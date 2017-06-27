@@ -84,15 +84,11 @@ class Grid {
 }
 
 
-func == (left: Grid, right: Grid) -> Bool {
-    var result = true
-    
-    left.enumerate { (point, value, stop) -> Void in
-        if right.value(atPosition: point) != value {
-            stop = true
-            result = false
-        }
-    }
+extension Grid : Equatable {
 
-    return result
+}
+
+
+func == (lhs: Grid, rhs: Grid) -> Bool {
+    return lhs.buffer == rhs.buffer
 }

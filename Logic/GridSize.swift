@@ -54,6 +54,11 @@ public struct GridSize {
 }
 
 
-func == (left: GridSize, right: GridSize) -> Bool {
-    return (left.width == right.width) && (left.height == right.height)
+extension GridSize : Equatable {
+
+}
+
+
+public func == (lhs: GridSize, rhs: GridSize) -> Bool {
+    return (lhs.width == rhs.width) && (lhs.height == rhs.height)
 }

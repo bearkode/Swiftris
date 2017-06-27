@@ -22,20 +22,20 @@ class DropTimerTests: XCTestCase {
     }
 
     func testBasic() {
-        let timer = DropTimer()
+        var timer = DropTimer()
         
-        XCTAssert(timer.isTimeToDrop() == false)
-        XCTAssert(timer.isTimeToDrop() == false)
-        XCTAssert(timer.isTimeToDrop() == false)
-        XCTAssert(timer.isTimeToDrop() == false)
-        XCTAssert(timer.isTimeToDrop() == false)
-        XCTAssert(timer.isTimeToDrop() == true)
-        XCTAssert(timer.isTimeToDrop() == false)
-        XCTAssert(timer.isTimeToDrop() == false)
-        XCTAssert(timer.isTimeToDrop() == false)
-        XCTAssert(timer.isTimeToDrop() == false)
-        XCTAssert(timer.isTimeToDrop() == false)
-        XCTAssert(timer.isTimeToDrop() == true)
+        XCTAssert(timer.isFired() == false)
+        XCTAssert(timer.isFired() == false)
+        XCTAssert(timer.isFired() == false)
+        XCTAssert(timer.isFired() == false)
+        XCTAssert(timer.isFired() == false)
+        XCTAssert(timer.isFired() == true)
+        XCTAssert(timer.isFired() == false)
+        XCTAssert(timer.isFired() == false)
+        XCTAssert(timer.isFired() == false)
+        XCTAssert(timer.isFired() == false)
+        XCTAssert(timer.isFired() == false)
+        XCTAssert(timer.isFired() == true)
     }
 
 }

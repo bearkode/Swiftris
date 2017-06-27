@@ -43,11 +43,14 @@ public class GameLogicController {
     }
 
     public func handleKeyCode(_ keyCode: KeyCode) {
+        guard self.state is PlayingState else {
+            return
+        }
         self.keyCodeHandlers[keyCode]?()
     }
     
     public func timeTick() {
-        if !(self.state is PlayingState) {
+        guard self.state is PlayingState else {
             return
         }
         
