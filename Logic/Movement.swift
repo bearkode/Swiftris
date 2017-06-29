@@ -51,11 +51,11 @@ class Movement {
     }
     
     func isTimeToDrop() -> Bool {
-        return self.dropTimer.isTimeToDrop()
+        return self.dropTimer.isFired()
     }
     
     //  MARK: -
     private let shapeCount: Int
-    private let dropTimer: DropTimer
+    private var dropTimer: DropTimer
 
 }

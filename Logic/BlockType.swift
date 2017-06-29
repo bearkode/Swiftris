@@ -30,7 +30,7 @@ extension BlockType {
     static var randomType: BlockType {
         let index = Int(arc4random() % UInt32(self.zigzagB.rawValue + 1))
         
-        return BlockType(rawValue: index)!
+        return BlockType(rawValue: index) ?? .bar
     }
 
     var grids: [Grid] {

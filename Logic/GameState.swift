@@ -10,128 +10,98 @@
 import Foundation
 
 
-class GameState {
+protocol GameState {
     
-    let prevState: GameState?
+    var isStarted: Bool { get }
+    var isResumed: Bool { get }
+
+    var buttonTitle: String { get }
+    var nextState: GameState { get }
     
-    init(prevState: GameState?) {
-        self.prevState = prevState
-    }
-    
-    var buttonTitle: String {
-        return ""
-    }
-    
-    var stateForStartButtonClick: GameState {
-        return GameState(prevState: self)
-    }
-    
-    var isStarted: Bool {
-        return false
-    }
-    
-    var isResumed: Bool {
-        return false
-    }
+}
+
+
+extension GameState {
     
     var isPaused: Bool {
-        return false
+        return self is PauseState
     }
-    
+
     var isGameOver: Bool {
         return self is GameOverState
     }
-    
-    var isNotPlaying: Bool {
-        return true
+
+    var gameoverState: GameState {
+        return GameOverState()
     }
     
 }
 
 
-class ReadyState: GameState {
+struct ReadyState: GameState {
+    
+    private(set) var isStarted = false
+    private(set) var isResumed = false
 
-    override var buttonTitle: String {
-        return "START"
+    private(set) var buttonTitle = "START"
+
+    var nextState: GameState {
+        return PlayingState(isStarted: true)
+    }
+    
+}
+
+
+struct PlayingState: GameState {
+
+    private(set) var isStarted: Bool
+    private(set) var isResumed: Bool
+
+    private(set) var buttonTitle = "PAUSE"
+
+    var nextState: GameState {
+        return PauseState()
     }
 
-    override var stateForStartButtonClick: GameState {
-        return PlayingState(prevState: self)
-    }
-
-    override var isNotPlaying: Bool {
-        return true
+    fileprivate init(isStarted: Bool) {
+        self.isStarted = isStarted
+        self.isResumed = !self.isStarted
     }
 
 }
 
 
-class PlayingState: GameState {
+struct PauseState: GameState {
 
-    override var buttonTitle: String {
-        return "PAUSE"
+    private(set) var isStarted = false
+    private(set) var isResumed = false
+
+    private(set) var buttonTitle: String = "RESUME"
+
+    var nextState: GameState {
+        return PlayingState(isStarted: false)
     }
 
-    override var stateForStartButtonClick: GameState {
-        return PauseState(prevState: self)
-    }
-
-    override var isStarted: Bool {
-        guard let prevState = self.prevState else {
-            return false
-        }
+    fileprivate init() {
         
-        return prevState.isNotPlaying
-    }
-
-    override var isResumed: Bool {
-        return !self.isStarted
-    }
-
-    override var isNotPlaying: Bool {
-        return false
     }
 
 }
 
 
-class PauseState: GameState {
+struct GameOverState: GameState {
+    
+    private(set) var isStarted = false
+    private(set) var isResumed = false
 
-    override var buttonTitle: String {
-        return "RESUME"
-    }
+    private(set) var buttonTitle = "START"
 
-    override var stateForStartButtonClick: GameState {
-        return PlayingState(prevState: self)
+    var nextState: GameState {
+        return ReadyState()
     }
     
-    override var isPaused: Bool {
-        return true
-    }
-
-    override var isNotPlaying: Bool {
-        return false
-    }
-
-}
-
-
-class GameOverState: GameState {
-
-    override var buttonTitle: String {
-        return "START"
-    }
-
-    override var stateForStartButtonClick: GameState {
-        return PlayingState(prevState: self)
+    fileprivate init() {
+    
     }
     
-    override var isGameOver: Bool {
-        return true
-    }
-
-    override var isNotPlaying: Bool {
-        return true
-    }
-
 }

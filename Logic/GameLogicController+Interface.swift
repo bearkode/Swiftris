@@ -13,7 +13,7 @@ import Foundation
 extension GameLogicController {
 
     public func startButtonClicked() {
-        self.state = self.state.stateForStartButtonClick
+        self.state = self.state.nextState
     }
     
     public var startButtonTitle: String {

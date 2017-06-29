@@ -48,7 +48,10 @@
 		551A721F1D4B1563005725C0 /* NSColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A721D1D4B1563005725C0 /* NSColor+Extension.swift */; };
 		551A72221D4B15CF005725C0 /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A72201D4B15CF005725C0 /* Movement.swift */; };
 		551A72231D4B15CF005725C0 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A72211D4B15CF005725C0 /* Point.swift */; };
+		551D71D81EFA3AF3007AC099 /* GameLogicControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551D71D71EFA3AF3007AC099 /* GameLogicControllerTests.swift */; };
+		551D71F31F01F04E007AC099 /* GameStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551D71F21F01F04E007AC099 /* GameStateTests.swift */; };
 		556650991CAA668A001CE2EB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46F001949DB5D000D3206 /* MainView.swift */; };
+		5577B9C41E374FA400FB551B /* DirtyCheckable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5577B9C31E374FA400FB551B /* DirtyCheckable.swift */; };
 		55947B981D4B3DA800F2DC58 /* NSColorExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55947B971D4B3DA800F2DC58 /* NSColorExtensionTests.swift */; };
 		55947B9A1D4B404400F2DC58 /* BlockDebuggingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55947B991D4B404400F2DC58 /* BlockDebuggingTests.swift */; };
 		55947B9F1D4B6D5A00F2DC58 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55947B9E1D4B6D5A00F2DC58 /* GameState.swift */; };
@@ -160,6 +163,9 @@
 		551A721D1D4B1563005725C0 /* NSColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSColor+Extension.swift"; sourceTree = "<group>"; };
 		551A72201D4B15CF005725C0 /* Movement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
 		551A72211D4B15CF005725C0 /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
+		551D71D71EFA3AF3007AC099 /* GameLogicControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameLogicControllerTests.swift; sourceTree = "<group>"; };
+		551D71F21F01F04E007AC099 /* GameStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStateTests.swift; sourceTree = "<group>"; };
+		5577B9C31E374FA400FB551B /* DirtyCheckable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirtyCheckable.swift; sourceTree = "<group>"; };
 		55947B971D4B3DA800F2DC58 /* NSColorExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSColorExtensionTests.swift; sourceTree = "<group>"; };
 		55947B991D4B404400F2DC58 /* BlockDebuggingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockDebuggingTests.swift; sourceTree = "<group>"; };
 		55947B9E1D4B6D5A00F2DC58 /* GameState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
@@ -269,7 +275,6 @@
 				55D36A1A1D4B2BED0076EE47 /* Types */,
 				55D36A1B1D4B2C290076EE47 /* Block */,
 				55947B9B1D4B6CF300F2DC58 /* Board */,
-				551A720D1D4B154F005725C0 /* KeyCode.swift */,
 				55947B9D1D4B6D2700F2DC58 /* GameLogic */,
 				551A721D1D4B1563005725C0 /* NSColor+Extension.swift */,
 				551A71CD1D4B14D2005725C0 /* Info.plist */,
@@ -284,10 +289,20 @@
 				55D36A1C1D4B2C560076EE47 /* Types */,
 				55D36A1D1D4B2C720076EE47 /* Block */,
 				55947B9C1D4B6D0000F2DC58 /* Board */,
+				551D71D61EFA3AC6007AC099 /* GameLogic */,
 				55947B971D4B3DA800F2DC58 /* NSColorExtensionTests.swift */,
 				551A71DB1D4B14D7005725C0 /* Info.plist */,
 			);
 			path = LogicTests;
+			sourceTree = "<group>";
+		};
+		551D71D61EFA3AC6007AC099 /* GameLogic */ = {
+			isa = PBXGroup;
+			children = (
+				551D71F21F01F04E007AC099 /* GameStateTests.swift */,
+				551D71D71EFA3AF3007AC099 /* GameLogicControllerTests.swift */,
+			);
+			name = GameLogic;
 			sourceTree = "<group>";
 		};
 		55947B9B1D4B6CF300F2DC58 /* Board */ = {
@@ -325,6 +340,8 @@
 				551A72091D4B154F005725C0 /* Grid.swift */,
 				551A720A1D4B154F005725C0 /* Grid+Enumeration.swift */,
 				551A720B1D4B154F005725C0 /* Grid+Subscript.swift */,
+				5577B9C31E374FA400FB551B /* DirtyCheckable.swift */,
+				551A720D1D4B154F005725C0 /* KeyCode.swift */,
 			);
 			name = Types;
 			sourceTree = "<group>";
@@ -468,9 +485,9 @@
 				TargetAttributes = {
 					2EF46ED01949CA4D000D3206 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = R9ARD5VRDX;
+						DevelopmentTeam = 8899R5FJ5P;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					2EF46EE21949CA4D000D3206 = {
 						CreatedOnToolsVersion = 6.0;
@@ -584,6 +601,7 @@
 				551A721F1D4B1563005725C0 /* NSColor+Extension.swift in Sources */,
 				551A72191D4B154F005725C0 /* Grid+Subscript.swift in Sources */,
 				551A72141D4B154F005725C0 /* DropTimer.swift in Sources */,
+				5577B9C41E374FA400FB551B /* DirtyCheckable.swift in Sources */,
 				551A72121D4B154F005725C0 /* BlockType.swift in Sources */,
 				551A72231D4B15CF005725C0 /* Point.swift in Sources */,
 				551A720F1D4B154F005725C0 /* Block+Debugging.swift in Sources */,
@@ -601,6 +619,8 @@
 				551A71FC1D4B1501005725C0 /* PointTests.swift in Sources */,
 				551A71F91D4B1501005725C0 /* GridTests.swift in Sources */,
 				551A71FA1D4B1501005725C0 /* IntExtensionTests.swift in Sources */,
+				551D71F31F01F04E007AC099 /* GameStateTests.swift in Sources */,
+				551D71D81EFA3AF3007AC099 /* GameLogicControllerTests.swift in Sources */,
 				551A71F41D4B1501005725C0 /* BlockTests.swift in Sources */,
 				55947B981D4B3DA800F2DC58 /* NSColorExtensionTests.swift in Sources */,
 				551A71F81D4B1501005725C0 /* GridSizeTests.swift in Sources */,
@@ -740,13 +760,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = R9ARD5VRDX;
+				DEVELOPMENT_TEAM = 8899R5FJ5P;
 				INFOPLIST_FILE = Swiftris/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -756,13 +777,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = R9ARD5VRDX;
+				DEVELOPMENT_TEAM = 8899R5FJ5P;
 				INFOPLIST_FILE = Swiftris/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -831,7 +853,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.naver.Logic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bearkode.Logic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -866,7 +888,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.naver.Logic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bearkode.Logic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;

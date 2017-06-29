@@ -31,12 +31,18 @@ extension Point {
     var underPoint: Point {
         return Point(x: self.x, y: self.y + 1)
     }
+    
+}
+
+
+extension Point: Equatable
+{
 
 }
 
 
-func == (left: Point, right: Point) -> Bool {
-    return (left.x == right.x) && (left.y == right.y)
+public func == (lhs: Point, rhs: Point) -> Bool {
+    return (lhs.x == rhs.x) && (lhs.y == rhs.y)
 }
 
 

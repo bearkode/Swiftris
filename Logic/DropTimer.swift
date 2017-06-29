@@ -10,25 +10,26 @@
 import Foundation
 
 
-class DropTimer {
+struct DropTimer {
 
-    init() {
+    init(initValue: Int = 5) {
+        self.initValue = initValue
         self.currentValue = initValue
     }
     
-    func isTimeToDrop() -> Bool {
-        if self.currentValue > 0 {
-            self.currentValue -= 1
-            return false
+    mutating func isFired() -> Bool {
+        if self.currentValue <= self.fireValue {
+            self.currentValue = self.initValue
+            return true
         }
         
-        self.currentValue = self.initValue
-
-        return true
+        self.currentValue -= 1
+        return false
     }
 
     //  MARK: -
-    private let initValue = 5
+    private let initValue: Int
+    private let fireValue: Int = 0
     private var currentValue: Int
     
 }

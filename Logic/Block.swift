@@ -10,7 +10,7 @@
 import Foundation
 
 
-class Block {
+class Block: DirtyCheckable {
 
     var grids: [Grid]
     var currentShape: Grid = Grid(width: 4, height: 4)

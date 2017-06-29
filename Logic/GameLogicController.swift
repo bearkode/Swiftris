@@ -43,11 +43,14 @@ public class GameLogicController {
     }
 
     public func handleKeyCode(_ keyCode: KeyCode) {
+        guard self.state is PlayingState else {
+            return
+        }
         self.keyCodeHandlers[keyCode]?()
     }
     
     public func timeTick() {
-        if !(self.state is PlayingState) {
+        guard self.state is PlayingState else {
             return
         }
         
@@ -66,7 +69,7 @@ public class GameLogicController {
     //  MARK: - internal
     let board = Board(size: GridSize(width: 10, height: 20))
     var block: Block?
-    var state: GameState = ReadyState(prevState: nil) {
+    var state: GameState = ReadyState() {
         didSet {
             if self.state.isStarted {
                 self.didStart()
@@ -109,6 +112,7 @@ fileprivate extension GameLogicController {
     
     func didGameOver() {
         self.delegate?.logicControllerDidGameOver(self)
+        self.state = self.state.nextState
     }
 
     func generateBlock() {
@@ -135,23 +139,15 @@ fileprivate extension GameLogicController {
     }
     
     func sendDidUpdate() {
-        if self.isDirty {
+        self.dirtyCheckables.checkDirty {
             self.delegate?.logicControllerDidUpdate(self)
-            self.resetDirty()
         }
     }
     
-    var isDirty : Bool {
-        if self.board.dirty {
-            return true
-        } else {
-            return self.block?.dirty ?? false
+    var dirtyCheckables: [DirtyCheckable] {
+        return Array<DirtyCheckable?>(arrayLiteral: self.board, self.block).flatMap {
+            $0
         }
-    }
-    
-    func resetDirty() {
-        self.board.dirty = false
-        self.block?.dirty = false
     }
     
     func checkGameOver() {
@@ -160,7 +156,7 @@ fileprivate extension GameLogicController {
         }
         
         if self.board.isOverlapped(with: block, at: block.position) {
-            self.state = GameOverState(prevState: self.state)
+            self.state = self.state.gameoverState
         }
     }
     
