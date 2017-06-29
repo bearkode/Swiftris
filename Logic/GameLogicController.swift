@@ -69,7 +69,7 @@ public class GameLogicController {
     //  MARK: - internal
     let board = Board(size: GridSize(width: 10, height: 20))
     var block: Block?
-    var state: GameState = ReadyState(prevState: nil) {
+    var state: GameState = ReadyState() {
         didSet {
             if self.state.isStarted {
                 self.didStart()
@@ -112,6 +112,7 @@ fileprivate extension GameLogicController {
     
     func didGameOver() {
         self.delegate?.logicControllerDidGameOver(self)
+        self.state = self.state.nextState
     }
 
     func generateBlock() {
@@ -155,7 +156,7 @@ fileprivate extension GameLogicController {
         }
         
         if self.board.isOverlapped(with: block, at: block.position) {
-            self.state = GameOverState(prevState: self.state)
+            self.state = self.state.gameoverState
         }
     }
     

@@ -49,6 +49,7 @@
 		551A72221D4B15CF005725C0 /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A72201D4B15CF005725C0 /* Movement.swift */; };
 		551A72231D4B15CF005725C0 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A72211D4B15CF005725C0 /* Point.swift */; };
 		551D71D81EFA3AF3007AC099 /* GameLogicControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551D71D71EFA3AF3007AC099 /* GameLogicControllerTests.swift */; };
+		551D71F31F01F04E007AC099 /* GameStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551D71F21F01F04E007AC099 /* GameStateTests.swift */; };
 		556650991CAA668A001CE2EB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46F001949DB5D000D3206 /* MainView.swift */; };
 		5577B9C41E374FA400FB551B /* DirtyCheckable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5577B9C31E374FA400FB551B /* DirtyCheckable.swift */; };
 		55947B981D4B3DA800F2DC58 /* NSColorExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55947B971D4B3DA800F2DC58 /* NSColorExtensionTests.swift */; };
@@ -163,6 +164,7 @@
 		551A72201D4B15CF005725C0 /* Movement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
 		551A72211D4B15CF005725C0 /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		551D71D71EFA3AF3007AC099 /* GameLogicControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameLogicControllerTests.swift; sourceTree = "<group>"; };
+		551D71F21F01F04E007AC099 /* GameStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStateTests.swift; sourceTree = "<group>"; };
 		5577B9C31E374FA400FB551B /* DirtyCheckable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirtyCheckable.swift; sourceTree = "<group>"; };
 		55947B971D4B3DA800F2DC58 /* NSColorExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSColorExtensionTests.swift; sourceTree = "<group>"; };
 		55947B991D4B404400F2DC58 /* BlockDebuggingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockDebuggingTests.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 		551D71D61EFA3AC6007AC099 /* GameLogic */ = {
 			isa = PBXGroup;
 			children = (
+				551D71F21F01F04E007AC099 /* GameStateTests.swift */,
 				551D71D71EFA3AF3007AC099 /* GameLogicControllerTests.swift */,
 			);
 			name = GameLogic;
@@ -616,6 +619,7 @@
 				551A71FC1D4B1501005725C0 /* PointTests.swift in Sources */,
 				551A71F91D4B1501005725C0 /* GridTests.swift in Sources */,
 				551A71FA1D4B1501005725C0 /* IntExtensionTests.swift in Sources */,
+				551D71F31F01F04E007AC099 /* GameStateTests.swift in Sources */,
 				551D71D81EFA3AF3007AC099 /* GameLogicControllerTests.swift in Sources */,
 				551A71F41D4B1501005725C0 /* BlockTests.swift in Sources */,
 				55947B981D4B3DA800F2DC58 /* NSColorExtensionTests.swift in Sources */,

@@ -27,9 +27,9 @@ extension Sequence where Iterator.Element == DirtyCheckable {
     }
     
     var isDirty: Bool {
-        return self.reduce(true) {
-            return $0 ? $1.dirty : false
-        }
+        return self.filter {
+            $0.dirty
+        }.count != 0
     }
 
     func resetDirty() {
