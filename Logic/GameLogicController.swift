@@ -145,7 +145,7 @@ fileprivate extension GameLogicController {
     }
     
     var dirtyCheckables: [DirtyCheckable] {
-        return Array<DirtyCheckable?>(arrayLiteral: self.board, self.block).flatMap {
+        return Array<DirtyCheckable?>(arrayLiteral: self.board, self.block).compactMap {
             $0
         }
     }

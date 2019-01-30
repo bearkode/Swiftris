@@ -14,7 +14,7 @@ import Logic
 class MainViewController: NSViewController {
     
     // MARK: - init
-    required override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
@@ -26,14 +26,14 @@ class MainViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.autoresizingMask = [.viewWidthSizable, .viewHeightSizable]
+        self.view.autoresizingMask = [.width, .height]
         
         DispatchQueue.main.async {
             self.setup()
             self.setupMainView()
         }
         
-        self.timer = Timer.scheduledTimer(timeInterval: 1.0 / 30.0, target: self, selector: #selector(timeTick), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: 1.0 / 30.0, target: self, selector: #selector(self.timeTick), userInfo: nil, repeats: true)
     }
     
     // MARK: - outlets
@@ -44,7 +44,7 @@ class MainViewController: NSViewController {
         self.logicController.startButtonClicked()
     }
     
-    func timeTick() {
+    @objc func timeTick() {
         self.logicController.timeTick()
     }
 
@@ -69,7 +69,7 @@ fileprivate extension MainViewController {
             return
         }
         
-        view.autoresizingMask = [.viewWidthSizable, .viewHeightSizable]
+        view.autoresizingMask = [.width, .height]
         view.delegate = self
         view.addSubview(self.boardView)
     }
