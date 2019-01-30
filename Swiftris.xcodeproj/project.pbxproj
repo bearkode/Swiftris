@@ -29,7 +29,6 @@
 		551A71FA1D4B1501005725C0 /* IntExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A71EF1D4B1501005725C0 /* IntExtensionTests.swift */; };
 		551A71FB1D4B1501005725C0 /* MovementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A71F01D4B1501005725C0 /* MovementTests.swift */; };
 		551A71FC1D4B1501005725C0 /* PointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A71F11D4B1501005725C0 /* PointTests.swift */; };
-		551A71FF1D4B151D005725C0 /* SwiftrisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A71FE1D4B151D005725C0 /* SwiftrisTests.swift */; };
 		551A720E1D4B154F005725C0 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A72001D4B154F005725C0 /* Block.swift */; };
 		551A720F1D4B154F005725C0 /* Block+Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A72011D4B154F005725C0 /* Block+Debugging.swift */; };
 		551A72101D4B154F005725C0 /* BlockGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A72021D4B154F005725C0 /* BlockGenerator.swift */; };
@@ -50,7 +49,6 @@
 		551A72231D4B15CF005725C0 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A72211D4B15CF005725C0 /* Point.swift */; };
 		551D71D81EFA3AF3007AC099 /* GameLogicControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551D71D71EFA3AF3007AC099 /* GameLogicControllerTests.swift */; };
 		551D71F31F01F04E007AC099 /* GameStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551D71F21F01F04E007AC099 /* GameStateTests.swift */; };
-		556650991CAA668A001CE2EB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF46F001949DB5D000D3206 /* MainView.swift */; };
 		5577B9C41E374FA400FB551B /* DirtyCheckable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5577B9C31E374FA400FB551B /* DirtyCheckable.swift */; };
 		55947B981D4B3DA800F2DC58 /* NSColorExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55947B971D4B3DA800F2DC58 /* NSColorExtensionTests.swift */; };
 		55947B9A1D4B404400F2DC58 /* BlockDebuggingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55947B991D4B404400F2DC58 /* BlockDebuggingTests.swift */; };
@@ -58,27 +56,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2E494FDC195D232700A7DF91 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2EF46EC91949CA4D000D3206 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2EF46ED01949CA4D000D3206;
-			remoteInfo = Swiftris;
-		};
-		2E494FDE195D232700A7DF91 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2EF46EC91949CA4D000D3206 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2EF46ED01949CA4D000D3206;
-			remoteInfo = Swiftris;
-		};
-		2EF46EE41949CA4D000D3206 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2EF46EC91949CA4D000D3206 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2EF46ED01949CA4D000D3206;
-			remoteInfo = Swiftris;
-		};
 		551A71D41D4B14D7005725C0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2EF46EC91949CA4D000D3206 /* Project object */;
@@ -123,7 +100,6 @@
 		2EF46ED81949CA4D000D3206 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EF46EDA1949CA4D000D3206 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2EF46EDD1949CA4D000D3206 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		2EF46EE31949CA4D000D3206 /* SwiftrisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftrisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EF46EE81949CA4D000D3206 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2EF46EFC1949D4E2000D3206 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2EF46EFD1949D4E2000D3206 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
@@ -180,13 +156,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2EF46EE01949CA4D000D3206 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		551A71C61D4B14CE005725C0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -220,7 +189,6 @@
 			isa = PBXGroup;
 			children = (
 				2EF46ED11949CA4D000D3206 /* Swiftris.app */,
-				2EF46EE31949CA4D000D3206 /* SwiftrisTests.xctest */,
 				551A71CA1D4B14CE005725C0 /* Logic.framework */,
 				551A71D21D4B14D2005725C0 /* LogicTests.xctest */,
 			);
@@ -416,26 +384,6 @@
 			productReference = 2EF46ED11949CA4D000D3206 /* Swiftris.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2EF46EE21949CA4D000D3206 /* SwiftrisTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2EF46EF01949CA4D000D3206 /* Build configuration list for PBXNativeTarget "SwiftrisTests" */;
-			buildPhases = (
-				2EF46EDF1949CA4D000D3206 /* Sources */,
-				2EF46EE01949CA4D000D3206 /* Frameworks */,
-				2EF46EE11949CA4D000D3206 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2EF46EE51949CA4D000D3206 /* PBXTargetDependency */,
-				2E494FDD195D232700A7DF91 /* PBXTargetDependency */,
-				2E494FDF195D232700A7DF91 /* PBXTargetDependency */,
-			);
-			name = SwiftrisTests;
-			productName = SwiftrisTests;
-			productReference = 2EF46EE31949CA4D000D3206 /* SwiftrisTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		551A71C91D4B14CE005725C0 /* Logic */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 551A71E11D4B14D7005725C0 /* Build configuration list for PBXNativeTarget "Logic" */;
@@ -489,10 +437,6 @@
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
-					2EF46EE21949CA4D000D3206 = {
-						CreatedOnToolsVersion = 6.0;
-						LastSwiftMigration = 0800;
-					};
 					551A71C91D4B14CE005725C0 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 8C9TY2A298;
@@ -523,7 +467,6 @@
 				551A71C91D4B14CE005725C0 /* Logic */,
 				551A71D11D4B14D2005725C0 /* LogicTests */,
 				2EF46ED01949CA4D000D3206 /* Swiftris */,
-				2EF46EE21949CA4D000D3206 /* SwiftrisTests */,
 			);
 		};
 /* End PBXProject section */
@@ -536,13 +479,6 @@
 				2EF46EDB1949CA4D000D3206 /* Images.xcassets in Resources */,
 				2EF46EFF1949D4E2000D3206 /* MainViewController.xib in Resources */,
 				2EF46EDE1949CA4D000D3206 /* MainMenu.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2EF46EE11949CA4D000D3206 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,15 +507,6 @@
 				2EF46ED91949CA4D000D3206 /* AppDelegate.swift in Sources */,
 				2EF46EFE1949D4E2000D3206 /* MainViewController.swift in Sources */,
 				2EB72C1D1953EDEB00574E38 /* BoardView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2EF46EDF1949CA4D000D3206 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				556650991CAA668A001CE2EB /* MainView.swift in Sources */,
-				551A71FF1D4B151D005725C0 /* SwiftrisTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,21 +562,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2E494FDD195D232700A7DF91 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2EF46ED01949CA4D000D3206 /* Swiftris */;
-			targetProxy = 2E494FDC195D232700A7DF91 /* PBXContainerItemProxy */;
-		};
-		2E494FDF195D232700A7DF91 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2EF46ED01949CA4D000D3206 /* Swiftris */;
-			targetProxy = 2E494FDE195D232700A7DF91 /* PBXContainerItemProxy */;
-		};
-		2EF46EE51949CA4D000D3206 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2EF46ED01949CA4D000D3206 /* Swiftris */;
-			targetProxy = 2EF46EE41949CA4D000D3206 /* PBXContainerItemProxy */;
-		};
 		551A71D51D4B14D7005725C0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 551A71C91D4B14CE005725C0 /* Logic */;
@@ -792,46 +704,6 @@
 			};
 			name = Release;
 		};
-		2EF46EF11949CA4D000D3206 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
-				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SwiftrisTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				METAL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Debug;
-		};
-		2EF46EF21949CA4D000D3206 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
-				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
-				INFOPLIST_FILE = SwiftrisTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				METAL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
 		551A71E21D4B14D7005725C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -919,7 +791,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.naver.LogicTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
+				VALID_ARCHS = x86_64;
 			};
 			name = Debug;
 		};
@@ -937,7 +810,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.naver.LogicTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
+				VALID_ARCHS = x86_64;
 			};
 			name = Release;
 		};
@@ -958,15 +832,6 @@
 			buildConfigurations = (
 				2EF46EEE1949CA4D000D3206 /* Debug */,
 				2EF46EEF1949CA4D000D3206 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2EF46EF01949CA4D000D3206 /* Build configuration list for PBXNativeTarget "SwiftrisTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2EF46EF11949CA4D000D3206 /* Debug */,
-				2EF46EF21949CA4D000D3206 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
