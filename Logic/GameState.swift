@@ -11,18 +11,18 @@ import Foundation
 
 
 protocol GameState {
-    
+
     var isStarted: Bool { get }
     var isResumed: Bool { get }
 
     var buttonTitle: String { get }
     var nextState: GameState { get }
-    
+
 }
 
 
 extension GameState {
-    
+
     var isPaused: Bool {
         return self is PauseState
     }
@@ -34,12 +34,12 @@ extension GameState {
     var gameoverState: GameState {
         return GameOverState()
     }
-    
+
 }
 
 
 struct ReadyState: GameState {
-    
+
     private(set) var isStarted = false
     private(set) var isResumed = false
 
@@ -48,7 +48,7 @@ struct ReadyState: GameState {
     var nextState: GameState {
         return PlayingState(isStarted: true)
     }
-    
+
 }
 
 
@@ -83,14 +83,14 @@ struct PauseState: GameState {
     }
 
     fileprivate init() {
-        
+
     }
 
 }
 
 
 struct GameOverState: GameState {
-    
+
     private(set) var isStarted = false
     private(set) var isResumed = false
 
@@ -99,9 +99,9 @@ struct GameOverState: GameState {
     var nextState: GameState {
         return ReadyState()
     }
-    
+
     fileprivate init() {
-    
+
     }
-    
+
 }

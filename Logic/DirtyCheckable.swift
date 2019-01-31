@@ -12,20 +12,20 @@ import Foundation
 
 protocol DirtyCheckable: class {
 
-    var dirty: Bool { set get }
+    var dirty: Bool { get set }
 
 }
 
 
 extension Sequence where Iterator.Element == DirtyCheckable {
-    
+
     func checkDirty(_ dirtyHandler: () -> Void) {
         if self.isDirty {
             dirtyHandler()
             self.resetDirty()
         }
     }
-    
+
     var isDirty: Bool {
         return self.filter {
             $0.dirty
@@ -37,4 +37,3 @@ extension Sequence where Iterator.Element == DirtyCheckable {
     }
 
 }
-

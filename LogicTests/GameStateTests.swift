@@ -29,7 +29,7 @@ class GameStateTests: XCTestCase {
         XCTAssertTrue(state.isResumed == false)
         XCTAssertTrue(state.isPaused == false)
         XCTAssertTrue(state.isGameOver == false)
-        
+
         state = state.nextState
         XCTAssertTrue(state is PlayingState)        
         XCTAssertTrue(state.buttonTitle == "PAUSE")
@@ -37,7 +37,7 @@ class GameStateTests: XCTestCase {
         XCTAssertTrue(state.isResumed == false)
         XCTAssertTrue(state.isPaused == false)
         XCTAssertTrue(state.isGameOver == false)
-        
+
         state = state.nextState
         XCTAssertTrue(state is PauseState)        
         XCTAssertTrue(state.buttonTitle == "RESUME")
@@ -45,7 +45,7 @@ class GameStateTests: XCTestCase {
         XCTAssertTrue(state.isResumed == false)
         XCTAssertTrue(state.isPaused == true)
         XCTAssertTrue(state.isGameOver == false)
-        
+
         state = state.nextState
         XCTAssertTrue(state is PlayingState)        
         XCTAssertTrue(state.buttonTitle == "PAUSE")
@@ -53,7 +53,7 @@ class GameStateTests: XCTestCase {
         XCTAssertTrue(state.isResumed == true)
         XCTAssertTrue(state.isPaused == false)
         XCTAssertTrue(state.isGameOver == false)
-        
+
         state = state.gameoverState
         XCTAssertTrue(state is GameOverState)
         XCTAssertTrue(state.buttonTitle == "START")
@@ -61,7 +61,7 @@ class GameStateTests: XCTestCase {
         XCTAssertTrue(state.isResumed == false)
         XCTAssertTrue(state.isPaused == false)
         XCTAssertTrue(state.isGameOver == true)
-        
+
         state = state.nextState
         XCTAssertTrue(state is ReadyState)
         XCTAssertTrue(state.buttonTitle == "START")

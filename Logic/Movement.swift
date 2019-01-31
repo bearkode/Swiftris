@@ -37,28 +37,28 @@ class Movement {
             self.dirty = true
         }
     }
-    
+
     func turn() {
         self.rotateIndex = self.nextRotateIndex
     }
-    
+
     func down() {
         self.position = self.position.underPoint
     }
-    
+
     func left() {
         self.position = self.position.leftPoint
     }
-    
+
     func right() {
         self.position = self.position.rightPoint
     }
-    
+
     func isTimeToDrop() -> Bool {
         return self.dropTimer.isFired()
     }
-    
-    //  MARK: - private
+
+    // MARK: - private
 
     private let shapeCount: Int
     private var dropTimer: DropTimer

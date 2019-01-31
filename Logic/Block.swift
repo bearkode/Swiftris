@@ -12,7 +12,7 @@ import Foundation
 
 class Block: DirtyCheckable {
 
-    //  MARK: - init
+    // MARK: - init
 
     init(type: BlockType, position: Point = Point()) {
         self.type = type
@@ -50,13 +50,13 @@ class Block: DirtyCheckable {
     }
     private(set) var type: BlockType
 
-    //  MARK: -
+    // MARK: -
 
     func turn() {
         self.movement.turn()
         self.updateCurrentGrid()
     }
-    
+
     func moveDown() {
         self.movement.down()
     }
@@ -64,12 +64,12 @@ class Block: DirtyCheckable {
     func moveLeft() {
         self.movement.left()
     }
-    
+
     func moveRight() {
         self.movement.right()
     }
-    
-    //  MARK: -
+
+    // MARK: -
 
     func contains(position: Point) -> Bool {
         return (position.x >= self.position.x &&
@@ -90,7 +90,7 @@ class Block: DirtyCheckable {
         return Point(x: (position.x - self.position.x), y: (position.y - self.position.y))
     }
 
-    //  MARK: - private
+    // MARK: - private
 
     private let movement: Movement
     private func updateCurrentGrid() {

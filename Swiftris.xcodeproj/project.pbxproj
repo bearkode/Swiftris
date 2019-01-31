@@ -50,6 +50,7 @@
 		551D71D81EFA3AF3007AC099 /* GameLogicControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551D71D71EFA3AF3007AC099 /* GameLogicControllerTests.swift */; };
 		551D71F31F01F04E007AC099 /* GameStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551D71F21F01F04E007AC099 /* GameStateTests.swift */; };
 		5577B9C41E374FA400FB551B /* DirtyCheckable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5577B9C31E374FA400FB551B /* DirtyCheckable.swift */; };
+		558665AF2202F2E800DA4A02 /* Curry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558665AE2202F2E800DA4A02 /* Curry.swift */; };
 		55947B981D4B3DA800F2DC58 /* NSColorExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55947B971D4B3DA800F2DC58 /* NSColorExtensionTests.swift */; };
 		55947B9A1D4B404400F2DC58 /* BlockDebuggingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55947B991D4B404400F2DC58 /* BlockDebuggingTests.swift */; };
 		55947B9F1D4B6D5A00F2DC58 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55947B9E1D4B6D5A00F2DC58 /* GameState.swift */; };
@@ -135,6 +136,7 @@
 		551D71D71EFA3AF3007AC099 /* GameLogicControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameLogicControllerTests.swift; sourceTree = "<group>"; };
 		551D71F21F01F04E007AC099 /* GameStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStateTests.swift; sourceTree = "<group>"; };
 		5577B9C31E374FA400FB551B /* DirtyCheckable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirtyCheckable.swift; sourceTree = "<group>"; };
+		558665AE2202F2E800DA4A02 /* Curry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Curry.swift; sourceTree = "<group>"; };
 		55947B971D4B3DA800F2DC58 /* NSColorExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSColorExtensionTests.swift; sourceTree = "<group>"; };
 		55947B991D4B404400F2DC58 /* BlockDebuggingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockDebuggingTests.swift; sourceTree = "<group>"; };
 		55947B9E1D4B6D5A00F2DC58 /* GameState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
@@ -232,12 +234,12 @@
 			isa = PBXGroup;
 			children = (
 				551A71CC1D4B14D2005725C0 /* Logic.h */,
+				558665B02202F2F100DA4A02 /* Utils */,
 				558665AB2202BAC800DA4A02 /* Extensions */,
 				55D36A1A1D4B2BED0076EE47 /* Types */,
 				55D36A1B1D4B2C290076EE47 /* Block */,
 				55947B9B1D4B6CF300F2DC58 /* Board */,
 				55947B9D1D4B6D2700F2DC58 /* GameLogic */,
-				551A721D1D4B1563005725C0 /* NSColor+Extension.swift */,
 				551A71CD1D4B14D2005725C0 /* Info.plist */,
 			);
 			path = Logic;
@@ -270,8 +272,17 @@
 			isa = PBXGroup;
 			children = (
 				551A721C1D4B1563005725C0 /* Int+Extension.swift */,
+				551A721D1D4B1563005725C0 /* NSColor+Extension.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		558665B02202F2F100DA4A02 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				558665AE2202F2E800DA4A02 /* Curry.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 		55947B9B1D4B6CF300F2DC58 /* Board */ = {
@@ -374,6 +385,7 @@
 				2EF46ECE1949CA4D000D3206 /* Frameworks */,
 				2EF46ECF1949CA4D000D3206 /* Resources */,
 				551A71E41D4B14D7005725C0 /* Embed Frameworks */,
+				558665AC2202DA3400DA4A02 /* swiftlint */,
 			);
 			buildRules = (
 			);
@@ -393,6 +405,7 @@
 				551A71C61D4B14CE005725C0 /* Frameworks */,
 				551A71C71D4B14CE005725C0 /* Headers */,
 				551A71C81D4B14CE005725C0 /* Resources */,
+				558665AD2202DA5000DA4A02 /* swiftlint */,
 			);
 			buildRules = (
 			);
@@ -498,6 +511,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		558665AC2202DA3400DA4A02 /* swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		558665AD2202DA5000DA4A02 /* swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint --path Logic\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2EF46ECD1949CA4D000D3206 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -525,6 +577,7 @@
 				551A72111D4B154F005725C0 /* BlockTemplate.swift in Sources */,
 				551A72131D4B154F005725C0 /* Board.swift in Sources */,
 				5504C1D61D4B6F4900668C43 /* GameLogicController+Interface.swift in Sources */,
+				558665AF2202F2E800DA4A02 /* Curry.swift in Sources */,
 				55947B9F1D4B6D5A00F2DC58 /* GameState.swift in Sources */,
 				551A721F1D4B1563005725C0 /* NSColor+Extension.swift in Sources */,
 				551A72191D4B154F005725C0 /* Grid+Subscript.swift in Sources */,

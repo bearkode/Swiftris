@@ -16,14 +16,14 @@ class BlockTests: XCTestCase {
     override func setUp() {
         super.setUp()
     }
-    
+
     override func tearDown() {
         super.tearDown()
     }
-    
+
     func testCreation() {
         var block: Block
-        
+
         block = Block(type: .box)
         XCTAssertTrue(block.grids.count == 1)
         block = Block(type: .bar)
@@ -54,17 +54,16 @@ class BlockTests: XCTestCase {
         XCTAssertFalse(block.contains(position: Point(x: 6, y: 7)), "")
         XCTAssertFalse(block.contains(position: Point(x: 7, y: 6)), "")
     }
-    
-    func testBlockPositionInBlock()
-    {
+
+    func testBlockPositionInBlock() {
         let block = Block(type: .bump)
         block.position = Point(x: 10, y: 15)
-        
+
         XCTAssertTrue((block.positionInBlock(from: Point(x: 10, y: 15)) == Point(x: 0, y: 0)), "")
         XCTAssertTrue((block.positionInBlock(from: Point(x: 10, y: 16)) == Point(x: 0, y: 1)), "")
         XCTAssertTrue((block.positionInBlock(from: Point(x: 13, y: 17)) == Point(x: 3, y: 2)), "")
     }
-    
+
     func testValueAtPosition() {
         let block = Block(type: .box)
         block.position = Point(x: 5, y: 5)
@@ -110,17 +109,17 @@ class BlockTests: XCTestCase {
         block.turn()
         XCTAssertTrue(block.currentShape == grid0)
     }
-    
+
     func testNextGrid() {
         let block = Block(type: .foldA)
 
         XCTAssertTrue(block.currentShape == grid0)
         XCTAssertTrue(block.nextShape == grid3)
-        
+
         block.turn()
         XCTAssertTrue(block.currentShape == grid3)
         XCTAssertTrue(block.nextShape == grid2)
-        
+
         block.turn()
         XCTAssertTrue(block.currentShape == grid2)
         XCTAssertTrue(block.nextShape == grid1)
@@ -132,7 +131,7 @@ class BlockTests: XCTestCase {
         block.turn()
         XCTAssertTrue(block.currentShape == grid0)
         XCTAssertTrue(block.nextShape == grid3)
-        
+
         block.turn()
         XCTAssertTrue(block.currentShape == grid3)
         XCTAssertTrue(block.nextShape == grid2)
@@ -140,7 +139,7 @@ class BlockTests: XCTestCase {
 
     func testMove() {
         let block = Block(type: .foldA)
-        
+
         block.position = Point(x: 3, y: 3)
         XCTAssertTrue(block.position == Point(x: 3, y: 3))
         block.moveDown()

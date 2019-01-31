@@ -16,7 +16,7 @@ class BlockTypeTests: XCTestCase {
     override func setUp() {
         super.setUp()
     }
-    
+
     override func tearDown() {
         super.tearDown()
     }
@@ -28,21 +28,21 @@ class BlockTypeTests: XCTestCase {
     func testRandomType() {
         let allTypes = BlockType.allTypes
         var remainTypes = allTypes
-        
+
         XCTAssertTrue(remainTypes.count == 7)
-        
+
         for _ in 0..<1000 {
             let type = BlockType.randomType
-            
+
             XCTAssertTrue(allTypes.contains(type))
             remainTypes.remove(type)
-            
+
             if remainTypes.count == 0 {
                 break
             }
         }
     }
-    
+
     func testGrids() {
         XCTAssertTrue(BlockType.box.grids.count == 1)
         XCTAssertTrue(BlockType.bar.grids.count == 2)

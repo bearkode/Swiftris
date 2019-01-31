@@ -19,7 +19,7 @@ extension GameLogicController {
             }
         }
     }
-    
+
     func leftArrowDown() {
         self.block.map {
             if self.board.isPossible(at: $0.position.leftPoint, withBlock: $0) {
@@ -27,7 +27,7 @@ extension GameLogicController {
             }
         }
     }
-    
+
     func rightArrowDown() {
         self.block.map {
             if self.board.isPossible(at: $0.position.rightPoint, withBlock: $0) {
@@ -35,9 +35,9 @@ extension GameLogicController {
             }
         }
     }
-    
+
     func downArrowDown() {
-        
+
     }
 
 }

@@ -20,7 +20,7 @@ extension Grid {
             self[Point(x: x, y: y)] = newValue
         }
     }
-    
+
     subscript(position: Point) -> Int {
         get {
             assert(self.size.isValid(position: position), "Index out of range")

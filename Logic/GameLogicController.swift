@@ -11,7 +11,7 @@ import Foundation
 
 
 public protocol LogicControllerDelegate: class {
-    
+
     func logicControllerDidStartGame(_ logicController: GameLogicController)
     func logicControllerDidPause(_ logicController: GameLogicController)
     func logicControllerDidResume(_ logicController: GameLogicController)
@@ -23,13 +23,13 @@ public protocol LogicControllerDelegate: class {
 
 public class GameLogicController {
 
-    //  MARK: - init
+    // MARK: - init
 
     public init () {
 
     }
 
-    //  MARK: - public
+    // MARK: - public
 
     public weak var delegate: LogicControllerDelegate?
     public var boardSize: GridSize {
@@ -40,7 +40,7 @@ public class GameLogicController {
         if let value = self.block?.value(at: position), value != 0 {
             return value
         }
-        
+
         return board.value(at: position)
     }
 
@@ -50,12 +50,12 @@ public class GameLogicController {
         }
         self.keyCodeHandlers[keyCode]?()
     }
-    
+
     public func timeTick() {
         guard self.state is PlayingState else {
             return
         }
-        
+
         if let block = self.block {
             if block.timeToDrop {
                 self.dropBlock()
@@ -64,11 +64,12 @@ public class GameLogicController {
             self.generateBlock()
             self.checkGameOver()
         }
-        
+
         self.sendDidUpdate()
     }
 
-    //  MARK: - internal
+    // MARK: - internal
+
     let board = Board(size: GridSize(width: 10, height: 20))
     var block: Block?
     var state: GameState = ReadyState() {
@@ -85,7 +86,8 @@ public class GameLogicController {
         }
     }
 
-    //  MARK: - private
+    // MARK: - private
+
     private lazy var keyCodeHandlers: [KeyCode: () -> Void] = {
         return [.up: self.upArrowDown,
                 .right: self.rightArrowDown,
@@ -97,13 +99,13 @@ public class GameLogicController {
 
 
 fileprivate extension GameLogicController {
-    
+
     func didStart() {
         self.board.reset()
         self.block = nil
         self.delegate?.logicControllerDidStartGame(self)
     }
-    
+
     func didResume() {
         self.delegate?.logicControllerDidResume(self)
     }
@@ -111,7 +113,7 @@ fileprivate extension GameLogicController {
     func didPause() {
         self.delegate?.logicControllerDidPause(self)
     }
-    
+
     func didGameOver() {
         self.delegate?.logicControllerDidGameOver(self)
         self.state = self.state.nextState
@@ -121,7 +123,7 @@ fileprivate extension GameLogicController {
         assert(self.block == nil)
         self.block = BlockGenerator.sharedGenerator.block(withPosition: Point(x: 3, y: 0))
     }
-    
+
     func dropBlock() {
         self.block.map {
             if self.checkBlockDownCollision($0) {
@@ -132,36 +134,36 @@ fileprivate extension GameLogicController {
             }
         }
     }
-    
+
     func immobilize(block: Block) {
         self.board.immobilze(block: block)
         self.block = nil
     }
-    
+
     func sendDidUpdate() {
         self.dirtyCheckables.checkDirty {
             self.delegate?.logicControllerDidUpdate(self)
         }
     }
-    
+
     var dirtyCheckables: [DirtyCheckable] {
-        return Array<DirtyCheckable?>(arrayLiteral: self.board, self.block).compactMap {
+        return [DirtyCheckable?](arrayLiteral: self.board, self.block).compactMap {
             $0
         }
     }
-    
+
     func checkGameOver() {
         guard let block = self.block else {
             return
         }
-        
+
         if self.board.isOverlapped(with: block, at: block.position) {
             self.state = self.state.gameoverState
         }
     }
-    
+
     func checkBlockDownCollision(_ block: Block) -> Bool {
         return self.board.isOverlapped(with: block, at: block.position.underPoint)
     }
-    
+
 }

@@ -11,10 +11,10 @@ import Foundation
 
 
 public enum KeyCode: UInt16 {
-    
+
     case up = 126
     case down = 125
     case left = 123
     case right = 124
-    
+
 }

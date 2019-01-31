@@ -11,7 +11,7 @@ import Foundation
 
 
 public struct Point {
-    
+
     public var x: Int = 0
     public var y: Int = 0
 
@@ -23,15 +23,15 @@ extension Point {
     var leftPoint: Point {
         return Point(x: self.x - 1, y: self.y)
     }
-    
+
     var rightPoint: Point {
         return Point(x: self.x + 1, y: self.y)
     }
-    
+
     var underPoint: Point {
         return Point(x: self.x, y: self.y + 1)
     }
-    
+
 }
 
 

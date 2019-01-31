@@ -20,13 +20,13 @@ struct DropTimer {
     }
 
     // MARK: - internal
-    
+
     mutating func isFired() -> Bool {
         if self.currentValue <= self.fireValue {
             self.currentValue = self.initValue
             return true
         }
-        
+
         self.currentValue -= 1
         return false
     }
@@ -36,5 +36,5 @@ struct DropTimer {
     private let initValue: Int
     private let fireValue: Int = 0
     private var currentValue: Int
-    
+
 }

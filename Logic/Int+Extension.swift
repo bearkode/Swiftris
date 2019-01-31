@@ -15,9 +15,9 @@ extension Int {
     var isExist: Bool {
         return (self != 0) ? true : false
     }
-    
+
     var isEmpty: Bool {
         return (self == 0) ? true : false
     }
-    
+
 }

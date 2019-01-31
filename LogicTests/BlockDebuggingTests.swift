@@ -25,7 +25,7 @@ class BlockDebuggingTests: XCTestCase {
         let block = Block(type: .foldA, position: Point(x: 10, y: 30))
         XCTAssertTrue(block.description == "Block type: foldA at: 10, 30")
     }
-    
+
     func testDebugPrint() {
         let block = Block(type: .box, position: Point(x: 10, y: 10))
         block.debugPrint()

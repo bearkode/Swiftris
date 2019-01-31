@@ -15,9 +15,9 @@ extension GameLogicController {
     public func startButtonClicked() {
         self.state = self.state.nextState
     }
-    
+
     public var startButtonTitle: String {
         return self.state.buttonTitle
     }
-    
+
 }

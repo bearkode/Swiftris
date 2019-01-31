@@ -11,7 +11,7 @@ import Foundation
 
 
 public struct GridSize {
-    
+
     // MARK: - init
 
     public init(width: Int, height: Int) {
@@ -23,19 +23,19 @@ public struct GridSize {
     public init () {
         self.init(width: 0, height: 0)
     }
-    
-    //  MARK: - public
+
+    // MARK: - public
 
     public let width: Int
     public let height: Int
 
-    public func enumerate(_ closure: (_: Point) -> ()) {
+    public func enumerate(_ closure: (_: Point) -> Void) {
         self.indexRange.map { self.position(ofIndex: $0) }
                        .forEach { closure($0) }
     }
 
     // MARK: - inernal
-    
+
     let indexRange: CountableRange<Int>
 
 }
@@ -62,7 +62,7 @@ extension GridSize {
 }
 
 
-extension GridSize : Equatable {
+extension GridSize: Equatable {
 
 }
 
