@@ -35,8 +35,7 @@ extension Point {
 }
 
 
-extension Point: Equatable
-{
+extension Point: Equatable {
 
 }
 

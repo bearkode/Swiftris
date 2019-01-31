@@ -12,6 +12,17 @@ import Foundation
 
 class Movement {
 
+    // MARK: - init
+
+    init(position: Point, shapeCount: Int) {
+        self.shapeCount = shapeCount
+        self.dropTimer = DropTimer()
+        self.rotateIndex = 0
+        self.position = position
+    }
+
+    // MARK: - internal
+
     var dirty = true
     var position: Point {
         didSet {
@@ -27,13 +38,6 @@ class Movement {
         }
     }
     
-    init(position: Point, shapeCount: Int) {
-        self.shapeCount = shapeCount
-        self.dropTimer = DropTimer()
-        self.rotateIndex = 0
-        self.position = position
-    }
-
     func turn() {
         self.rotateIndex = self.nextRotateIndex
     }
@@ -54,7 +58,8 @@ class Movement {
         return self.dropTimer.isFired()
     }
     
-    //  MARK: -
+    //  MARK: - private
+
     private let shapeCount: Int
     private var dropTimer: DropTimer
 

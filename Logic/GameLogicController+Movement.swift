@@ -13,32 +13,26 @@ import Foundation
 extension GameLogicController {
 
     func upArrowDown() {
-        guard let block = self.block else {
-            return
-        }
-        
-        if self.board.isPossible(at: block.position, withGrid: block.nextShape) {
-            block.turn()
+        self.block.map {
+            if self.board.isPossible(at: $0.position, withGrid: $0.nextShape) {
+                $0.turn()
+            }
         }
     }
     
     func leftArrowDown() {
-        guard let block = self.block else {
-            return
-        }
-        
-        if self.board.isPossible(at: block.position.leftPoint, withBlock: block) {
-            block.moveLeft()
+        self.block.map {
+            if self.board.isPossible(at: $0.position.leftPoint, withBlock: $0) {
+                $0.moveLeft()
+            }
         }
     }
     
     func rightArrowDown() {
-        guard let block = self.block else {
-            return
-        }
-        
-        if self.board.isPossible(at: block.position.rightPoint, withBlock: block) {
-            block.moveRight()
+        self.block.map {
+            if self.board.isPossible(at: $0.position.rightPoint, withBlock: $0) {
+                $0.moveRight()
+            }
         }
     }
     

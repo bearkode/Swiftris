@@ -11,18 +11,21 @@ import Foundation
 
 
 class Board: DirtyCheckable {
-    
+
+    // MARK: - init
+
+    init(size boardSize: GridSize) {
+        self.grid = Grid(size: boardSize)
+    }
+
+    // MARK: - internal
+
     let grid: Grid
     var dirty = true
     var gridSize: GridSize {
         return self.grid.size
     }
 
-    init(size boardSize: GridSize) {
-        self.grid = Grid(width: boardSize.width, height: boardSize.height)
-    }
-    
-    //  MARK: -
     func reset() {
         self.grid.reset()
         self.dirty = true

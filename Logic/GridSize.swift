@@ -12,12 +12,8 @@ import Foundation
 
 public struct GridSize {
     
-    public var width: Int
-    public var height: Int
-    
-    let indexRange: CountableRange<Int>
-    
-    // MARK: -
+    // MARK: - init
+
     public init(width: Int, height: Int) {
         self.width = width
         self.height = height
@@ -28,29 +24,41 @@ public struct GridSize {
         self.init(width: 0, height: 0)
     }
     
-    //  MARK: -
+    //  MARK: - public
+
+    public let width: Int
+    public let height: Int
+
     public func enumerate(_ closure: (_: Point) -> ()) {
-        for index in self.indexRange {
-            closure(self.position(ofIndex: index))
-        }
+        self.indexRange.map { self.position(ofIndex: $0) }
+                       .forEach { closure($0) }
     }
+
+    // MARK: - inernal
     
-    func isValidPosition(_ position: Point) -> Bool {
+    let indexRange: CountableRange<Int>
+
+}
+
+
+extension GridSize {
+
+    func isValid(position: Point) -> Bool {
         return position.x >= 0 && position.x < self.width && position.y >= 0 && position.y < self.height
     }
-    
+
     func index(ofPosition position: Point) -> Int {
         return position.y * self.width + position.x
     }
-    
+
     func position(ofIndex index: Int) -> Point {
         return Point(x: index % self.width, y: index / self.width)
     }
-    
+
     func range(ofRow row: Int) -> CountableRange<Int> {
         return (row * self.width)..<((row * self.width) + self.width)
     }
-    
+
 }
 
 

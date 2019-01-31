@@ -11,12 +11,16 @@ import Foundation
 
 
 class BlockGenerator {
-    
+
+    // MARK: - singleton
+
     static let sharedGenerator = BlockGenerator()
     
     private init() {
         self.nextBlock = Block(type: .randomType, position: Point())
     }
+
+    // MARK: - internal
 
     private(set) var nextBlock: Block
     

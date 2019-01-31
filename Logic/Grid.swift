@@ -12,23 +12,25 @@ import Foundation
 
 class Grid {
     
-    let size: GridSize
-    var buffer: [Int]
+    //  MARK: - init
 
-    //  MARK: -
-    init(width: Int, height: Int, array: [Int]) {
-        self.size = GridSize(width: width, height: height)
-        self.buffer = Array(repeating: 0, count: width * height)
+    init(size: GridSize, array: [Int]) { //width: Int, height: Int
+        self.size = size//GridSize(width: width, height: height)
+        self.buffer = Array(repeating: 0, count: size.width * size.height)
         
         let count = array.count
         self.buffer[0..<count] = array[0..<count]
     }
 
-    convenience init(width: Int, height: Int) {
-        self.init(width: width, height: height, array: Array(repeating: 0, count: width * height))
+    convenience init(size: GridSize) { //width: Int, height: Int
+        self.init(size: size, array: Array(repeating: 0, count: size.width * size.height))
     }
     
-    //  MARK: -
+    //  MARK: - internal
+
+    let size: GridSize
+    var buffer: [Int]
+
     func reset() {
         self.buffer = Array(repeating: 0, count: self.size.width * self.size.height)
     }
@@ -55,6 +57,7 @@ class Grid {
     }
 
     //  MARK: -
+
     func isOverlapped(withGrid grid: Grid, position: Point) -> Bool {
         var overlapped = false
         
@@ -68,7 +71,7 @@ class Grid {
     }
     
     func value(atPosition position: Point) -> Int {
-        return self.size.isValidPosition(position) ? self[position] : Int.max
+        return self.size.isValid(position: position) ? self[position] : Int.max
     }
     
     func copy(from grid: Grid, position: Point) {

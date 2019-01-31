@@ -12,8 +12,20 @@ import Foundation
 
 class Block: DirtyCheckable {
 
+    //  MARK: - init
+
+    init(type: BlockType, position: Point = Point()) {
+        self.type = type
+        self.grids = type.grids
+        self.movement = Movement(position: position, shapeCount: self.grids.count)
+        self.position = position
+        self.updateCurrentGrid()
+    }
+
+    // MARK: - internal
+
     var grids: [Grid]
-    var currentShape: Grid = Grid(width: 4, height: 4)
+    var currentShape: Grid = Grid(size: GridSize(width: 4, height: 4))
     var nextShape: Grid {
         return self.grids[self.movement.nextRotateIndex]
     }
@@ -37,17 +49,9 @@ class Block: DirtyCheckable {
         return self.movement.isTimeToDrop()
     }
     private(set) var type: BlockType
-    
-    //  MARK: - init
-    init(type: BlockType, position: Point = Point()) {
-        self.type = type
-        self.grids = type.grids
-        self.movement = Movement(position: position, shapeCount: self.grids.count)
-        self.position = position
-        self.updateCurrentGrid()
-    }
-    
+
     //  MARK: -
+
     func turn() {
         self.movement.turn()
         self.updateCurrentGrid()
@@ -66,6 +70,7 @@ class Block: DirtyCheckable {
     }
     
     //  MARK: -
+
     func contains(position: Point) -> Bool {
         return (position.x >= self.position.x &&
                 position.x < self.position.x + self.currentShape.size.width &&
@@ -86,6 +91,7 @@ class Block: DirtyCheckable {
     }
 
     //  MARK: - private
+
     private let movement: Movement
     private func updateCurrentGrid() {
         if self.grids.count > 0 {

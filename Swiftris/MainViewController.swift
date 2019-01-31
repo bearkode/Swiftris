@@ -14,6 +14,7 @@ import Logic
 class MainViewController: NSViewController {
     
     // MARK: - init
+
     required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -23,6 +24,7 @@ class MainViewController: NSViewController {
     }
     
     // MARK: - override
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,10 +39,12 @@ class MainViewController: NSViewController {
     }
     
     // MARK: - outlets
+
     @IBOutlet var startButton: NSButton?
     
     // MARK: - actions
-    @IBAction func startButtonClicked(sender: AnyObject) {
+
+    @IBAction func startButtonClicked(sender: Any) {
         self.logicController.startButtonClicked()
     }
     
@@ -49,6 +53,7 @@ class MainViewController: NSViewController {
     }
 
     // MARK: - private
+
     fileprivate let boardView = BoardView(frame: NSRect(x: 10, y: 10, width: 100, height: 100))
     fileprivate let logicController = GameLogicController()
     private var timer: Timer?
@@ -80,13 +85,10 @@ fileprivate extension MainViewController {
 extension MainViewController: BoardViewDelegate {
 
     func boardView(didChangeFrame frame: CGRect) {
-        guard let window = self.view.window else {
-            return
+        self.view.window.map {
+            let origin = $0.frame.origin
+            $0.setFrame(CGRect(x: origin.x, y: origin.y, width: frame.size.width + 120, height: frame.size.height + 40), display: true)
         }
-        
-        let origin = window.frame.origin
-        
-        window.setFrame(CGRect(x: origin.x, y: origin.y, width: frame.size.width + 120, height: frame.size.height + 40), display: true)
     }
 
 }

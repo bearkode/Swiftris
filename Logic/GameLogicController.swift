@@ -22,18 +22,20 @@ public protocol LogicControllerDelegate: class {
 
 
 public class GameLogicController {
-    
-    public weak var delegate: LogicControllerDelegate?
-    public var boardSize: GridSize {
-        return self.board.gridSize
-    }
 
     //  MARK: - init
+
     public init () {
 
     }
 
     //  MARK: - public
+
+    public weak var delegate: LogicControllerDelegate?
+    public var boardSize: GridSize {
+        return self.board.gridSize
+    }
+
     public func colorIndex(at position: Point) -> Int {
         if let value = self.block?.value(at: position), value != 0 {
             return value
@@ -121,15 +123,13 @@ fileprivate extension GameLogicController {
     }
     
     func dropBlock() {
-        guard let block = self.block else {
-            return
-        }
-        
-        if self.checkBlockDownCollision(block) {
-            self.immobilize(block: block)
-            self.board.deleteFullRow()
-        } else {
-            block.moveDown()
+        self.block.map {
+            if self.checkBlockDownCollision($0) {
+                self.immobilize(block: $0)
+                self.board.deleteFullRow()
+            } else {
+                $0.moveDown()
+            }
         }
     }
     

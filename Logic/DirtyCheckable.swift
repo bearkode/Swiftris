@@ -33,9 +33,7 @@ extension Sequence where Iterator.Element == DirtyCheckable {
     }
 
     func resetDirty() {
-        self.forEach {
-            $0.dirty = false
-        }
+        self.forEach { $0.dirty = false }
     }
 
 }

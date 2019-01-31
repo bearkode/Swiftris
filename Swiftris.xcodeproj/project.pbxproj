@@ -63,13 +63,6 @@
 			remoteGlobalIDString = 551A71C91D4B14CE005725C0;
 			remoteInfo = Logic;
 		};
-		551A71D61D4B14D7005725C0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2EF46EC91949CA4D000D3206 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2EF46ED01949CA4D000D3206;
-			remoteInfo = Swiftris;
-		};
 		551A71DD1D4B14D7005725C0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2EF46EC91949CA4D000D3206 /* Project object */;
@@ -239,7 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				551A71CC1D4B14D2005725C0 /* Logic.h */,
-				551A721C1D4B1563005725C0 /* Int+Extension.swift */,
+				558665AB2202BAC800DA4A02 /* Extensions */,
 				55D36A1A1D4B2BED0076EE47 /* Types */,
 				55D36A1B1D4B2C290076EE47 /* Block */,
 				55947B9B1D4B6CF300F2DC58 /* Board */,
@@ -271,6 +264,14 @@
 				551D71D71EFA3AF3007AC099 /* GameLogicControllerTests.swift */,
 			);
 			name = GameLogic;
+			sourceTree = "<group>";
+		};
+		558665AB2202BAC800DA4A02 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				551A721C1D4B1563005725C0 /* Int+Extension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		55947B9B1D4B6CF300F2DC58 /* Board */ = {
@@ -414,7 +415,6 @@
 			);
 			dependencies = (
 				551A71D51D4B14D7005725C0 /* PBXTargetDependency */,
-				551A71D71D4B14D7005725C0 /* PBXTargetDependency */,
 			);
 			name = LogicTests;
 			productName = LogicTests;
@@ -433,19 +433,19 @@
 				TargetAttributes = {
 					2EF46ED01949CA4D000D3206 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = 8C9TY2A298;
+						DevelopmentTeam = 8899R5FJ5P;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 					551A71C91D4B14CE005725C0 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 8C9TY2A298;
+						DevelopmentTeam = 8899R5FJ5P;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Manual;
 					};
 					551A71D11D4B14D2005725C0 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = TYXC7GAYHX;
+						DevelopmentTeam = 8899R5FJ5P;
 						DevelopmentTeamName = "Chang-Gi Kim (Personal Team)";
 						ProvisioningStyle = Automatic;
 					};
@@ -567,11 +567,6 @@
 			target = 551A71C91D4B14CE005725C0 /* Logic */;
 			targetProxy = 551A71D41D4B14D7005725C0 /* PBXContainerItemProxy */;
 		};
-		551A71D71D4B14D7005725C0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2EF46ED01949CA4D000D3206 /* Swiftris */;
-			targetProxy = 551A71D61D4B14D7005725C0 /* PBXContainerItemProxy */;
-		};
 		551A71DE1D4B14D7005725C0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 551A71C91D4B14CE005725C0 /* Logic */;
@@ -675,7 +670,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 8C9TY2A298;
+				DEVELOPMENT_TEAM = 8899R5FJ5P;
 				INFOPLIST_FILE = Swiftris/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -693,7 +688,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 8C9TY2A298;
+				DEVELOPMENT_TEAM = 8899R5FJ5P;
 				INFOPLIST_FILE = Swiftris/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -716,7 +711,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 8C9TY2A298;
+				DEVELOPMENT_TEAM = 8899R5FJ5P;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -747,13 +742,13 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8899R5FJ5P;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -783,6 +778,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 8899R5FJ5P;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = LogicTests/Info.plist;
@@ -803,6 +799,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 8899R5FJ5P;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = LogicTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";

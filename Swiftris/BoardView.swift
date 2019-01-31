@@ -29,18 +29,8 @@ protocol BoardViewDataSource: class {
 
 class BoardView: NSView {
     
-    weak var delegate: BoardViewDelegate? {
-        didSet {
-            self.updateFrameSize()
-        }
-    }
-    weak var dataSource: BoardViewDataSource? {
-        didSet {
-            self.reload()
-        }
-    }
-    
     //  MARK: - override
+
     override var isFlipped: Bool {
         return true
     }
@@ -52,7 +42,19 @@ class BoardView: NSView {
         self.drawCells()
     }
 
-    //  MARK: -
+    //  MARK: - public
+
+    weak var delegate: BoardViewDelegate? {
+        didSet {
+            self.updateFrameSize()
+        }
+    }
+    weak var dataSource: BoardViewDataSource? {
+        didSet {
+            self.reload()
+        }
+    }
+
     func reload() {
         self.updateGridSize()
         self.updateCellSize()
@@ -61,6 +63,7 @@ class BoardView: NSView {
     }
     
     // MARK: - Private
+
     fileprivate var gridSize = GridSize()
     fileprivate var cellSize = CGSize()
  
@@ -88,13 +91,10 @@ fileprivate extension BoardView {
     }
     
     func drawCells() {
-        guard let dataSource = self.dataSource else {
-            return
-        }
-        
         self.gridSize.enumerate { (position: Point) in
-            let colorIndex = dataSource.colorIndexOfBoardView(self, position: position)
-            self.drawCell(at: position, colorIndex: colorIndex)
+            (self.dataSource?.colorIndexOfBoardView(self, position: position)).map {
+                self.drawCell(at: position, colorIndex: $0)
+            }
         }
     }
     

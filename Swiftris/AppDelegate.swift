@@ -15,8 +15,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet var window: NSWindow?
     
-    let mainViewController = MainViewController(nibName: "MainViewController", bundle: Bundle.main)
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         self.setupMainViewController()
     }
@@ -24,18 +22,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(_ aNotification: Notification) {
 
     }
-    
-    func setupMainViewController() {
-        guard let window = self.window,
-              let contentView = window.contentView else {
-            return
-        }
 
+    // MARK: - private
+
+    private let mainViewController = MainViewController(nibName: "MainViewController", bundle: Bundle.main)
+
+    private func setupMainViewController() {
         let mainView = self.mainViewController.view
 
-        contentView.addSubview(mainView)
-        mainView.frame = contentView.bounds
-        window.makeFirstResponder(mainView)
+        self.window?.contentView.map {
+            $0.addSubview(mainView)
+            mainView.frame = $0.bounds
+        }
+
+        self.window?.makeFirstResponder(mainView)
     }
     
 }

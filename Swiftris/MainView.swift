@@ -20,7 +20,7 @@ protocol KeyboardEventDelegate: class {
 
 class MainView: NSView {
     
-    weak var delegate: KeyboardEventDelegate?
+    // MARK: - override
 
     override var acceptsFirstResponder: Bool {
         return true
@@ -34,9 +34,13 @@ class MainView: NSView {
     }
 
     override func keyDown(with theEvent: NSEvent) {
-        if let keyCode = KeyCode(rawValue: theEvent.keyCode) {
-            self.delegate?.eventOnView(self, didKeyDown: keyCode)
+        KeyCode(rawValue: theEvent.keyCode).map {
+            self.delegate?.eventOnView(self, didKeyDown: $0)
         }
     }
+
+    // MARK: - public
+
+    weak var delegate: KeyboardEventDelegate?
 
 }
