@@ -12,13 +12,13 @@ import Foundation
 
 extension Block: CustomStringConvertible {
 
-    var description: String {
+    internal var description: String {
         return "Block type: \(self.type) at: \(position.x), \(position.y)"
     }
 
-    func debugPrint() {
+    internal func debugPrint() {
         var oldY = 0
-        self.currentShape.enumerate { (point, value, _) in
+        self.currentShape.enumerate { point, value, _ in
             if oldY != point.y {
                 oldY = point.y
                 print("", terminator: "\n")

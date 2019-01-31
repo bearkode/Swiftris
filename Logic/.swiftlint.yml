@@ -34,3 +34,48 @@ identifier_name:
     - x
     - y
 
+opt_in_rules:
+  - convenience_type # static 변수만 사용하는 경우 caseless enum을 사용하는것이 선호됨.
+  - discouraged_optional_boolean # Boolean형은 optional을 사용하지 않는것을 선호함.
+  - explicit_acl # 모든 선언은 ACL이 명시적으로 선언되어야함.
+  - explicit_top_level_acl # 최상위 선언에는 명시적으로 ACL keyword가 붙어야함.
+  - fatal_error_message # FatalError call을 할때는 메시지를 넣어야함.
+  - force_unwrapping # Force unwrapping은 피해야한다.
+  - implicitly_unwrapped_optional # 가능하면 Implicity unwrapped optional은 피하라. (타입명시할때 Type!으로 선언되는 경우.)
+  - pattern_matching_keywords # 다양한 패턴의 조합을 튜플을 이용하여 결합하라.
+  - redundant_nil_coalescing # nil 병합 연산자는 왼쪽연산자가 nil일 경우가 있을 경우에만 사용. 오른쪽 연산자에 nil을 넣어서 사용하는것은 불필요함
+  - strict_fileprivate # fileprivate는 피해야함.
+  - unavailable_function # 구현되지 않은 function은 unavailable로 표기되어야함.
+  - untyped_error_in_catch # catch문에서 error변수는 type casting없이 사용될 수 없음.
+  - anyobject_protocol # class 전용 protocol은 class를 사용하는것 보다 AnyObject를 사용하는것이 선호됨.
+  - array_init # Array를 변환할때 Array(seq)보단 seq.map { $0 }을 선호.
+  - empty_xctest_method # 비어있는 XCTest 메소드는 피해야함.
+  - lower_acl_than_parent # 가까운 부모보다 낮은 ACL을 갖도록 선언해야함.
+  - overridden_super_call # 몇몇의 override된 메소드들은 항상 super 메소드를 호출해야함.
+  - override_in_extension # extension은 override 선언을 하면 안됨.
+  - private_action # IBAction은 private여야 한다
+  - private_outlet # IBOutlet은 상위 레이어에서의 UIKit 누수를 방지하기 위해 private으로 선언되어야 한다.
+  - prohibited_super_call # 몇몇 메소드들은 super 호출을 하지말라.
+  - required_enum_case # 특정한 프로토콜을 충족하는 Enum은 특정한 case들을 구현해야함.
+  - yoda_condition # 비교연산자의 왼쪽에 변수, 상수는 오른쪽에 위치해야함.
+
+  - contains_over_first_not_nil # contains가 first(where:) != nil를 사용하는것 보다 더 선호됨.
+  - empty_count # count == 0 보다 isEmpty로 empty체크하는것을 선호함
+  - empty_string # 빈 스트링을 비교할때는 isEmpty를 사용하는것이 선호됨.
+  - first_where # 컬렉션에서 .filter{ }.first보다 .first(where:)가 선호됨.
+  - sorted_first_last # min() 혹은 max() 사용을 sorted().first 혹은 sorted().last 사용하는것 보다 선호함.
+
+  - closure_spacing # 클로져는 각각의 중괄호({ }) 사이에 한칸의 공백만 있어야한다.
+  - conditional_returns_on_newline # 조건문에서의 return은 다음줄에 선언되어야함.
+  - empty_enum_arguments # associated type의 enum의 argument가 사용되지 않으면 생략 될 수 있다.
+  - implicit_return # Closure에서 implicit return이 선호된다.
+  - literal_expression_end_indentation # Array와 Dictionary의 literal선언의 끝은 literal선언의 시작부분과 같은 들여쓰기가 되어있어야함
+  - modifier_order # Modifier의 순서는 일관성 있어야 함.
+  - multiline_arguments # function arguments들은 같은라인에 존재하거나 한 라인에 하나만 있어야 한다.
+  - multiline_function_chains # Function Chaining은 한줄에 하나씩 부르거나 같은라인에 모두 호출해야함.
+  - multiline_parameters # Function 과 method 파라미터는 같은라인에 있거나 라인당 하나씩 있어야 한다.
+  - operator_usage_whitespace # Operator들이 사용될때에는 operator사이에 한개의 whitespace로 쌓여 있어야함.
+  - single_test_class # Test 파일은 한개의 QuickSpec 또는 XCTest Test Class를 포함해야한다.
+  - switch_case_on_newline # Switch문 안에 있는 case들은 항상 새로운 라인에 있어야함.
+  - unneeded_parentheses_in_closure_argument # closure argument들을 선언할때에는 괄호()가 불필요함.
+  - vertical_parameter_alignment_on_call # Method call을 할때 여러라인으로 적게 되는 경우, 파라미터들은 수직으로 정렬되어야함.

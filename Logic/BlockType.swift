@@ -10,7 +10,7 @@
 import Foundation
 
 
-enum BlockType: Int {
+internal enum BlockType: Int {
 
     case box
     case bar
@@ -25,15 +25,15 @@ enum BlockType: Int {
 
 extension BlockType {
 
-    static let allTypes: Set<BlockType> = [.box, .bar, .foldA, .foldB, .bump, .zigzagA, .zigzagB]
+    internal static let allTypes: Set<BlockType> = [.box, .bar, .foldA, .foldB, .bump, .zigzagA, .zigzagB]
 
-    static var randomType: BlockType {
+    internal static var randomType: BlockType {
         let index = Int(arc4random() % UInt32(self.zigzagB.rawValue + 1))
 
         return BlockType(rawValue: index) ?? .bar
     }
 
-    var grids: [Grid] {
+    internal var grids: [Grid] {
         switch self {
         case .box:
             return BlockTemplate.box

@@ -36,26 +36,26 @@ public struct GridSize {
 
     // MARK: - inernal
 
-    let indexRange: CountableRange<Int>
+    internal let indexRange: CountableRange<Int>
 
 }
 
 
 extension GridSize {
 
-    func isValid(position: Point) -> Bool {
+    internal func isValid(position: Point) -> Bool {
         return position.x >= 0 && position.x < self.width && position.y >= 0 && position.y < self.height
     }
 
-    func index(ofPosition position: Point) -> Int {
+    internal func index(ofPosition position: Point) -> Int {
         return position.y * self.width + position.x
     }
 
-    func position(ofIndex index: Int) -> Point {
+    internal func position(ofIndex index: Int) -> Point {
         return Point(x: index % self.width, y: index / self.width)
     }
 
-    func range(ofRow row: Int) -> CountableRange<Int> {
+    internal func range(ofRow row: Int) -> CountableRange<Int> {
         return (row * self.width)..<((row * self.width) + self.width)
     }
 

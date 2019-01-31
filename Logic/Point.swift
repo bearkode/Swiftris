@@ -20,15 +20,15 @@ public struct Point {
 
 extension Point {
 
-    var leftPoint: Point {
+    internal var leftPoint: Point {
         return Point(x: self.x - 1, y: self.y)
     }
 
-    var rightPoint: Point {
+    internal var rightPoint: Point {
         return Point(x: self.x + 1, y: self.y)
     }
 
-    var underPoint: Point {
+    internal var underPoint: Point {
         return Point(x: self.x, y: self.y + 1)
     }
 
@@ -45,6 +45,6 @@ public func == (lhs: Point, rhs: Point) -> Bool {
 }
 
 
-func + (left: Point, right: Point) -> Point {
+internal func + (left: Point, right: Point) -> Point {
     return Point(x: (left.x + right.x), y: (left.y + right.y))
 }

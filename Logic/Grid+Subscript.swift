@@ -12,7 +12,7 @@ import Foundation
 
 extension Grid {
 
-    subscript(x: Int, y: Int) -> Int {
+    internal subscript(x: Int, y: Int) -> Int {
         get {
             return self[Point(x: x, y: y)]
         }
@@ -21,7 +21,7 @@ extension Grid {
         }
     }
 
-    subscript(position: Point) -> Int {
+    internal subscript(position: Point) -> Int {
         get {
             assert(self.size.isValid(position: position), "Index out of range")
             return buffer[self.size.index(ofPosition: position)]

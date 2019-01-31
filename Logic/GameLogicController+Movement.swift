@@ -12,7 +12,7 @@ import Foundation
 
 extension GameLogicController {
 
-    func upArrowDown() {
+    internal func upArrowDown() {
         self.block.map {
             if self.board.isPossible(at: $0.position, withGrid: $0.nextShape) {
                 $0.turn()
@@ -20,7 +20,7 @@ extension GameLogicController {
         }
     }
 
-    func leftArrowDown() {
+    internal func leftArrowDown() {
         self.block.map {
             if self.board.isPossible(at: $0.position.leftPoint, withBlock: $0) {
                 $0.moveLeft()
@@ -28,7 +28,7 @@ extension GameLogicController {
         }
     }
 
-    func rightArrowDown() {
+    internal func rightArrowDown() {
         self.block.map {
             if self.board.isPossible(at: $0.position.rightPoint, withBlock: $0) {
                 $0.moveRight()
@@ -36,7 +36,7 @@ extension GameLogicController {
         }
     }
 
-    func downArrowDown() {
+    internal func downArrowDown() {
 
     }
 

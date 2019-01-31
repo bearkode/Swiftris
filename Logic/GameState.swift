@@ -10,7 +10,7 @@
 import Foundation
 
 
-protocol GameState {
+internal protocol GameState {
 
     var isStarted: Bool { get }
     var isResumed: Bool { get }
@@ -23,47 +23,47 @@ protocol GameState {
 
 extension GameState {
 
-    var isPaused: Bool {
+    internal var isPaused: Bool {
         return self is PauseState
     }
 
-    var isGameOver: Bool {
+    internal var isGameOver: Bool {
         return self is GameOverState
     }
 
-    var gameoverState: GameState {
+    internal var gameoverState: GameState {
         return GameOverState()
     }
 
 }
 
 
-struct ReadyState: GameState {
+internal struct ReadyState: GameState {
 
-    private(set) var isStarted = false
-    private(set) var isResumed = false
+    internal private(set) var isStarted = false
+    internal private(set) var isResumed = false
 
-    private(set) var buttonTitle = "START"
+    internal private(set) var buttonTitle = "START"
 
-    var nextState: GameState {
+    internal var nextState: GameState {
         return PlayingState(isStarted: true)
     }
 
 }
 
 
-struct PlayingState: GameState {
+internal struct PlayingState: GameState {
 
-    private(set) var isStarted: Bool
-    private(set) var isResumed: Bool
+    internal private(set) var isStarted: Bool
+    internal private(set) var isResumed: Bool
 
-    private(set) var buttonTitle = "PAUSE"
+    internal private(set) var buttonTitle = "PAUSE"
 
-    var nextState: GameState {
+    internal var nextState: GameState {
         return PauseState()
     }
 
-    fileprivate init(isStarted: Bool) {
+    internal init(isStarted: Bool) {
         self.isStarted = isStarted
         self.isResumed = !self.isStarted
     }
@@ -71,36 +71,36 @@ struct PlayingState: GameState {
 }
 
 
-struct PauseState: GameState {
+internal struct PauseState: GameState {
 
-    private(set) var isStarted = false
-    private(set) var isResumed = false
+    internal private(set) var isStarted = false
+    internal private(set) var isResumed = false
 
-    private(set) var buttonTitle: String = "RESUME"
+    internal private(set) var buttonTitle: String = "RESUME"
 
-    var nextState: GameState {
+    internal var nextState: GameState {
         return PlayingState(isStarted: false)
     }
 
-    fileprivate init() {
+    internal  init() {
 
     }
 
 }
 
 
-struct GameOverState: GameState {
+internal struct GameOverState: GameState {
 
-    private(set) var isStarted = false
-    private(set) var isResumed = false
+    internal private(set) var isStarted = false
+    internal private(set) var isResumed = false
 
-    private(set) var buttonTitle = "START"
+    internal private(set) var buttonTitle = "START"
 
-    var nextState: GameState {
+    internal var nextState: GameState {
         return ReadyState()
     }
 
-    fileprivate init() {
+    internal  init() {
 
     }
 

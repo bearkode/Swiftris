@@ -10,18 +10,18 @@
 import Foundation
 
 
-struct DropTimer {
+internal struct DropTimer {
 
     // MARK: - init
 
-    init(initValue: Int = 5) {
+    internal init(initValue: Int = 5) {
         self.initValue = initValue
         self.currentValue = initValue
     }
 
     // MARK: - internal
 
-    mutating func isFired() -> Bool {
+    internal mutating func isFired() -> Bool {
         if self.currentValue <= self.fireValue {
             self.currentValue = self.initValue
             return true

@@ -10,11 +10,11 @@
 import Foundation
 
 
-class Movement {
+internal class Movement {
 
     // MARK: - init
 
-    init(position: Point, shapeCount: Int) {
+    internal init(position: Point, shapeCount: Int) {
         self.shapeCount = shapeCount
         self.dropTimer = DropTimer()
         self.rotateIndex = 0
@@ -23,38 +23,38 @@ class Movement {
 
     // MARK: - internal
 
-    var dirty = true
-    var position: Point {
+    internal var dirty = true
+    internal var position: Point {
         didSet {
             self.dirty = true
         }
     }
-    var nextRotateIndex: Int {
+    internal var nextRotateIndex: Int {
         return (self.rotateIndex - 1) < 0 ? (self.shapeCount - 1) : (self.rotateIndex - 1)
     }
-    private(set) var rotateIndex: Int {
+    internal private(set) var rotateIndex: Int {
         didSet {
             self.dirty = true
         }
     }
 
-    func turn() {
+    internal func turn() {
         self.rotateIndex = self.nextRotateIndex
     }
 
-    func down() {
+    internal func down() {
         self.position = self.position.underPoint
     }
 
-    func left() {
+    internal func left() {
         self.position = self.position.leftPoint
     }
 
-    func right() {
+    internal func right() {
         self.position = self.position.rightPoint
     }
 
-    func isTimeToDrop() -> Bool {
+    internal func isTimeToDrop() -> Bool {
         return self.dropTimer.isFired()
     }
 

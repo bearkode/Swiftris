@@ -33,7 +33,7 @@ extension NSColor {
         return NSColor(red: comps[0], green: comps[1], blue: comps[2], alpha: comps[3])
     }
 
-    var rgbComponents: [CGFloat] {
+    internal var rgbComponents: [CGFloat] {
         return [self.redComponent, self.greenComponent, self.blueComponent]
     }
 

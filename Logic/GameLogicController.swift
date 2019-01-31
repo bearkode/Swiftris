@@ -10,7 +10,7 @@
 import Foundation
 
 
-public protocol LogicControllerDelegate: class {
+public protocol LogicControllerDelegate: AnyObject {
 
     func logicControllerDidStartGame(_ logicController: GameLogicController)
     func logicControllerDidPause(_ logicController: GameLogicController)
@@ -70,9 +70,9 @@ public class GameLogicController {
 
     // MARK: - internal
 
-    let board = Board(size: GridSize(width: 10, height: 20))
-    var block: Block?
-    var state: GameState = ReadyState() {
+    internal let board = Board(size: GridSize(width: 10, height: 20))
+    internal var block: Block?
+    internal var state: GameState = ReadyState() {
         didSet {
             if self.state.isStarted {
                 self.didStart()
@@ -89,16 +89,16 @@ public class GameLogicController {
     // MARK: - private
 
     private lazy var keyCodeHandlers: [KeyCode: () -> Void] = {
-        return [.up: self.upArrowDown,
-                .right: self.rightArrowDown,
-                .left: self.leftArrowDown,
-                .down: self.downArrowDown]
+        [.up: self.upArrowDown,
+         .right: self.rightArrowDown,
+         .left: self.leftArrowDown,
+         .down: self.downArrowDown]
     } ()
 
 }
 
 
-fileprivate extension GameLogicController {
+private extension GameLogicController {
 
     func didStart() {
         self.board.reset()

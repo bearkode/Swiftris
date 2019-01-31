@@ -10,7 +10,7 @@
 import Foundation
 
 
-protocol DirtyCheckable: class {
+internal protocol DirtyCheckable: AnyObject {
 
     var dirty: Bool { get set }
 
@@ -19,20 +19,20 @@ protocol DirtyCheckable: class {
 
 extension Sequence where Iterator.Element == DirtyCheckable {
 
-    func checkDirty(_ dirtyHandler: () -> Void) {
+    internal func checkDirty(_ dirtyHandler: () -> Void) {
         if self.isDirty {
             dirtyHandler()
             self.resetDirty()
         }
     }
 
-    var isDirty: Bool {
+    internal var isDirty: Bool {
         return self.filter {
             $0.dirty
-        }.count != 0
+        }.isEmpty == false
     }
 
-    func resetDirty() {
+    internal func resetDirty() {
         self.forEach { $0.dirty = false }
     }
 

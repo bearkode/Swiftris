@@ -10,11 +10,11 @@
 import Foundation
 
 
-class Block: DirtyCheckable {
+internal class Block: DirtyCheckable {
 
     // MARK: - init
 
-    init(type: BlockType, position: Point = Point()) {
+    internal init(type: BlockType, position: Point = Point()) {
         self.type = type
         self.grids = type.grids
         self.movement = Movement(position: position, shapeCount: self.grids.count)
@@ -24,12 +24,12 @@ class Block: DirtyCheckable {
 
     // MARK: - internal
 
-    var grids: [Grid]
-    var currentShape: Grid = Grid(size: GridSize(width: 4, height: 4))
-    var nextShape: Grid {
+    internal var grids: [Grid]
+    internal var currentShape: Grid = Grid(size: GridSize(width: 4, height: 4))
+    internal var nextShape: Grid {
         return self.grids[self.movement.nextRotateIndex]
     }
-    var dirty: Bool {
+    internal var dirty: Bool {
         set {
             self.movement.dirty = newValue
         }
@@ -37,7 +37,7 @@ class Block: DirtyCheckable {
             return self.movement.dirty
         }
     }
-    var position: Point {
+    internal var position: Point {
         set {
             self.movement.position = newValue
         }
@@ -45,40 +45,40 @@ class Block: DirtyCheckable {
             return self.movement.position
         }
     }
-    var timeToDrop: Bool {
+    internal var timeToDrop: Bool {
         return self.movement.isTimeToDrop()
     }
-    private(set) var type: BlockType
+    internal private(set) var type: BlockType
 
     // MARK: -
 
-    func turn() {
+    internal func turn() {
         self.movement.turn()
         self.updateCurrentGrid()
     }
 
-    func moveDown() {
+    internal func moveDown() {
         self.movement.down()
     }
 
-    func moveLeft() {
+    internal func moveLeft() {
         self.movement.left()
     }
 
-    func moveRight() {
+    internal func moveRight() {
         self.movement.right()
     }
 
     // MARK: -
 
-    func contains(position: Point) -> Bool {
+    internal func contains(position: Point) -> Bool {
         return (position.x >= self.position.x &&
                 position.x < self.position.x + self.currentShape.size.width &&
                 position.y >= self.position.y &&
                 position.y < self.position.y + self.currentShape.size.height)
     }
 
-    func value(at position: Point) -> Int {
+    internal func value(at position: Point) -> Int {
         if self.contains(position: position) {
             return self.currentShape[self.positionInBlock(from: position)]
         }
@@ -86,7 +86,7 @@ class Block: DirtyCheckable {
         return 0
     }
 
-    func positionInBlock(from position: Point) -> Point {
+    internal func positionInBlock(from position: Point) -> Point {
         return Point(x: (position.x - self.position.x), y: (position.y - self.position.y))
     }
 
@@ -94,7 +94,7 @@ class Block: DirtyCheckable {
 
     private let movement: Movement
     private func updateCurrentGrid() {
-        if self.grids.count > 0 {
+        if self.grids.isEmpty == false {
             self.currentShape = self.grids[self.movement.rotateIndex]
         }
     }
