@@ -32,7 +32,7 @@ extension BlockType {
         return BlockType(rawValue: index) ?? .bar
     }
 
-    internal var grids: [Grid] {
+    internal var grids: [Grid<Int>] {
         switch self {
         case .box:
             return BlockTemplate.box

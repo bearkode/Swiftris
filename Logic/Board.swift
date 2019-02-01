@@ -15,12 +15,12 @@ internal class Board: DirtyCheckable {
     // MARK: - init
 
     internal init(size boardSize: Size) {
-        self.grid = Grid(size: boardSize)
+        self.grid = Grid(size: boardSize, defaultValue: 0)
     }
 
     // MARK: - internal
 
-    internal let grid: Grid
+    internal let grid: Grid<Int>
     internal var dirty = true
     internal var gridSize: Size {
         return self.grid.size
@@ -43,7 +43,7 @@ internal class Board: DirtyCheckable {
         return self.isPossible(at: position, withGrid: block.currentShape)
     }
 
-    internal func isPossible(at position: Point, withGrid grid: Grid) -> Bool {
+    internal func isPossible(at position: Point, withGrid grid: Grid<Int>) -> Bool {
         return !self.grid.isOverlapped(withGrid: grid, position: position)
     }
 

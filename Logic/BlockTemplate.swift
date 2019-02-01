@@ -10,6 +10,15 @@
 import Foundation
 
 
+extension Grid where T == Int {
+
+    internal convenience init(size: Size, array: [Int]) {
+        self.init(size: size, array: array, defaultValue: 0)
+    }
+
+}
+
+
 internal enum BlockTemplate {
 
     internal static let box = [Grid(size: BlockTemplate.size, array: [0, 1, 1, 0,

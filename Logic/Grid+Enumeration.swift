@@ -12,15 +12,15 @@ import Foundation
 
 extension Grid {
 
-    internal func enumerate(_ closure: (_: Point, _: Int, _: inout Bool) -> Void) {
+    internal func enumerate(_ closure: (_: Point, _: T, _: inout Bool) -> Void) {
         self.enumerate(inRange: self.size.indexRange, closure: closure)
     }
 
-    internal func enumerate(inRow row: Int, closure: (_: Point, _: Int, _: inout Bool) -> Void) {
+    internal func enumerate(inRow row: Int, closure: (_: Point, _: T, _: inout Bool) -> Void) {
         self.enumerate(inRange: self.size.range(ofRow: row), closure: closure)
     }
 
-    internal func enumerate(inRange range: CountableRange<Int>, closure: (_: Point, _: Int, _: inout Bool) -> Void) {
+    internal func enumerate(inRange range: CountableRange<Int>, closure: (_: Point, _: T, _: inout Bool) -> Void) {
         var stop = false
 
         for index in range {

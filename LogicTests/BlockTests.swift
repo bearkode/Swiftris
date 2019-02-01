@@ -83,10 +83,10 @@ class BlockTests: XCTestCase {
         XCTAssertTrue(block.value(at: Point(x: 10, y: 10)) == 0, "")
     }
 
-    let grid0 = Grid(size: Size(width: 4, height: 4), array: [0, 3, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0])
-    let grid3 = Grid(size: Size(width: 4, height: 4), array: [3, 3, 3, 0, 3, 0, 0, 0])
-    let grid2 = Grid(size: Size(width: 4, height: 4), array: [0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 3, 0])
-    let grid1 = Grid(size: Size(width: 4, height: 4), array: [0, 0, 3, 0, 3, 3, 3, 0])
+    let grid0 = Grid(size: Size(width: 4, height: 4), array: [0, 3, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0], defaultValue: 0)
+    let grid3 = Grid(size: Size(width: 4, height: 4), array: [3, 3, 3, 0, 3, 0, 0, 0], defaultValue: 0)
+    let grid2 = Grid(size: Size(width: 4, height: 4), array: [0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 3, 0], defaultValue: 0)
+    let grid1 = Grid(size: Size(width: 4, height: 4), array: [0, 0, 3, 0, 3, 3, 3, 0], defaultValue: 0)
     
     func testTurn() {
         let block = Block(type: .foldA)
