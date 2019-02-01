@@ -22,14 +22,14 @@ class BoardTests: XCTestCase {
     }
 
     func testGridSize() {
-        let board = Board(size: GridSize(width: 10, height: 12))
+        let board = Board(size: Size(width: 10, height: 12))
 
         XCTAssertTrue(board.gridSize.width == 10)
         XCTAssertTrue(board.gridSize.height == 12)
     }
 
     func testValue() {
-        let board = Board(size: GridSize(width: 5, height: 5))
+        let board = Board(size: Size(width: 5, height: 5))
         let block = Block(type: .box)
 
         block.position = Point(x: 0, y: 0)
@@ -68,7 +68,7 @@ class BoardTests: XCTestCase {
     }
 
     func testIsPossiblePosition() {
-        let board = Board(size: GridSize(width: 5, height: 5))
+        let board = Board(size: Size(width: 5, height: 5))
         let block = Block(type: .foldB)
         let other = Block(type: .bump)
 
@@ -82,7 +82,7 @@ class BoardTests: XCTestCase {
     }
 
     func testIsOverlappedAtPosition() {
-        let board = Board(size: GridSize(width: 30, height: 10))
+        let board = Board(size: Size(width: 30, height: 10))
         let block = Block(type: .box)
 
         block.position = Point(x: 0, y: 6)
@@ -96,7 +96,7 @@ class BoardTests: XCTestCase {
     }
     
     func testDeleteFullRow() {
-        let board = Board(size: GridSize(width: 6, height: 4))
+        let board = Board(size: Size(width: 6, height: 4))
         var block: Block
 
         block = Block(type: .bump)
@@ -181,7 +181,7 @@ class BoardTests: XCTestCase {
     }
 
     func testDeleteFullRow2() {
-        let board = Board(size: GridSize(width: 5, height: 5))
+        let board = Board(size: Size(width: 5, height: 5))
         board.grid.buffer = [ 0, 0, 0, 0, 0,
                               2, 2, 2, 2, 2,
                               1, 1, 0, 1, 0,

@@ -31,7 +31,7 @@ class GameLogicControllerTests: XCTestCase {
         let controller = GameLogicController()
 
         XCTAssertNil(controller.delegate)
-        XCTAssertTrue(controller.boardSize == GridSize(width: 10, height: 20))
+        XCTAssertTrue(controller.boardSize == Size(width: 10, height: 20))
 
         controller.delegate = self
 

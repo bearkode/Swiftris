@@ -1,5 +1,5 @@
 /*
- *  GridSize.swift
+ *  Size.swift
  *  Swiftris
  *
  *  Created by bearkode on 2014. 7. 2..
@@ -10,7 +10,7 @@
 import Foundation
 
 
-public struct GridSize {
+public struct Size {
 
     // MARK: - init
 
@@ -41,7 +41,7 @@ public struct GridSize {
 }
 
 
-extension GridSize {
+extension Size {
 
     internal func isValid(position: Point) -> Bool {
         return position.x >= 0 && position.x < self.width && position.y >= 0 && position.y < self.height
@@ -62,11 +62,11 @@ extension GridSize {
 }
 
 
-extension GridSize: Equatable {
+extension Size: Equatable {
 
 }
 
 
-public func == (lhs: GridSize, rhs: GridSize) -> Bool {
+public func == (lhs: Size, rhs: Size) -> Bool {
     return (lhs.width == rhs.width) && (lhs.height == rhs.height)
 }

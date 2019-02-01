@@ -14,7 +14,7 @@ internal class Board: DirtyCheckable {
 
     // MARK: - init
 
-    internal init(size boardSize: GridSize) {
+    internal init(size boardSize: Size) {
         self.grid = Grid(size: boardSize)
     }
 
@@ -22,7 +22,7 @@ internal class Board: DirtyCheckable {
 
     internal let grid: Grid
     internal var dirty = true
-    internal var gridSize: GridSize {
+    internal var gridSize: Size {
         return self.grid.size
     }
 

@@ -14,7 +14,7 @@ internal class Grid {
 
     // MARK: - init
 
-    internal init(size: GridSize, array: [Int]) { //width: Int, height: Int
+    internal init(size: Size, array: [Int]) { //width: Int, height: Int
         self.size = size//GridSize(width: width, height: height)
         self.buffer = Array(repeating: 0, count: size.width * size.height)
 
@@ -22,13 +22,13 @@ internal class Grid {
         self.buffer[0..<count] = array[0..<count]
     }
 
-    internal convenience init(size: GridSize) { //width: Int, height: Int
+    internal convenience init(size: Size) { //width: Int, height: Int
         self.init(size: size, array: Array(repeating: 0, count: size.width * size.height))
     }
 
     // MARK: - internal
 
-    internal let size: GridSize
+    internal let size: Size
     internal var buffer: [Int]
 
     internal func reset() {

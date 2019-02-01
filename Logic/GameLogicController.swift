@@ -32,7 +32,7 @@ public class GameLogicController {
     // MARK: - public
 
     public weak var delegate: LogicControllerDelegate?
-    public var boardSize: GridSize {
+    public var boardSize: Size {
         return self.board.gridSize
     }
 
@@ -70,7 +70,7 @@ public class GameLogicController {
 
     // MARK: - internal
 
-    internal let board = Board(size: GridSize(width: 10, height: 20))
+    internal let board = Board(size: Size(width: 10, height: 20))
     internal var block: Block?
     internal var state: GameState = ReadyState() {
         didSet {

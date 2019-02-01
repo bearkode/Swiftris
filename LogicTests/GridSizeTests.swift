@@ -1,5 +1,5 @@
 /*
- *  GridSizeTests.swift
+ *  SizeTests.swift
  *  Swiftris
  *
  *  Created by bearkode on 2015. 7. 3..
@@ -11,7 +11,7 @@ import XCTest
 @testable import Logic
 
 
-class GridSizeTests: XCTestCase {
+class SizeTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
@@ -22,13 +22,13 @@ class GridSizeTests: XCTestCase {
     }
 
     func testInit() {
-        let size = GridSize()
+        let size = Size()
         XCTAssertTrue(size.width == 0)
         XCTAssertTrue(size.height == 0)
     }
 
     func testEnumerate() {
-        let size = GridSize(width: 10, height: 10)
+        let size = Size(width: 10, height: 10)
         var acc = 0
         size.enumerate { (position) -> () in
             acc += 1
@@ -37,10 +37,10 @@ class GridSizeTests: XCTestCase {
     }
 
     func testEqual() {
-        XCTAssertTrue(GridSize(width: 10, height: 5) == GridSize(width: 10, height: 5))
-        XCTAssertFalse(GridSize(width: 11, height: 10) == GridSize(width: 10, height: 10))
-        XCTAssertFalse(GridSize(width: 10, height: 10) == GridSize(width: 10, height: 11))
-        XCTAssertFalse(GridSize(width: 11, height: 11) == GridSize(width: 10, height: 10))
+        XCTAssertTrue(Size(width: 10, height: 5) == Size(width: 10, height: 5))
+        XCTAssertFalse(Size(width: 11, height: 10) == Size(width: 10, height: 10))
+        XCTAssertFalse(Size(width: 10, height: 10) == Size(width: 10, height: 11))
+        XCTAssertFalse(Size(width: 11, height: 11) == Size(width: 10, height: 10))
     }
 
 }

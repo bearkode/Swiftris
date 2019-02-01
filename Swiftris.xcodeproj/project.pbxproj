@@ -41,7 +41,7 @@
 		551A72171D4B154F005725C0 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A72091D4B154F005725C0 /* Grid.swift */; };
 		551A72181D4B154F005725C0 /* Grid+Enumeration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A720A1D4B154F005725C0 /* Grid+Enumeration.swift */; };
 		551A72191D4B154F005725C0 /* Grid+Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A720B1D4B154F005725C0 /* Grid+Subscript.swift */; };
-		551A721A1D4B154F005725C0 /* GridSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A720C1D4B154F005725C0 /* GridSize.swift */; };
+		551A721A1D4B154F005725C0 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A720C1D4B154F005725C0 /* Size.swift */; };
 		551A721B1D4B154F005725C0 /* KeyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A720D1D4B154F005725C0 /* KeyCode.swift */; };
 		551A721E1D4B1563005725C0 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A721C1D4B1563005725C0 /* Int+Extension.swift */; };
 		551A721F1D4B1563005725C0 /* NSColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A721D1D4B1563005725C0 /* NSColor+Extension.swift */; };
@@ -127,7 +127,7 @@
 		551A72091D4B154F005725C0 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		551A720A1D4B154F005725C0 /* Grid+Enumeration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Grid+Enumeration.swift"; sourceTree = "<group>"; };
 		551A720B1D4B154F005725C0 /* Grid+Subscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Grid+Subscript.swift"; sourceTree = "<group>"; };
-		551A720C1D4B154F005725C0 /* GridSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridSize.swift; sourceTree = "<group>"; };
+		551A720C1D4B154F005725C0 /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		551A720D1D4B154F005725C0 /* KeyCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyCode.swift; sourceTree = "<group>"; };
 		551A721C1D4B1563005725C0 /* Int+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		551A721D1D4B1563005725C0 /* NSColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSColor+Extension.swift"; sourceTree = "<group>"; };
@@ -316,7 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				551A72211D4B15CF005725C0 /* Point.swift */,
-				551A720C1D4B154F005725C0 /* GridSize.swift */,
+				551A720C1D4B154F005725C0 /* Size.swift */,
 				551A72091D4B154F005725C0 /* Grid.swift */,
 				551A720A1D4B154F005725C0 /* Grid+Enumeration.swift */,
 				551A720B1D4B154F005725C0 /* Grid+Subscript.swift */,
@@ -569,7 +569,7 @@
 				551A721E1D4B1563005725C0 /* Int+Extension.swift in Sources */,
 				551A72151D4B154F005725C0 /* GameLogicController.swift in Sources */,
 				551A72101D4B154F005725C0 /* BlockGenerator.swift in Sources */,
-				551A721A1D4B154F005725C0 /* GridSize.swift in Sources */,
+				551A721A1D4B154F005725C0 /* Size.swift in Sources */,
 				551A72161D4B154F005725C0 /* GameLogicController+Movement.swift in Sources */,
 				551A721B1D4B154F005725C0 /* KeyCode.swift in Sources */,
 				551A72171D4B154F005725C0 /* Grid.swift in Sources */,
