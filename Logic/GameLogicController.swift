@@ -48,6 +48,7 @@ public class GameLogicController {
         guard self.state is PlayingState else {
             return
         }
+
         self.keyCodeHandlers[keyCode]?()
     }
 
@@ -147,9 +148,7 @@ private extension GameLogicController {
     }
 
     var dirtyCheckables: [DirtyCheckable] {
-        return [DirtyCheckable?](arrayLiteral: self.board, self.block).compactMap {
-            $0
-        }
+        return [DirtyCheckable?](arrayLiteral: self.board, self.block).compactMap { $0 }
     }
 
     func checkGameOver() {

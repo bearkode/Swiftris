@@ -32,9 +32,7 @@ extension Grid {
     }
 
     internal func enumerateRowsFromTop(_ closure: (_: Int) -> Void) {
-        for row in stride(from: (self.size.height - 1), through: 0, by: -1) {
-            closure(row)
-        }
+        stride(from: (self.size.height - 1), through: 0, by: -1).forEach(closure)
     }
 
 }

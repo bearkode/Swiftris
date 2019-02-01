@@ -14,16 +14,16 @@ internal class Grid {
 
     // MARK: - init
 
-    internal init(size: Size, array: [Int]) { //width: Int, height: Int
-        self.size = size//GridSize(width: width, height: height)
-        self.buffer = Array(repeating: 0, count: size.width * size.height)
+    internal init(size: Size, array: [Int]) {
+        self.size = size
+        self.buffer = Array(repeating: 0, count: size.extent)
 
         let count = array.count
         self.buffer[0..<count] = array[0..<count]
     }
 
-    internal convenience init(size: Size) { //width: Int, height: Int
-        self.init(size: size, array: Array(repeating: 0, count: size.width * size.height))
+    internal convenience init(size: Size) {
+        self.init(size: size, array: Array(repeating: 0, count: size.extent))
     }
 
     // MARK: - internal
@@ -32,7 +32,7 @@ internal class Grid {
     internal var buffer: [Int]
 
     internal func reset() {
-        self.buffer = Array(repeating: 0, count: self.size.width * self.size.height)
+        self.buffer = Array(repeating: 0, count: self.size.extent)
     }
 
     internal func replace(with array: [Int], forRow row: Int) {
@@ -41,19 +41,19 @@ internal class Grid {
     }
 
     internal func compress(rowOver row: Int) {
-        for y in stride(from: row, to: 0, by: -1) {
-            self.buffer[self.size.range(ofRow: y)] = self.buffer[self.size.range(ofRow: y - 1)]
+        stride(from: row, to: 0, by: -1).forEach {
+            self.buffer[self.size.range(ofRow: $0)] = self.slice(row: $0 - 1)
         }
 
         self.replace(with: Array(repeating: 0, count: self.size.width), forRow: 0)
     }
 
     internal func isFull(row: Int) -> Bool {
-        for index in self.size.range(ofRow: row) where self.buffer[index].isEmpty {
-            return false
-        }
+        return self.slice(row: row).filter { $0.isEmpty }.isEmpty
+    }
 
-        return true
+    internal func slice(row: Int) -> ArraySlice<Int> {
+        return self.buffer[self.size.range(ofRow: row)]
     }
 
     // MARK: -

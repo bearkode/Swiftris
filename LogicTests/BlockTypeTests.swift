@@ -32,7 +32,7 @@ class BlockTypeTests: XCTestCase {
         XCTAssertTrue(remainTypes.count == 7)
 
         for _ in 0..<1000 {
-            let type = BlockType.randomType
+            let type = BlockType.makeRandomType()
 
             XCTAssertTrue(allTypes.contains(type))
             remainTypes.remove(type)

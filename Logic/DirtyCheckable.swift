@@ -20,16 +20,16 @@ internal protocol DirtyCheckable: AnyObject {
 extension Sequence where Iterator.Element == DirtyCheckable {
 
     internal func checkDirty(_ dirtyHandler: () -> Void) {
-        if self.isDirty {
-            dirtyHandler()
-            self.resetDirty()
+        guard self.isDirty == true else {
+            return
         }
+
+        dirtyHandler()
+        self.resetDirty()
     }
 
     internal var isDirty: Bool {
-        return self.filter {
-            $0.dirty
-        }.isEmpty == false
+        return (self.filter { $0.dirty }.isEmpty) ? false : true
     }
 
     internal func resetDirty() {

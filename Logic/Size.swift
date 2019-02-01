@@ -28,6 +28,9 @@ public struct Size {
 
     public let width: Int
     public let height: Int
+    public var extent: Int {
+        return width * height
+    }
 
     public func enumerate(_ closure: (_: Point) -> Void) {
         self.indexRange.map { self.position(ofIndex: $0) }

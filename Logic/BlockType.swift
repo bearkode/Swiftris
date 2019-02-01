@@ -27,9 +27,8 @@ extension BlockType {
 
     internal static let allTypes: Set<BlockType> = [.box, .bar, .foldA, .foldB, .bump, .zigzagA, .zigzagB]
 
-    internal static var randomType: BlockType {
+    internal static func makeRandomType() -> BlockType {
         let index = Int(arc4random() % UInt32(self.zigzagB.rawValue + 1))
-
         return BlockType(rawValue: index) ?? .bar
     }
 

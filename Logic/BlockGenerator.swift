@@ -17,7 +17,7 @@ internal class BlockGenerator {
     internal static let sharedGenerator = BlockGenerator()
 
     private init() {
-        self.nextBlock = Block(type: .randomType, position: Point())
+        self.nextBlock = Block(type: BlockType.makeRandomType(), position: Point())
     }
 
     // MARK: - internal
@@ -29,7 +29,7 @@ internal class BlockGenerator {
 
         result.position = position
 
-        self.nextBlock = Block(type: .randomType, position: Point())
+        self.nextBlock = Block(type: BlockType.makeRandomType(), position: Point())
 
         return result
     }
