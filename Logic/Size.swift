@@ -33,13 +33,13 @@ public struct Size {
     }
 
     public func enumerate(_ closure: (_: Point) -> Void) {
-        self.indexRange.map { self.position(ofIndex: $0) }
+        self.indexRange.map { self.point(of: $0) }
                        .forEach { closure($0) }
     }
 
     // MARK: - inernal
 
-    internal let indexRange: CountableRange<Int>
+    internal let indexRange: Range<Int>
 
 }
 
@@ -50,15 +50,15 @@ extension Size {
         return position.x >= 0 && position.x < self.width && position.y >= 0 && position.y < self.height
     }
 
-    internal func index(ofPosition position: Point) -> Int {
+    internal func index(of position: Point) -> Int {
         return position.y * self.width + position.x
     }
 
-    internal func position(ofIndex index: Int) -> Point {
+    internal func point(of index: Int) -> Point {
         return Point(x: index % self.width, y: index / self.width)
     }
 
-    internal func range(ofRow row: Int) -> CountableRange<Int> {
+    internal func range(of row: Int) -> Range<Int> {
         return (row * self.width)..<((row * self.width) + self.width)
     }
 

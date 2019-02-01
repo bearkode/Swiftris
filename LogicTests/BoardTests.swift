@@ -112,15 +112,6 @@ class BoardTests: XCTestCase {
         block.position = Point(x: 3, y: 1)
         board.immobilze(block: block)
 
-//        for var y = 0; y < 4; y++ {
-//            var str = ""
-//            for var x = 0; x < 6; x++ {
-//                let value = board.valueAtPosition(Point(x: x, y: y))
-//                str += "\(value)"
-//            }
-//            NSLog("\(str)")
-//        }
-
         XCTAssertTrue(board.value(at: Point(x: 0, y: 0)) == 0)
         XCTAssertTrue(board.value(at: Point(x: 1, y: 0)) == 0)
         XCTAssertTrue(board.value(at: Point(x: 2, y: 0)) == 0)

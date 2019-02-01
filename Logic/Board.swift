@@ -15,7 +15,7 @@ internal class Board: DirtyCheckable {
     // MARK: - init
 
     internal init(size boardSize: Size) {
-        self.grid = Grid(size: boardSize, defaultValue: 0)
+        self.grid = Grid(size: boardSize, emptyValue: 0)
     }
 
     // MARK: - internal

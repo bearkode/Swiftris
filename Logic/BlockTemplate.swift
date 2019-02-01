@@ -13,7 +13,7 @@ import Foundation
 extension Grid where T == Int {
 
     internal convenience init(size: Size, array: [Int]) {
-        self.init(size: size, array: array, defaultValue: 0)
+        self.init(size: size, array: array, emptyValue: 0)
     }
 
 }

@@ -17,14 +17,14 @@ extension Grid {
     }
 
     internal func enumerate(inRow row: Int, closure: (_: Point, _: T, _: inout Bool) -> Void) {
-        self.enumerate(inRange: self.size.range(ofRow: row), closure: closure)
+        self.enumerate(inRange: self.size.range(of: row), closure: closure)
     }
 
-    internal func enumerate(inRange range: CountableRange<Int>, closure: (_: Point, _: T, _: inout Bool) -> Void) {
+    internal func enumerate(inRange range: Range<Int>, closure: (_: Point, _: T, _: inout Bool) -> Void) {
         var stop = false
 
         for index in range {
-            closure(self.size.position(ofIndex: index), self.buffer[index], &stop)
+            closure(self.size.point(of: index), self.buffer[index], &stop)
             if stop {
                 break
             }

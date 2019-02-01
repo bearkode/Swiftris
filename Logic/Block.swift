@@ -25,7 +25,7 @@ internal class Block: DirtyCheckable {
     // MARK: - internal
 
     internal var grids: [Grid<Int>]
-    internal var currentShape: Grid = Grid(size: Size(width: 4, height: 4), defaultValue: 0)
+    internal var currentShape: Grid = Grid(size: Size(width: 4, height: 4), emptyValue: 0)
     internal var nextShape: Grid<Int> {
         return self.grids[self.movement.nextRotateIndex]
     }
