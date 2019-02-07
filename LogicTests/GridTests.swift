@@ -38,7 +38,7 @@ class GridTests: XCTestCase {
         let grid = Grid(size: Size(width: 3, height: 3), array: [1, 1, 1, 2, 2, 2, 3, 3, 3])
         
         let range = 3..<6
-        grid.enumerate(inRange: range) { (point: Point, value: Int?, stop: inout Bool) in
+        grid.enumerate(inRange: range) { (point: Point, value: Int?) in
             XCTAssertTrue(point.y == 1, "")
             XCTAssertTrue(value == 2, "")
         }
@@ -49,7 +49,7 @@ class GridTests: XCTestCase {
         
         XCTAssertNotNil(grid, "")
         
-        grid.enumerate(inRow: 1) { (point: Point, value: Int?, stop: inout Bool) in
+        grid.enumerate(inRow: 1) { (point: Point, value: Int?) in
             XCTAssertTrue(point.y == 1, "")
             XCTAssertTrue(value == 2, "")
         }
@@ -93,8 +93,8 @@ class GridTests: XCTestCase {
     }
     
     func testCompress() {
-        let grid   = Grid(size: Size(width: 3, height: 3), array: [ 0, 0, 1, 2, 3, 4, 0, 0, 0].map(conv))
-        let result = Grid(size: Size(width: 3, height: 3), array: [ 0, 0, 0, 0, 0, 1, 2, 3, 4].map(conv))
+        let grid   = Grid(size: Size(width: 3, height: 3), array: [0, 0, 1, 2, 3, 4, 0, 0, 0].map(conv))
+        let result = Grid(size: Size(width: 3, height: 3), array: [0, 0, 0, 0, 0, 1, 2, 3, 4].map(conv))
         
         XCTAssertFalse(grid == result)
         grid.compress(rowOver: 2)
@@ -102,11 +102,26 @@ class GridTests: XCTestCase {
     }
     
     func testIsFullRow() {
-        let grid = Grid(size: Size(width: 3, height: 3), array: [ 0, 0, 1, 2, 3, 4, 0, 0, 0].map(conv))
+        let grid = Grid(size: Size(width: 3, height: 3), array: [0, 0, 1, 2, 3, 4, 0, 0, 0].map(conv))
         
         XCTAssertTrue(grid.isFull(row: 0) == false)
         XCTAssertTrue(grid.isFull(row: 1) == true)
         XCTAssertTrue(grid.isFull(row: 2) == false)
+    }
+
+    func testPointsHasValue() {
+        let grid = Grid(size: Size(width: 3, height: 3), array: [0, 0, 1,
+                                                                 2, 3, 4,
+                                                                 0, 0, 0].map(conv))
+        let points = grid.size.points
+        let pointsHasValue = grid.pointsHasValue
+
+        XCTAssertTrue(points.count == 9)
+        XCTAssertTrue(pointsHasValue.count == 4)
+        XCTAssertTrue(pointsHasValue[0] == Point(x: 2, y: 0))
+        XCTAssertTrue(pointsHasValue[1] == Point(x: 0, y: 1))
+        XCTAssertTrue(pointsHasValue[2] == Point(x: 1, y: 1))
+        XCTAssertTrue(pointsHasValue[3] == Point(x: 2, y: 1))
     }
     
     func testCopyGrid() {

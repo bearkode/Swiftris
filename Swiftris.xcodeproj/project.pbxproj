@@ -54,6 +54,7 @@
 		55947B981D4B3DA800F2DC58 /* NSColorExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55947B971D4B3DA800F2DC58 /* NSColorExtensionTests.swift */; };
 		55947B9A1D4B404400F2DC58 /* BlockDebuggingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55947B991D4B404400F2DC58 /* BlockDebuggingTests.swift */; };
 		55947B9F1D4B6D5A00F2DC58 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55947B9E1D4B6D5A00F2DC58 /* GameState.swift */; };
+		55A2EB20220BF154003A095D /* Brick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A2EB1F220BF154003A095D /* Brick.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +141,7 @@
 		55947B971D4B3DA800F2DC58 /* NSColorExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSColorExtensionTests.swift; sourceTree = "<group>"; };
 		55947B991D4B404400F2DC58 /* BlockDebuggingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockDebuggingTests.swift; sourceTree = "<group>"; };
 		55947B9E1D4B6D5A00F2DC58 /* GameState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
+		55A2EB1F220BF154003A095D /* Brick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brick.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,6 +319,7 @@
 			children = (
 				551A72211D4B15CF005725C0 /* Point.swift */,
 				551A720C1D4B154F005725C0 /* Size.swift */,
+				55A2EB1F220BF154003A095D /* Brick.swift */,
 				551A72091D4B154F005725C0 /* Grid.swift */,
 				551A720A1D4B154F005725C0 /* Grid+Enumeration.swift */,
 				551A720B1D4B154F005725C0 /* Grid+Subscript.swift */,
@@ -566,6 +569,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55A2EB20220BF154003A095D /* Brick.swift in Sources */,
 				551A721E1D4B1563005725C0 /* Int+Extension.swift in Sources */,
 				551A72151D4B154F005725C0 /* GameLogicController.swift in Sources */,
 				551A72101D4B154F005725C0 /* BlockGenerator.swift in Sources */,

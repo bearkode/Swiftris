@@ -63,24 +63,23 @@ internal class Grid<T: Equatable> {
         return self.buffer[self.size.range(of: row)]
     }
 
+    internal var pointsHasValue: [Point] {
+        return self.size.points.filter { self[$0] != nil }
+    }
+
     // MARK: -
 
     internal func isOverlapped(withGrid grid: Grid, position: Point) -> Bool {
-        var overlapped = false
+        let pointHasValue = grid.pointsHasValue.map { $0 + position }
+        let validPoints = pointHasValue.filter { self.size.isValid(position: $0) }
 
-        do {
-            try grid.enumerate { (point: Point, value: T?, stop: inout Bool) in
-                let v2 = try self.value(atPosition: position + point)
-                if value != nil && v2 != nil {
-                    overlapped = true
-                    stop = true
-                }
-            }
-        } catch {
+        if pointHasValue.count != validPoints.count {
             return true
         }
 
-        return overlapped
+        let canOverlap = pointHasValue.filter { self[$0] == nil }
+
+        return pointHasValue.count != canOverlap.count
     }
 
     internal func value(atPosition position: Point) throws -> T? {
@@ -89,15 +88,12 @@ internal class Grid<T: Equatable> {
         }
 
         return self[position]
-//        return self.size.isValid(position: position) ? self[position] : nil
     }
 
     internal func copy(from grid: Grid, position: Point) {
-        grid.enumerate { (point: Point, value: T?, _: inout Bool) in
-            let gridPoint = point + position
-
-            if gridPoint.y >= 0 && value != nil {
-                self[gridPoint] = value
+        grid.pointsHasValue.forEach {
+            if let value = grid[$0] {
+                self[$0 + position] = value
             }
         }
     }

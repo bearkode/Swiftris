@@ -36,23 +36,16 @@ internal class Board: DirtyCheckable {
     }
 
     internal func isOverlapped(with block: Block, at position: Point) -> Bool {
-        var result = false
+        let pointHasValue = block.currentShape.pointsHasValue.map { $0 + position }
+        let validPoints = pointHasValue.filter { self.grid.size.isValid(position: $0) }
 
-        block.currentShape.enumerate { (point: Point, value: Int?, stop: inout Bool) in
-            if value != nil {
-                do {
-                    if try self.grid.value(atPosition: point + position) != nil {
-                        result = true
-                        stop = true
-                    }
-                } catch {
-                    result = true
-                    stop = true
-                }
-            }
+        if pointHasValue.count != validPoints.count {
+            return true
         }
 
-        return result
+        let canOverlap = pointHasValue.filter { self.grid[$0] == nil }
+
+        return pointHasValue.count != canOverlap.count
     }
 
     internal func isPossible(at position: Point, withBlock block: Block) -> Bool {
@@ -60,22 +53,16 @@ internal class Board: DirtyCheckable {
     }
 
     internal func isPossible(at position: Point, withGrid grid: Grid<Int>) -> Bool {
-        var result = true
-        grid.enumerate { (point: Point, value: Int?, stop: inout Bool) in
-            if value != nil {
-                do {
-                    if try self.grid.value(atPosition: point + position) != nil {
-                        result = false
-                        stop = true
-                    }
-                } catch {
-                    result = false
-                    stop = true
-                }
-            }
+        let pointHasValue = grid.pointsHasValue.map { $0 + position }
+        let validPoints = pointHasValue.filter { self.grid.size.isValid(position: $0) }
+
+        if pointHasValue.count != validPoints.count {
+            return false
         }
 
-        return result
+        let canOverlap = pointHasValue.filter { self.grid[$0] == nil }
+
+        return pointHasValue.count == canOverlap.count
     }
 
     internal func immobilze(block: Block) {

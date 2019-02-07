@@ -18,12 +18,12 @@ extension Block: CustomStringConvertible {
 
     internal func debugPrint() {
         var oldY = 0
-        self.currentShape.enumerate { point, value, _ in
-            if oldY != point.y {
-                oldY = point.y
+        self.currentShape.size.points.forEach {
+            if oldY != $0.y {
+                oldY = $0.y
                 print("", terminator: "\n")
             }
-            print("\(String(describing: value)) ", terminator: "")
+            print("\(String(describing: value))", terminator: "")
         }
         print(" ")
     }
