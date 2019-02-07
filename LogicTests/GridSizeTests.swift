@@ -30,7 +30,7 @@ class SizeTests: XCTestCase {
     func testEnumerate() {
         let size = Size(width: 10, height: 10)
         var acc = 0
-        size.enumerate { (position) -> () in
+        size.points.forEach { (position) -> () in
             acc += 1
         }
         XCTAssertTrue(acc == 100)

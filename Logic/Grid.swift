@@ -10,34 +10,39 @@
 import Foundation
 
 
+internal enum GridError: Error {
+
+    case outOfBounds
+
+}
+
+
 internal class Grid<T: Equatable> {
 
     // MARK: - init
 
-    internal init(size: Size, array: [T], emptyValue: T) {
+    internal init(size: Size, array: [T?]) {
         self.size = size
-        self.emptyValue = emptyValue
-        self.buffer = Array(repeating: self.emptyValue, count: size.extent)
+        self.buffer = Array(repeating: nil, count: size.extent)
 
         let count = array.count
         self.buffer[0..<count] = array[0..<count]
     }
 
-    internal convenience init(size: Size, emptyValue: T) {
-        self.init(size: size, array: Array(repeating: emptyValue, count: size.extent), emptyValue: emptyValue)
+    internal convenience init(size: Size) {
+        self.init(size: size, array: Array(repeating: nil, count: size.extent))
     }
 
     // MARK: - internal
 
     internal let size: Size
-    internal let emptyValue: T
-    internal var buffer: [T]
+    internal var buffer: [T?]
 
     internal func reset() {
-        self.buffer = Array(repeating: self.emptyValue, count: self.size.extent)
+        self.buffer = Array(repeating: nil, count: self.size.extent)
     }
 
-    internal func replace(with array: [T], forRow row: Int) {
+    internal func replace(with array: [T?], forRow row: Int) {
         assert(array.count == self.size.width)
         self.buffer[self.size.range(of: row)] = array[0..<array.count]
     }
@@ -47,14 +52,14 @@ internal class Grid<T: Equatable> {
             self.buffer[self.size.range(of: $0)] = self.slice(row: $0 - 1)
         }
 
-        self.replace(with: Array(repeating: self.emptyValue, count: self.size.width), forRow: 0)
+        self.replace(with: Array(repeating: nil, count: self.size.width), forRow: 0)
     }
 
     internal func isFull(row: Int) -> Bool {
-        return self.slice(row: row).filter { $0 == self.emptyValue }.isEmpty
+        return self.slice(row: row).filter { $0 == nil }.isEmpty
     }
 
-    internal func slice(row: Int) -> ArraySlice<T> {
+    internal func slice(row: Int) -> ArraySlice<T?> {
         return self.buffer[self.size.range(of: row)]
     }
 
@@ -63,24 +68,35 @@ internal class Grid<T: Equatable> {
     internal func isOverlapped(withGrid grid: Grid, position: Point) -> Bool {
         var overlapped = false
 
-        grid.enumerate { (point: Point, value: T, stop: inout Bool) in
-            if value != self.emptyValue && self.value(atPosition: position + point) != self.emptyValue {
-                (overlapped, stop) = (true, true)
+        do {
+            try grid.enumerate { (point: Point, value: T?, stop: inout Bool) in
+                let v2 = try self.value(atPosition: position + point)
+                if value != nil && v2 != nil {
+                    overlapped = true
+                    stop = true
+                }
             }
+        } catch {
+            return true
         }
 
         return overlapped
     }
 
-    internal func value(atPosition position: Point) -> T? {
-        return self.size.isValid(position: position) ? self[position] : nil
+    internal func value(atPosition position: Point) throws -> T? {
+        guard self.size.isValid(position: position) else {
+            throw GridError.outOfBounds
+        }
+
+        return self[position]
+//        return self.size.isValid(position: position) ? self[position] : nil
     }
 
     internal func copy(from grid: Grid, position: Point) {
-        grid.enumerate { (point: Point, value: T, _: inout Bool) in
+        grid.enumerate { (point: Point, value: T?, _: inout Bool) in
             let gridPoint = point + position
 
-            if gridPoint.y >= 0 && value != self.emptyValue {
+            if gridPoint.y >= 0 && value != nil {
                 self[gridPoint] = value
             }
         }

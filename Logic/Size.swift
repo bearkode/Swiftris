@@ -17,7 +17,8 @@ public struct Size {
     public init(width: Int, height: Int) {
         self.width = width
         self.height = height
-        self.indexRange = 0..<(width * height)
+        self.extent = self.width * self.height
+        self.indexRange = 0..<(self.extent)
     }
 
     public init () {
@@ -28,13 +29,9 @@ public struct Size {
 
     public let width: Int
     public let height: Int
-    public var extent: Int {
-        return width * height
-    }
-
-    public func enumerate(_ closure: (_: Point) -> Void) {
-        self.indexRange.map { self.point(of: $0) }
-                       .forEach { closure($0) }
+    public let extent: Int
+    public var points: [Point] {
+        return self.indexRange.map(self.point(of:))
     }
 
     // MARK: - inernal

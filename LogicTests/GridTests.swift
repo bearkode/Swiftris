@@ -22,8 +22,8 @@ class GridTests: XCTestCase {
     }
     
     func testEqual() {
-        let left = Grid(size: Size(width: 3, height: 3), array: [1, 1, 1, 2, 2, 2, 3, 3, 3], emptyValue: 0)
-        let right = Grid(size: Size(width: 3, height: 3), array: [1, 1, 1, 2, 2, 2, 3, 3, 3], emptyValue: 0)
+        let left = Grid(size: Size(width: 3, height: 3), array: [1, 1, 1, 2, 2, 2, 3, 3, 3])
+        let right = Grid(size: Size(width: 3, height: 3), array: [1, 1, 1, 2, 2, 2, 3, 3, 3])
         
         XCTAssertTrue(left == right)
         
@@ -35,28 +35,28 @@ class GridTests: XCTestCase {
     }
 
     func testEnumerateInRange() {
-        let grid = Grid(size: Size(width: 3, height: 3), array: [1, 1, 1, 2, 2, 2, 3, 3, 3], emptyValue: 0)
+        let grid = Grid(size: Size(width: 3, height: 3), array: [1, 1, 1, 2, 2, 2, 3, 3, 3])
         
         let range = 3..<6
-        grid.enumerate(inRange: range) { (point: Point, value: Int, stop: inout Bool) in
+        grid.enumerate(inRange: range) { (point: Point, value: Int?, stop: inout Bool) in
             XCTAssertTrue(point.y == 1, "")
             XCTAssertTrue(value == 2, "")
         }
     }
     
     func testEnumerateInRow() {
-        let grid = Grid(size: Size(width: 3, height: 3), array: [1, 1, 1, 2, 2, 2, 3, 3, 3], emptyValue: 0)
+        let grid = Grid(size: Size(width: 3, height: 3), array: [1, 1, 1, 2, 2, 2, 3, 3, 3])
         
         XCTAssertNotNil(grid, "")
         
-        grid.enumerate(inRow: 1) { (point: Point, value: Int, stop: inout Bool) in
+        grid.enumerate(inRow: 1) { (point: Point, value: Int?, stop: inout Bool) in
             XCTAssertTrue(point.y == 1, "")
             XCTAssertTrue(value == 2, "")
         }
     }
     
     func testEnumerateRowsFromTop() {
-        let grid = Grid(size: Size(width: 5, height: 5), emptyValue: 0)
+        let grid = Grid<Int>(size: Size(width: 5, height: 5))
         
         var sum = 0
         grid.enumerateRowsFromTop { (row: Int) in
@@ -66,7 +66,7 @@ class GridTests: XCTestCase {
     }
 
     func testReplaceRow() {
-        let grid = Grid(size: Size(width: 3, height: 3), emptyValue: 0)
+        let grid = Grid<Int>(size: Size(width: 3, height: 3))
         
         XCTAssertNotNil(grid, "")
         
@@ -81,19 +81,20 @@ class GridTests: XCTestCase {
                                                                   0, 0, 0, 0, 0,
                                                                   0, 0, 0, 0, 0,
                                                                   0, 1, 0, 0, 0,
-                                                                  0, 1, 1, 0, 0], emptyValue: 0)
+                                                                  0, 1, 1, 0, 0].map(conv))
         let grid2 = Grid(size: Size(width: 2, height: 2), array: [1, 1,
-                                                                  0, 1], emptyValue: 0)
+                                                                  0, 1].map(conv))
 
-        XCTAssertFalse(grid1.isOverlapped(withGrid: grid2, position: Point(x: 1, y: 2)), "")
-        XCTAssertTrue(grid1.isOverlapped(withGrid: grid2, position: Point(x: 1, y: 3)), "")
-        XCTAssertTrue(grid1.isOverlapped(withGrid: grid2, position: Point(x: 0, y: 2)), "")
-        XCTAssertTrue(grid1.isOverlapped(withGrid: grid2, position: Point(x: 3, y: 4)), "")
+        XCTAssertFalse(grid1.isOverlapped(withGrid: grid2, position: Point(x: 1, y: 2)))
+        XCTAssertTrue(grid1.isOverlapped(withGrid: grid2, position: Point(x: 1, y: 3)))
+        XCTAssertTrue(grid1.isOverlapped(withGrid: grid2, position: Point(x: 0, y: 2)))
+        XCTAssertTrue(grid1.isOverlapped(withGrid: grid2, position: Point(x: 3, y: 4)))
+        XCTAssertTrue(grid1.isOverlapped(withGrid: grid2, position: Point(x: 4, y: 1)))
     }
     
     func testCompress() {
-        let grid   = Grid(size: Size(width: 3, height: 3), array: [ 0, 0, 1, 2, 3, 4, 0, 0, 0], emptyValue: 0)
-        let result = Grid(size: Size(width: 3, height: 3), array: [ 0, 0, 0, 0, 0, 1, 2, 3, 4], emptyValue: 0)
+        let grid   = Grid(size: Size(width: 3, height: 3), array: [ 0, 0, 1, 2, 3, 4, 0, 0, 0].map(conv))
+        let result = Grid(size: Size(width: 3, height: 3), array: [ 0, 0, 0, 0, 0, 1, 2, 3, 4].map(conv))
         
         XCTAssertFalse(grid == result)
         grid.compress(rowOver: 2)
@@ -101,7 +102,7 @@ class GridTests: XCTestCase {
     }
     
     func testIsFullRow() {
-        let grid = Grid(size: Size(width: 3, height: 3), array: [ 0, 0, 1, 2, 3, 4, 0, 0, 0], emptyValue: 0)
+        let grid = Grid(size: Size(width: 3, height: 3), array: [ 0, 0, 1, 2, 3, 4, 0, 0, 0].map(conv))
         
         XCTAssertTrue(grid.isFull(row: 0) == false)
         XCTAssertTrue(grid.isFull(row: 1) == true)
@@ -113,8 +114,8 @@ class GridTests: XCTestCase {
                                                                   0, 0, 0, 0, 0,
                                                                   0, 0, 0, 0, 0,
                                                                   0, 1, 0, 0, 0,
-                                                                  0, 1, 1, 0, 0], emptyValue: 0)
-        let grid2 = Grid(size: Size(width: 2, height: 2), array: [3, 3, 3, 3], emptyValue: 0)
+                                                                  0, 1, 1, 0, 0].map(conv))
+        let grid2 = Grid(size: Size(width: 2, height: 2), array: [3, 3, 3, 3])
         
         grid1.copy(from: grid2, position: Point(x: 3, y: 1))
         XCTAssertTrue(grid1[3, 1] == 3, "");
@@ -127,24 +128,24 @@ class GridTests: XCTestCase {
     
     
     func testSubscript() {
-        let grid = Grid(size: Size(width: 3, height: 3), array: [ 0, 0, 0, 0, 0, 0, 0, 0, 0], emptyValue: 0)
+        let grid = Grid(size: Size(width: 3, height: 3), array: [ 0, 0, 0, 0, 0, 0, 0, 0, 0].map(conv))
         
-        XCTAssertTrue(grid[2, 2] == 0)
+        XCTAssertTrue(grid[2, 2] == nil)
         grid[2, 2] = 10
         XCTAssertTrue(grid[2, 2] == 10)
         
-        XCTAssertTrue(grid[Point(x: 1, y: 0)] == 0)
+        XCTAssertTrue(grid[Point(x: 1, y: 0)] == nil)
         grid[Point(x: 1, y: 0)] = 1234
         XCTAssertTrue(grid[Point(x: 1, y: 0)] == 1234)
 
-        XCTAssertTrue(grid[Point(x: 0, y: 0)] == 0)
+        XCTAssertTrue(grid[Point(x: 0, y: 0)] == nil)
         XCTAssertTrue(grid[Point(x: 1, y: 0)] == 1234)
-        XCTAssertTrue(grid[Point(x: 2, y: 0)] == 0)
-        XCTAssertTrue(grid[Point(x: 0, y: 1)] == 0)
-        XCTAssertTrue(grid[Point(x: 1, y: 1)] == 0)
-        XCTAssertTrue(grid[Point(x: 2, y: 1)] == 0)
-        XCTAssertTrue(grid[Point(x: 0, y: 2)] == 0)
-        XCTAssertTrue(grid[Point(x: 1, y: 2)] == 0)
+        XCTAssertTrue(grid[Point(x: 2, y: 0)] == nil)
+        XCTAssertTrue(grid[Point(x: 0, y: 1)] == nil)
+        XCTAssertTrue(grid[Point(x: 1, y: 1)] == nil)
+        XCTAssertTrue(grid[Point(x: 2, y: 1)] == nil)
+        XCTAssertTrue(grid[Point(x: 0, y: 2)] == nil)
+        XCTAssertTrue(grid[Point(x: 1, y: 2)] == nil)
         XCTAssertTrue(grid[Point(x: 2, y: 2)] == 10)
     }
     

@@ -35,9 +35,9 @@ class GameLogicControllerTests: XCTestCase {
 
         controller.delegate = self
 
-        controller.boardSize.enumerate {
+        controller.boardSize.points.forEach {
             let colorIndex = controller.colorIndex(at: $0)
-            XCTAssertTrue(colorIndex == 0)
+            XCTAssertNil(colorIndex)
         }
         
         XCTAssertTrue(controller.startButtonTitle == "START")

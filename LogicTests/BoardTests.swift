@@ -36,35 +36,35 @@ class BoardTests: XCTestCase {
 
         board.immobilze(block: block)
         
-        XCTAssertTrue(board.value(at: Point(x: 0, y: 0)) == 0)
+        XCTAssertTrue(board.value(at: Point(x: 0, y: 0)) == nil)
         XCTAssertTrue(board.value(at: Point(x: 1, y: 0)) == 1)
         XCTAssertTrue(board.value(at: Point(x: 2, y: 0)) == 1)
-        XCTAssertTrue(board.value(at: Point(x: 3, y: 0)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 4, y: 0)) == 0)
+        XCTAssertTrue(board.value(at: Point(x: 3, y: 0)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 4, y: 0)) == nil)
 
-        XCTAssertTrue(board.value(at: Point(x: 0, y: 1)) == 0)
+        XCTAssertTrue(board.value(at: Point(x: 0, y: 1)) == nil)
         XCTAssertTrue(board.value(at: Point(x: 1, y: 1)) == 1)
         XCTAssertTrue(board.value(at: Point(x: 2, y: 1)) == 1)
-        XCTAssertTrue(board.value(at: Point(x: 3, y: 1)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 4, y: 1)) == 0)
+        XCTAssertTrue(board.value(at: Point(x: 3, y: 1)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 4, y: 1)) == nil)
 
-        XCTAssertTrue(board.value(at: Point(x: 0, y: 2)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 1, y: 2)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 2, y: 2)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 3, y: 2)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 4, y: 2)) == 0)
+        XCTAssertTrue(board.value(at: Point(x: 0, y: 2)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 1, y: 2)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 2, y: 2)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 3, y: 2)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 4, y: 2)) == nil)
 
-        XCTAssertTrue(board.value(at: Point(x: 0, y: 3)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 1, y: 3)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 2, y: 3)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 3, y: 3)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 4, y: 3)) == 0)
+        XCTAssertTrue(board.value(at: Point(x: 0, y: 3)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 1, y: 3)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 2, y: 3)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 3, y: 3)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 4, y: 3)) == nil)
 
-        XCTAssertTrue(board.value(at: Point(x: 0, y: 4)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 1, y: 4)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 2, y: 4)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 3, y: 4)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 4, y: 4)) == 0)
+        XCTAssertTrue(board.value(at: Point(x: 0, y: 4)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 1, y: 4)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 2, y: 4)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 3, y: 4)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 4, y: 4)) == nil)
     }
 
     func testIsPossiblePosition() {
@@ -74,6 +74,16 @@ class BoardTests: XCTestCase {
 
         block.position = Point(x: 0, y: 2)
         board.immobilze(block: block)
+
+        /*  nil     nil     nil     nil     nil
+            nil     nil     nil     nil     nil
+            nil     4       4       nil     nil
+            nil     4       nil     nil     nil
+            nil     4       nil     nil     nil */
+
+        /*  Bump
+            nil 5   nil nil
+            5   5   5   nil  */
 
         XCTAssertTrue(board.isPossible(at: Point(x: 2, y: 2), withBlock: other))
         XCTAssertFalse(board.isPossible(at: Point(x: 2, y: 1), withBlock: other))
@@ -86,13 +96,13 @@ class BoardTests: XCTestCase {
         let block = Block(type: .box)
 
         block.position = Point(x: 0, y: 6)
-        XCTAssertTrue(board.isOverlapped(with: block, at: block.position.underPoint) == false, "")
+        XCTAssertFalse(board.isOverlapped(with: block, at: block.position.underPoint))
         block.position = Point(x: 0, y: 7)
-        XCTAssertTrue(board.isOverlapped(with: block, at: block.position.underPoint) == false, "")
+        XCTAssertFalse(board.isOverlapped(with: block, at: block.position.underPoint))
         block.position = Point(x: 0, y: 8)
-        XCTAssertTrue(board.isOverlapped(with: block, at: block.position.underPoint) == true, "")
+        XCTAssertTrue(board.isOverlapped(with: block, at: block.position.underPoint))
         block.position = Point(x: 0, y: 9)
-        XCTAssertTrue(board.isOverlapped(with: block, at: block.position.underPoint) == true, "")
+        XCTAssertTrue(board.isOverlapped(with: block, at: block.position.underPoint))
     }
     
     func testDeleteFullRow() {
@@ -112,25 +122,25 @@ class BoardTests: XCTestCase {
         block.position = Point(x: 3, y: 1)
         board.immobilze(block: block)
 
-        XCTAssertTrue(board.value(at: Point(x: 0, y: 0)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 1, y: 0)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 2, y: 0)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 3, y: 0)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 4, y: 0)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 5, y: 0)) == 0)
+        XCTAssertTrue(board.value(at: Point(x: 0, y: 0)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 1, y: 0)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 2, y: 0)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 3, y: 0)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 4, y: 0)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 5, y: 0)) == nil)
 
-        XCTAssertTrue(board.value(at: Point(x: 0, y: 1)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 1, y: 1)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 2, y: 1)) == 0)
+        XCTAssertTrue(board.value(at: Point(x: 0, y: 1)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 1, y: 1)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 2, y: 1)) == nil)
         XCTAssertTrue(board.value(at: Point(x: 3, y: 1)) == 5)
-        XCTAssertTrue(board.value(at: Point(x: 4, y: 1)) == 0)
+        XCTAssertTrue(board.value(at: Point(x: 4, y: 1)) == nil)
         XCTAssertTrue(board.value(at: Point(x: 5, y: 1)) == 4)
 
-        XCTAssertTrue(board.value(at: Point(x: 0, y: 2)) == 0)
+        XCTAssertTrue(board.value(at: Point(x: 0, y: 2)) == nil)
         XCTAssertTrue(board.value(at: Point(x: 1, y: 2)) == 5)
         XCTAssertTrue(board.value(at: Point(x: 2, y: 2)) == 5)
         XCTAssertTrue(board.value(at: Point(x: 3, y: 2)) == 5)
-        XCTAssertTrue(board.value(at: Point(x: 4, y: 2)) == 0)
+        XCTAssertTrue(board.value(at: Point(x: 4, y: 2)) == nil)
         XCTAssertTrue(board.value(at: Point(x: 5, y: 2)) == 4)
 
         XCTAssertTrue(board.value(at: Point(x: 0, y: 3)) == 5)
@@ -142,47 +152,47 @@ class BoardTests: XCTestCase {
 
         board.deleteFullRow()
 
-        XCTAssertTrue(board.value(at: Point(x: 0, y: 0)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 1, y: 0)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 2, y: 0)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 3, y: 0)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 4, y: 0)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 5, y: 0)) == 0)
+        XCTAssertTrue(board.value(at: Point(x: 0, y: 0)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 1, y: 0)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 2, y: 0)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 3, y: 0)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 4, y: 0)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 5, y: 0)) == nil)
 
-        XCTAssertTrue(board.value(at: Point(x: 0, y: 1)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 1, y: 1)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 2, y: 1)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 3, y: 1)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 4, y: 1)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 5, y: 1)) == 0)
+        XCTAssertTrue(board.value(at: Point(x: 0, y: 1)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 1, y: 1)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 2, y: 1)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 3, y: 1)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 4, y: 1)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 5, y: 1)) == nil)
 
-        XCTAssertTrue(board.value(at: Point(x: 0, y: 2)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 1, y: 2)) == 0)
-        XCTAssertTrue(board.value(at: Point(x: 2, y: 2)) == 0)
+        XCTAssertTrue(board.value(at: Point(x: 0, y: 2)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 1, y: 2)) == nil)
+        XCTAssertTrue(board.value(at: Point(x: 2, y: 2)) == nil)
         XCTAssertTrue(board.value(at: Point(x: 3, y: 2)) == 5)
-        XCTAssertTrue(board.value(at: Point(x: 4, y: 2)) == 0)
+        XCTAssertTrue(board.value(at: Point(x: 4, y: 2)) == nil)
         XCTAssertTrue(board.value(at: Point(x: 5, y: 2)) == 4)
 
-        XCTAssertTrue(board.value(at: Point(x: 0, y: 3)) == 0)
+        XCTAssertTrue(board.value(at: Point(x: 0, y: 3)) == nil)
         XCTAssertTrue(board.value(at: Point(x: 1, y: 3)) == 5)
         XCTAssertTrue(board.value(at: Point(x: 2, y: 3)) == 5)
         XCTAssertTrue(board.value(at: Point(x: 3, y: 3)) == 5)
-        XCTAssertTrue(board.value(at: Point(x: 4, y: 3)) == 0)
+        XCTAssertTrue(board.value(at: Point(x: 4, y: 3)) == nil)
         XCTAssertTrue(board.value(at: Point(x: 5, y: 3)) == 4)
     }
 
     func testDeleteFullRow2() {
         let board = Board(size: Size(width: 5, height: 5))
-        board.grid.buffer = [ 0, 0, 0, 0, 0,
-                              2, 2, 2, 2, 2,
-                              1, 1, 0, 1, 0,
-                              3, 3, 3, 3, 3,
-                              4, 4, 0, 0, 4 ]
+        board.grid.buffer = [0, 0, 0, 0, 0,
+                             2, 2, 2, 2, 2,
+                             1, 1, 0, 1, 0,
+                             3, 3, 3, 3, 3,
+                             4, 4, 0, 0, 4].map(conv)
         board.deleteFullRow()
-        XCTAssertTrue(board.grid.buffer == [ 0, 0, 0, 0, 0,
-                                             0, 0, 0, 0, 0,
-                                             0, 0, 0, 0, 0,
-                                             1, 1, 0, 1, 0,
-                                             4, 4, 0, 0, 4])
+        XCTAssertTrue(board.grid.buffer == [0, 0, 0, 0, 0,
+                                            0, 0, 0, 0, 0,
+                                            0, 0, 0, 0, 0,
+                                            1, 1, 0, 1, 0,
+                                            4, 4, 0, 0, 4].map(conv))
     }
 }

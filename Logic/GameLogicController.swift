@@ -36,8 +36,8 @@ public class GameLogicController {
         return self.board.gridSize
     }
 
-    public func colorIndex(at position: Point) -> Int {
-        if let value = self.block?.value(at: position), value != 0 {
+    public func colorIndex(at position: Point) -> Int? {
+        if let value = self.block?.value(at: position) {
             return value
         }
 

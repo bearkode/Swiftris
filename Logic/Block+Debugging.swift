@@ -23,7 +23,7 @@ extension Block: CustomStringConvertible {
                 oldY = point.y
                 print("", terminator: "\n")
             }
-            print("\(value) ", terminator: "")
+            print("\(String(describing: value)) ", terminator: "")
         }
         print(" ")
     }

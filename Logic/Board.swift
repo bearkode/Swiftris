@@ -15,7 +15,7 @@ internal class Board: DirtyCheckable {
     // MARK: - init
 
     internal init(size boardSize: Size) {
-        self.grid = Grid(size: boardSize, emptyValue: 0)
+        self.grid = Grid(size: boardSize)
     }
 
     // MARK: - internal
@@ -31,12 +31,28 @@ internal class Board: DirtyCheckable {
         self.dirty = true
     }
 
-    internal func value(at position: Point) -> Int {
+    internal func value(at position: Point) -> Int? {
         return self.grid[position]
     }
 
     internal func isOverlapped(with block: Block, at position: Point) -> Bool {
-        return self.grid.isOverlapped(withGrid: block.currentShape, position: position)
+        var result = false
+
+        block.currentShape.enumerate { (point: Point, value: Int?, stop: inout Bool) in
+            if value != nil {
+                do {
+                    if try self.grid.value(atPosition: point + position) != nil {
+                        result = true
+                        stop = true
+                    }
+                } catch {
+                    result = true
+                    stop = true
+                }
+            }
+        }
+
+        return result
     }
 
     internal func isPossible(at position: Point, withBlock block: Block) -> Bool {
@@ -44,7 +60,22 @@ internal class Board: DirtyCheckable {
     }
 
     internal func isPossible(at position: Point, withGrid grid: Grid<Int>) -> Bool {
-        return !self.grid.isOverlapped(withGrid: grid, position: position)
+        var result = true
+        grid.enumerate { (point: Point, value: Int?, stop: inout Bool) in
+            if value != nil {
+                do {
+                    if try self.grid.value(atPosition: point + position) != nil {
+                        result = false
+                        stop = true
+                    }
+                } catch {
+                    result = false
+                    stop = true
+                }
+            }
+        }
+
+        return result
     }
 
     internal func immobilze(block: Block) {

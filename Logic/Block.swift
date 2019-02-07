@@ -25,7 +25,7 @@ internal class Block: DirtyCheckable {
     // MARK: - internal
 
     internal var grids: [Grid<Int>]
-    internal var currentShape: Grid = Grid(size: Size(width: 4, height: 4), emptyValue: 0)
+    internal var currentShape: Grid = Grid<Int>(size: Size(width: 4, height: 4))
     internal var nextShape: Grid<Int> {
         return self.grids[self.movement.nextRotateIndex]
     }
@@ -80,7 +80,7 @@ internal class Block: DirtyCheckable {
 
     internal func value(at position: Point) -> Int {
         if self.contains(position: position) {
-            return self.currentShape[self.positionInBlock(from: position)]
+            return self.currentShape[self.positionInBlock(from: position)] ?? 0
         }
 
         return 0
