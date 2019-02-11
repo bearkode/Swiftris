@@ -26,7 +26,6 @@
 		551A71F71D4B1501005725C0 /* DropTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A71EC1D4B1501005725C0 /* DropTimerTests.swift */; };
 		551A71F81D4B1501005725C0 /* GridSizeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A71ED1D4B1501005725C0 /* GridSizeTests.swift */; };
 		551A71F91D4B1501005725C0 /* GridTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A71EE1D4B1501005725C0 /* GridTests.swift */; };
-		551A71FA1D4B1501005725C0 /* IntExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A71EF1D4B1501005725C0 /* IntExtensionTests.swift */; };
 		551A71FB1D4B1501005725C0 /* MovementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A71F01D4B1501005725C0 /* MovementTests.swift */; };
 		551A71FC1D4B1501005725C0 /* PointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A71F11D4B1501005725C0 /* PointTests.swift */; };
 		551A720E1D4B154F005725C0 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A72001D4B154F005725C0 /* Block.swift */; };
@@ -42,7 +41,6 @@
 		551A72191D4B154F005725C0 /* Grid+Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A720B1D4B154F005725C0 /* Grid+Subscript.swift */; };
 		551A721A1D4B154F005725C0 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A720C1D4B154F005725C0 /* Size.swift */; };
 		551A721B1D4B154F005725C0 /* KeyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A720D1D4B154F005725C0 /* KeyCode.swift */; };
-		551A721E1D4B1563005725C0 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A721C1D4B1563005725C0 /* Int+Extension.swift */; };
 		551A721F1D4B1563005725C0 /* NSColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A721D1D4B1563005725C0 /* NSColor+Extension.swift */; };
 		551A72221D4B15CF005725C0 /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A72201D4B15CF005725C0 /* Movement.swift */; };
 		551A72231D4B15CF005725C0 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A72211D4B15CF005725C0 /* Point.swift */; };
@@ -113,7 +111,6 @@
 		551A71EC1D4B1501005725C0 /* DropTimerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropTimerTests.swift; sourceTree = "<group>"; };
 		551A71ED1D4B1501005725C0 /* GridSizeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridSizeTests.swift; sourceTree = "<group>"; };
 		551A71EE1D4B1501005725C0 /* GridTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridTests.swift; sourceTree = "<group>"; };
-		551A71EF1D4B1501005725C0 /* IntExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntExtensionTests.swift; sourceTree = "<group>"; };
 		551A71F01D4B1501005725C0 /* MovementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementTests.swift; sourceTree = "<group>"; };
 		551A71F11D4B1501005725C0 /* PointTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointTests.swift; sourceTree = "<group>"; };
 		551A71FE1D4B151D005725C0 /* SwiftrisTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftrisTests.swift; sourceTree = "<group>"; };
@@ -130,7 +127,6 @@
 		551A720B1D4B154F005725C0 /* Grid+Subscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Grid+Subscript.swift"; sourceTree = "<group>"; };
 		551A720C1D4B154F005725C0 /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		551A720D1D4B154F005725C0 /* KeyCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyCode.swift; sourceTree = "<group>"; };
-		551A721C1D4B1563005725C0 /* Int+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		551A721D1D4B1563005725C0 /* NSColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSColor+Extension.swift"; sourceTree = "<group>"; };
 		551A72201D4B15CF005725C0 /* Movement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
 		551A72211D4B15CF005725C0 /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
@@ -252,7 +248,6 @@
 		551A71D81D4B14D7005725C0 /* LogicTests */ = {
 			isa = PBXGroup;
 			children = (
-				551A71EF1D4B1501005725C0 /* IntExtensionTests.swift */,
 				55D36A1C1D4B2C560076EE47 /* Types */,
 				55D36A1D1D4B2C720076EE47 /* Block */,
 				55947B9C1D4B6D0000F2DC58 /* Board */,
@@ -275,7 +270,6 @@
 		558665AB2202BAC800DA4A02 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				551A721C1D4B1563005725C0 /* Int+Extension.swift */,
 				551A721D1D4B1563005725C0 /* NSColor+Extension.swift */,
 			);
 			name = Extensions;
@@ -573,7 +567,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				55A2EB20220BF154003A095D /* Brick.swift in Sources */,
-				551A721E1D4B1563005725C0 /* Int+Extension.swift in Sources */,
 				551A72151D4B154F005725C0 /* GameLogicController.swift in Sources */,
 				551A72101D4B154F005725C0 /* BlockGenerator.swift in Sources */,
 				55A2EB61220D5C9F003A095D /* Row.swift in Sources */,
@@ -607,7 +600,6 @@
 				551A71FC1D4B1501005725C0 /* PointTests.swift in Sources */,
 				55A2EB63220D5DDC003A095D /* RowTests.swift in Sources */,
 				551A71F91D4B1501005725C0 /* GridTests.swift in Sources */,
-				551A71FA1D4B1501005725C0 /* IntExtensionTests.swift in Sources */,
 				551D71F31F01F04E007AC099 /* GameStateTests.swift in Sources */,
 				551D71D81EFA3AF3007AC099 /* GameLogicControllerTests.swift in Sources */,
 				551A71F41D4B1501005725C0 /* BlockTests.swift in Sources */,
