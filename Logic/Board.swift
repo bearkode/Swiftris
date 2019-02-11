@@ -36,16 +36,7 @@ internal class Board: DirtyCheckable {
     }
 
     internal func isOverlapped(with block: Block, at position: Point) -> Bool {
-        let pointHasValue = block.currentShape.pointsHasValue.map { $0 + position }
-        let validPoints = pointHasValue.filter { self.grid.size.isValid(position: $0) }
-
-        if pointHasValue.count != validPoints.count {
-            return true
-        }
-
-        let canOverlap = pointHasValue.filter { self.grid[$0] == nil }
-
-        return pointHasValue.count != canOverlap.count
+        return self.grid.isOverlapped(withGrid: block.currentShape, position: position)
     }
 
     internal func isPossible(at position: Point, withBlock block: Block) -> Bool {
@@ -53,16 +44,13 @@ internal class Board: DirtyCheckable {
     }
 
     internal func isPossible(at position: Point, withGrid grid: Grid<Int>) -> Bool {
-        let pointHasValue = grid.pointsHasValue.map { $0 + position }
-        let validPoints = pointHasValue.filter { self.grid.size.isValid(position: $0) }
+        let pointsHasValue = Set(grid.pointsHasValue.map { $0 + position })
 
-        if pointHasValue.count != validPoints.count {
+        guard self.grid.size.isValid(pointsHasValue) else {
             return false
         }
 
-        let canOverlap = pointHasValue.filter { self.grid[$0] == nil }
-
-        return pointHasValue.count == canOverlap.count
+        return pointsHasValue.isDisjoint(with: self.grid.pointsHasValue) ? true : false
     }
 
     internal func immobilze(block: Block) {
@@ -71,9 +59,9 @@ internal class Board: DirtyCheckable {
     }
 
     internal func deleteFullRow() {
-        self.grid.enumerateRowsFromTop { (row: Int) in
-            if self.grid.isFull(row: row) {
-                self.grid.compress(rowOver: row)
+        self.grid.rows.forEach {
+            if $0.isFull {
+                self.grid.compress(rowOver: $0.index)
                 self.deleteFullRow()
             }
         }

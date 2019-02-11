@@ -39,7 +39,6 @@
 		551A72151D4B154F005725C0 /* GameLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A72071D4B154F005725C0 /* GameLogicController.swift */; };
 		551A72161D4B154F005725C0 /* GameLogicController+Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A72081D4B154F005725C0 /* GameLogicController+Movement.swift */; };
 		551A72171D4B154F005725C0 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A72091D4B154F005725C0 /* Grid.swift */; };
-		551A72181D4B154F005725C0 /* Grid+Enumeration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A720A1D4B154F005725C0 /* Grid+Enumeration.swift */; };
 		551A72191D4B154F005725C0 /* Grid+Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A720B1D4B154F005725C0 /* Grid+Subscript.swift */; };
 		551A721A1D4B154F005725C0 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A720C1D4B154F005725C0 /* Size.swift */; };
 		551A721B1D4B154F005725C0 /* KeyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A720D1D4B154F005725C0 /* KeyCode.swift */; };
@@ -55,6 +54,8 @@
 		55947B9A1D4B404400F2DC58 /* BlockDebuggingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55947B991D4B404400F2DC58 /* BlockDebuggingTests.swift */; };
 		55947B9F1D4B6D5A00F2DC58 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55947B9E1D4B6D5A00F2DC58 /* GameState.swift */; };
 		55A2EB20220BF154003A095D /* Brick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A2EB1F220BF154003A095D /* Brick.swift */; };
+		55A2EB61220D5C9F003A095D /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A2EB60220D5C9F003A095D /* Row.swift */; };
+		55A2EB63220D5DDC003A095D /* RowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A2EB62220D5DDC003A095D /* RowTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,7 +127,6 @@
 		551A72071D4B154F005725C0 /* GameLogicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameLogicController.swift; sourceTree = "<group>"; };
 		551A72081D4B154F005725C0 /* GameLogicController+Movement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GameLogicController+Movement.swift"; sourceTree = "<group>"; };
 		551A72091D4B154F005725C0 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
-		551A720A1D4B154F005725C0 /* Grid+Enumeration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Grid+Enumeration.swift"; sourceTree = "<group>"; };
 		551A720B1D4B154F005725C0 /* Grid+Subscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Grid+Subscript.swift"; sourceTree = "<group>"; };
 		551A720C1D4B154F005725C0 /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		551A720D1D4B154F005725C0 /* KeyCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyCode.swift; sourceTree = "<group>"; };
@@ -142,6 +142,8 @@
 		55947B991D4B404400F2DC58 /* BlockDebuggingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockDebuggingTests.swift; sourceTree = "<group>"; };
 		55947B9E1D4B6D5A00F2DC58 /* GameState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		55A2EB1F220BF154003A095D /* Brick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brick.swift; sourceTree = "<group>"; };
+		55A2EB60220D5C9F003A095D /* Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
+		55A2EB62220D5DDC003A095D /* RowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -320,8 +322,8 @@
 				551A72211D4B15CF005725C0 /* Point.swift */,
 				551A720C1D4B154F005725C0 /* Size.swift */,
 				55A2EB1F220BF154003A095D /* Brick.swift */,
+				55A2EB60220D5C9F003A095D /* Row.swift */,
 				551A72091D4B154F005725C0 /* Grid.swift */,
-				551A720A1D4B154F005725C0 /* Grid+Enumeration.swift */,
 				551A720B1D4B154F005725C0 /* Grid+Subscript.swift */,
 				5577B9C31E374FA400FB551B /* DirtyCheckable.swift */,
 				551A720D1D4B154F005725C0 /* KeyCode.swift */,
@@ -349,6 +351,7 @@
 				551A71F11D4B1501005725C0 /* PointTests.swift */,
 				551A71ED1D4B1501005725C0 /* GridSizeTests.swift */,
 				551A71EE1D4B1501005725C0 /* GridTests.swift */,
+				55A2EB62220D5DDC003A095D /* RowTests.swift */,
 			);
 			name = Types;
 			sourceTree = "<group>";
@@ -573,11 +576,11 @@
 				551A721E1D4B1563005725C0 /* Int+Extension.swift in Sources */,
 				551A72151D4B154F005725C0 /* GameLogicController.swift in Sources */,
 				551A72101D4B154F005725C0 /* BlockGenerator.swift in Sources */,
+				55A2EB61220D5C9F003A095D /* Row.swift in Sources */,
 				551A721A1D4B154F005725C0 /* Size.swift in Sources */,
 				551A72161D4B154F005725C0 /* GameLogicController+Movement.swift in Sources */,
 				551A721B1D4B154F005725C0 /* KeyCode.swift in Sources */,
 				551A72171D4B154F005725C0 /* Grid.swift in Sources */,
-				551A72181D4B154F005725C0 /* Grid+Enumeration.swift in Sources */,
 				551A72111D4B154F005725C0 /* BlockTemplate.swift in Sources */,
 				551A72131D4B154F005725C0 /* Board.swift in Sources */,
 				5504C1D61D4B6F4900668C43 /* GameLogicController+Interface.swift in Sources */,
@@ -602,6 +605,7 @@
 				551A71F71D4B1501005725C0 /* DropTimerTests.swift in Sources */,
 				551A71F61D4B1501005725C0 /* BoardTests.swift in Sources */,
 				551A71FC1D4B1501005725C0 /* PointTests.swift in Sources */,
+				55A2EB63220D5DDC003A095D /* RowTests.swift in Sources */,
 				551A71F91D4B1501005725C0 /* GridTests.swift in Sources */,
 				551A71FA1D4B1501005725C0 /* IntExtensionTests.swift in Sources */,
 				551D71F31F01F04E007AC099 /* GameStateTests.swift in Sources */,

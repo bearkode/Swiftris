@@ -19,12 +19,12 @@ internal class Block: DirtyCheckable {
         self.grids = type.grids
         self.movement = Movement(position: position, shapeCount: self.grids.count)
         self.position = position
-        self.updateCurrentGrid()
+        self.updateCurrentShape()
     }
 
     // MARK: - internal
 
-    internal var grids: [Grid<Int>]
+    internal let grids: [Grid<Int>]
     internal var currentShape: Grid = Grid<Int>(size: Size(width: 4, height: 4))
     internal var nextShape: Grid<Int> {
         return self.grids[self.movement.nextRotateIndex]
@@ -48,13 +48,13 @@ internal class Block: DirtyCheckable {
     internal var timeToDrop: Bool {
         return self.movement.isTimeToDrop()
     }
-    internal private(set) var type: BlockType
+    internal let type: BlockType
 
     // MARK: -
 
     internal func turn() {
         self.movement.turn()
-        self.updateCurrentGrid()
+        self.updateCurrentShape()
     }
 
     internal func moveDown() {
@@ -78,22 +78,22 @@ internal class Block: DirtyCheckable {
                 position.y < self.position.y + self.currentShape.size.height)
     }
 
-    internal func value(at position: Point) -> Int {
-        if self.contains(position: position) {
-            return self.currentShape[self.positionInBlock(from: position)] ?? 0
+    internal func value(at position: Point) -> Int? {
+        guard self.contains(position: position) == true else {
+            return nil
         }
 
-        return 0
+        return self.currentShape[self.positionInBlock(from: position)]
     }
 
     internal func positionInBlock(from position: Point) -> Point {
-        return Point(x: (position.x - self.position.x), y: (position.y - self.position.y))
+        return position - self.position
     }
 
     // MARK: - private
 
     private let movement: Movement
-    private func updateCurrentGrid() {
+    private func updateCurrentShape() {
         if self.grids.isEmpty == false {
             self.currentShape = self.grids[self.movement.rotateIndex]
         }

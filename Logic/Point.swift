@@ -35,6 +35,11 @@ extension Point {
 }
 
 
+extension Point: Hashable {
+
+}
+
+
 extension Point: Equatable {
 
 }
@@ -47,4 +52,9 @@ public func == (lhs: Point, rhs: Point) -> Bool {
 
 internal func + (left: Point, right: Point) -> Point {
     return Point(x: (left.x + right.x), y: (left.y + right.y))
+}
+
+
+internal func - (left: Point, right: Point) -> Point {
+    return Point(x: (left.x - right.x), y: (left.y - right.y))
 }

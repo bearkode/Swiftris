@@ -34,33 +34,12 @@ class GridTests: XCTestCase {
         XCTAssertTrue(left == right)
     }
 
-    func testEnumerateInRange() {
-        let grid = Grid(size: Size(width: 3, height: 3), array: [1, 1, 1, 2, 2, 2, 3, 3, 3])
-        
-        let range = 3..<6
-        grid.enumerate(inRange: range) { (point: Point, value: Int?) in
-            XCTAssertTrue(point.y == 1, "")
-            XCTAssertTrue(value == 2, "")
-        }
-    }
-    
-    func testEnumerateInRow() {
-        let grid = Grid(size: Size(width: 3, height: 3), array: [1, 1, 1, 2, 2, 2, 3, 3, 3])
-        
-        XCTAssertNotNil(grid, "")
-        
-        grid.enumerate(inRow: 1) { (point: Point, value: Int?) in
-            XCTAssertTrue(point.y == 1, "")
-            XCTAssertTrue(value == 2, "")
-        }
-    }
-    
     func testEnumerateRowsFromTop() {
         let grid = Grid<Int>(size: Size(width: 5, height: 5))
         
         var sum = 0
-        grid.enumerateRowsFromTop { (row: Int) in
-            sum += row
+        grid.rows.forEach {
+            sum += $0.index
         }
         XCTAssertTrue(sum == (4 + 3 + 2 + 1 + 0))
     }
@@ -118,10 +97,10 @@ class GridTests: XCTestCase {
 
         XCTAssertTrue(points.count == 9)
         XCTAssertTrue(pointsHasValue.count == 4)
-        XCTAssertTrue(pointsHasValue[0] == Point(x: 2, y: 0))
-        XCTAssertTrue(pointsHasValue[1] == Point(x: 0, y: 1))
-        XCTAssertTrue(pointsHasValue[2] == Point(x: 1, y: 1))
-        XCTAssertTrue(pointsHasValue[3] == Point(x: 2, y: 1))
+        XCTAssertTrue(pointsHasValue.contains(Point(x: 2, y: 0)))
+        XCTAssertTrue(pointsHasValue.contains(Point(x: 0, y: 1)))
+        XCTAssertTrue(pointsHasValue.contains(Point(x: 1, y: 1)))
+        XCTAssertTrue(pointsHasValue.contains(Point(x: 2, y: 1)))
     }
     
     func testCopyGrid() {

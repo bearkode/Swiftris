@@ -17,8 +17,9 @@ public struct Size {
     public init(width: Int, height: Int) {
         self.width = width
         self.height = height
-        self.extent = self.width * self.height
-        self.indexRange = 0..<(self.extent)
+        self.extent = SizeHelper.extent(width: width, height: height)
+        self.indexRange = SizeHelper.indexRange(width: width, height: height)
+        self.points = SizeHelper.points(width: width, height: height)
     }
 
     public init () {
@@ -30,9 +31,7 @@ public struct Size {
     public let width: Int
     public let height: Int
     public let extent: Int
-    public var points: [Point] {
-        return self.indexRange.map(self.point(of:))
-    }
+    public let points: Set<Point>
 
     // MARK: - inernal
 
@@ -44,7 +43,11 @@ public struct Size {
 extension Size {
 
     internal func isValid(position: Point) -> Bool {
-        return position.x >= 0 && position.x < self.width && position.y >= 0 && position.y < self.height
+        return self.points.contains(position)
+    }
+
+    internal func isValid(_ set: Set<Point>) -> Bool {
+        return self.points.isSuperset(of: set)
     }
 
     internal func index(of position: Point) -> Int {
@@ -52,7 +55,7 @@ extension Size {
     }
 
     internal func point(of index: Int) -> Point {
-        return Point(x: index % self.width, y: index / self.width)
+        return SizeHelper.point(width: self.width, index: index)
     }
 
     internal func range(of row: Int) -> Range<Int> {
@@ -69,4 +72,26 @@ extension Size: Equatable {
 
 public func == (lhs: Size, rhs: Size) -> Bool {
     return (lhs.width == rhs.width) && (lhs.height == rhs.height)
+}
+
+
+internal enum SizeHelper {
+
+    internal static func extent(width: Int, height: Int) -> Int {
+        return width * height
+    }
+
+    internal static func points(width: Int, height: Int) -> Set<Point> {
+        let point = curry(SizeHelper.point)(width)
+        return Set(SizeHelper.indexRange(width: width, height: height).map(point))
+    }
+
+    internal static func point(width: Int, index: Int) -> Point {
+        return Point(x: index % width, y: index / width)
+    }
+
+    internal static func indexRange(width: Int, height: Int) -> Range<Int> {
+        return 0..<(self.extent(width: width, height: height))
+    }
+
 }

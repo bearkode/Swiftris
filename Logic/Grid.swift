@@ -37,6 +37,9 @@ internal class Grid<T: Equatable> {
 
     internal let size: Size
     internal var buffer: [T?]
+    internal var rows: [Row<T>] {
+        return stride(from: (self.size.height - 1), through: 0, by: -1).map(self.row(at:))
+    }
 
     internal func reset() {
         self.buffer = Array(repeating: nil, count: self.size.extent)
@@ -63,23 +66,24 @@ internal class Grid<T: Equatable> {
         return self.buffer[self.size.range(of: row)]
     }
 
-    internal var pointsHasValue: [Point] {
-        return self.size.points.filter { self[$0] != nil }
+    internal func row(at index: Int) -> Row<T> {
+        return Row(index: index, buffer: Array(self.slice(row: index)))
+    }
+
+    internal var pointsHasValue: Set<Point> {
+        return Set(self.size.points.filter { self[$0] != nil })
     }
 
     // MARK: -
 
     internal func isOverlapped(withGrid grid: Grid, position: Point) -> Bool {
-        let pointHasValue = grid.pointsHasValue.map { $0 + position }
-        let validPoints = pointHasValue.filter { self.size.isValid(position: $0) }
+        let pointsHasValue = Set(grid.pointsHasValue.map { $0 + position })
 
-        if pointHasValue.count != validPoints.count {
+        guard self.size.isValid(pointsHasValue) else {
             return true
         }
 
-        let canOverlap = pointHasValue.filter { self[$0] == nil }
-
-        return pointHasValue.count != canOverlap.count
+        return pointsHasValue.isDisjoint(with: self.pointsHasValue) ? false : true
     }
 
     internal func value(atPosition position: Point) throws -> T? {
