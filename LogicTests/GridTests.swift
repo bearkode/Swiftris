@@ -80,14 +80,6 @@ class GridTests: XCTestCase {
         XCTAssertTrue(grid == result)
     }
     
-    func testIsFullRow() {
-        let grid = Grid(size: Size(width: 3, height: 3), array: [0, 0, 1, 2, 3, 4, 0, 0, 0].map(conv))
-        
-        XCTAssertTrue(grid.isFull(row: 0) == false)
-        XCTAssertTrue(grid.isFull(row: 1) == true)
-        XCTAssertTrue(grid.isFull(row: 2) == false)
-    }
-
     func testPointsHasValue() {
         let grid = Grid(size: Size(width: 3, height: 3), array: [0, 0, 1,
                                                                  2, 3, 4,

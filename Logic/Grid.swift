@@ -58,10 +58,6 @@ internal class Grid<T: Equatable> {
         self.replace(with: Array(repeating: nil, count: self.size.width), forRow: 0)
     }
 
-    internal func isFull(row: Int) -> Bool {
-        return self.slice(row: row).filter { $0 == nil }.isEmpty
-    }
-
     internal func slice(row: Int) -> ArraySlice<T?> {
         return self.buffer[self.size.range(of: row)]
     }
