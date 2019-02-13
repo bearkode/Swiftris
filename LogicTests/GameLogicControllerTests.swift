@@ -59,7 +59,7 @@ class GameLogicControllerTests: XCTestCase {
         self.waitForExpectations(timeout: 1.0, handler: nil)
 
         XCTAssertTrue(controller.startButtonTitle == "RESUME")
-        
+
         self.generateTimeTick(to: controller, count: 10)
         XCTAssertTrue(controller.startButtonTitle == "RESUME")
 
@@ -68,7 +68,7 @@ class GameLogicControllerTests: XCTestCase {
         self.waitForExpectations(timeout: 1.0, handler: nil)
 
         XCTAssertTrue(controller.startButtonTitle == "PAUSE")
-        
+
         self.gameoverExpectation = self.expectation(description: "gameover")
         self.generateTimeTick(to: controller, count: 1000)
         self.waitForExpectations(timeout: 1.0, handler: nil)
@@ -99,17 +99,17 @@ extension GameLogicControllerTests: LogicControllerDelegate {
     func logicControllerDidPause(_ logicController: GameLogicController) {
         self.pauseExpectation?.fulfill()
     }
-    
+
     func logicControllerDidResume(_ logicController: GameLogicController) {
         self.resumeExpectation?.fulfill()
     }
-    
+
     func logicControllerDidGameOver(_ logicController: GameLogicController) {
         self.gameoverExpectation?.fulfill()
     }
-    
+
     func logicControllerDidUpdate(_ logicController: GameLogicController) {
-    
+
     }
     
 }

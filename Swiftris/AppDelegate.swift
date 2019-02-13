@@ -13,8 +13,8 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    @IBOutlet var window: NSWindow?
-    
+    @IBOutlet private var window: NSWindow?
+
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         self.setupMainViewController()
     }
@@ -37,5 +37,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         self.window?.makeFirstResponder(mainView)
     }
-    
+
 }

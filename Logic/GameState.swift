@@ -23,6 +23,10 @@ internal protocol GameState {
 
 extension GameState {
 
+    internal var canHandleBlock: Bool {
+        return self is PlayingState
+    }
+
     internal var isPaused: Bool {
         return self is PauseState
     }

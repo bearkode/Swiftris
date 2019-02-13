@@ -67,7 +67,7 @@ class BlockTests: XCTestCase {
     func testValueAtPosition() {
         let block = Block(type: .box)
         block.position = Point(x: 5, y: 5)
-        
+
         XCTAssertTrue(block.value(at: Point(x: 0, y: 4)) == nil, "")
         XCTAssertTrue(block.value(at: Point(x: 4, y: 4)) == nil, "")
         XCTAssertTrue(block.value(at: Point(x: 5, y: 5)) == nil, "")
@@ -87,7 +87,7 @@ class BlockTests: XCTestCase {
     let grid3 = Grid(size: Size(width: 4, height: 4), array: [3, 3, 3, 0, 3, 0, 0, 0].map(conv))
     let grid2 = Grid(size: Size(width: 4, height: 4), array: [0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 3, 0].map(conv))
     let grid1 = Grid(size: Size(width: 4, height: 4), array: [0, 0, 3, 0, 3, 3, 3, 0].map(conv))
-    
+
     func testTurn() {
         let block = Block(type: .foldA)
 
@@ -154,10 +154,10 @@ class BlockTests: XCTestCase {
         block.moveRight()
         XCTAssertTrue(block.position == Point(x: 3, y: 5))
     }
-    
+
     func testDrop() {
         let block = Block(type: .foldA)
-        
+
         XCTAssert(block.timeToDrop == false)
         XCTAssert(block.timeToDrop == false)
         XCTAssert(block.timeToDrop == false)

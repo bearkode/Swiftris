@@ -11,15 +11,15 @@ import AppKit
 import Logic
 
 
-protocol KeyboardEventDelegate: class {
-    
+protocol KeyboardEventDelegate: AnyObject {
+
     func eventOnView(_ view: NSView, didKeyDown keyCode: KeyCode)
 
 }
 
 
 class MainView: NSView {
-    
+
     // MARK: - override
 
     override var acceptsFirstResponder: Bool {
@@ -28,7 +28,7 @@ class MainView: NSView {
 
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-        
+
         NSColor(calibratedRed: 1.0, green: 0.5, blue: 0.5, alpha: 1.0).setFill()
         NSBezierPath(rect: self.bounds).fill()
     }

@@ -16,7 +16,7 @@ class GameStateTests: XCTestCase {
     override func setUp() {
         super.setUp()
     }
-    
+
     override func tearDown() {
         super.tearDown()
     }
@@ -31,7 +31,7 @@ class GameStateTests: XCTestCase {
         XCTAssertTrue(state.isGameOver == false)
 
         state = state.nextState
-        XCTAssertTrue(state is PlayingState)        
+        XCTAssertTrue(state is PlayingState)
         XCTAssertTrue(state.buttonTitle == "PAUSE")
         XCTAssertTrue(state.isStarted == true)
         XCTAssertTrue(state.isResumed == false)
@@ -39,7 +39,7 @@ class GameStateTests: XCTestCase {
         XCTAssertTrue(state.isGameOver == false)
 
         state = state.nextState
-        XCTAssertTrue(state is PauseState)        
+        XCTAssertTrue(state is PauseState)
         XCTAssertTrue(state.buttonTitle == "RESUME")
         XCTAssertTrue(state.isStarted == false)
         XCTAssertTrue(state.isResumed == false)
@@ -47,7 +47,7 @@ class GameStateTests: XCTestCase {
         XCTAssertTrue(state.isGameOver == false)
 
         state = state.nextState
-        XCTAssertTrue(state is PlayingState)        
+        XCTAssertTrue(state is PlayingState)
         XCTAssertTrue(state.buttonTitle == "PAUSE")
         XCTAssertTrue(state.isStarted == false)
         XCTAssertTrue(state.isResumed == true)

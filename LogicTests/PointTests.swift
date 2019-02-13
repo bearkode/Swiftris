@@ -30,7 +30,7 @@ class PointTests: XCTestCase {
     
     func testBasic() {
         let point = Point(x: 10, y: 10)
-        
+
         XCTAssertTrue(point.leftPoint == Point(x: 9, y: 10))
         XCTAssertTrue(point.rightPoint == Point(x: 11, y: 10))
         XCTAssertTrue(point.underPoint == Point(x: 10, y: 11))

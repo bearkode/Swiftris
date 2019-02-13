@@ -39,10 +39,6 @@ internal class Board: DirtyCheckable {
         return self.grid.isOverlapped(withGrid: block.currentShape, position: position)
     }
 
-    internal func isPossible(at position: Point, withBlock block: Block) -> Bool {
-        return self.isPossible(at: position, withGrid: block.currentShape)
-    }
-
     internal func isPossible(at position: Point, withGrid grid: Grid<Int>) -> Bool {
         let pointsHasValue = Set(grid.pointsHasValue.map { $0 + position })
 

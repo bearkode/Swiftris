@@ -23,7 +23,7 @@ class DropTimerTests: XCTestCase {
 
     func testBasic() {
         var timer = DropTimer()
-        
+
         XCTAssert(timer.isFired() == false)
         XCTAssert(timer.isFired() == false)
         XCTAssert(timer.isFired() == false)

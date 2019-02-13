@@ -85,10 +85,10 @@ class BoardTests: XCTestCase {
             nil 5   nil nil
             5   5   5   nil  */
 
-        XCTAssertTrue(board.isPossible(at: Point(x: 2, y: 2), withBlock: other))
-        XCTAssertFalse(board.isPossible(at: Point(x: 2, y: 1), withBlock: other))
-        XCTAssertFalse(board.isPossible(at: Point(x: 3, y: 2), withBlock: other))
-        XCTAssertTrue(board.isPossible(at: Point(x: 2, y: 3), withBlock: other))
+        XCTAssertTrue(board.isPossible(at: Point(x: 2, y: 2), withGrid: other.currentShape))
+        XCTAssertFalse(board.isPossible(at: Point(x: 2, y: 1), withGrid: other.currentShape))
+        XCTAssertFalse(board.isPossible(at: Point(x: 3, y: 2), withGrid: other.currentShape))
+        XCTAssertTrue(board.isPossible(at: Point(x: 2, y: 3), withGrid: other.currentShape))
     }
 
     func testIsOverlappedAtPosition() {

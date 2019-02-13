@@ -36,7 +36,6 @@
 		551A72131D4B154F005725C0 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A72051D4B154F005725C0 /* Board.swift */; };
 		551A72141D4B154F005725C0 /* DropTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A72061D4B154F005725C0 /* DropTimer.swift */; };
 		551A72151D4B154F005725C0 /* GameLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A72071D4B154F005725C0 /* GameLogicController.swift */; };
-		551A72161D4B154F005725C0 /* GameLogicController+Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A72081D4B154F005725C0 /* GameLogicController+Movement.swift */; };
 		551A72171D4B154F005725C0 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A72091D4B154F005725C0 /* Grid.swift */; };
 		551A72191D4B154F005725C0 /* Grid+Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A720B1D4B154F005725C0 /* Grid+Subscript.swift */; };
 		551A721A1D4B154F005725C0 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A720C1D4B154F005725C0 /* Size.swift */; };
@@ -54,6 +53,7 @@
 		55A2EB20220BF154003A095D /* Brick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A2EB1F220BF154003A095D /* Brick.swift */; };
 		55A2EB61220D5C9F003A095D /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A2EB60220D5C9F003A095D /* Row.swift */; };
 		55A2EB63220D5DDC003A095D /* RowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A2EB62220D5DDC003A095D /* RowTests.swift */; };
+		55A2EBFB2212DE80003A095D /* BlockAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A2EBFA2212DE80003A095D /* BlockAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,7 +122,6 @@
 		551A72051D4B154F005725C0 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		551A72061D4B154F005725C0 /* DropTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropTimer.swift; sourceTree = "<group>"; };
 		551A72071D4B154F005725C0 /* GameLogicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameLogicController.swift; sourceTree = "<group>"; };
-		551A72081D4B154F005725C0 /* GameLogicController+Movement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GameLogicController+Movement.swift"; sourceTree = "<group>"; };
 		551A72091D4B154F005725C0 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		551A720B1D4B154F005725C0 /* Grid+Subscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Grid+Subscript.swift"; sourceTree = "<group>"; };
 		551A720C1D4B154F005725C0 /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
@@ -140,6 +139,7 @@
 		55A2EB1F220BF154003A095D /* Brick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brick.swift; sourceTree = "<group>"; };
 		55A2EB60220D5C9F003A095D /* Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
 		55A2EB62220D5DDC003A095D /* RowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowTests.swift; sourceTree = "<group>"; };
+		55A2EBFA2212DE80003A095D /* BlockAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,8 +303,8 @@
 			isa = PBXGroup;
 			children = (
 				55947B9E1D4B6D5A00F2DC58 /* GameState.swift */,
+				55A2EBFA2212DE80003A095D /* BlockAction.swift */,
 				551A72071D4B154F005725C0 /* GameLogicController.swift */,
-				551A72081D4B154F005725C0 /* GameLogicController+Movement.swift */,
 				5504C1D51D4B6F4900668C43 /* GameLogicController+Interface.swift */,
 			);
 			name = GameLogic;
@@ -528,7 +528,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint --path Swiftris\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		558665AD2202DA5000DA4A02 /* swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -571,10 +571,10 @@
 				551A72101D4B154F005725C0 /* BlockGenerator.swift in Sources */,
 				55A2EB61220D5C9F003A095D /* Row.swift in Sources */,
 				551A721A1D4B154F005725C0 /* Size.swift in Sources */,
-				551A72161D4B154F005725C0 /* GameLogicController+Movement.swift in Sources */,
 				551A721B1D4B154F005725C0 /* KeyCode.swift in Sources */,
 				551A72171D4B154F005725C0 /* Grid.swift in Sources */,
 				551A72111D4B154F005725C0 /* BlockTemplate.swift in Sources */,
+				55A2EBFB2212DE80003A095D /* BlockAction.swift in Sources */,
 				551A72131D4B154F005725C0 /* Board.swift in Sources */,
 				5504C1D61D4B6F4900668C43 /* GameLogicController+Interface.swift in Sources */,
 				558665AF2202F2E800DA4A02 /* Curry.swift in Sources */,

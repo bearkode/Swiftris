@@ -45,11 +45,9 @@ public class GameLogicController {
     }
 
     public func handleKeyCode(_ keyCode: KeyCode) {
-        guard self.state is PlayingState else {
-            return
+        if let block = self.block, self.state.canHandleBlock {
+            self.keyCodeHandlers[keyCode]?(block)
         }
-
-        self.keyCodeHandlers[keyCode]?()
     }
 
     public func timeTick() {
@@ -89,11 +87,8 @@ public class GameLogicController {
 
     // MARK: - private
 
-    private lazy var keyCodeHandlers: [KeyCode: () -> Void] = {
-        [.up: self.upArrowDown,
-         .right: self.rightArrowDown,
-         .left: self.leftArrowDown,
-         .down: self.downArrowDown]
+    private lazy var keyCodeHandlers: [KeyCode: (Block) -> Void] = {
+        BlockAction.actionMap(with: self.board)
     } ()
 
 }

@@ -33,14 +33,14 @@ class NSColorExtensionTests: XCTestCase {
         XCTAssertTrue(color.greenComponent == 1.0)
         XCTAssertTrue(color.blueComponent == 1.0)
         XCTAssertTrue(color.alphaComponent == 1.0)
-        
+
         color = NSColor.color(forIndex: 8)
         XCTAssertTrue(color.redComponent == 1.0)
         XCTAssertTrue(color.greenComponent == 1.0)
         XCTAssertTrue(color.blueComponent == 1.0)
         XCTAssertTrue(color.alphaComponent == 1.0)
     }
-    
+
     func testHalftone() {
         let color = NSColor(calibratedRed: 0.8, green: 1.0, blue: 0.5, alpha: 1.0).halftone()
         XCTAssertTrue(color.redComponent == 0.4)
