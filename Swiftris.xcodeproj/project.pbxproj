@@ -45,6 +45,9 @@
 		551A72231D4B15CF005725C0 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A72211D4B15CF005725C0 /* Point.swift */; };
 		551D71D81EFA3AF3007AC099 /* GameLogicControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551D71D71EFA3AF3007AC099 /* GameLogicControllerTests.swift */; };
 		551D71F31F01F04E007AC099 /* GameStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551D71F21F01F04E007AC099 /* GameStateTests.swift */; };
+		5532B20C22151ECE00BA5B14 /* BlockActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5532B20B22151ECE00BA5B14 /* BlockActionTests.swift */; };
+		5532B20E2215242100BA5B14 /* BlockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5532B20D2215242100BA5B14 /* BlockProtocol.swift */; };
+		5532B2102215244F00BA5B14 /* BoardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5532B20F2215244F00BA5B14 /* BoardProtocol.swift */; };
 		5577B9C41E374FA400FB551B /* DirtyCheckable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5577B9C31E374FA400FB551B /* DirtyCheckable.swift */; };
 		558665AF2202F2E800DA4A02 /* Curry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558665AE2202F2E800DA4A02 /* Curry.swift */; };
 		55947B981D4B3DA800F2DC58 /* NSColorExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55947B971D4B3DA800F2DC58 /* NSColorExtensionTests.swift */; };
@@ -131,6 +134,9 @@
 		551A72211D4B15CF005725C0 /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		551D71D71EFA3AF3007AC099 /* GameLogicControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameLogicControllerTests.swift; sourceTree = "<group>"; };
 		551D71F21F01F04E007AC099 /* GameStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStateTests.swift; sourceTree = "<group>"; };
+		5532B20B22151ECE00BA5B14 /* BlockActionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockActionTests.swift; sourceTree = "<group>"; };
+		5532B20D2215242100BA5B14 /* BlockProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockProtocol.swift; sourceTree = "<group>"; };
+		5532B20F2215244F00BA5B14 /* BoardProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardProtocol.swift; sourceTree = "<group>"; };
 		5577B9C31E374FA400FB551B /* DirtyCheckable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirtyCheckable.swift; sourceTree = "<group>"; };
 		558665AE2202F2E800DA4A02 /* Curry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Curry.swift; sourceTree = "<group>"; };
 		55947B971D4B3DA800F2DC58 /* NSColorExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSColorExtensionTests.swift; sourceTree = "<group>"; };
@@ -262,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				551D71F21F01F04E007AC099 /* GameStateTests.swift */,
+				5532B20B22151ECE00BA5B14 /* BlockActionTests.swift */,
 				551D71D71EFA3AF3007AC099 /* GameLogicControllerTests.swift */,
 			);
 			name = GameLogic;
@@ -286,6 +293,7 @@
 		55947B9B1D4B6CF300F2DC58 /* Board */ = {
 			isa = PBXGroup;
 			children = (
+				5532B20F2215244F00BA5B14 /* BoardProtocol.swift */,
 				551A72051D4B154F005725C0 /* Board.swift */,
 			);
 			name = Board;
@@ -332,6 +340,7 @@
 				551A72201D4B15CF005725C0 /* Movement.swift */,
 				551A72031D4B154F005725C0 /* BlockTemplate.swift */,
 				551A72041D4B154F005725C0 /* BlockType.swift */,
+				5532B20D2215242100BA5B14 /* BlockProtocol.swift */,
 				551A72001D4B154F005725C0 /* Block.swift */,
 				551A72011D4B154F005725C0 /* Block+Debugging.swift */,
 				551A72021D4B154F005725C0 /* BlockGenerator.swift */,
@@ -566,6 +575,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5532B2102215244F00BA5B14 /* BoardProtocol.swift in Sources */,
 				55A2EB20220BF154003A095D /* Brick.swift in Sources */,
 				551A72151D4B154F005725C0 /* GameLogicController.swift in Sources */,
 				551A72101D4B154F005725C0 /* BlockGenerator.swift in Sources */,
@@ -582,6 +592,7 @@
 				551A721F1D4B1563005725C0 /* NSColor+Extension.swift in Sources */,
 				551A72191D4B154F005725C0 /* Grid+Subscript.swift in Sources */,
 				551A72141D4B154F005725C0 /* DropTimer.swift in Sources */,
+				5532B20E2215242100BA5B14 /* BlockProtocol.swift in Sources */,
 				5577B9C41E374FA400FB551B /* DirtyCheckable.swift in Sources */,
 				551A72121D4B154F005725C0 /* BlockType.swift in Sources */,
 				551A72231D4B15CF005725C0 /* Point.swift in Sources */,
@@ -600,6 +611,7 @@
 				551A71FC1D4B1501005725C0 /* PointTests.swift in Sources */,
 				55A2EB63220D5DDC003A095D /* RowTests.swift in Sources */,
 				551A71F91D4B1501005725C0 /* GridTests.swift in Sources */,
+				5532B20C22151ECE00BA5B14 /* BlockActionTests.swift in Sources */,
 				551D71F31F01F04E007AC099 /* GameStateTests.swift in Sources */,
 				551D71D81EFA3AF3007AC099 /* GameLogicControllerTests.swift in Sources */,
 				551A71F41D4B1501005725C0 /* BlockTests.swift in Sources */,

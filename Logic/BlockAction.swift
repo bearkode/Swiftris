@@ -11,31 +11,30 @@ import Foundation
 
 internal enum BlockAction {
 
-    internal static func actionMap(with board: Board) -> [KeyCode: (Block) -> Void] {
-        return [.up: BlockAction.action(for: board, with: BlockAction.turn(block:board:)),
-                .right: BlockAction.action(for: board, with: BlockAction.moveRight(block:board:)),
-                .left: BlockAction.action(for: board, with: BlockAction.moveLeft(block:board:))]
+    internal typealias Action = (BlockProtocol) -> Void
+    internal typealias RawFunction = (BlockProtocol, BoardProtocol) -> Void
+
+    internal static func actionMap(with board: BoardProtocol) -> [KeyCode: Action] {
+        return [.up: curry(BlockAction.turn)(board),
+                .left: curry(BlockAction.moveLeft)(board),
+                .right: curry(BlockAction.moveRight)(board)]
     }
 
-    private static func action(for board: Board, with function: @escaping (Block, Board) -> Void) -> (Block) -> Void {
-        return { block in
-            function(block, board)
-        }
-    }
+    // MARK: - private
 
-    private static func turn(block: Block, board: Board) {
+    private static func turn(board: BoardProtocol, block: BlockProtocol) {
         if board.isPossible(at: block.position, withGrid: block.nextShape) {
             block.turn()
         }
     }
 
-    private static func moveLeft(block: Block, board: Board) {
+    private static func moveLeft(board: BoardProtocol, block: BlockProtocol) {
         if board.isPossible(at: block.position.leftPoint, withGrid: block.currentShape) {
             block.moveLeft()
         }
     }
 
-    private static func moveRight(block: Block, board: Board) {
+    private static func moveRight(board: BoardProtocol, block: BlockProtocol) {
         if board.isPossible(at: block.position.rightPoint, withGrid: block.currentShape) {
             block.moveRight()
         }

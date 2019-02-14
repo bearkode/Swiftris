@@ -10,7 +10,7 @@
 import Foundation
 
 
-internal class Board: DirtyCheckable {
+internal class Board: BoardProtocol, DirtyCheckable {
 
     // MARK: - init
 

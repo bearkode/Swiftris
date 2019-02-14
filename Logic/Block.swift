@@ -10,7 +10,7 @@
 import Foundation
 
 
-internal class Block: DirtyCheckable {
+internal class Block: BlockProtocol, DirtyCheckable {
 
     // MARK: - init
 
@@ -25,7 +25,7 @@ internal class Block: DirtyCheckable {
     // MARK: - internal
 
     internal let grids: [Grid<Int>]
-    internal var currentShape: Grid = Grid<Int>(size: Size(width: 4, height: 4))
+    internal var currentShape = Grid<Int>(size: Size(width: 4, height: 4))
     internal var nextShape: Grid<Int> {
         return self.grids[self.movement.nextRotateIndex]
     }

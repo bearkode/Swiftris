@@ -15,6 +15,8 @@ public struct Point {
     public var x: Int = 0
     public var y: Int = 0
 
+    public static let zero = Point(x: 0, y: 0)
+
 }
 
 
