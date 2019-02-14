@@ -42,7 +42,7 @@ public struct Size {
 
 extension Size {
 
-    internal func isValid(position: Point) -> Bool {
+    internal func validate(position: Point) -> Bool {
         return self.points.contains(position)
     }
 

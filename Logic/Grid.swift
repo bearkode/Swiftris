@@ -83,7 +83,7 @@ internal class Grid<T: Equatable> {
     }
 
     internal func value(atPosition position: Point) throws -> T? {
-        guard self.size.isValid(position: position) else {
+        guard self.size.validate(position: position) else {
             throw GridError.outOfBounds
         }
 
