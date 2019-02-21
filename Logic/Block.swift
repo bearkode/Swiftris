@@ -45,6 +45,12 @@ internal class Block: BlockProtocol, DirtyCheckable {
             return self.movement.position
         }
     }
+    internal var rotateIndex: Int {
+        return self.movement.rotateIndex
+    }
+    internal var nextRotateIndex: Int {
+        return self.movement.nextRotateIndex
+    }
     internal var timeToDrop: Bool {
         return self.movement.isTimeToDrop()
     }

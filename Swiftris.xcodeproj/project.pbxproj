@@ -24,7 +24,7 @@
 		551A71F51D4B1501005725C0 /* BlockTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A71EA1D4B1501005725C0 /* BlockTypeTests.swift */; };
 		551A71F61D4B1501005725C0 /* BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A71EB1D4B1501005725C0 /* BoardTests.swift */; };
 		551A71F71D4B1501005725C0 /* DropTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A71EC1D4B1501005725C0 /* DropTimerTests.swift */; };
-		551A71F81D4B1501005725C0 /* GridSizeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A71ED1D4B1501005725C0 /* GridSizeTests.swift */; };
+		551A71F81D4B1501005725C0 /* SizeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A71ED1D4B1501005725C0 /* SizeTests.swift */; };
 		551A71F91D4B1501005725C0 /* GridTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A71EE1D4B1501005725C0 /* GridTests.swift */; };
 		551A71FB1D4B1501005725C0 /* MovementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A71F01D4B1501005725C0 /* MovementTests.swift */; };
 		551A71FC1D4B1501005725C0 /* PointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551A71F11D4B1501005725C0 /* PointTests.swift */; };
@@ -116,7 +116,7 @@
 		551A71EA1D4B1501005725C0 /* BlockTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockTypeTests.swift; sourceTree = "<group>"; };
 		551A71EB1D4B1501005725C0 /* BoardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardTests.swift; sourceTree = "<group>"; };
 		551A71EC1D4B1501005725C0 /* DropTimerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropTimerTests.swift; sourceTree = "<group>"; };
-		551A71ED1D4B1501005725C0 /* GridSizeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridSizeTests.swift; sourceTree = "<group>"; };
+		551A71ED1D4B1501005725C0 /* SizeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeTests.swift; sourceTree = "<group>"; };
 		551A71EE1D4B1501005725C0 /* GridTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridTests.swift; sourceTree = "<group>"; };
 		551A71F01D4B1501005725C0 /* MovementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementTests.swift; sourceTree = "<group>"; };
 		551A71F11D4B1501005725C0 /* PointTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointTests.swift; sourceTree = "<group>"; };
@@ -379,7 +379,7 @@
 			isa = PBXGroup;
 			children = (
 				551A71F11D4B1501005725C0 /* PointTests.swift */,
-				551A71ED1D4B1501005725C0 /* GridSizeTests.swift */,
+				551A71ED1D4B1501005725C0 /* SizeTests.swift */,
 				551A71EE1D4B1501005725C0 /* GridTests.swift */,
 				5532B21922152CB200BA5B14 /* GridSubscriptTests.swift */,
 				55A2EB62220D5DDC003A095D /* RowTests.swift */,
@@ -646,7 +646,7 @@
 				551D71D81EFA3AF3007AC099 /* GameLogicControllerTests.swift in Sources */,
 				551A71F41D4B1501005725C0 /* BlockTests.swift in Sources */,
 				55947B981D4B3DA800F2DC58 /* NSColorExtensionTests.swift in Sources */,
-				551A71F81D4B1501005725C0 /* GridSizeTests.swift in Sources */,
+				551A71F81D4B1501005725C0 /* SizeTests.swift in Sources */,
 				551A71F31D4B1501005725C0 /* BlockGeneratorTests.swift in Sources */,
 				5532B21A22152CB200BA5B14 /* GridSubscriptTests.swift in Sources */,
 				5532B21822152C3B00BA5B14 /* XCTestCase+ExpectAssertFail.swift in Sources */,

@@ -87,7 +87,7 @@ public class GameLogicController {
 
     // MARK: - private
 
-    private lazy var keyCodeHandlers: [KeyCode: (Block) -> Void] = {
+    private lazy var keyCodeHandlers: [KeyCode: (BlockProtocol) -> Void] = {
         BlockAction.actionMap(with: self.board)
     } ()
 

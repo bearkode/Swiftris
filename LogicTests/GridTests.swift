@@ -112,20 +112,21 @@ class GridTests: XCTestCase {
         XCTAssertTrue(grid1[2, 1] != 3, "")
     }
 
-    func testGetRangeOfRow() {
+    func testValueAt() {
+        let grid = Grid(size: Size(width: 3, height: 3), array: [0, 0, 1,
+                                                                 2, 3, 4,
+                                                                 0, 0, 0].map(conv))
 
-    }
-
-    func testValidateCoordinate() {
-
-    }
-
-    func testGetIndexFrom() {
-
-    }
-
-    func testGetPositionWithIndex() {
-
+        XCTAssertTrue(try grid.value(at: Point(x: 0, y: 0)) == nil)
+        XCTAssertTrue(try grid.value(at: Point(x: 1, y: 0)) == nil)
+        XCTAssertTrue(try grid.value(at: Point(x: 2, y: 0)) == 1)
+        XCTAssertTrue(try grid.value(at: Point(x: 0, y: 1)) == 2)
+        XCTAssertTrue(try grid.value(at: Point(x: 1, y: 1)) == 3)
+        XCTAssertTrue(try grid.value(at: Point(x: 2, y: 1)) == 4)
+        XCTAssertTrue(try grid.value(at: Point(x: 0, y: 2)) == nil)
+        XCTAssertTrue(try grid.value(at: Point(x: 1, y: 2)) == nil)
+        XCTAssertTrue(try grid.value(at: Point(x: 2, y: 2)) == nil)
+        XCTAssertThrowsError(try grid.value(at: Point(x: 0, y: 3)))
     }
 
 }

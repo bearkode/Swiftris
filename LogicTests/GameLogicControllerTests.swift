@@ -27,7 +27,6 @@ class GameLogicControllerTests: XCTestCase {
     var gameoverExpectation: XCTestExpectation?
 
     func testBasic() {
-
         let controller = GameLogicController()
 
         XCTAssertNil(controller.delegate)
@@ -74,6 +73,35 @@ class GameLogicControllerTests: XCTestCase {
         self.waitForExpectations(timeout: 1.0, handler: nil)
 
         XCTAssertTrue(controller.startButtonTitle == "START")        
+    }
+
+    func testHandleKey() {
+        let controller = GameLogicController()
+        controller.delegate = self
+
+        controller.startButtonClicked()
+
+        self.generateTimeTick(to: controller, count: 1)
+
+        guard let block1 = controller.block else {
+            XCTAssert(false)
+            return
+        }
+
+        var pos1 = block1.position
+        pos1.x -= 1
+
+        controller.handleKeyCode(.left)
+        XCTAssertTrue(pos1 == block1.position)
+
+        pos1.x += 1
+        controller.handleKeyCode(.right)
+        XCTAssertTrue(pos1 == block1.position)
+
+        let nextRotateIndex = block1.nextRotateIndex
+
+        controller.handleKeyCode(.up)
+        XCTAssertTrue(block1.rotateIndex == nextRotateIndex)
     }
 
 }

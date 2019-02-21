@@ -42,7 +42,7 @@ internal class Board: BoardProtocol, DirtyCheckable {
     internal func isPossible(at position: Point, withGrid grid: Grid<Int>) -> Bool {
         let pointsHasValue = Set(grid.pointsHasValue.map { $0 + position })
 
-        guard self.grid.size.isValid(pointsHasValue) else {
+        guard self.grid.size.validate(points: pointsHasValue) else {
             return false
         }
 

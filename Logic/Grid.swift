@@ -75,15 +75,15 @@ internal class Grid<T: Equatable> {
     internal func isOverlapped(withGrid grid: Grid, position: Point) -> Bool {
         let pointsHasValue = Set(grid.pointsHasValue.map { $0 + position })
 
-        guard self.size.isValid(pointsHasValue) else {
+        guard self.size.validate(points: pointsHasValue) else {
             return true
         }
 
         return pointsHasValue.isDisjoint(with: self.pointsHasValue) ? false : true
     }
 
-    internal func value(atPosition position: Point) throws -> T? {
-        guard self.size.validate(position: position) else {
+    internal func value(at position: Point) throws -> T? {
+        guard self.size.validate(point: position) else {
             throw GridError.outOfBounds
         }
 

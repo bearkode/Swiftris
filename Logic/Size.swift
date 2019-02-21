@@ -42,12 +42,16 @@ public struct Size {
 
 extension Size {
 
-    internal func validate(position: Point) -> Bool {
-        return self.points.contains(position)
+    internal func validate(point: Point) -> Bool {
+        return self.points.contains(point)
     }
 
-    internal func isValid(_ set: Set<Point>) -> Bool {
-        return self.points.isSuperset(of: set)
+    internal func validate(points: Set<Point>) -> Bool {
+        return self.points.isSuperset(of: points)
+    }
+
+    internal func validate(index: Int) -> Bool {
+        return self.indexRange.contains(index)
     }
 
     internal func index(of position: Point) -> Int {
@@ -55,6 +59,7 @@ extension Size {
     }
 
     internal func point(of index: Int) -> Point {
+        assert(self.validate(index: index), "Index out of range")
         return SizeHelper.point(width: self.width, index: index)
     }
 

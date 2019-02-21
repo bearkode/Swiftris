@@ -36,6 +36,23 @@ class SizeTests: XCTestCase {
         XCTAssertTrue(acc == 100)
     }
 
+    func testPointOfIndex() {
+        let size = Size(width: 3, height: 3)
+
+        XCTAssertTrue(size.point(of: 0) ==  Point(x: 0, y: 0))
+        XCTAssertTrue(size.point(of: 1) ==  Point(x: 1, y: 0))
+        XCTAssertTrue(size.point(of: 2) ==  Point(x: 2, y: 0))
+        XCTAssertTrue(size.point(of: 3) ==  Point(x: 0, y: 1))
+        XCTAssertTrue(size.point(of: 4) ==  Point(x: 1, y: 1))
+        XCTAssertTrue(size.point(of: 5) ==  Point(x: 2, y: 1))
+        XCTAssertTrue(size.point(of: 6) ==  Point(x: 0, y: 2))
+        XCTAssertTrue(size.point(of: 7) ==  Point(x: 1, y: 2))
+        XCTAssertTrue(size.point(of: 8) ==  Point(x: 2, y: 2))
+        self.expectAssertFail(expectedMessage: "Index out of range") {
+            _ = size.point(of: 9)
+        }
+    }
+
     func testEqual() {
         XCTAssertTrue(Size(width: 10, height: 5) == Size(width: 10, height: 5))
         XCTAssertFalse(Size(width: 11, height: 10) == Size(width: 10, height: 10))
