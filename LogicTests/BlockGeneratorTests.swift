@@ -22,19 +22,18 @@ class BlockGeneratorTests: XCTestCase {
     }
 
     func testBasic() {
-        let allTypes = BlockType.allTypes
-        var remainTypes = allTypes
+        var remainCases = Set<BlockType>(BlockType.allCases)
         var nextBlock = BlockGenerator.sharedGenerator.nextBlock
         
-        XCTAssertTrue(remainTypes.count == 7)
+        XCTAssertTrue(remainCases.count == 7)
         
-        while remainTypes.count != 0 {
+        while remainCases.count != 0 {
             let block = BlockGenerator.sharedGenerator.block(withPosition: Point(x: 3, y: 0))
 
             XCTAssertTrue(block.type == nextBlock.type)
             XCTAssertTrue(block.position == Point(x: 3, y: 0))
             
-            remainTypes.remove(block.type)
+            remainCases.remove(block.type)
             nextBlock = BlockGenerator.sharedGenerator.nextBlock
         }
     }

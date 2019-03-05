@@ -51,6 +51,23 @@ class GameLogicControllerTests: XCTestCase {
 
         XCTAssertTrue(controller.startButtonTitle == "PAUSE")
 
+        self.generateTimeTick(to: controller, count: 1)
+
+        XCTAssertNotNil(controller.block)
+        if let block = controller.block {
+            controller.boardSize.points
+                .compactMap { (p: Point) -> (Point, Int)? in
+                    guard let index = block.value(at: p) else {
+                        return nil
+                    }
+
+                    return (p, index)
+                }
+                .forEach {
+                    XCTAssertNotNil(controller.colorIndex(at: $0.0) == $0.1)
+                }
+        }
+
         self.generateTimeTick(to: controller, count: 10)
 
         self.pauseExpectation = self.expectation(description: "pause")

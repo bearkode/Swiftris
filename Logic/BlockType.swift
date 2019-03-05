@@ -10,7 +10,7 @@
 import Foundation
 
 
-internal enum BlockType: Int {
+internal enum BlockType: Int, CaseIterable {
 
     case box
     case bar
@@ -25,10 +25,12 @@ internal enum BlockType: Int {
 
 extension BlockType {
 
-    internal static let allTypes: Set<BlockType> = [.box, .bar, .foldA, .foldB, .bump, .zigzagA, .zigzagB]
-
     internal static func makeRandomType() -> BlockType {
-        let index = Int(arc4random() % UInt32(self.zigzagB.rawValue + 1))
+        let index = self.makeRandomRawValue()
+        return self.makeBlockType(with: index)
+    }
+
+    internal static func makeBlockType(with index: Int) -> BlockType {
         return BlockType(rawValue: index) ?? .bar
     }
 
@@ -49,6 +51,10 @@ extension BlockType {
         case .zigzagB:
             return BlockTemplate.zigzagB
         }
+    }
+
+    private static func makeRandomRawValue() -> Int {
+        return Int(arc4random()) % (self.allCases.count + 1)
     }
 
 }

@@ -22,25 +22,37 @@ class BlockTypeTests: XCTestCase {
     }
 
     func testAllBlocks() {
-        XCTAssertTrue(BlockType.allTypes.count == 7)
+        XCTAssertTrue(BlockType.allCases.count == 7)
     }
 
     func testRandomType() {
-        let allTypes = BlockType.allTypes
-        var remainTypes = allTypes
+        let allCases = BlockType.allCases
+        var remainTypes = Set<BlockType>(allCases)
 
         XCTAssertTrue(remainTypes.count == 7)
 
         for _ in 0..<1000 {
             let type = BlockType.makeRandomType()
 
-            XCTAssertTrue(allTypes.contains(type))
+            XCTAssertTrue(allCases.contains(type))
             remainTypes.remove(type)
 
             if remainTypes.count == 0 {
                 break
             }
         }
+    }
+
+    func testMakeBlockType() {
+        XCTAssertTrue(BlockType.makeBlockType(with: 0) == .box)
+        XCTAssertTrue(BlockType.makeBlockType(with: 1) == .bar)
+        XCTAssertTrue(BlockType.makeBlockType(with: 2) == .foldA)
+        XCTAssertTrue(BlockType.makeBlockType(with: 3) == .foldB)
+        XCTAssertTrue(BlockType.makeBlockType(with: 4) == .bump)
+        XCTAssertTrue(BlockType.makeBlockType(with: 5) == .zigzagA)
+        XCTAssertTrue(BlockType.makeBlockType(with: 6) == .zigzagB)
+        XCTAssertTrue(BlockType.makeBlockType(with: 7) == .bar)
+        XCTAssertTrue(BlockType.makeBlockType(with: -1) == .bar)
     }
 
     func testGrids() {
