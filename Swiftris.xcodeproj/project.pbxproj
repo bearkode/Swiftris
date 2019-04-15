@@ -48,12 +48,12 @@
 		5532B20C22151ECE00BA5B14 /* BlockActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5532B20B22151ECE00BA5B14 /* BlockActionTests.swift */; };
 		5532B20E2215242100BA5B14 /* BlockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5532B20D2215242100BA5B14 /* BlockProtocol.swift */; };
 		5532B2102215244F00BA5B14 /* BoardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5532B20F2215244F00BA5B14 /* BoardProtocol.swift */; };
-		5532B213221528F300BA5B14 /* CurryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5532B212221528F300BA5B14 /* CurryTests.swift */; };
+		5532B213221528F300BA5B14 /* curryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5532B212221528F300BA5B14 /* curryTests.swift */; };
 		5532B21522152AC700BA5B14 /* assert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5532B21422152AC700BA5B14 /* assert.swift */; };
 		5532B21822152C3B00BA5B14 /* XCTestCase+ExpectAssertFail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5532B21722152C3B00BA5B14 /* XCTestCase+ExpectAssertFail.swift */; };
 		5532B21A22152CB200BA5B14 /* GridSubscriptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5532B21922152CB200BA5B14 /* GridSubscriptTests.swift */; };
 		5577B9C41E374FA400FB551B /* DirtyCheckable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5577B9C31E374FA400FB551B /* DirtyCheckable.swift */; };
-		558665AF2202F2E800DA4A02 /* Curry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558665AE2202F2E800DA4A02 /* Curry.swift */; };
+		558665AF2202F2E800DA4A02 /* curry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558665AE2202F2E800DA4A02 /* curry.swift */; };
 		55947B981D4B3DA800F2DC58 /* NSColorExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55947B971D4B3DA800F2DC58 /* NSColorExtensionTests.swift */; };
 		55947B9A1D4B404400F2DC58 /* BlockDebuggingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55947B991D4B404400F2DC58 /* BlockDebuggingTests.swift */; };
 		55947B9F1D4B6D5A00F2DC58 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55947B9E1D4B6D5A00F2DC58 /* GameState.swift */; };
@@ -141,12 +141,12 @@
 		5532B20B22151ECE00BA5B14 /* BlockActionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockActionTests.swift; sourceTree = "<group>"; };
 		5532B20D2215242100BA5B14 /* BlockProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockProtocol.swift; sourceTree = "<group>"; };
 		5532B20F2215244F00BA5B14 /* BoardProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardProtocol.swift; sourceTree = "<group>"; };
-		5532B212221528F300BA5B14 /* CurryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurryTests.swift; sourceTree = "<group>"; };
+		5532B212221528F300BA5B14 /* curryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = curryTests.swift; sourceTree = "<group>"; };
 		5532B21422152AC700BA5B14 /* assert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = assert.swift; sourceTree = "<group>"; };
 		5532B21722152C3B00BA5B14 /* XCTestCase+ExpectAssertFail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+ExpectAssertFail.swift"; sourceTree = "<group>"; };
 		5532B21922152CB200BA5B14 /* GridSubscriptTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridSubscriptTests.swift; sourceTree = "<group>"; };
 		5577B9C31E374FA400FB551B /* DirtyCheckable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirtyCheckable.swift; sourceTree = "<group>"; };
-		558665AE2202F2E800DA4A02 /* Curry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Curry.swift; sourceTree = "<group>"; };
+		558665AE2202F2E800DA4A02 /* curry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = curry.swift; sourceTree = "<group>"; };
 		55947B971D4B3DA800F2DC58 /* NSColorExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSColorExtensionTests.swift; sourceTree = "<group>"; };
 		55947B991D4B404400F2DC58 /* BlockDebuggingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockDebuggingTests.swift; sourceTree = "<group>"; };
 		55947B9E1D4B6D5A00F2DC58 /* GameState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
@@ -287,7 +287,7 @@
 		5532B211221528D600BA5B14 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				5532B212221528F300BA5B14 /* CurryTests.swift */,
+				5532B212221528F300BA5B14 /* curryTests.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -312,7 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				5532B21422152AC700BA5B14 /* assert.swift */,
-				558665AE2202F2E800DA4A02 /* Curry.swift */,
+				558665AE2202F2E800DA4A02 /* curry.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -615,7 +615,7 @@
 				55A2EBFB2212DE80003A095D /* BlockAction.swift in Sources */,
 				551A72131D4B154F005725C0 /* Board.swift in Sources */,
 				5504C1D61D4B6F4900668C43 /* GameLogicController+Interface.swift in Sources */,
-				558665AF2202F2E800DA4A02 /* Curry.swift in Sources */,
+				558665AF2202F2E800DA4A02 /* curry.swift in Sources */,
 				55947B9F1D4B6D5A00F2DC58 /* GameState.swift in Sources */,
 				551A721F1D4B1563005725C0 /* NSColor+Extension.swift in Sources */,
 				551A72191D4B154F005725C0 /* Grid+Subscript.swift in Sources */,
@@ -638,7 +638,7 @@
 				551A71F71D4B1501005725C0 /* DropTimerTests.swift in Sources */,
 				551A71F61D4B1501005725C0 /* BoardTests.swift in Sources */,
 				551A71FC1D4B1501005725C0 /* PointTests.swift in Sources */,
-				5532B213221528F300BA5B14 /* CurryTests.swift in Sources */,
+				5532B213221528F300BA5B14 /* curryTests.swift in Sources */,
 				55A2EB63220D5DDC003A095D /* RowTests.swift in Sources */,
 				551A71F91D4B1501005725C0 /* GridTests.swift in Sources */,
 				5532B20C22151ECE00BA5B14 /* BlockActionTests.swift in Sources */,

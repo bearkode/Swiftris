@@ -29,12 +29,18 @@ extension NSColor {
     }
 
     public func halftone() -> NSColor {
-        let comps = [self.rgbComponents.map { $0 * 0.5 }, [self.alphaComponent]].flatMap { $0 }
-        return NSColor(red: comps[0], green: comps[1], blue: comps[2], alpha: comps[3])
+        let comps = [self.rgbComponents.map { $0 / 2 }, [self.alphaComponent]].flatMap { $0 }
+        return apply(f: curry(NSColor.init(red:green:blue:alpha:)), args: comps)
     }
 
     internal var rgbComponents: [CGFloat] {
         return [self.redComponent, self.greenComponent, self.blueComponent]
     }
 
+}
+
+
+internal func apply<A, B>(f: (A) -> (A) -> (A) -> (A) -> B, args: [A]) -> B {
+    assert(args.count == 4)
+    return f(args[0])(args[1])(args[2])(args[3])
 }
